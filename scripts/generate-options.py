@@ -171,7 +171,7 @@ def create_updated_settings():
         'keyname': 'extra_rss_feeds',
         'field_type': 'multi_string',
         'name': 'Extra RSS Feeds',
-        'description': "List of extra rss feeds.<br />Any RSS URL added here will be added as source.",
+        'description': "List of extra rss feeds.<br />Any RSS URL added here will be added as a                                         source.",
         'placeholder': 'https://rssfeed.com'
     }
     custom_fields.append(extra_rss_feeds)
