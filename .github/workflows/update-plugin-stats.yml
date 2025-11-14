@@ -40,4 +40,6 @@ jobs:
         with:
           commit_message: "📊 Update plugin statistics in README"
           commit_author: "GitHub Actions <actions@github.com>"
-          file_pattern: "README.md assets/plugin-images/*"
+          file_pattern: |
+            README.md
+            assets/plugin-images/

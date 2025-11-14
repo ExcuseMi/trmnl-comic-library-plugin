@@ -1,4 +1,4 @@
-{%- assign items_with_images = rss.channel.item | where_exp: "item", "item.description contains 'img'" -%}
+{%- assign items_with_images = IDX_1.rss.channel.item | where_exp: "item", "item.description contains 'img'" -%}
 {%- if trmnl.plugin_settings.custom_fields_values.only_show_latest != "yes" -%}
   {%- assign random_index = "now" | date: "%s" | modulo: items_with_images.size -%}
   {%- assign item = items_with_images[random_index] -%}
