@@ -25,7 +25,7 @@ jobs:
       run: pip install requests pyyaml
 
     - name: Generate updated comic options
-      run: python scripts/generate_comic_options.py
+      run: python scripts/generate_options.py
 
     - name: Commit and push changes
       run: |
