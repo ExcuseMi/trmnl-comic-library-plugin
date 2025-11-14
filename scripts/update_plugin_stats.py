@@ -2,7 +2,7 @@
 import requests
 import re
 import os
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -72,17 +72,24 @@ def fetch_plugin_data(plugin_id: str):
 
     try:
         response = requests.get(url, timeout=10)
-        response.raise_for_status()
-        return response.json()
+        response.raise_for_status()  # This will raise an exception for 4xx/5xx status codes
+
+        # Try to parse JSON
+        data = response.json()
+        return data
     except requests.RequestException as e:
-        print(f"  ✗ Error fetching plugin data for {plugin_id}: {e}")
+        print(f"  ✗ HTTP Error fetching plugin data for {plugin_id}: {e}")
+        return None
+    except ValueError as e:
+        print(f"  ✗ JSON parsing error for plugin {plugin_id}: {e}")
+        print(f"  Response content: {response.text[:200]}...")  # Show first 200 chars of response
         return None
 
 
 def process_plugin_images(plugin_id: str, plugin_data: dict, images_dir: str):
     """Download plugin images and return local paths"""
     if not plugin_data:
-        return None, None
+        return None
 
     plugin = plugin_data.get('data', {})
 
@@ -120,19 +127,37 @@ def process_plugin_images(plugin_id: str, plugin_data: dict, images_dir: str):
 def generate_plugin_section(data, plugin_id: str, image_paths: dict):
     """Generate markdown section for a plugin"""
     if not data:
-        # Plugin data not found - likely not published yet
+        # Plugin data not found - likely not published yet or API error
         markdown = f"""
 ## 🔒 Plugin ID: {plugin_id}
 
-**Status**: ⏳ Not yet published on TRMNL
+**Status**: ⏳ Not yet published on TRMNL or API unavailable
 
-This plugin is configured but hasn't been published to the TRMNL marketplace yet. Once published, statistics will appear here automatically.
+This plugin is configured but either hasn't been published to the TRMNL marketplace yet or the API is temporarily unavailable.
+
+**Plugin URL**: https://usetrmnl.com/recipes/{plugin_id}
 
 ---
 """
         return markdown
 
     plugin = data.get('data', {})
+
+    # Check if we have valid plugin data
+    if not plugin:
+        markdown = f"""
+## 🔒 Plugin ID: {plugin_id}
+
+**Status**: ⏳ Plugin data incomplete
+
+The plugin exists but data is not available yet. This usually means it's very new or still being processed.
+
+**Plugin URL**: https://usetrmnl.com/recipes/{plugin_id}
+
+---
+"""
+        return markdown
+
     stats = plugin.get('stats', {})
 
     # Use local image paths or fallback to original URLs
@@ -178,7 +203,7 @@ def update_readme(plugin_sections: str, section_title: str):
     end_marker = "<!-- PLUGIN_STATS_END -->"
 
     # Create the new plugin sections content
-    timestamp = datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC')
+    timestamp = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')
     new_content = f"{start_marker}\n## {section_title}\n\n*Last updated: {timestamp}*\n\n{plugin_sections}\n{end_marker}"
 
     # Check if markers exist in the README
@@ -223,15 +248,18 @@ def main():
         # Fetch plugin data
         data = fetch_plugin_data(plugin_id)
 
-        # Download images only if data exists
+        # Download images only if data exists and is valid
         image_paths = None
-        if data:
+        if data and data.get('data'):
             image_paths = process_plugin_images(plugin_id, data, images_dir)
             published_plugins += 1
             print(f"  ✓ Plugin found and published")
         else:
             unpublished_plugins += 1
-            print(f"  ⏳ Plugin not published yet")
+            if data and not data.get('data'):
+                print(f"  ⚠️  Plugin exists but data is incomplete")
+            else:
+                print(f"  ⏳ Plugin not published yet or API error")
 
         # Generate markdown section
         section = generate_plugin_section(data, plugin_id, image_paths)
@@ -247,7 +275,7 @@ def main():
     print("✅ README.md updated successfully with plugin statistics!")
     print(f"📊 Summary:")
     print(f"   Published plugins: {published_plugins}")
-    print(f"   Unpublished plugins: {unpublished_plugins}")
+    print(f"   Unpublished/Error plugins: {unpublished_plugins}")
     print(f"📸 Images saved to: {images_dir}/")
 
 
