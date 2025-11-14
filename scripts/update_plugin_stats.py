@@ -120,7 +120,17 @@ def process_plugin_images(plugin_id: str, plugin_data: dict, images_dir: str):
 def generate_plugin_section(data, plugin_id: str, image_paths: dict):
     """Generate markdown section for a plugin"""
     if not data:
-        return f"<!-- Plugin data unavailable for {plugin_id} -->"
+        # Plugin data not found - likely not published yet
+        markdown = f"""
+## 🔒 Plugin ID: {plugin_id}
+
+**Status**: ⏳ Not yet published on TRMNL
+
+This plugin is configured but hasn't been published to the TRMNL marketplace yet. Once published, statistics will appear here automatically.
+
+---
+"""
+        return markdown
 
     plugin = data.get('data', {})
     stats = plugin.get('stats', {})
@@ -203,14 +213,25 @@ def main():
     plugin_sections = []
     total = len(plugin_ids)
 
+    # Track statistics
+    published_plugins = 0
+    unpublished_plugins = 0
+
     for idx, plugin_id in enumerate(plugin_ids, 1):
         print(f"🔍 [{idx}/{total}] Processing plugin: {plugin_id}")
 
         # Fetch plugin data
         data = fetch_plugin_data(plugin_id)
 
-        # Download images
-        image_paths = process_plugin_images(plugin_id, data, images_dir)
+        # Download images only if data exists
+        image_paths = None
+        if data:
+            image_paths = process_plugin_images(plugin_id, data, images_dir)
+            published_plugins += 1
+            print(f"  ✓ Plugin found and published")
+        else:
+            unpublished_plugins += 1
+            print(f"  ⏳ Plugin not published yet")
 
         # Generate markdown section
         section = generate_plugin_section(data, plugin_id, image_paths)
@@ -224,6 +245,9 @@ def main():
     update_readme(all_sections, section_title)
 
     print("✅ README.md updated successfully with plugin statistics!")
+    print(f"📊 Summary:")
+    print(f"   Published plugins: {published_plugins}")
+    print(f"   Unpublished plugins: {unpublished_plugins}")
     print(f"📸 Images saved to: {images_dir}/")
 
 
