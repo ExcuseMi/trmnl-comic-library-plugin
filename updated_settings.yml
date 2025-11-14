@@ -1,7 +1,7 @@
 - keyname: about
   name: About This Plugin
   field_type: author_bio
-  description: 'Access a collection of 473 comic RSS feeds and enjoy fresh content every day.<br /><br />
+  description: 'Access a collection of 471 comic RSS feeds and enjoy fresh content every day.<br /><br />
 
     <strong>Features:</strong><br />
 
@@ -85,7 +85,6 @@
   - Buni: https://comiccaster.xyz/rss/buni
   - C'est la Vie: https://comiccaster.xyz/rss/cestlavie
   - Calvin and Hobbes: https://comiccaster.xyz/rss/calvinandhobbes
-  - Calvin and Hobbes: https://www.gocomics.com/calvinandhobbes/feed
   - Cat's Cafe: https://comiccaster.xyz/rss/cats-cafe
   - Catana Comics: https://comiccaster.xyz/rss/little-moments-of-love
   - Cathy: https://comiccaster.xyz/rss/cathy
@@ -114,7 +113,6 @@
   - Deep Dark Fears: https://comiccaster.xyz/rss/deep-dark-fears
   - Diamond Lil: https://comiccaster.xyz/rss/diamondlil
   - Dick Tracy: https://comiccaster.xyz/rss/dicktracy
-  - Dilbert: https://dilbert.com/feed
   - Dinosaur Comics: https://comiccaster.xyz/rss/dinosaur-comics
   - Dog Eat Doug: https://comiccaster.xyz/rss/dogeatdoug
   - Dogs of C-Kennel: https://comiccaster.xyz/rss/dogsofckennel
