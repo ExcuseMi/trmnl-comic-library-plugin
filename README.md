@@ -1,0 +1,1 @@
+# trmnl-random-daily-comics-plugin
