@@ -18,6 +18,31 @@ def get_comics_data(url: str):
     return r.json()
 
 
+def get_extra_feeds_path():
+    """Get the correct path for extra_feeds.yml that works from both root and scripts directory"""
+    current_dir = Path.cwd()
+
+    # If we're in the scripts directory, look for extra_feeds.yml in the parent directory
+    if current_dir.name == 'scripts':
+        return current_dir.parent / "extra_feeds.yml"
+    else:
+        # We're already in the repository root
+        return current_dir / "extra_feeds.yml"
+
+
+def load_extra_feeds():
+    """Load additional RSS feeds from extra_feeds.yml"""
+    extra_feeds_path = get_extra_feeds_path()
+    if extra_feeds_path.exists():
+        with open(extra_feeds_path, 'r') as f:
+            extra_feeds = yaml.safe_load(f) or {}
+        print(f"Loaded {len(extra_feeds)} extra feeds from {extra_feeds_path}")
+        return extra_feeds
+    else:
+        print(f"extra_feeds.yml not found at {extra_feeds_path}, skipping extra feeds")
+        return {}
+
+
 def get_output_path():
     """Get the correct output path that works from both root and scripts directory"""
     current_dir = Path.cwd()
@@ -34,6 +59,7 @@ def create_updated_settings():
     # Get the current comics data
     comics_data = get_comics_data(URL)
     political_data = get_comics_data(URL_POLITICAL)
+    extra_feeds = load_extra_feeds()
 
     # Separate regular comics from other languages
     regular_comics = []
@@ -50,7 +76,8 @@ def create_updated_settings():
     total_regular = len(regular_comics)
     total_other_lang = len(other_language_comics)
     total_political = len(political_data)
-    total_all = total_regular + total_other_lang + total_political
+    total_extra = len(extra_feeds)
+    total_all = total_regular + total_other_lang + total_political + total_extra
 
     # Create the updated custom fields
     custom_fields = []
@@ -66,13 +93,20 @@ def create_updated_settings():
     }
     custom_fields.append(about_field)
 
-    # Comics field
+    # Comics field - sort by name
     comics_options = []
-    for comic in regular_comics:
+    for comic in sorted(regular_comics, key=lambda x: x.get("name", "Unknown")):
         name = comic.get("name", "Unknown")
         slug = comic.get("slug", None)
         if slug:
             comics_options.append({name: f"https://comiccaster.xyz/rss/{slug}"})
+
+    # Add extra feeds to comics options and sort everything
+    for name, url in extra_feeds.items():
+        comics_options.append({name: url})
+
+    # Sort all comics options by name
+    comics_options.sort(key=lambda x: list(x.keys())[0])
 
     comics_field = {
         'keyname': 'comics',
@@ -85,9 +119,9 @@ def create_updated_settings():
     }
     custom_fields.append(comics_field)
 
-    # Comics other languages field
+    # Comics other languages field - sort by name
     other_lang_options = []
-    for comic in other_language_comics:
+    for comic in sorted(other_language_comics, key=lambda x: x.get("name", "Unknown")):
         name = comic.get("name", "Unknown")
         slug = comic.get("slug", "unknown")
         other_lang_options.append({name: slug})
@@ -103,9 +137,9 @@ def create_updated_settings():
     }
     custom_fields.append(other_lang_field)
 
-    # Political comics field
+    # Political comics field - sort by name
     political_options = []
-    for comic in political_data:
+    for comic in sorted(political_data, key=lambda x: x.get("name", "Unknown")):
         name = comic.get("name", "Unknown")
         slug = comic.get("slug", "unknown")
         political_options.append({name: slug})
@@ -153,6 +187,7 @@ def create_updated_settings():
     print(f"Regular comics: {total_regular}")
     print(f"Other language comics: {total_other_lang}")
     print(f"Political comics: {total_political}")
+    print(f"Extra feeds: {total_extra}")
     print(f"Total comics: {total_all}")
 
 
