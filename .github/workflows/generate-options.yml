@@ -4,6 +4,15 @@ on:
   schedule:
     - cron: '0 2 * * *'  # Run daily at 2 AM UTC
   workflow_dispatch:      # Allow manual triggering
+  push:
+    branches: [ main ]
+    paths:
+      - '.github/workflows/generate-options.yml'
+      - 'scripts/generate_comic_options.py'
+
+# Grant explicit permissions
+permissions:
+  contents: write
 
 jobs:
   generate-options:
@@ -11,10 +20,9 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        fetch-depth: 0
+        ref: ${{ github.head_ref }}
 
     - name: Set up Python
       uses: actions/setup-python@v4
@@ -28,9 +36,10 @@ jobs:
       run: python scripts/generate-options.py
 
     - name: Commit and push changes
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git add -A
-        git diff --staged --quiet || git commit -m "📝 Update comic options [automated]"
-        git push
+      uses: stefanzweifel/git-auto-commit-action@v7
+      with:
+        commit_message: "📝 Update comic options [automated]"
+        commit_author: "GitHub Actions <actions@github.com>"
+        file_pattern: |
+          updated_settings.yml
+          COMICS_SUMMARY.md
