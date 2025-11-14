@@ -1,22 +1,13 @@
----
-strategy: polling
-no_screen_padding: 'no'
-dark_mode: 'no'
-static_data: ''
-polling_verb: get
-polling_url: "https://usetrmnl.com/custom_plugin_example_data.json\r\n\r\n{% assign cleaned_comics = comics\r\n  | replace: '[', ''\r\n  | replace: ']', ''\r\n  | replace: '\"', ''\r\n  | replace: ' ', '' %}\r\n{% assign cleaned_comics_other_languages = comics_other_languages\r\n  | replace: '[', ''\r\n  | replace: ']', ''\r\n  | replace: '\"', ''\r\n  | replace: ' ', '' %}\r\n{% assign cleaned_political = comics_political\r\n  | replace: '[', ''\r\n  | replace: ']', ''\r\n  | replace: '\"', ''\r\n  | replace: ' ', '' %}\r\n\r\n{% assign merged_string = \"\" %}\r\n\r\n{% if cleaned_comics != \"\" %}\r\n  {% assign merged_string = cleaned_comics %}\r\n{% endif %}\r\n\r\n{% if cleaned_comics_other_languages != \"\" %}\r\n  {% if merged_string != \"\" %}\r\n    {% assign merged_string = merged_string | append: \",\" | append: cleaned_comics_other_languages %}\r\n  {% else %}\r\n    {% assign merged_string = cleaned_comics_other_languages %}\r\n  {% endif %}\r\n{% endif %}\r\n\r\n{% if cleaned_political != \"\" %}\r\n  {% if merged_string != \"\" %}\r\n    {% assign merged_string = merged_string | append: \",\" | append: cleaned_political %}\r\n  {% else %}\r\n    {% assign merged_string = cleaned_political %}\r\n  {% endif %}\r\n{% endif %}\r\n\r\n{% assign merged_list = merged_string | split: \",\" %}\r\n\r\n{% if merged_list.size > 0 %}\r\n  {% assign random_index = \"now\" | date: \"%s\" | modulo: merged_list.size %}\r\n  {% assign item_type = merged_list[random_index] %}\r\n{{ item_type }}\r\n{% endif %}"
-polling_headers: ''
-polling_body: ''
-id: 180935
-custom_fields:
 - keyname: about
   name: About This Plugin
   field_type: author_bio
-  description: |-
-    Access a collection of 470 comic RSS feeds and enjoy fresh content every day.<br /><br />
+  description: 'Access a collection of 470 comic RSS feeds and enjoy fresh content every day.<br /><br />
+
     <strong>Features:</strong><br />
+
     ● Displays the most recent comic or a random comic<br />
-    ● Supports multiple RSS sources
+
+    ● Supports multiple RSS sources'
   github_url: https://github.com/ExcuseMi/trmnl-more-comics-plugin
   learn_more_url: https://comiccaster.xyz
 - keyname: comics
@@ -365,14 +356,14 @@ custom_fields:
   - Sylvia: https://comiccaster.xyz/rss/sylvia
   - Tank McNamara: https://comiccaster.xyz/rss/tankmcnamara
   - Tarzan: https://comiccaster.xyz/rss/tarzan
-  - "@Tavicat": https://comiccaster.xyz/rss/tavicat
+  - '@Tavicat': https://comiccaster.xyz/rss/tavicat
   - Ten Cats: https://comiccaster.xyz/rss/ten-cats
   - Tex: https://comiccaster.xyz/rss/tex
   - Texts From Mittens: https://comiccaster.xyz/rss/texts-from-mittens
   - Thatababy: https://comiccaster.xyz/rss/thatababy
   - That is Priceless: https://comiccaster.xyz/rss/that-is-priceless
   - That New Carl Smell: https://comiccaster.xyz/rss/that-new-carl-smell
-  - "(th)ink": https://comiccaster.xyz/rss/think
+  - (th)ink: https://comiccaster.xyz/rss/think
   - Thin Lines: https://comiccaster.xyz/rss/thinlines
   - Tiny Sepuku: https://comiccaster.xyz/rss/tinysepuku
   - Today's Szep: https://comiccaster.xyz/rss/todays-szep
@@ -496,7 +487,7 @@ custom_fields:
   - Steve Breen: stevebreen
   - Steve Kelley: stevekelley
   - Ted Rall: ted-rall
-  - "(th)ink": think
+  - (th)ink: think
   - Tim Campbell: tim-campbell
   - Tom the Dancing Bug: tomthedancingbug
   - Tom Toles: tomtoles
@@ -519,5 +510,3 @@ custom_fields:
   - 'No'
   default: 'No'
   optional: true
-name: More Comics
-refresh_interval: 15

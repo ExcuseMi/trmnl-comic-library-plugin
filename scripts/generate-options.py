@@ -70,8 +70,9 @@ def create_updated_settings():
     comics_options = []
     for comic in regular_comics:
         name = comic.get("name", "Unknown")
-        slug = comic.get("slug", "unknown")
-        comics_options.append({name: slug})
+        slug = comic.get("slug", None)
+        if slug:
+            comics_options.append({name: f"https://comiccaster.xyz/rss/{slug}"})
 
     comics_field = {
         'keyname': 'comics',
