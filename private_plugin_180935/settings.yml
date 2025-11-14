@@ -4,7 +4,7 @@ no_screen_padding: 'no'
 dark_mode: 'no'
 static_data: ''
 polling_verb: get
-polling_url: "{%- assign cleaned_comics = comics\r\n  | replace: '[', ''\r\n  | replace: ']', ''\r\n  | replace: '\"', ''\r\n  | replace: ' ', '' -%}\r\n{%- assign cleaned_political = political_comics\r\n  | replace: '[', ''\r\n  | replace: ']', ''\r\n  | replace: '\"', ''\r\n  | replace: ' ', '' -%}\r\n\r\n{%- comment -%} Merge both strings with comma separator {%- endcomment -%}\r\n{%- assign merged_string = cleaned_comics -%}\r\n{%- if cleaned_political.size > 0 -%}\r\n  {%- if merged_string.size > 0 -%}\r\n    {%- assign merged_string = merged_string | append: \",\" | append: cleaned_political -%}\r\n  {%- else -%}\r\n    {%- assign merged_string = cleaned_political -%}\r\n  {%- endif -%}\r\n{%- endif -%}\r\n\r\n{%- assign merged_list = merged_string | split: \",\" -%}\r\n{%- if merged_list.size > 0  -%}\r\n{%- assign random_index = \"now\" | date: \"%s\" | modulo: merged_list.size -%}\r\n{%- assign item_type = merged_list[random_index] -%}\r\n https://comiccaster.xyz/rss/{{ item_type }}\r\n{%- endif -%}\r\n"
+polling_url: "{%- assign cleaned_comics = comics\r\n  | replace: '[', ''\r\n  | replace: ']', ''\r\n  | replace: '\"', ''\r\n  | replace: ' ', '' -%}\r\n\r\n{%- assign cleaned_comics_other_languages = comics_other_languages\r\n  | replace: '[', ''\r\n  | replace: ']', ''\r\n  | replace: '\"', ''\r\n  | replace: ' ', '' -%}\r\n\r\n{%- assign cleaned_political = comics_political\r\n  | replace: '[', ''\r\n  | replace: ']', ''\r\n  | replace: '\"', ''\r\n  | replace: ' ', '' -%}\r\n\r\n{%- assign merged_string = \"\" -%}\r\n\r\n{%- if cleaned_comics != \"\" -%}\r\n  {%- assign merged_string = cleaned_comics -%}\r\n{%- endif -%}\r\n\r\n{%- if cleaned_comics_other_languages != \"\" -%}\r\n  {%- if merged_string != \"\" -%}\r\n    {%- assign merged_string = merged_string | append: \",\" | append: cleaned_comics_other_languages -%}\r\n  {%- else -%}\r\n    {%- assign merged_string = cleaned_comics_other_languages -%}\r\n  {%- endif -%}\r\n{%- endif -%}\r\n\r\n{%- if cleaned_political != \"\" -%}\r\n  {%- if merged_string != \"\" -%}\r\n    {%- assign merged_string = merged_string | append: \",\" | append: cleaned_political -%}\r\n  {%- else -%}\r\n    {%- assign merged_string = cleaned_political -%}\r\n  {%- endif -%}\r\n{%- endif -%}\r\n\r\n{%- assign merged_list = merged_string | split: \",\" -%}\r\n{%- if merged_list.size > 0  -%}\r\n{%- assign random_index = \"now\" | date: \"%s\" | modulo: merged_list.size -%}\r\n{%- assign item_type = merged_list[random_index] -%}\r\n https://comiccaster.xyz/rss/{{ item_type }}\r\n{%- endif -%}\r\n"
 polling_headers: ''
 polling_body: ''
 id: 180935
@@ -52,7 +52,6 @@ custom_fields:
   - bacon: bacon
   - Bad Machinery: bad-machinery
   - Baldo: baldo
-  - Baldo en Español: baldoespanol
   - Ballard Street: ballardstreet
   - Banana Triangle: banana-triangle
   - Barkeater Lake: barkeaterlake
@@ -96,7 +95,6 @@ custom_fields:
   - Bully: bully
   - Buni: buni
   - Calvin and Hobbes: calvinandhobbes
-  - Calvin and Hobbes en Español: calvinandhobbesespanol
   - Catana Comics: little-moments-of-love
   - Cathy: cathy
   - Cathy Commiserations: cathy-commiserations
@@ -163,12 +161,10 @@ custom_fields:
   - Fowl Language: fowl-language
   - FoxTrot: foxtrot
   - FoxTrot Classics: foxtrotclassics
-  - FoxTrot en Español: foxtrotespanol
   - Francis: francis
   - Frank and Ernest: frank-and-ernest
   - Frazz: frazz
   - Fred Basset: fredbasset
-  - Fred Basset en Español: fredbassetespanol
   - Free Range: freerange
   - Freshly Squeezed: freshlysqueezed
   - Frog Applause: frogapplause
@@ -176,7 +172,6 @@ custom_fields:
   - FurBabies: furbabies
   - The Fusco Brothers: thefuscobrothers
   - Garfield: garfield
-  - Garfield en Español: garfieldespanol
   - Gasoline Alley: gasolinealley
   - Gaturro: gaturro
   - Geech: geech
@@ -185,7 +180,6 @@ custom_fields:
   - Gil: gil
   - Gil Thorp: gilthorp
   - Ginger Meggs: gingermeggs
-  - Ginger Meggs en Español: gingermeggs-espanol
   - Glasbergen Cartoons: glasbergen-cartoons
   - Globetrotter: globetrotter
   - G-Man Webcomics: g-man-webcomics
@@ -199,7 +193,6 @@ custom_fields:
   - Harley: harley
   - Heart of the City: heartofthecity
   - Heathcliff: heathcliff
-  - Heathcliff en Español: heathcliffespanol
   - Herb and Jamaal: herbandjamaal
   - Herman: herman
   - Home and Away: homeandaway
@@ -229,7 +222,6 @@ custom_fields:
   - Kliban's Cats: klibans-cats
   - The Knight Life: theknightlife
   - La Cucaracha: lacucaracha
-  - La Cucaracha en Español: la-cucaracha-en-espanol
   - Lard's World Peace Tips: lards-world-peace-tips
   - Las Hermanas Stone: stonesoup_espanol
   - Last Kiss: lastkiss
@@ -240,14 +232,12 @@ custom_fields:
   - Life on Earth: life-on-earth
   - Li'l Abner: lil-abner
   - Lio: lio
-  - Lio en Español: lioespanol
   - Little Dog Lost: littledoglost
   - Little Fried Chicken and Sushi: little-fried-chicken-and-sushi
   - Little Nemo: little-nemo
   - Liz Climo Cartoons: liz-climo-cartoons
   - The Lockhorns: lockhorns
   - Lola: lola
-  - Lola en Español: lola-en-espanol
   - Long Story Short: long-story-short
   - Looks Good on Paper: looks-good-on-paper
   - Loose Parts: looseparts
@@ -255,7 +245,6 @@ custom_fields:
   - Lost Sheep: lostsheep
   - Luann: luann
   - Luann Againn: luann-againn
-  - Luann en Español: luannspanish
   - Lucky Cow: luckycow
   - Lug Nuts: lug-nuts
   - Lunarbaboon: lunarbaboon
@@ -308,12 +297,10 @@ custom_fields:
   - Outland: outland
   - Out of the Gene Pool: outofthegenepool
   - Overboard: overboard
-  - Overboard en Español: overboardespanol
   - Over the Hedge: overthehedge
   - Ozy and Millie: ozy-and-millie
   - Peanuts: peanuts
   - Peanuts Begins: peanuts-begins
-  - Peanuts en Español: peanuts-espanol
   - Pearls Before Swine: pearlsbeforeswine
   - Periquita: periquita
   - Perlas Para Los Cerdos: perlas-para-los-cerdos
@@ -374,7 +361,6 @@ custom_fields:
   - Sylvia: sylvia
   - Tank McNamara: tankmcnamara
   - Tarzan: tarzan
-  - Tarzán en Español: tarzan-en-espanol
   - "@Tavicat": tavicat
   - Ten Cats: ten-cats
   - Tex: tex
@@ -409,7 +395,6 @@ custom_fields:
   - Win, Lose, Drew: drewlitton
   - Wizard of Id: wizardofid
   - Wizard of Id Classics: wizard-of-id-classics
-  - Wizard of Id en Español: wizardofidespanol
   - Wondermark: wondermark
   - Working Daze: working-daze
   - Working It Out: workingitout
@@ -418,18 +403,40 @@ custom_fields:
   - Wrong Hands: wrong-hands
   - W.T. Duck: wtduck
   - WuMo: wumo
-  - WuMo en Español: wumoespanol
   - Yaffle: yaffle
   - Yeah It’s Chill: yeah-its-chill
   - Yes, I'm Hot in This: yesimhotinthis
   - Zack Hill: zackhill
   - Zen Pencils: zen-pencils
   - Ziggy: ziggy
-  - Ziggy en Español: ziggyespanol
   - ADHDinos: adhdinos
   - Nick Anderson: nick-anderson
   - Fowl Language: fowl-language
-- keyname: comic_political
+- keyname: comics_other_languages
+  field_type: select
+  name: Comics in other languages
+  multiple: true
+  help_text: Use <kbd>⌘</kbd>+<kbd>click</kbd> (Mac) or <kbd>ctrl</kbd>+<kbd>click</kbd> (Windows) to select multiple items. Use <kbd>Shift</kbd>+<kbd>click</kbd> to select a whole range at once.
+  optional: true
+  options:
+  - Baldo en Español: baldoespanol
+  - Calvin and Hobbes en Español: calvinandhobbesespanol
+  - FoxTrot en Español: foxtrotespanol
+  - Fred Basset en Español: fredbassetespanol
+  - Garfield en Español: garfieldespanol
+  - Ginger Meggs en Español: gingermeggs-espanol
+  - Heathcliff en Español: heathcliffespanol
+  - La Cucaracha en Español: la-cucaracha-en-espanol
+  - Lio en Español: lioespanol
+  - Lola en Español: lola-en-espanol
+  - Luann en Español: luannspanish
+  - Overboard en Español: overboardespanol
+  - Peanuts en Español: peanuts-espanol
+  - Tarzán en Español: tarzan-en-espanol
+  - Wizard of Id en Español: wizardofidespanol
+  - WuMo en Español: wumoespanol
+  - Ziggy en Español: ziggyespanol
+- keyname: comics_political
   field_type: select
   name: Political Comics
   multiple: true
