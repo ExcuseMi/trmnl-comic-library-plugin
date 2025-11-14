@@ -1,6 +1,7 @@
 import requests
 import yaml
 from pathlib import Path
+import os
 
 URL = "https://comiccaster.xyz/comics_list.json"
 URL_POLITICAL = "https://comiccaster.xyz/political_comics_list.json"
@@ -15,6 +16,18 @@ def get_comics_data(url: str):
     r = requests.get(url)
     r.raise_for_status()
     return r.json()
+
+
+def get_output_path():
+    """Get the correct output path that works from both root and scripts directory"""
+    current_dir = Path.cwd()
+
+    # If we're in the scripts directory, go up one level to repository root
+    if current_dir.name == 'scripts':
+        return current_dir.parent / "updated_settings.yml"
+    else:
+        # We're already in the repository root
+        return current_dir / "updated_settings.yml"
 
 
 def create_updated_settings():
@@ -119,8 +132,9 @@ def create_updated_settings():
     }
     custom_fields.append(only_latest_field)
 
-    # Write to new file
-    output_path = Path("../updated_settings.yml")
+    # Get the correct output path
+    output_path = get_output_path()
+    print(f"Writing to: {output_path.absolute()}")
 
     # Use the custom YAML representer to format the output properly
     def represent_dict_order(dumper, data):

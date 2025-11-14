@@ -4,11 +4,6 @@ on:
   schedule:
     - cron: '0 2 * * *'  # Run daily at 2 AM UTC
   workflow_dispatch:      # Allow manual triggering
-  push:
-    branches: [ main ]
-    paths:
-      - '.github/workflows/generate-options.yml'
-      - 'scripts/generate_comic_options.py'
 
 # Grant explicit permissions
 permissions:
@@ -40,6 +35,4 @@ jobs:
       with:
         commit_message: "📝 Update comic options [automated]"
         commit_author: "GitHub Actions <actions@github.com>"
-        file_pattern: |
-          updated_settings.yml
-          COMICS_SUMMARY.md
+        file_pattern: "updated_settings.yml"
