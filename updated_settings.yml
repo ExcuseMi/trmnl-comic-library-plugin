@@ -1,0 +1,512 @@
+- keyname: about
+  name: About This Plugin
+  field_type: author_bio
+  description: 'Access a collection of 470 comic RSS feeds and enjoy fresh content every day.<br /><br />
+
+    <strong>Features:</strong><br />
+
+    ● Displays the most recent comic or a random comic<br />
+
+    ● Supports multiple RSS sources'
+  github_url: https://github.com/ExcuseMi/trmnl-more-comics-plugin
+  learn_more_url: https://comiccaster.xyz
+- keyname: comics
+  field_type: select
+  name: Comics
+  multiple: true
+  help_text: Use <kbd>⌘</kbd>+<kbd>click</kbd> (Mac) or <kbd>ctrl</kbd>+<kbd>click</kbd> (Windows) to select multiple items. Use <kbd>Shift</kbd>+<kbd>click</kbd> to select a whole range at once.
+  optional: true
+  options:
+  - 1 and Done: 1-and-done
+  - 9 Chickweed Lane: 9-chickweed-lane
+  - 9 to 5: 9to5
+  - Aaggghhh: aaggghhh
+  - The Academia Waltz: the-academia-waltz
+  - Adam@Home: adamathome
+  - Adult Children: adult-children
+  - The Adventures of Business Cat: the-adventures-of-business-cat
+  - Agnes: agnes
+  - AJ and Magnus: aj-and-magnus
+  - Ali's House: alis-house
+  - Alley Oop: alley-oop
+  - Amanda the Great: amanda-the-great
+  - Andertoons: andertoons
+  - Andy Capp: andycapp
+  - Angry Little Girls: angry-little-girls
+  - Animal Crackers: animalcrackers
+  - Annie: annie
+  - The Argyle Sweater: theargylesweater
+  - Arlo and Janis: arloandjanis
+  - Art by Moga: artbymoga
+  - Ask Shagg: askshagg
+  - Aunty Acid: aunty-acid
+  - The Awkward Yeti: the-awkward-yeti
+  - Baby Blues: babyblues
+  - Back in the Day: backintheday
+  - Back to B.C.: back-to-bc
+  - bacon: bacon
+  - Bad Machinery: bad-machinery
+  - Baldo: baldo
+  - Ballard Street: ballardstreet
+  - Banana Triangle: banana-triangle
+  - Barkeater Lake: barkeaterlake
+  - The Barn: thebarn
+  - Barney & Clyde: barneyandclyde
+  - Basic Instructions: basicinstructions
+  - Batch Rejection: batch-rejection
+  - B.C.: bc
+  - Beardo: beardo
+  - Ben: ben
+  - Benitin y Eneas: muttandjeffespanol
+  - Berger & Wyse: berger-and-wyse
+  - Berkeley Mews: berkeley-mews
+  - Betty: betty
+  - BFGF Syndrome: bfgf-syndrome
+  - Big Nate: bignate
+  - The Big Picture: thebigpicture
+  - Big Top: bigtop
+  - Bird and Moon: bird-and-moon
+  - Birdbrains: birdbrains
+  - 'Bleeker: The Rechargeable Dog': bleeker
+  - Bliss: bliss
+  - Bloom County: bloomcounty
+  - Bloom County Continues: bloom-county
+  - Bob the Angry Flower: bob-the-angry-flower
+  - Bob the Squirrel: bobthesquirrel
+  - Bo Nanas: bonanas
+  - Boomerangs: boomerangs
+  - The Boondocks: boondocks
+  - The Born Loser: the-born-loser
+  - Bottomliners: bottomliners
+  - Bound and Gagged: boundandgagged
+  - Bozo: bozo
+  - Breaking Cat News: breaking-cat-news
+  - Brevity: brevity
+  - Brewster Rockit: brewsterrockit
+  - Brian McFadden: brian-mcfadden
+  - Broom Hilda: broomhilda
+  - The Buckets: thebuckets
+  - Buckles: buckles
+  - Bully: bully
+  - Buni: buni
+  - Calvin and Hobbes: calvinandhobbes
+  - Catana Comics: little-moments-of-love
+  - Cathy: cathy
+  - Cathy Commiserations: cathy-commiserations
+  - Cat's Cafe: cats-cafe
+  - Cattitude — Doggonit: cattitude-doggonit
+  - C'est la Vie: cestlavie
+  - Cheer Up, Emo Kid: cheer-up-emo-kid
+  - Chuck Draws Things: chuckdrawsthings
+  - Chuckle Bros: chucklebros
+  - Citizen Dog: citizendog
+  - The City: thecity
+  - Claw: claw
+  - Cleats: cleats
+  - Close to Home: closetohome
+  - The Comic Strip That Has A Finale Every Day: the-comic-strip-that-has-a-finale-every-day
+  - Compu-toon: compu-toon
+  - Cornered: cornered
+  - Cow and Boy Classics: cowandboy
+  - CowTown: cowtown
+  - Crabgrass: crabgrass
+  - Crankshaft: crankshaft
+  - Crumb: crumb
+  - Cul de Sac: culdesac
+  - Curses!: curses
+  - Daddy's Home: daddyshome
+  - The Daily Drawing: the-daily-drawing
+  - Dark Side of the Horse: darksideofthehorse
+  - Day by Dave: day-by-dave
+  - Deep Dark Fears: deep-dark-fears
+  - DeFlocked: deflocked
+  - Diamond Lil: diamondlil
+  - Dick Tracy: dicktracy
+  - The Dinette Set: dinetteset
+  - Dinosaur Comics: dinosaur-comics
+  - Dog Eat Doug: dogeatdoug
+  - Dogs of C-Kennel: dogsofckennel
+  - Domestic Abuse: domesticabuse
+  - Don Brutus: don-brutus
+  - Doodle for Food: doodle-for-food
+  - Doodle Town: doodle-town
+  - Doonesbury: doonesbury
+  - The Doozies: thedoozies
+  - Drabble: drabble
+  - The Duplex: duplex
+  - Edge City: edge-city
+  - Eek!: eek
+  - El Café de Poncho: el-cafe-de-poncho
+  - The Elderberries: theelderberries
+  - Emmy Lou: emmy-lou
+  - Endtown: endtown
+  - Everyday People Cartoons: everyday-people-cartoons
+  - Eyebeam: eyebeam
+  - False Knees: false-knees
+  - Family Tree: familytree
+  - Farcus: farcus
+  - Fat Cats: fat-cats
+  - Flo and Friends: floandfriends
+  - The Flying McCoys: theflyingmccoys
+  - F Minus: fminus
+  - Foolish Mortals: foolish-mortals
+  - For Better or For Worse: forbetterorforworse
+  - For Heaven's Sake: forheavenssake
+  - Four Eyes: four-eyes
+  - Fowl Language: fowl-language
+  - FoxTrot: foxtrot
+  - FoxTrot Classics: foxtrotclassics
+  - Francis: francis
+  - Frank and Ernest: frank-and-ernest
+  - Frazz: frazz
+  - Fred Basset: fredbasset
+  - Free Range: freerange
+  - Freshly Squeezed: freshlysqueezed
+  - Frog Applause: frogapplause
+  - Funky Winkerbean: funky-winkerbean
+  - FurBabies: furbabies
+  - The Fusco Brothers: thefuscobrothers
+  - Garfield: garfield
+  - Gasoline Alley: gasolinealley
+  - Gaturro: gaturro
+  - Geech: geech
+  - Get a Life: getalife
+  - Get Fuzzy: getfuzzy
+  - Gil: gil
+  - Gil Thorp: gilthorp
+  - Ginger Meggs: gingermeggs
+  - Glasbergen Cartoons: glasbergen-cartoons
+  - Globetrotter: globetrotter
+  - G-Man Webcomics: g-man-webcomics
+  - Goats: goats
+  - Grand Avenue: grand-avenue
+  - Gray Matters: gray-matters
+  - Green Humour: green-humour
+  - The Grizzwells: thegrizzwells
+  - Haircut Practice: haircut-practice
+  - Half Full: half-full
+  - Harley: harley
+  - Heart of the City: heartofthecity
+  - Heathcliff: heathcliff
+  - Herb and Jamaal: herbandjamaal
+  - Herman: herman
+  - Home and Away: homeandaway
+  - Home Free: homefree
+  - Hot Comics for Cool People: hot-comics-for-cool-people
+  - The Humble Stumble: humble-stumble
+  - Hutch Owen: hutch-owen
+  - Imagine This: imaginethis
+  - Imogen Quest: imogen-quest
+  - Ink Pen: inkpen
+  - In Security: in-security
+  - In the Bleachers: inthebleachers
+  - In the Sticks: inthesticks
+  - Invisible Bread: invisible-bread
+  - It's All About You: itsallaboutyou
+  - Jake Likes Onions: jake-likes-onions
+  - Jane's World: janesworld
+  - Jerry King Comics: jerry-king-comics
+  - Jim Benton Cartoons: jim-benton-cartoons
+  - JumpStart: jumpstart
+  - Junk Drawer: junk-drawer
+  - Justo y Franco: justo-y-franco
+  - The K Chronicles: thekchronicles
+  - Kid Beowulf: kid-beowulf
+  - Kitchen Capers: kitchen-capers
+  - Kliban: kliban
+  - Kliban's Cats: klibans-cats
+  - The Knight Life: theknightlife
+  - La Cucaracha: lacucaracha
+  - Lard's World Peace Tips: lards-world-peace-tips
+  - Las Hermanas Stone: stonesoup_espanol
+  - Last Kiss: lastkiss
+  - Laughing Redhead Comics: laughing-redhead-comics
+  - Lay Lines: lay-lines
+  - Learn to Speak Cat: learn-to-speak-cat
+  - Liberty Meadows: libertymeadows
+  - Life on Earth: life-on-earth
+  - Li'l Abner: lil-abner
+  - Lio: lio
+  - Little Dog Lost: littledoglost
+  - Little Fried Chicken and Sushi: little-fried-chicken-and-sushi
+  - Little Nemo: little-nemo
+  - Liz Climo Cartoons: liz-climo-cartoons
+  - The Lockhorns: lockhorns
+  - Lola: lola
+  - Long Story Short: long-story-short
+  - Looks Good on Paper: looks-good-on-paper
+  - Loose Parts: looseparts
+  - Los Osorios: los-osorios
+  - Lost Sheep: lostsheep
+  - Luann: luann
+  - Luann Againn: luann-againn
+  - Lucky Cow: luckycow
+  - Lug Nuts: lug-nuts
+  - Lunarbaboon: lunarbaboon
+  - Maintaining: maintaining
+  - Mannequin on the Moon: mannequin-on-the-moon
+  - Maria's Day: marias-day
+  - Marmaduke: marmaduke
+  - The Martian Confederacy: the-martian-confederacy
+  - The Meaning of Lila: meaningoflila
+  - Medium Large: medium-large
+  - Messycow Comics: messy-cow
+  - Mexikid Stories: mexikid-stories
+  - The Middle Age: the-middle-age
+  - The Middletons: themiddletons
+  - Mike du Jour: mike-du-jour
+  - Miss Peach: miss-peach
+  - Moderately Confused: moderately-confused
+  - Molly and the Bear: molly-and-the-bear
+  - Momma: momma
+  - Monty: monty
+  - Monty Diaros: monty-diaros
+  - Mother Goose and Grimm: mother-goose-and-grimm
+  - Motley Classics: motley-classics
+  - Mr. Lowe: mr-lowe
+  - Mutt & Jeff: muttandjeff
+  - My Dad is Dracula: my-dad-is-dracula
+  - MythTickle: mythtickle
+  - Nancy: nancy
+  - Nancy Classics: nancy-classics
+  - Nate el Grande: nate-el-grande
+  - Nest Heads: nestheads
+  - NEUROTICA: neurotica
+  - New Adventures of Queen Victoria: thenewadventuresofqueenvictoria
+  - Next Door Neighbors: next-door-neighbors
+  - Nick and Zuzu: nick-and-zuzu
+  - Non Sequitur: nonsequitur
+  - The Norm Classics: thenorm
+  - Nothing is Not Something: nothing-is-not-something
+  - Not Invented Here: not-invented-here
+  - Now Recharging: now-recharging
+  - Off the Mark: offthemark
+  - Oh, Brother!: oh-brother
+  - Ollie and Quentin: ollie-and-quentin
+  - On A Claire Day: onaclaireday
+  - One Big Happy: onebighappy
+  - Ordinary Bill: ordinary-bill
+  - Origins of the Sunday Comics: origins-of-the-sunday-comics
+  - The Other Coast: theothercoast
+  - Our Super Adventure: our-super-adventure
+  - Outland: outland
+  - Out of the Gene Pool: outofthegenepool
+  - Overboard: overboard
+  - Over the Hedge: overthehedge
+  - Ozy and Millie: ozy-and-millie
+  - Peanuts: peanuts
+  - Peanuts Begins: peanuts-begins
+  - Pearls Before Swine: pearlsbeforeswine
+  - Periquita: periquita
+  - Perlas Para Los Cerdos: perlas-para-los-cerdos
+  - Perry Bible Fellowship: perry-bible-fellowship
+  - Phoebe and Her Unicorn: phoebe-and-her-unicorn
+  - Pibgorn: pibgorn
+  - Pibgorn Sketches: pibgornsketches
+  - Pickles: pickles
+  - Please Listen to Me: please-listen-to-me
+  - Pluggers: pluggers
+  - Pooch Cafe: poochcafe
+  - Poorcraft: poorcraft
+  - Poorly Drawn Lines: poorly-drawn-lines
+  - Pot-Shots: pot-shots
+  - PreTeena: preteena
+  - Prickly City: pricklycity
+  - A Problem Like Jamal: a-problem-like-jamal
+  - Questionable Quotebook: questionable-quotebook
+  - Rabbits Against Magic: rabbitsagainstmagic
+  - Raising Duncan: raising-duncan
+  - Randolph Itch, 2 a.m.: randolphitch
+  - Reality Check: realitycheck
+  - Real Life Adventures: reallifeadventures
+  - Red and Rover: redandrover
+  - Red Meat: redmeat
+  - Richard's Poor Almanac: richards-poor-almanac
+  - Rip Haywire: riphaywire
+  - Ripley’s ¡Aunque Usted no lo Crea!: ripleys-en-espanol
+  - Ripley's Believe It or Not: ripleysbelieveitornot
+  - Robbie and Bobby: robbie-and-bobby
+  - Rose Is Rose: roseisrose
+  - Rubes: rubes
+  - Sarah's Scribbles: sarahs-scribbles
+  - Saturday Morning Breakfast Cereal: saturday-morning-breakfast-cereal
+  - Savage Chickens: savage-chickens
+  - Scary Gary: scarygary
+  - Scenes from a Multiverse: scenes-from-a-multiverse
+  - Shen Comix: shen-comix
+  - Sherman's Lagoon: shermanslagoon
+  - Shirley and Son Classics: shirley-and-son-classics
+  - Shoe: shoe
+  - Sketchshark Comics: sketchshark-comics
+  - Skin Horse: skinhorse
+  - Skippy: skippy
+  - Small Potatoes: small-potatoes
+  - Snow Sez: snow-sez
+  - Speed Bump: speedbump
+  - Spirit of the Staircase: spirit-of-the-staircase
+  - Spot the Frog: spot-the-frog
+  - Sticky Comics: sticky-comics
+  - Stone Soup: stonesoup
+  - Strange Brew: strangebrew
+  - Studio Jantze: studio-jantze
+  - Sunny Street: sunny-street
+  - Super-Fun-Pak Comix: super-fun-pak-comix
+  - Swan Eaters: swan-eaters
+  - Sweet and Sour Pork: sweet-and-sour-pork
+  - Sylvia: sylvia
+  - Tank McNamara: tankmcnamara
+  - Tarzan: tarzan
+  - '@Tavicat': tavicat
+  - Ten Cats: ten-cats
+  - Tex: tex
+  - Texts From Mittens: texts-from-mittens
+  - Thatababy: thatababy
+  - That is Priceless: that-is-priceless
+  - That New Carl Smell: that-new-carl-smell
+  - (th)ink: think
+  - Thin Lines: thinlines
+  - Tiny Sepuku: tinysepuku
+  - Today's Szep: todays-szep
+  - Tom the Dancing Bug: tomthedancingbug
+  - Too Much Coffee Man: toomuchcoffeeman
+  - Trucutú: trucutu
+  - Tutelandia: tutelandia
+  - UFO: ufo
+  - Underpants and Overbites: underpants-and-overbites
+  - Understanding Chaos: understanding-chaos
+  - Unstrange Phenomena: unstrange-phenomena
+  - The Upside Down World of Gustave Verbeek: upside-down-world-of-gustave-verbeek
+  - Viivi & Wagner: viivi-and-wagner
+  - Wallace the Brave: wallace-the-brave
+  - The Wandering Melon: the-wandering-melon
+  - Wannabe: wannabe
+  - Warped: warped
+  - Watch Your Head: watchyourhead
+  - Wawawiwa: wawawiwa
+  - WaynoVision: waynovision
+  - Wee Pals: weepals
+  - Widdershins: widdershins
+  - Wide Open!: wide-open
+  - Win, Lose, Drew: drewlitton
+  - Wizard of Id: wizardofid
+  - Wizard of Id Classics: wizard-of-id-classics
+  - Wondermark: wondermark
+  - Working Daze: working-daze
+  - Working It Out: workingitout
+  - The Worried Well: the-worried-well
+  - Worry Lines: worry-lines
+  - Wrong Hands: wrong-hands
+  - W.T. Duck: wtduck
+  - WuMo: wumo
+  - Yaffle: yaffle
+  - Yeah It’s Chill: yeah-its-chill
+  - Yes, I'm Hot in This: yesimhotinthis
+  - Zack Hill: zackhill
+  - Zen Pencils: zen-pencils
+  - Ziggy: ziggy
+  - ADHDinos: adhdinos
+  - Nick Anderson: nick-anderson
+  - Fowl Language: fowl-language
+- keyname: comics_other_languages
+  field_type: select
+  name: Comics in other languages
+  multiple: true
+  help_text: Use <kbd>⌘</kbd>+<kbd>click</kbd> (Mac) or <kbd>ctrl</kbd>+<kbd>click</kbd> (Windows) to select multiple items. Use <kbd>Shift</kbd>+<kbd>click</kbd> to select a whole range at once.
+  optional: true
+  options:
+  - Baldo en Español: baldoespanol
+  - Calvin and Hobbes en Español: calvinandhobbesespanol
+  - FoxTrot en Español: foxtrotespanol
+  - Fred Basset en Español: fredbassetespanol
+  - Garfield en Español: garfieldespanol
+  - Ginger Meggs en Español: gingermeggs-espanol
+  - Heathcliff en Español: heathcliffespanol
+  - La Cucaracha en Español: la-cucaracha-en-espanol
+  - Lio en Español: lioespanol
+  - Lola en Español: lola-en-espanol
+  - Luann en Español: luannspanish
+  - Overboard en Español: overboardespanol
+  - Peanuts en Español: peanuts-espanol
+  - Tarzán en Español: tarzan-en-espanol
+  - Wizard of Id en Español: wizardofidespanol
+  - WuMo en Español: wumoespanol
+  - Ziggy en Español: ziggyespanol
+- keyname: comics_political
+  field_type: select
+  name: Political Comics
+  multiple: true
+  help_text: Use <kbd>⌘</kbd>+<kbd>click</kbd> (Mac) or <kbd>ctrl</kbd>+<kbd>click</kbd> (Windows) to select multiple items. Use <kbd>Shift</kbd>+<kbd>click</kbd> to select a whole range at once.
+  optional: true
+  options:
+  - Al Goodwyn Editorial Cartoons: algoodwyn
+  - Bill Bramhall: bill-bramhall
+  - Bob Gorrell: bobgorrell
+  - Brian McFadden: brian-mcfadden
+  - Chip Bok: chipbok
+  - Chris Britt: chrisbritt
+  - Clay Bennett: claybennett
+  - Clay Jones: clayjones
+  - Dana Summers: danasummers
+  - Doonesbury: doonesbury
+  - Drew Sheneman: drewsheneman
+  - Eric Allie: eric-allie
+  - Gary Markstein: garymarkstein
+  - Gary Varvel: garyvarvel
+  - Henry Payne: henrypayne
+  - Jack Ohman: jackohman
+  - Jeff Danziger: jeffdanziger
+  - Jeff Stahler: jeffstahler
+  - Jen Sorensen: jen-sorensen
+  - Jim Morin: jimmorin
+  - Joe Heller: joe-heller
+  - Joel Pett: joelpett
+  - Joey Weatherford: joey-weatherford
+  - John Deering: johndeering
+  - Kevin Kallaugher: kal
+  - Kevin Necessary Editorial Cartoons: kevin-necessary-editorial-cartoons
+  - Lalo Alcaraz: laloalcaraz
+  - Lisa Benson: lisabenson
+  - M2Bulls: m2bulls
+  - Marshall Ramsey: marshallramsey
+  - Matt Bors: matt-bors
+  - Matt Davies: mattdavies
+  - Matt Wuerker: mattwuerker
+  - Michael Ramirez: michaelramirez
+  - Mike Beckom: mike-beckom
+  - Mike Lester: mike-lester
+  - Mike Luckovich: mikeluckovich
+  - Nick Anderson: nickanderson
+  - Pat Oliphant: patoliphant
+  - Pedro X. Molina: pedroxmolina
+  - Phil Hands: phil-hands
+  - Rebecca Hendin: rebecca-hendin
+  - Robert Ariail: robert-ariail
+  - Rob Rogers: robrogers
+  - Scott Stantis: scottstantis
+  - Steve Benson: stevebenson
+  - Steve Breen: stevebreen
+  - Steve Kelley: stevekelley
+  - Ted Rall: ted-rall
+  - (th)ink: think
+  - Tim Campbell: tim-campbell
+  - Tom the Dancing Bug: tomthedancingbug
+  - Tom Toles: tomtoles
+  - Two Party Opera: two-party-opera
+  - ViewsAfrica: viewsafrica
+  - ViewsAmerica: viewsamerica
+  - ViewsAsia: viewsasia
+  - ViewsBusiness: viewsbusiness
+  - ViewsEurope: viewseurope
+  - ViewsLatinAmerica: viewslatinamerica
+  - ViewsMidEast: viewsmideast
+  - Views of the World: viewsoftheworld
+  - Walt Handelsman: walthandelsman
+- keyname: only_show_latest
+  field_type: select
+  name: Latest Comic Only
+  description: Show only the most recent comic from each RSS feed.
+  options:
+  - 'Yes'
+  - 'No'
+  default: 'No'
+  optional: true
