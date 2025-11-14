@@ -1,0 +1,76 @@
+{%- assign items_with_images = rss.channel.item | where_exp: "item", "item.description contains 'img'" -%}
+{%- if trmnl.plugin_settings.custom_fields_values.only_show_latest != "yes" -%}
+  {%- assign random_index = "now" | date: "%s" | modulo: items_with_images.size -%}
+  {%- assign item = items_with_images[random_index] -%}
+{%- else -%}
+  {%- assign item = items_with_images | first -%}
+{%- endif -%}
+
+<style>
+  .layout {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  .layout--stretch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  #comic {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+    object-position: center;
+  }
+
+</style>
+
+<div class="layout layout--stretch">
+  {%- if item -%}
+  <img id="comic" class="image image-dither" />
+
+  {%- else -%}
+    <div class="content">Could not find any comics.</div>
+    {%- endif -%}
+
+</div>
+<div class="title_bar">
+  <span class="title">{%- if item -%}{{item.title._text}}{{item.title.__content__}}{{item.title}}{%- else -%}No comics found{%- endif -%}</span>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const imgEl = document.getElementById("comic");
+    
+    const content = `{{item.description._text}}{{item.description.__content__}}{{item.description}}`;
+    
+    const parser = new DOMParser();
+    const parsed = parser.parseFromString(content, "text/html");
+    
+    let feedImg = parsed.querySelector("img");
+    
+    if (!feedImg) {
+      // Try to extract image from the comic page link
+      const link = `{{item.link}}` || `{{item.link._text}}` || `{{item.link.__content__}}`;
+      
+      if (link) {
+        // For gocomics.com, the image URL pattern is predictable
+        // We'll try to fetch it or construct it
+        const dateMatch = link.match(/\/(\d{4})\/(\d{2})\/(\d{2})/);
+        if (dateMatch) {
+          // This is a fallback - may need adjustment based on actual feed behavior
+          console.log("No image in description, link:", link);
+        }
+      }
+    }
+    
+    if (feedImg) {
+      imgEl.src = feedImg.src;
+    }
+  });
+</script>
