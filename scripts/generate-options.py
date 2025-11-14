@@ -167,6 +167,15 @@ def create_updated_settings():
     }
     custom_fields.append(only_latest_field)
 
+    extra_rss_feeds = {
+        'keyname': 'extra_rss_feeds',
+        'field_type': 'multi_string',
+        'name': 'Extra RSS Feeds',
+        'description': "List of extra rss feeds.<br />Any RSS URL added here will be added as source.",
+        'placeholder': 'https://rssfeed.com'
+    }
+    custom_fields.append(extra_rss_feeds)
+
     # Get the correct output path
     output_path = get_output_path()
     print(f"Writing to: {output_path.absolute()}")
