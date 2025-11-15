@@ -2,6 +2,7 @@ import requests
 import yaml
 from pathlib import Path
 import os
+from rss_feed_validator import RSSFeedValidator
 
 URL = "https://comiccaster.xyz/comics_list.json"
 URL_POLITICAL = "https://comiccaster.xyz/political_comics_list.json"
@@ -55,28 +56,110 @@ def get_output_path():
         return current_dir / "updated_settings.yml"
 
 
+def get_failed_feeds_path():
+    """Get the path for the failed feeds report - same directory as updated_settings.yml"""
+    output_path = get_output_path()
+    return output_path.parent / "failed_feeds_report.yml"
+
+
 def create_updated_settings():
     # Get the current comics data
     comics_data = get_comics_data(URL)
     political_data = get_comics_data(URL_POLITICAL)
     extra_feeds = load_extra_feeds()
 
-    # Separate regular comics from other languages
+    # Prepare all feeds for validation
+    print("\n" + "=" * 60)
+    print("VALIDATING ALL RSS FEEDS")
+    print("=" * 60)
+
+    validator = RSSFeedValidator(timeout=15)
+    all_invalid_results = []
+
+    # Validate regular comics
+    print("\n--- Regular Comics ---")
+    regular_feeds = {}
+    for comic in comics_data:
+        name = comic.get("name", "Unknown")
+        slug = comic.get("slug", None)
+        if slug and "en Español" not in name:
+            regular_feeds[name] = f"https://comiccaster.xyz/rss/{slug}"
+
+    regular_valid, regular_invalid = validator.validate_multiple_feeds(regular_feeds)
+    all_invalid_results.extend(regular_invalid)
+
+    # Validate other language comics
+    print("\n--- Comics in Other Languages ---")
+    other_lang_feeds = {}
+    for comic in comics_data:
+        name = comic.get("name", "Unknown")
+        slug = comic.get("slug", None)
+        if slug and "en Español" in name:
+            other_lang_feeds[name] = f"https://comiccaster.xyz/rss/{slug}"
+
+    other_lang_valid, other_lang_invalid = validator.validate_multiple_feeds(other_lang_feeds)
+    all_invalid_results.extend(other_lang_invalid)
+
+    # Validate political comics
+    print("\n--- Political Comics ---")
+    political_feeds = {}
+    for comic in political_data:
+        name = comic.get("name", "Unknown")
+        slug = comic.get("slug", None)
+        if slug:
+            political_feeds[name] = f"https://comiccaster.xyz/rss/{slug}"
+
+    political_valid, political_invalid = validator.validate_multiple_feeds(political_feeds)
+    all_invalid_results.extend(political_invalid)
+
+    # Validate extra feeds
+    validated_extra_feeds = {}
+    if extra_feeds:
+        print("\n--- Extra Feeds ---")
+        extra_valid, extra_invalid = validator.validate_multiple_feeds(extra_feeds)
+        all_invalid_results.extend(extra_invalid)
+        validated_extra_feeds = {result.name: result.url for result in extra_valid}
+    else:
+        print("\n--- Extra Feeds ---")
+        print("No extra feeds to validate")
+
+    # Print overall validation summary
+    total_valid = len(regular_valid) + len(other_lang_valid) + len(political_valid) + len(validated_extra_feeds)
+    total_invalid = len(all_invalid_results)
+    print(f"\n{'=' * 60}")
+    print(f"OVERALL VALIDATION SUMMARY")
+    print(f"{'=' * 60}")
+    print(f"Total feeds validated: {total_valid + total_invalid}")
+    print(f"✓ Valid: {total_valid} ({total_valid / (total_valid + total_invalid) * 100:.1f}%)")
+    print(f"✗ Invalid: {total_invalid} ({total_invalid / (total_valid + total_invalid) * 100:.1f}%)")
+
+    # Save failed feeds report
+    validator.save_failed_feeds_report(all_invalid_results, get_failed_feeds_path())
+
+    # Separate regular comics from other languages (only valid ones)
     regular_comics = []
     other_language_comics = []
 
+    # Use only validated comics
+    valid_regular_names = {result.name for result in regular_valid}
+    valid_other_lang_names = {result.name for result in other_lang_valid}
+
     for comic in comics_data:
         name = comic.get("name", "Unknown")
-        if is_other_language(name):
-            other_language_comics.append(comic)
-        else:
+        if name in valid_regular_names:
             regular_comics.append(comic)
+        elif name in valid_other_lang_names:
+            other_language_comics.append(comic)
+
+    # Filter political comics to only valid ones
+    valid_political_names = {result.name for result in political_valid}
+    political_data = [comic for comic in political_data if comic.get("name") in valid_political_names]
 
     # Count totals for the description
     total_regular = len(regular_comics)
     total_other_lang = len(other_language_comics)
     total_political = len(political_data)
-    total_extra = len(extra_feeds)
+    total_extra = len(validated_extra_feeds)
     total_all = total_regular + total_other_lang + total_political + total_extra
 
     # Create the updated custom fields
@@ -101,8 +184,8 @@ def create_updated_settings():
         if slug:
             comics_options.append({name: f"https://comiccaster.xyz/rss/{slug}"})
 
-    # Add extra feeds to comics options and sort everything
-    for name, url in extra_feeds.items():
+    # Add validated extra feeds to comics options
+    for name, url in validated_extra_feeds.items():
         comics_options.append({name: url})
 
     # Sort all comics options by name
@@ -174,10 +257,26 @@ def create_updated_settings():
         'placeholder': 'https://rssfeed.com'
     }
     custom_fields.append(extra_rss_feeds)
+    image_filter = {
+        'keyname': 'image_filter',
+        'field_type': 'select',
+        'name': 'Image Filter',
+        'description': 'Apply an image filter to alter the appearance on the device.',
+        'options': [
+            {"None": "none"},
+            {"Standard": "brightness(0.9) contrast(1.3) saturate(0)"},
+            {"Bold": "brightness(0.85) contrast(1.5) saturate(0)"},
+            {"Subtle": "brightness(0.95) contrast(1.15) saturate(0)"},
+            {"Crisp": "brightness(1.0) contrast(1.4) saturate(0)"},
+            {"Dramatic": "brightness(0.8) contrast(1.6) saturate(0)"}
+        ],
+        'optional': True
+    }
+    custom_fields.append(image_filter)
 
     # Get the correct output path
     output_path = get_output_path()
-    print(f"Writing to: {output_path.absolute()}")
+    print(f"\nWriting to: {output_path.absolute()}")
 
     # Use the custom YAML representer to format the output properly
     def represent_dict_order(dumper, data):
@@ -188,14 +287,16 @@ def create_updated_settings():
     with open(output_path, 'w') as f:
         yaml.dump(custom_fields, f, default_flow_style=False, allow_unicode=True, sort_keys=False, width=1000)
 
-    print(f"Successfully created {output_path}")
+    print(f"✓ Successfully created {output_path}")
 
     # Print summary
-    print(f"\nSummary:")
+    print(f"\n" + "=" * 60)
+    print("FINAL SUMMARY")
+    print("=" * 60)
     print(f"Regular comics: {total_regular}")
     print(f"Other language comics: {total_other_lang}")
     print(f"Political comics: {total_political}")
-    print(f"Extra feeds: {total_extra}")
+    print(f"Extra feeds (validated): {total_extra}")
     print(f"Total comics: {total_all}")
 
 

@@ -1,7 +1,7 @@
 - keyname: about
   name: About This Plugin
   field_type: author_bio
-  description: 'Access a collection of 471 comic RSS feeds and enjoy fresh content every day.<br /><br />
+  description: 'Access a collection of 401 comic RSS feeds and enjoy fresh content every day.<br /><br />
 
     <strong>Features:</strong><br />
 
@@ -17,19 +17,16 @@
   help_text: Use <kbd>⌘</kbd>+<kbd>click</kbd> (Mac) or <kbd>ctrl</kbd>+<kbd>click</kbd> (Windows) to select multiple items. Use <kbd>Shift</kbd>+<kbd>click</kbd> to select a whole range at once.
   optional: true
   options:
-  - (th)ink: https://comiccaster.xyz/rss/think
   - 1 and Done: https://comiccaster.xyz/rss/1-and-done
   - 9 Chickweed Lane: https://comiccaster.xyz/rss/9-chickweed-lane
   - 9 to 5: https://comiccaster.xyz/rss/9to5
   - '@Tavicat': https://comiccaster.xyz/rss/tavicat
-  - A Problem Like Jamal: https://comiccaster.xyz/rss/a-problem-like-jamal
   - ADHDinos: https://comiccaster.xyz/rss/adhdinos
   - AJ and Magnus: https://comiccaster.xyz/rss/aj-and-magnus
   - Aaggghhh: https://comiccaster.xyz/rss/aaggghhh
   - Adam@Home: https://comiccaster.xyz/rss/adamathome
   - Adult Children: https://comiccaster.xyz/rss/adult-children
   - Agnes: https://comiccaster.xyz/rss/agnes
-  - Ali's House: https://comiccaster.xyz/rss/alis-house
   - Alley Oop: https://comiccaster.xyz/rss/alley-oop
   - Amanda the Great: https://comiccaster.xyz/rss/amanda-the-great
   - Andertoons: https://comiccaster.xyz/rss/andertoons
@@ -38,7 +35,6 @@
   - Animal Crackers: https://comiccaster.xyz/rss/animalcrackers
   - Annie: https://comiccaster.xyz/rss/annie
   - Arlo and Janis: https://comiccaster.xyz/rss/arloandjanis
-  - Art by Moga: https://comiccaster.xyz/rss/artbymoga
   - Ask Shagg: https://comiccaster.xyz/rss/askshagg
   - Aunty Acid: https://comiccaster.xyz/rss/aunty-acid
   - B.C.: https://comiccaster.xyz/rss/bc
@@ -57,17 +53,14 @@
   - Beardo: https://comiccaster.xyz/rss/beardo
   - Ben: https://comiccaster.xyz/rss/ben
   - Benitin y Eneas: https://comiccaster.xyz/rss/muttandjeffespanol
-  - Berger & Wyse: https://comiccaster.xyz/rss/berger-and-wyse
   - Berkeley Mews: https://comiccaster.xyz/rss/berkeley-mews
   - Betty: https://comiccaster.xyz/rss/betty
   - Big Nate: https://comiccaster.xyz/rss/bignate
   - Big Top: https://comiccaster.xyz/rss/bigtop
-  - Bird and Moon: https://comiccaster.xyz/rss/bird-and-moon
   - Birdbrains: https://comiccaster.xyz/rss/birdbrains
   - 'Bleeker: The Rechargeable Dog': https://comiccaster.xyz/rss/bleeker
   - Bliss: https://comiccaster.xyz/rss/bliss
   - Bloom County: https://comiccaster.xyz/rss/bloomcounty
-  - Bloom County Continues: https://comiccaster.xyz/rss/bloom-county
   - Bo Nanas: https://comiccaster.xyz/rss/bonanas
   - Bob the Angry Flower: https://comiccaster.xyz/rss/bob-the-angry-flower
   - Bob the Squirrel: https://comiccaster.xyz/rss/bobthesquirrel
@@ -85,16 +78,11 @@
   - Buni: https://comiccaster.xyz/rss/buni
   - C'est la Vie: https://comiccaster.xyz/rss/cestlavie
   - Calvin and Hobbes: https://comiccaster.xyz/rss/calvinandhobbes
-  - Cat's Cafe: https://comiccaster.xyz/rss/cats-cafe
-  - Catana Comics: https://comiccaster.xyz/rss/little-moments-of-love
   - Cathy: https://comiccaster.xyz/rss/cathy
-  - Cathy Commiserations: https://comiccaster.xyz/rss/cathy-commiserations
   - Cattitude — Doggonit: https://comiccaster.xyz/rss/cattitude-doggonit
-  - Cheer Up, Emo Kid: https://comiccaster.xyz/rss/cheer-up-emo-kid
   - Chuck Draws Things: https://comiccaster.xyz/rss/chuckdrawsthings
   - Chuckle Bros: https://comiccaster.xyz/rss/chucklebros
   - Citizen Dog: https://comiccaster.xyz/rss/citizendog
-  - Claw: https://comiccaster.xyz/rss/claw
   - Cleats: https://comiccaster.xyz/rss/cleats
   - Close to Home: https://comiccaster.xyz/rss/closetohome
   - Compu-toon: https://comiccaster.xyz/rss/compu-toon
@@ -119,18 +107,14 @@
   - Domestic Abuse: https://comiccaster.xyz/rss/domesticabuse
   - Don Brutus: https://comiccaster.xyz/rss/don-brutus
   - Doodle Town: https://comiccaster.xyz/rss/doodle-town
-  - Doodle for Food: https://comiccaster.xyz/rss/doodle-for-food
   - Doonesbury: https://comiccaster.xyz/rss/doonesbury
   - Drabble: https://comiccaster.xyz/rss/drabble
   - Edge City: https://comiccaster.xyz/rss/edge-city
   - Eek!: https://comiccaster.xyz/rss/eek
   - El Café de Poncho: https://comiccaster.xyz/rss/el-cafe-de-poncho
-  - Emmy Lou: https://comiccaster.xyz/rss/emmy-lou
   - Endtown: https://comiccaster.xyz/rss/endtown
-  - Everyday People Cartoons: https://comiccaster.xyz/rss/everyday-people-cartoons
   - Eyebeam: https://comiccaster.xyz/rss/eyebeam
   - F Minus: https://comiccaster.xyz/rss/fminus
-  - False Knees: https://comiccaster.xyz/rss/false-knees
   - Family Tree: https://comiccaster.xyz/rss/familytree
   - Farcus: https://comiccaster.xyz/rss/farcus
   - Fat Cats: https://comiccaster.xyz/rss/fat-cats
@@ -138,7 +122,6 @@
   - Foolish Mortals: https://comiccaster.xyz/rss/foolish-mortals
   - For Better or For Worse: https://comiccaster.xyz/rss/forbetterorforworse
   - For Heaven's Sake: https://comiccaster.xyz/rss/forheavenssake
-  - Four Eyes: https://comiccaster.xyz/rss/four-eyes
   - Fowl Language: https://comiccaster.xyz/rss/fowl-language
   - Fowl Language: https://comiccaster.xyz/rss/fowl-language
   - FoxTrot: https://comiccaster.xyz/rss/foxtrot
@@ -158,7 +141,6 @@
   - Gaturro: https://comiccaster.xyz/rss/gaturro
   - Geech: https://comiccaster.xyz/rss/geech
   - Get Fuzzy: https://comiccaster.xyz/rss/getfuzzy
-  - Get a Life: https://comiccaster.xyz/rss/getalife
   - Gil: https://comiccaster.xyz/rss/gil
   - Gil Thorp: https://comiccaster.xyz/rss/gilthorp
   - Ginger Meggs: https://comiccaster.xyz/rss/gingermeggs
@@ -177,15 +159,11 @@
   - Herman: https://comiccaster.xyz/rss/herman
   - Home Free: https://comiccaster.xyz/rss/homefree
   - Home and Away: https://comiccaster.xyz/rss/homeandaway
-  - Hot Comics for Cool People: https://comiccaster.xyz/rss/hot-comics-for-cool-people
-  - Hutch Owen: https://comiccaster.xyz/rss/hutch-owen
   - Imagine This: https://comiccaster.xyz/rss/imaginethis
-  - Imogen Quest: https://comiccaster.xyz/rss/imogen-quest
   - In Security: https://comiccaster.xyz/rss/in-security
   - In the Bleachers: https://comiccaster.xyz/rss/inthebleachers
   - In the Sticks: https://comiccaster.xyz/rss/inthesticks
   - Ink Pen: https://comiccaster.xyz/rss/inkpen
-  - Invisible Bread: https://comiccaster.xyz/rss/invisible-bread
   - It's All About You: https://comiccaster.xyz/rss/itsallaboutyou
   - Jake Likes Onions: https://comiccaster.xyz/rss/jake-likes-onions
   - Jane's World: https://comiccaster.xyz/rss/janesworld
@@ -211,8 +189,6 @@
   - Lio: https://comiccaster.xyz/rss/lio
   - Little Dog Lost: https://comiccaster.xyz/rss/littledoglost
   - Little Fried Chicken and Sushi: https://comiccaster.xyz/rss/little-fried-chicken-and-sushi
-  - Little Nemo: https://comiccaster.xyz/rss/little-nemo
-  - Liz Climo Cartoons: https://comiccaster.xyz/rss/liz-climo-cartoons
   - Lola: https://comiccaster.xyz/rss/lola
   - Long Story Short: https://comiccaster.xyz/rss/long-story-short
   - Looks Good on Paper: https://comiccaster.xyz/rss/looks-good-on-paper
@@ -225,12 +201,8 @@
   - Lug Nuts: https://comiccaster.xyz/rss/lug-nuts
   - Lunarbaboon: https://comiccaster.xyz/rss/lunarbaboon
   - Maintaining: https://comiccaster.xyz/rss/maintaining
-  - Mannequin on the Moon: https://comiccaster.xyz/rss/mannequin-on-the-moon
   - Maria's Day: https://comiccaster.xyz/rss/marias-day
   - Marmaduke: https://comiccaster.xyz/rss/marmaduke
-  - Medium Large: https://comiccaster.xyz/rss/medium-large
-  - Messycow Comics: https://comiccaster.xyz/rss/messy-cow
-  - Mexikid Stories: https://comiccaster.xyz/rss/mexikid-stories
   - Mike du Jour: https://comiccaster.xyz/rss/mike-du-jour
   - Miss Peach: https://comiccaster.xyz/rss/miss-peach
   - Moderately Confused: https://comiccaster.xyz/rss/moderately-confused
@@ -240,7 +212,6 @@
   - Monty Diaros: https://comiccaster.xyz/rss/monty-diaros
   - Mother Goose and Grimm: https://comiccaster.xyz/rss/mother-goose-and-grimm
   - Motley Classics: https://comiccaster.xyz/rss/motley-classics
-  - Mr. Lowe: https://comiccaster.xyz/rss/mr-lowe
   - Mutt & Jeff: https://comiccaster.xyz/rss/muttandjeff
   - My Dad is Dracula: https://comiccaster.xyz/rss/my-dad-is-dracula
   - MythTickle: https://comiccaster.xyz/rss/mythtickle
@@ -249,24 +220,18 @@
   - Nancy Classics: https://comiccaster.xyz/rss/nancy-classics
   - Nate el Grande: https://comiccaster.xyz/rss/nate-el-grande
   - Nest Heads: https://comiccaster.xyz/rss/nestheads
-  - New Adventures of Queen Victoria: https://comiccaster.xyz/rss/thenewadventuresofqueenvictoria
   - Next Door Neighbors: https://comiccaster.xyz/rss/next-door-neighbors
   - Nick Anderson: https://comiccaster.xyz/rss/nick-anderson
   - Nick and Zuzu: https://comiccaster.xyz/rss/nick-and-zuzu
   - Non Sequitur: https://comiccaster.xyz/rss/nonsequitur
-  - Not Invented Here: https://comiccaster.xyz/rss/not-invented-here
   - Nothing is Not Something: https://comiccaster.xyz/rss/nothing-is-not-something
-  - Now Recharging: https://comiccaster.xyz/rss/now-recharging
   - Off the Mark: https://comiccaster.xyz/rss/offthemark
-  - Oh, Brother!: https://comiccaster.xyz/rss/oh-brother
   - Ollie and Quentin: https://comiccaster.xyz/rss/ollie-and-quentin
   - On A Claire Day: https://comiccaster.xyz/rss/onaclaireday
   - One Big Happy: https://comiccaster.xyz/rss/onebighappy
   - Ordinary Bill: https://comiccaster.xyz/rss/ordinary-bill
-  - Origins of the Sunday Comics: https://comiccaster.xyz/rss/origins-of-the-sunday-comics
   - Our Super Adventure: https://comiccaster.xyz/rss/our-super-adventure
   - Out of the Gene Pool: https://comiccaster.xyz/rss/outofthegenepool
-  - Outland: https://comiccaster.xyz/rss/outland
   - Over the Hedge: https://comiccaster.xyz/rss/overthehedge
   - Overboard: https://comiccaster.xyz/rss/overboard
   - Ozy and Millie: https://comiccaster.xyz/rss/ozy-and-millie
@@ -277,13 +242,10 @@
   - Perlas Para Los Cerdos: https://comiccaster.xyz/rss/perlas-para-los-cerdos
   - Perry Bible Fellowship: https://comiccaster.xyz/rss/perry-bible-fellowship
   - Phoebe and Her Unicorn: https://comiccaster.xyz/rss/phoebe-and-her-unicorn
-  - Pibgorn: https://comiccaster.xyz/rss/pibgorn
-  - Pibgorn Sketches: https://comiccaster.xyz/rss/pibgornsketches
   - Pickles: https://comiccaster.xyz/rss/pickles
   - Please Listen to Me: https://comiccaster.xyz/rss/please-listen-to-me
   - Pluggers: https://comiccaster.xyz/rss/pluggers
   - Pooch Cafe: https://comiccaster.xyz/rss/poochcafe
-  - Poorcraft: https://comiccaster.xyz/rss/poorcraft
   - Poorly Drawn Lines: https://comiccaster.xyz/rss/poorly-drawn-lines
   - Pot-Shots: https://comiccaster.xyz/rss/pot-shots
   - PreTeena: https://comiccaster.xyz/rss/preteena
@@ -291,10 +253,8 @@
   - Questionable Quotebook: https://comiccaster.xyz/rss/questionable-quotebook
   - Rabbits Against Magic: https://comiccaster.xyz/rss/rabbitsagainstmagic
   - Raising Duncan: https://comiccaster.xyz/rss/raising-duncan
-  - Randolph Itch, 2 a.m.: https://comiccaster.xyz/rss/randolphitch
   - Real Life Adventures: https://comiccaster.xyz/rss/reallifeadventures
   - Reality Check: https://comiccaster.xyz/rss/realitycheck
-  - Red Meat: https://comiccaster.xyz/rss/redmeat
   - Red and Rover: https://comiccaster.xyz/rss/redandrover
   - Richard's Poor Almanac: https://comiccaster.xyz/rss/richards-poor-almanac
   - Rip Haywire: https://comiccaster.xyz/rss/riphaywire
@@ -307,24 +267,18 @@
   - Saturday Morning Breakfast Cereal: https://comiccaster.xyz/rss/saturday-morning-breakfast-cereal
   - Savage Chickens: https://comiccaster.xyz/rss/savage-chickens
   - Scary Gary: https://comiccaster.xyz/rss/scarygary
-  - Scenes from a Multiverse: https://comiccaster.xyz/rss/scenes-from-a-multiverse
-  - Shen Comix: https://comiccaster.xyz/rss/shen-comix
   - Sherman's Lagoon: https://comiccaster.xyz/rss/shermanslagoon
   - Shirley and Son Classics: https://comiccaster.xyz/rss/shirley-and-son-classics
   - Shoe: https://comiccaster.xyz/rss/shoe
-  - Sketchshark Comics: https://comiccaster.xyz/rss/sketchshark-comics
   - Skin Horse: https://comiccaster.xyz/rss/skinhorse
   - Skippy: https://comiccaster.xyz/rss/skippy
-  - Small Potatoes: https://comiccaster.xyz/rss/small-potatoes
   - Snow Sez: https://comiccaster.xyz/rss/snow-sez
   - Speed Bump: https://comiccaster.xyz/rss/speedbump
-  - Spirit of the Staircase: https://comiccaster.xyz/rss/spirit-of-the-staircase
   - Spot the Frog: https://comiccaster.xyz/rss/spot-the-frog
   - Sticky Comics: https://comiccaster.xyz/rss/sticky-comics
   - Stone Soup: https://comiccaster.xyz/rss/stonesoup
   - Strange Brew: https://comiccaster.xyz/rss/strangebrew
   - Studio Jantze: https://comiccaster.xyz/rss/studio-jantze
-  - Sunny Street: https://comiccaster.xyz/rss/sunny-street
   - Super-Fun-Pak Comix: https://comiccaster.xyz/rss/super-fun-pak-comix
   - Swan Eaters: https://comiccaster.xyz/rss/swan-eaters
   - Sweet and Sour Pork: https://comiccaster.xyz/rss/sweet-and-sour-pork
@@ -340,17 +294,13 @@
   - The Academia Waltz: https://comiccaster.xyz/rss/the-academia-waltz
   - The Adventures of Business Cat: https://comiccaster.xyz/rss/the-adventures-of-business-cat
   - The Argyle Sweater: https://comiccaster.xyz/rss/theargylesweater
-  - The Awkward Yeti: https://comiccaster.xyz/rss/the-awkward-yeti
   - The Barn: https://comiccaster.xyz/rss/thebarn
   - The Big Picture: https://comiccaster.xyz/rss/thebigpicture
   - The Boondocks: https://comiccaster.xyz/rss/boondocks
   - The Born Loser: https://comiccaster.xyz/rss/the-born-loser
   - The Buckets: https://comiccaster.xyz/rss/thebuckets
   - The City: https://comiccaster.xyz/rss/thecity
-  - The Comic Strip That Has A Finale Every Day: https://comiccaster.xyz/rss/the-comic-strip-that-has-a-finale-every-day
-  - The Daily Drawing: https://comiccaster.xyz/rss/the-daily-drawing
   - The Dinette Set: https://comiccaster.xyz/rss/dinetteset
-  - The Doozies: https://comiccaster.xyz/rss/thedoozies
   - The Duplex: https://comiccaster.xyz/rss/duplex
   - The Elderberries: https://comiccaster.xyz/rss/theelderberries
   - The Flying McCoys: https://comiccaster.xyz/rss/theflyingmccoys
@@ -360,36 +310,27 @@
   - The K Chronicles: https://comiccaster.xyz/rss/thekchronicles
   - The Knight Life: https://comiccaster.xyz/rss/theknightlife
   - The Lockhorns: https://comiccaster.xyz/rss/lockhorns
-  - The Martian Confederacy: https://comiccaster.xyz/rss/the-martian-confederacy
   - The Meaning of Lila: https://comiccaster.xyz/rss/meaningoflila
   - The Middle Age: https://comiccaster.xyz/rss/the-middle-age
   - The Middletons: https://comiccaster.xyz/rss/themiddletons
   - The Norm Classics: https://comiccaster.xyz/rss/thenorm
   - The Other Coast: https://comiccaster.xyz/rss/theothercoast
-  - The Upside Down World of Gustave Verbeek: https://comiccaster.xyz/rss/upside-down-world-of-gustave-verbeek
   - The Wandering Melon: https://comiccaster.xyz/rss/the-wandering-melon
   - The Worried Well: https://comiccaster.xyz/rss/the-worried-well
   - Thin Lines: https://comiccaster.xyz/rss/thinlines
   - Tiny Sepuku: https://comiccaster.xyz/rss/tinysepuku
-  - Today's Szep: https://comiccaster.xyz/rss/todays-szep
   - Tom the Dancing Bug: https://comiccaster.xyz/rss/tomthedancingbug
   - Too Much Coffee Man: https://comiccaster.xyz/rss/toomuchcoffeeman
   - Trucutú: https://comiccaster.xyz/rss/trucutu
   - Tutelandia: https://comiccaster.xyz/rss/tutelandia
   - UFO: https://comiccaster.xyz/rss/ufo
-  - Underpants and Overbites: https://comiccaster.xyz/rss/underpants-and-overbites
   - Understanding Chaos: https://comiccaster.xyz/rss/understanding-chaos
   - Unstrange Phenomena: https://comiccaster.xyz/rss/unstrange-phenomena
   - Viivi & Wagner: https://comiccaster.xyz/rss/viivi-and-wagner
-  - W.T. Duck: https://comiccaster.xyz/rss/wtduck
   - Wallace the Brave: https://comiccaster.xyz/rss/wallace-the-brave
-  - Wannabe: https://comiccaster.xyz/rss/wannabe
   - Warped: https://comiccaster.xyz/rss/warped
-  - Watch Your Head: https://comiccaster.xyz/rss/watchyourhead
-  - Wawawiwa: https://comiccaster.xyz/rss/wawawiwa
   - WaynoVision: https://comiccaster.xyz/rss/waynovision
   - Wee Pals: https://comiccaster.xyz/rss/weepals
-  - Widdershins: https://comiccaster.xyz/rss/widdershins
   - Wide Open!: https://comiccaster.xyz/rss/wide-open
   - Win, Lose, Drew: https://comiccaster.xyz/rss/drewlitton
   - Wizard of Id: https://comiccaster.xyz/rss/wizardofid
@@ -402,8 +343,6 @@
   - WuMo: https://comiccaster.xyz/rss/wumo
   - XKCD: https://xkcdwat.joshka.net/feed
   - Yaffle: https://comiccaster.xyz/rss/yaffle
-  - Yeah It’s Chill: https://comiccaster.xyz/rss/yeah-its-chill
-  - Yes, I'm Hot in This: https://comiccaster.xyz/rss/yesimhotinthis
   - Zack Hill: https://comiccaster.xyz/rss/zackhill
   - Zen Pencils: https://comiccaster.xyz/rss/zen-pencils
   - Ziggy: https://comiccaster.xyz/rss/ziggy
@@ -428,9 +367,7 @@
   - Luann en Español: luannspanish
   - Overboard en Español: overboardespanol
   - Peanuts en Español: peanuts-espanol
-  - Tarzán en Español: tarzan-en-espanol
   - Wizard of Id en Español: wizardofidespanol
-  - WuMo en Español: wumoespanol
   - Ziggy en Español: ziggyespanol
 - keyname: comics_political
   field_type: select
@@ -439,10 +376,8 @@
   help_text: Use <kbd>⌘</kbd>+<kbd>click</kbd> (Mac) or <kbd>ctrl</kbd>+<kbd>click</kbd> (Windows) to select multiple items. Use <kbd>Shift</kbd>+<kbd>click</kbd> to select a whole range at once.
   optional: true
   options:
-  - (th)ink: think
   - Al Goodwyn Editorial Cartoons: algoodwyn
   - Bill Bramhall: bill-bramhall
-  - Bob Gorrell: bobgorrell
   - Brian McFadden: brian-mcfadden
   - Chip Bok: chipbok
   - Chris Britt: chrisbritt
@@ -470,7 +405,6 @@
   - Lisa Benson: lisabenson
   - M2Bulls: m2bulls
   - Marshall Ramsey: marshallramsey
-  - Matt Bors: matt-bors
   - Matt Davies: mattdavies
   - Matt Wuerker: mattwuerker
   - Michael Ramirez: michaelramirez
@@ -478,14 +412,11 @@
   - Mike Lester: mike-lester
   - Mike Luckovich: mikeluckovich
   - Nick Anderson: nickanderson
-  - Pat Oliphant: patoliphant
   - Pedro X. Molina: pedroxmolina
   - Phil Hands: phil-hands
-  - Rebecca Hendin: rebecca-hendin
   - Rob Rogers: robrogers
   - Robert Ariail: robert-ariail
   - Scott Stantis: scottstantis
-  - Steve Benson: stevebenson
   - Steve Breen: stevebreen
   - Steve Kelley: stevekelley
   - Ted Rall: ted-rall
@@ -494,7 +425,6 @@
   - Tom the Dancing Bug: tomthedancingbug
   - Two Party Opera: two-party-opera
   - Views of the World: viewsoftheworld
-  - ViewsAfrica: viewsafrica
   - ViewsAmerica: viewsamerica
   - ViewsAsia: viewsasia
   - ViewsBusiness: viewsbusiness
@@ -516,3 +446,15 @@
   name: Extra RSS Feeds
   description: List of extra rss feeds.<br />Any RSS URL added here will be added as a                                         source.
   placeholder: https://rssfeed.com
+- keyname: image_filter
+  field_type: select
+  name: Image Filter
+  description: Apply an image filter to alter the appearance on the device.
+  options:
+  - None: none
+  - Standard: brightness(0.9) contrast(1.3) saturate(0)
+  - Bold: brightness(0.85) contrast(1.5) saturate(0)
+  - Subtle: brightness(0.95) contrast(1.15) saturate(0)
+  - Crisp: brightness(1.0) contrast(1.4) saturate(0)
+  - Dramatic: brightness(0.8) contrast(1.6) saturate(0)
+  optional: true
