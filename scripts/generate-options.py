@@ -178,7 +178,7 @@ def create_updated_settings():
 
     # Comics field - sort by name
     comics_options = []
-    for comic in sorted(regular_comics, key=lambda x: x.get("name", "Unknown")):
+    for comic in sorted(regular_comics, key=lambda x: x.get("name", "Unknown").lower()):
         name = comic.get("name", "Unknown")
         slug = comic.get("slug", None)
         if slug:
@@ -188,8 +188,8 @@ def create_updated_settings():
     for name, url in validated_extra_feeds.items():
         comics_options.append({name: url})
 
-    # Sort all comics options by name
-    comics_options.sort(key=lambda x: list(x.keys())[0])
+    # Sort all comics options by name (case insensitive)
+    comics_options.sort(key=lambda x: list(x.keys())[0].lower())
 
     comics_field = {
         'keyname': 'comics',
@@ -204,7 +204,7 @@ def create_updated_settings():
 
     # Comics other languages field - sort by name
     other_lang_options = []
-    for comic in sorted(other_language_comics, key=lambda x: x.get("name", "Unknown")):
+    for comic in sorted(other_language_comics, key=lambda x: x.get("name", "Unknown").lower()):
         name = comic.get("name", "Unknown")
         slug = comic.get("slug", "unknown")
         other_lang_options.append({name: slug})
@@ -222,7 +222,7 @@ def create_updated_settings():
 
     # Political comics field - sort by name
     political_options = []
-    for comic in sorted(political_data, key=lambda x: x.get("name", "Unknown")):
+    for comic in sorted(political_data, key=lambda x: x.get("name", "Unknown").lower()):
         name = comic.get("name", "Unknown")
         slug = comic.get("slug", "unknown")
         political_options.append({name: slug})
