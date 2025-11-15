@@ -2,6 +2,7 @@
 import requests
 import re
 import os
+import hashlib
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import urlparse
@@ -37,24 +38,47 @@ def load_plugin_config():
     return config
 
 
-def download_image(url: str, save_path: str):
-    """Download an image from URL and save it locally"""
-    try:
-        response = requests.get(url, timeout=15)
-        response.raise_for_status()
+def download_image(url: str, save_path: str, max_retries=3):
+    """Download an image from URL and save it locally with retry logic"""
+    for attempt in range(max_retries):
+        try:
+            headers = {
+                'Cache-Control': 'no-cache',
+                'Pragma': 'no-cache'
+            }
+            response = requests.get(url, headers=headers, timeout=15)
+            response.raise_for_status()
 
-        # Create directory if it doesn't exist
-        os.makedirs(os.path.dirname(save_path), exist_ok=True)
+            new_content = response.content
+            new_hash = hashlib.md5(new_content).hexdigest()
 
-        # Save the image
-        with open(save_path, 'wb') as f:
-            f.write(response.content)
+            # Check if file exists and compare hash
+            if os.path.exists(save_path):
+                with open(save_path, 'rb') as f:
+                    old_hash = hashlib.md5(f.read()).hexdigest()
 
-        print(f"  ✓ Downloaded: {os.path.basename(save_path)}")
-        return True
-    except requests.RequestException as e:
-        print(f"  ✗ Failed to download image from {url}: {e}")
-        return False
+                if old_hash == new_hash:
+                    print(f"  ↪ Unchanged: {os.path.basename(save_path)}")
+                    return True
+
+            # Create directory if it doesn't exist
+            os.makedirs(os.path.dirname(save_path), exist_ok=True)
+
+            # Save the image
+            with open(save_path, 'wb') as f:
+                f.write(new_content)
+
+            print(f"  ✓ Updated: {os.path.basename(save_path)}")
+            return True
+
+        except requests.RequestException as e:
+            if attempt < max_retries - 1:
+                print(f"  ⚠️  Retry {attempt + 1}/{max_retries - 1} for {os.path.basename(save_path)}")
+            else:
+                print(f"  ✗ Failed to download {os.path.basename(save_path)} after {max_retries} attempts: {e}")
+                return False
+
+    return False
 
 
 def get_image_extension(url: str):
@@ -66,24 +90,28 @@ def get_image_extension(url: str):
     return ext if ext else '.png'
 
 
-def fetch_plugin_data(plugin_id: str):
-    """Fetch plugin data from TRMNL API"""
+def fetch_plugin_data(plugin_id: str, max_retries=3):
+    """Fetch plugin data from TRMNL API with retry logic"""
     url = f"https://usetrmnl.com/recipes/{plugin_id}.json"
 
-    try:
-        response = requests.get(url, timeout=10)
-        response.raise_for_status()  # This will raise an exception for 4xx/5xx status codes
+    for attempt in range(max_retries):
+        try:
+            response = requests.get(url, timeout=10)
+            response.raise_for_status()
+            data = response.json()
+            return data
+        except requests.RequestException as e:
+            if attempt < max_retries - 1:
+                print(f"  ⚠️  Retry {attempt + 1}/{max_retries - 1} for plugin data")
+            else:
+                print(f"  ✗ HTTP Error fetching plugin data after {max_retries} attempts: {e}")
+                return None
+        except ValueError as e:
+            print(f"  ✗ JSON parsing error for plugin {plugin_id}: {e}")
+            print(f"  Response content: {response.text[:200]}...")
+            return None
 
-        # Try to parse JSON
-        data = response.json()
-        return data
-    except requests.RequestException as e:
-        print(f"  ✗ HTTP Error fetching plugin data for {plugin_id}: {e}")
-        return None
-    except ValueError as e:
-        print(f"  ✗ JSON parsing error for plugin {plugin_id}: {e}")
-        print(f"  Response content: {response.text[:200]}...")  # Show first 200 chars of response
-        return None
+    return None
 
 
 def process_plugin_images(plugin_id: str, plugin_data: dict, images_dir: str):
@@ -102,6 +130,8 @@ def process_plugin_images(plugin_id: str, plugin_data: dict, images_dir: str):
         'screenshot': None
     }
 
+    download_success = True
+
     # Download icon
     if icon_url:
         icon_ext = get_image_extension(icon_url)
@@ -109,8 +139,9 @@ def process_plugin_images(plugin_id: str, plugin_data: dict, images_dir: str):
         icon_path = os.path.join(images_dir, icon_filename)
 
         if download_image(icon_url, icon_path):
-            # Store relative path for README
             local_paths['icon'] = icon_path
+        else:
+            download_success = False
 
     # Download screenshot
     if screenshot_url:
@@ -120,14 +151,15 @@ def process_plugin_images(plugin_id: str, plugin_data: dict, images_dir: str):
 
         if download_image(screenshot_url, screenshot_path):
             local_paths['screenshot'] = screenshot_path
+        else:
+            download_success = False
 
-    return local_paths
+    return local_paths if download_success else None
 
 
 def generate_plugin_section(data, plugin_id: str, image_paths: dict):
     """Generate markdown section for a plugin"""
     if not data:
-        # Plugin data not found - likely not published yet or API error
         markdown = f"""
 ## 🔒 Plugin ID: {plugin_id}
 
@@ -143,7 +175,6 @@ This plugin is configured but either hasn't been published to the TRMNL marketpl
 
     plugin = data.get('data', {})
 
-    # Check if we have valid plugin data
     if not plugin:
         markdown = f"""
 ## 🔒 Plugin ID: {plugin_id}
@@ -191,38 +222,30 @@ The plugin exists but data is not available yet. This usually means it's very ne
 
 def update_readme(plugin_sections: str, section_title: str):
     """Update README.md with plugin statistics"""
-    # Read existing README.md
     try:
         with open('README.md', 'r') as f:
             content = f.read()
     except FileNotFoundError:
         content = "# Project README\n\n"
 
-    # Define markers for the plugin sections
     start_marker = "<!-- PLUGIN_STATS_START -->"
     end_marker = "<!-- PLUGIN_STATS_END -->"
 
-    # Create the new plugin sections content
     timestamp = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')
     new_content = f"{start_marker}\n## {section_title}\n\n*Last updated: {timestamp}*\n\n{plugin_sections}\n{end_marker}"
 
-    # Check if markers exist in the README
     if start_marker in content and end_marker in content:
-        # Replace existing content between markers
         pattern = f"{re.escape(start_marker)}.*?{re.escape(end_marker)}"
         updated_content = re.sub(pattern, new_content, content, flags=re.DOTALL)
     else:
-        # Append to the end of the README
         updated_content = content + "\n\n" + new_content + "\n"
 
-    # Write updated content back to README.md
     with open('README.md', 'w') as f:
         f.write(updated_content)
 
 
 def main():
     """Main execution function"""
-    # Load configuration from plugins.env
     config = load_plugin_config()
     plugin_ids = config['plugin_ids']
     section_title = config['section_title']
@@ -238,22 +261,25 @@ def main():
     plugin_sections = []
     total = len(plugin_ids)
 
-    # Track statistics
     published_plugins = 0
     unpublished_plugins = 0
+    failed_downloads = []
 
     for idx, plugin_id in enumerate(plugin_ids, 1):
         print(f"🔍 [{idx}/{total}] Processing plugin: {plugin_id}")
 
-        # Fetch plugin data
         data = fetch_plugin_data(plugin_id)
 
-        # Download images only if data exists and is valid
         image_paths = None
         if data and data.get('data'):
             image_paths = process_plugin_images(plugin_id, data, images_dir)
-            published_plugins += 1
-            print(f"  ✓ Plugin found and published")
+            if image_paths:
+                published_plugins += 1
+                print(f"  ✓ Plugin processed successfully")
+            else:
+                published_plugins += 1
+                failed_downloads.append(plugin_id)
+                print(f"  ⚠️  Plugin found but image downloads failed")
         else:
             unpublished_plugins += 1
             if data and not data.get('data'):
@@ -261,21 +287,19 @@ def main():
             else:
                 print(f"  ⏳ Plugin not published yet or API error")
 
-        # Generate markdown section
         section = generate_plugin_section(data, plugin_id, image_paths)
         plugin_sections.append(section)
         print()
 
-    # Combine all sections
     all_sections = "\n".join(plugin_sections)
-
-    # Update README
     update_readme(all_sections, section_title)
 
     print("✅ README.md updated successfully with plugin statistics!")
     print(f"📊 Summary:")
     print(f"   Published plugins: {published_plugins}")
     print(f"   Unpublished/Error plugins: {unpublished_plugins}")
+    if failed_downloads:
+        print(f"   ⚠️  Failed image downloads for: {', '.join(failed_downloads)}")
     print(f"📸 Images saved to: {images_dir}/")
 
 
