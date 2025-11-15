@@ -166,7 +166,6 @@ def create_updated_settings():
         'optional': True
     }
     custom_fields.append(only_latest_field)
-
     extra_rss_feeds = {
         'keyname': 'extra_rss_feeds',
         'field_type': 'multi_string',
