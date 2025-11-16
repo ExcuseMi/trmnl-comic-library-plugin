@@ -1,5 +1,5 @@
-report_date: '2025-11-16 00:40:30'
-total_failed: 83
+report_date: '2025-11-16 03:22:50'
+total_failed: 100
 failed_feeds:
 - name: Ali's House
   url: https://comiccaster.xyz/rss/alis-house
@@ -217,10 +217,6 @@ failed_feeds:
   url: https://comiccaster.xyz/rss/upside-down-world-of-gustave-verbeek
   error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/upside-down-world-of-gustave-verbeek'
   status: needs_investigation
-- name: Wannabe
-  url: https://comiccaster.xyz/rss/wannabe
-  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/wannabe'
-  status: needs_investigation
 - name: Watch Your Head
   url: https://comiccaster.xyz/rss/watchyourhead
   error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/watchyourhead'
@@ -245,57 +241,53 @@ failed_feeds:
   url: https://comiccaster.xyz/rss/yesimhotinthis
   error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/yesimhotinthis'
   status: needs_investigation
-- name: Brilliant Mind Of Edison Lee
-  url: https://comiccaster.xyz/rss/brilliant-mind-of-edison-lee
-  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/brilliant-mind-of-edison-lee'
+- name: Eye Lie Popeye
+  url: https://comiccaster.xyz/rss/eye-lie-popeye
+  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/eye-lie-popeye'
   status: needs_investigation
-- name: Barney Google And Snuffy Smith
-  url: https://comiccaster.xyz/rss/barney-google-and-snuffy-smith
-  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/barney-google-and-snuffy-smith'
+- name: Flash Forward
+  url: https://comiccaster.xyz/rss/flash-forward
+  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/flash-forward'
   status: needs_investigation
-- name: Crock
-  url: https://comiccaster.xyz/rss/crock
-  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/crock'
+- name: John Branch
+  url: https://comiccaster.xyz/rss/?post_type=ck_comic&p=7389789
+  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/?post_type=ck_comic&p=7389789'
   status: needs_investigation
-- name: Todd The Dinosaur
-  url: https://comiccaster.xyz/rss/todd-the-dinosaur
-  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/todd-the-dinosaur'
+- name: Kirk Walters
+  url: https://comiccaster.xyz/rss/?post_type=ck_comic&p=7389798
+  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/?post_type=ck_comic&p=7389798'
   status: needs_investigation
-- name: Daddy Daze
-  url: https://comiccaster.xyz/rss/daddy-daze
-  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/daddy-daze'
+- name: Moose And Molly (Spanish)
+  url: https://comiccaster.xyz/rss/quintin
+  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/quintin'
   status: needs_investigation
-- name: Rex Morgan M D
-  url: https://comiccaster.xyz/rss/rex-morgan-m-d
-  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/rex-morgan-m-d'
+- name: Oddly Enough
+  url: https://comiccaster.xyz/rss/?post_type=ck_comic&p=7389972
+  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/?post_type=ck_comic&p=7389972'
   status: needs_investigation
-- name: Mandrake The Magician
-  url: https://comiccaster.xyz/rss/mandrake-the-magician
-  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/mandrake-the-magician'
+- name: The Planet Syndicate
+  url: https://comiccaster.xyz/rss/the-planet-syndicate
+  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/the-planet-syndicate'
   status: needs_investigation
-- name: Moose And Molly
-  url: https://comiccaster.xyz/rss/moose-and-molly
-  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/moose-and-molly'
+- name: Popeye’s Cartoon Club
+  url: https://comiccaster.xyz/rss/popeyes-cartoon-club
+  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/popeyes-cartoon-club'
   status: needs_investigation
-- name: Six Chix
-  url: https://comiccaster.xyz/rss/six-chix
-  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/six-chix'
+- name: Principe Valiente (Spanish)
+  url: https://comiccaster.xyz/rss/principe-valiente
+  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/principe-valiente'
   status: needs_investigation
-- name: Tiger
-  url: https://comiccaster.xyz/rss/tiger
-  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/tiger'
+- name: Pros & Cons
+  url: https://comiccaster.xyz/rss/pros-cons
+  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/pros-cons'
   status: needs_investigation
-- name: Jeremias
-  url: https://comiccaster.xyz/rss/jeremias
-  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/jeremias'
+- name: Sales
+  url: https://comiccaster.xyz/rss/sales
+  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/sales'
   status: needs_investigation
-- name: Palurdeando
-  url: https://comiccaster.xyz/rss/palurdeando
-  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/palurdeando'
-  status: needs_investigation
-- name: Legend Of Bill
-  url: https://comiccaster.xyz/rss/legend-of-bill
-  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/legend-of-bill'
+- name: TBD (Toons By Dan)
+  url: https://comiccaster.xyz/rss/?post_type=ck_comic&p=7389405
+  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/?post_type=ck_comic&p=7389405'
   status: needs_investigation
 - name: Tarzán en Español
   url: https://comiccaster.xyz/rss/tarzan-en-espanol
@@ -332,4 +324,80 @@ failed_feeds:
 - name: ViewsAfrica
   url: https://comiccaster.xyz/rss/viewsafrica
   error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/viewsafrica'
+  status: needs_investigation
+- name: Action
+  url: https://comiccaster.xyz/rss/genre
+  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/genre'
+  status: needs_investigation
+- name: All comics
+  url: https://comiccaster.xyz/rss/comics
+  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/comics'
+  status: needs_investigation
+- name: John Hambrock
+  url: https://comiccaster.xyz/rss/creator
+  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/creator'
+  status: needs_investigation
+- name: News
+  url: https://comiccaster.xyz/rss/blog
+  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/blog'
+  status: needs_investigation
+- name: Log in
+  url: https://comiccaster.xyz/rss/login
+  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/login'
+  status: needs_investigation
+- name: David M. Hitch
+  url: https://comiccaster.xyz/rss/david-m-hitch
+  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/david-m-hitch'
+  status: needs_investigation
+- name: Ed Gamble
+  url: https://comiccaster.xyz/rss/ed-gamble
+  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/ed-gamble'
+  status: needs_investigation
+- name: Jimmy Margulies
+  url: https://comiccaster.xyz/rss/jimmy-margulies
+  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/jimmy-margulies'
+  status: needs_investigation
+- name: Lee Judge
+  url: https://comiccaster.xyz/rss/lee-judge
+  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/lee-judge'
+  status: needs_investigation
+- name: Mallard Fillmore
+  url: https://comiccaster.xyz/rss/mallard-fillmore
+  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/mallard-fillmore'
+  status: needs_investigation
+- name: Mike Shelton
+  url: https://comiccaster.xyz/rss/mike-shelton
+  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/mike-shelton'
+  status: needs_investigation
+- name: Mike Smith
+  url: https://comiccaster.xyz/rss/mike-smith
+  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/mike-smith'
+  status: needs_investigation
+- name: About
+  url: https://comiccaster.xyz/rss/about
+  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/about'
+  status: needs_investigation
+- name: Privacy Policy
+  url: https://comiccaster.xyz/rss/privacy-policy
+  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/privacy-policy'
+  status: needs_investigation
+- name: DAA Industry Opt Out
+  url: https://comiccaster.xyz/rss/privacy-policy#daa
+  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/privacy-policy#daa'
+  status: needs_investigation
+- name: CA Notice at Collection
+  url: https://comiccaster.xyz/rss/privacy-policy#california
+  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/privacy-policy#california'
+  status: needs_investigation
+- name: Your CA Privacy Rights/Shine the Light
+  url: https://comiccaster.xyz/rss/privacy-policy#shine
+  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/privacy-policy#shine'
+  status: needs_investigation
+- name: Terms of Use
+  url: https://comiccaster.xyz/rss/terms
+  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/terms'
+  status: needs_investigation
+- name: Publish Your Comics With Us!
+  url: https://comiccaster.xyz/rss/submit-your-comics
+  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/submit-your-comics'
   status: needs_investigation
