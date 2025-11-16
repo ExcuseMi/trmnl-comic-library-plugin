@@ -34,7 +34,7 @@ This plugin is configured but either hasn't been published to the TRMNL marketpl
 <!-- PLUGIN_STATS_START -->
 ## 🚀 TRMNL Plugin(s)
 
-*Last updated: 2025-11-16 00:51:04 UTC*
+*Last updated: 2025-11-16 06:36:02 UTC*
 
 
 ## <img src="assets/plugin-images/180935_icon.png" alt="More Comics icon" width="32"/> [More Comics](https://usetrmnl.com/recipes/180935)
@@ -52,7 +52,7 @@ Access a collection of 401 comic RSS feeds and enjoy fresh content every day.<br
 | Metric | Value |
 |--------|-------|
 | Installs | 1 |
-| Forks | 1 |
+| Forks | 3 |
 
 ---
 
