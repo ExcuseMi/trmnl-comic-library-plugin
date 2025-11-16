@@ -1,16 +1,28 @@
+from pathlib import Path
+
 import requests
 import yaml
-from pathlib import Path
-import os
+
 from rss_feed_validator import RSSFeedValidator
 
 URL = "https://comiccaster.xyz/comics_list.json"
 URL_POLITICAL = "https://comiccaster.xyz/political_comics_list.json"
 
+OTHER_LANGUAGES_KEYSWORDS : list[str] = [
+    "en español",
+    "espanol"
+    "spanish"
+]
 
-def is_other_language(name: str):
-    lower_name = name.lower()
-    return "en español" in lower_name or "spanish" in lower_name
+def is_other_language(name: str, slug: str):
+    if name:
+        lower_name = name.lower()
+        slug_lower = slug.lower()
+
+        for keyword in OTHER_LANGUAGES_KEYSWORDS:
+            if keyword in lower_name or keyword in slug_lower:
+                return True
+    return False
 
 
 def get_comics_data(url: str):
@@ -83,7 +95,7 @@ def create_updated_settings():
     for comic in comics_data:
         name = comic.get("name", "Unknown")
         slug = comic.get("slug", None)
-        if slug and "en Español" not in name:
+        if slug and not is_other_language(name, slug):
             regular_feeds[name] = f"https://comiccaster.xyz/rss/{slug}"
 
     regular_valid, regular_invalid = validator.validate_multiple_feeds(regular_feeds)
@@ -95,7 +107,7 @@ def create_updated_settings():
     for comic in comics_data:
         name = comic.get("name", "Unknown")
         slug = comic.get("slug", None)
-        if slug and "en Español" in name:
+        if slug and is_other_language(name, slug):
             other_lang_feeds[name] = f"https://comiccaster.xyz/rss/{slug}"
 
     other_lang_valid, other_lang_invalid = validator.validate_multiple_feeds(other_lang_feeds)
