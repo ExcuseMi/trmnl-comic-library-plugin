@@ -1,11 +1,3 @@
-name: Generate Comic Options
-
-on:
-  schedule:
-    - cron: '0 2 * * *'  # Run daily at 2 AM UTC
-  workflow_dispatch:      # Allow manual triggering
-
-# Grant explicit permissions
 permissions:
   contents: write
 
@@ -17,7 +9,7 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v5
       with:
-        ref: ${{ github.head_ref }}
+        fetch-depth: 0   # ensures we get current main
 
     - name: Set up Python
       uses: actions/setup-python@v4
@@ -36,3 +28,4 @@ jobs:
         commit_message: "📝 Update comic options [automated]"
         commit_author: "GitHub Actions <actions@github.com>"
         file_pattern: "updated_settings.yml failed_feeds_report.yml"
+        pull_strategy: "NO_REBASE"   # <-- This prevents the non-fast-forward error

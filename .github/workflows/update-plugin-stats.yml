@@ -11,7 +11,6 @@ on:
       - 'scripts/update_plugin_stats.py'
       - 'plugins.env'
 
-# Grant explicit permissions
 permissions:
   contents: write
 
@@ -22,7 +21,8 @@ jobs:
     steps:
       - uses: actions/checkout@v5
         with:
-          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+          ref: main
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -40,6 +40,7 @@ jobs:
         with:
           commit_message: "📊 Update plugin statistics in README"
           commit_author: "GitHub Actions <actions@github.com>"
+          pull_strategy: "NO_REBASE"   # Prevent non-fast-forward errors
           file_pattern: |
             README.md
             assets/plugin-images/
