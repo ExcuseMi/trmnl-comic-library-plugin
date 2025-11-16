@@ -9,7 +9,8 @@ URL_POLITICAL = "https://comiccaster.xyz/political_comics_list.json"
 
 
 def is_other_language(name: str):
-    return "en Español" in name
+    lower_name = name.lower()
+    return "en español" in lower_name or "spanish" in lower_name
 
 
 def get_comics_data(url: str):
