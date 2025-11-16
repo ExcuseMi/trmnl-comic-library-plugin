@@ -29,3 +29,31 @@ This plugin is configured but either hasn't been published to the TRMNL marketpl
 ---
 
 <!-- PLUGIN_STATS_END -->
+
+
+<!-- PLUGIN_STATS_START -->
+## 🚀 TRMNL Plugin(s)
+
+*Last updated: 2025-11-16 06:36:02 UTC*
+
+
+## <img src="assets/plugin-images/180935_icon.png" alt="More Comics icon" width="32"/> [More Comics](https://usetrmnl.com/recipes/180935)
+
+![More Comics screenshot](assets/plugin-images/180935_screenshot.png)
+
+### Description
+Access a collection of 401 comic RSS feeds and enjoy fresh content every day.<br /><br />
+<strong>Features:</strong><br />
+● Displays the most recent comic or a random comic<br />
+● Supports multiple RSS sources
+
+### 📊 Statistics
+
+| Metric | Value |
+|--------|-------|
+| Installs | 1 |
+| Forks | 3 |
+
+---
+
+<!-- PLUGIN_STATS_END -->
