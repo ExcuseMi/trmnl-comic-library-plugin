@@ -8,19 +8,21 @@ from rss_feed_validator import RSSFeedValidator
 URL = "https://comiccaster.xyz/comics_list.json"
 URL_POLITICAL = "https://comiccaster.xyz/political_comics_list.json"
 
-OTHER_LANGUAGES_KEYSWORDS : list[str] = [
+OTHER_LANGUAGES_KEYSWORDS: list[str] = [
     "en español",
-    "espanol"
+    "espanol",
     "spanish"
 ]
 
-def is_other_language(name: str, slug: str):
+
+def is_other_language(name: str, slug: str, author: str):
     if name:
         lower_name = name.lower()
         slug_lower = slug.lower()
+        author_lower = author.lower() if author else ""
 
         for keyword in OTHER_LANGUAGES_KEYSWORDS:
-            if keyword in lower_name or keyword in slug_lower:
+            if keyword in lower_name or keyword in slug_lower or keyword in author_lower:
                 return True
     return False
 
@@ -81,6 +83,10 @@ def create_updated_settings():
     political_data = get_comics_data(URL_POLITICAL)
     extra_feeds = load_extra_feeds()
 
+    # Create a set of political comic slugs for efficient lookup
+    political_slugs = {comic.get("slug") for comic in political_data if comic.get("slug")}
+    print(f"\nFound {len(political_slugs)} political comics")
+
     # Prepare all feeds for validation
     print("\n" + "=" * 60)
     print("VALIDATING ALL RSS FEEDS")
@@ -89,25 +95,31 @@ def create_updated_settings():
     validator = RSSFeedValidator(timeout=15)
     all_invalid_results = []
 
-    # Validate regular comics
+    # Validate regular comics (excluding those that are political)
     print("\n--- Regular Comics ---")
     regular_feeds = {}
     for comic in comics_data:
         name = comic.get("name", "Unknown")
         slug = comic.get("slug", None)
-        if slug and not is_other_language(name, slug):
+        author = comic.get("author", "")
+
+        # Exclude comics that are political or in other languages
+        if slug and not is_other_language(name, slug, author) and slug not in political_slugs:
             regular_feeds[name] = f"https://comiccaster.xyz/rss/{slug}"
 
     regular_valid, regular_invalid = validator.validate_multiple_feeds(regular_feeds)
     all_invalid_results.extend(regular_invalid)
 
-    # Validate other language comics
+    # Validate other language comics (excluding those that are political)
     print("\n--- Comics in Other Languages ---")
     other_lang_feeds = {}
     for comic in comics_data:
         name = comic.get("name", "Unknown")
         slug = comic.get("slug", None)
-        if slug and is_other_language(name, slug):
+        author = comic.get("author", "")
+
+        # Exclude comics that are political
+        if slug and is_other_language(name, slug, author) and slug not in political_slugs:
             other_lang_feeds[name] = f"https://comiccaster.xyz/rss/{slug}"
 
     other_lang_valid, other_lang_invalid = validator.validate_multiple_feeds(other_lang_feeds)
@@ -149,7 +161,7 @@ def create_updated_settings():
     # Save failed feeds report
     validator.save_failed_feeds_report(all_invalid_results, get_failed_feeds_path())
 
-    # Separate regular comics from other languages (only valid ones)
+    # Separate regular comics from other languages (only valid ones, excluding political)
     regular_comics = []
     other_language_comics = []
 
@@ -159,16 +171,20 @@ def create_updated_settings():
 
     for comic in comics_data:
         name = comic.get("name", "Unknown")
-        if name in valid_regular_names:
-            regular_comics.append(comic)
-        elif name in valid_other_lang_names:
-            other_language_comics.append(comic)
+        slug = comic.get("slug", None)
+
+        # Only include if not political
+        if slug not in political_slugs:
+            if name in valid_regular_names:
+                regular_comics.append(comic)
+            elif name in valid_other_lang_names:
+                other_language_comics.append(comic)
 
     # Filter political comics to only valid ones
     valid_political_names = {result.name for result in political_valid}
     political_data = [comic for comic in political_data if comic.get("name") in valid_political_names]
 
-    # Count totals for the description
+    # Count totals for the description (all unique entries)
     total_regular = len(regular_comics)
     total_other_lang = len(other_language_comics)
     total_political = len(political_data)
@@ -186,9 +202,10 @@ def create_updated_settings():
         'description': f"Access a collection of {total_all} comic RSS feeds and enjoy fresh content every day.<br /><br />\n<strong>Features:</strong><br />\n"
                        f"● Displays the most recent comic or a random comic<br />\n"
                        f"● Supports multiple RSS sources<br />\n"
-                        f"● Add your own RSS feeds"
-    ,
-    'github_url': 'https://github.com/ExcuseMi/trmnl-more-comics-plugin',
+                       f"● Add your own RSS feeds<br />\n"
+                       f"● Frequently updated to keep all RSS sources valid and up to date"
+        ,
+        'github_url': 'https://github.com/ExcuseMi/trmnl-more-comics-plugin',
         'learn_more_url': 'https://comiccaster.xyz'
     }
     custom_fields.append(about_field)
@@ -213,7 +230,7 @@ def create_updated_settings():
     comics_field = {
         'keyname': 'comics',
         'field_type': 'select',
-        'name': 'Comics',
+        'name': f'Comics: {len(comics_options)}',
         'multiple': True,
         'help_text': 'Use <kbd>⌘</kbd>+<kbd>click</kbd> (Mac) or <kbd>ctrl</kbd>+<kbd>click</kbd> (Windows) to select multiple items. Use <kbd>Shift</kbd>+<kbd>click</kbd> to select a whole range at once.',
         'optional': True,
@@ -233,7 +250,7 @@ def create_updated_settings():
     other_lang_field = {
         'keyname': 'comics_other_languages',
         'field_type': 'select',
-        'name': 'Comics in other languages',
+        'name': f'Comics in other languages: {len(other_lang_options)}',
         'multiple': True,
         'help_text': 'Use <kbd>⌘</kbd>+<kbd>click</kbd> (Mac) or <kbd>ctrl</kbd>+<kbd>click</kbd> (Windows) to select multiple items. Use <kbd>Shift</kbd>+<kbd>click</kbd> to select a whole range at once.',
         'optional': True,
@@ -253,7 +270,7 @@ def create_updated_settings():
     political_field = {
         'keyname': 'comics_political',
         'field_type': 'select',
-        'name': 'Political Comics',
+        'name': f'Political Comics: {len(political_options)}',
         'multiple': True,
         'help_text': 'Use <kbd>⌘</kbd>+<kbd>click</kbd> (Mac) or <kbd>ctrl</kbd>+<kbd>click</kbd> (Windows) to select multiple items. Use <kbd>Shift</kbd>+<kbd>click</kbd> to select a whole range at once.',
         'optional': True,
@@ -320,7 +337,7 @@ def create_updated_settings():
     print(f"Other language comics: {total_other_lang}")
     print(f"Political comics: {total_political}")
     print(f"Extra feeds (validated): {total_extra}")
-    print(f"Total comics: {total_all}")
+    print(f"Total unique comics: {total_all}")
 
 
 if __name__ == "__main__":

@@ -1,7 +1,7 @@
 - keyname: about
   name: About This Plugin
   field_type: author_bio
-  description: 'Access a collection of 579 comic RSS feeds and enjoy fresh content every day.<br /><br />
+  description: 'Access a collection of 574 comic RSS feeds and enjoy fresh content every day.<br /><br />
 
     <strong>Features:</strong><br />
 
@@ -9,23 +9,23 @@
 
     ● Supports multiple RSS sources<br />
 
-    ● Add your own RSS feeds'
+    ● Add your own RSS feeds<br />
+
+    ● Frequently updated to keep all RSS sources valid and up to date'
   github_url: https://github.com/ExcuseMi/trmnl-more-comics-plugin
   learn_more_url: https://comiccaster.xyz
 - keyname: comics
   field_type: select
-  name: Comics
+  name: 'Comics: 466'
   multiple: true
   help_text: Use <kbd>⌘</kbd>+<kbd>click</kbd> (Mac) or <kbd>ctrl</kbd>+<kbd>click</kbd> (Windows) to select multiple items. Use <kbd>Shift</kbd>+<kbd>click</kbd> to select a whole range at once.
   optional: true
   options:
-  - (th)ink by Keith Knight: https://comiccaster.xyz/rss/think
   - 1 and Done by Eric Scott: https://comiccaster.xyz/rss/1-and-done
   - 9 Chickweed Lane by Brooke McEldowney: https://comiccaster.xyz/rss/9-chickweed-lane
   - 9 to 5 by Harley Schwadron: https://comiccaster.xyz/rss/9to5
   - '@Tavicat by Rikki Simons': https://comiccaster.xyz/rss/tavicat
   - A Problem Like Jamal by Tauhid Bondia: https://comiccaster.xyz/rss/a-problem-like-jamal
-  - A Toda Velocidad (Spanish): https://comiccaster.xyz/rss/a-toda-velocidad
   - Aaggghhh by Ham: https://comiccaster.xyz/rss/aaggghhh
   - Adam@Home by Rob Harrell: https://comiccaster.xyz/rss/adamathome
   - ADHDinos by Pina Vazquez: https://comiccaster.xyz/rss/adhdinos
@@ -59,14 +59,11 @@
   - Barkeater Lake by Corey Pandolph: https://comiccaster.xyz/rss/barkeaterlake
   - Barney & Clyde by Gene Weingarten; Dan Weingarten & David Clark: https://comiccaster.xyz/rss/barneyandclyde
   - Barney Google And Snuffy Smith: https://comiccaster.xyz/rss/barney-google-and-snuffy-smith
-  - Barney Google And Snuffy Smith (Spanish): https://comiccaster.xyz/rss/tapon
   - Basic Instructions by Scott Meyer: https://comiccaster.xyz/rss/basicinstructions
   - Batch Rejection by Garey McKee: https://comiccaster.xyz/rss/batch-rejection
   - Beardo by Dan Dougherty: https://comiccaster.xyz/rss/beardo
   - Beetle Bailey: https://comiccaster.xyz/rss/beetle-bailey-1
-  - Beetle Bailey (Spanish): https://comiccaster.xyz/rss/beto-el-recluta
   - Ben by Daniel Shelton: https://comiccaster.xyz/rss/ben
-  - Benitin y Eneas by Pierre S. De Beaumont: https://comiccaster.xyz/rss/muttandjeffespanol
   - Berger & Wyse by Pascal Wyse: https://comiccaster.xyz/rss/berger-and-wyse
   - Berkeley Mews by Ben Zaehringer: https://comiccaster.xyz/rss/berkeley-mews
   - Betty by Gerry Rasmussen: https://comiccaster.xyz/rss/betty
@@ -81,7 +78,6 @@
   - 'Bleeker: The Rechargeable Dog by Jonathan Mahood': https://comiccaster.xyz/rss/bleeker
   - Bliss by Harry Bliss: https://comiccaster.xyz/rss/bliss
   - Blondie: https://comiccaster.xyz/rss/blondie
-  - Blondie (Spanish): https://comiccaster.xyz/rss/pepita
   - Bloom County by Berkeley Breathed: https://comiccaster.xyz/rss/bloomcounty
   - Bloom County Continues by Berkeley Breathed: https://comiccaster.xyz/rss/bloom-county
   - Bo Nanas by John Kovaleski: https://comiccaster.xyz/rss/bonanas
@@ -95,9 +91,6 @@
   - Breaking Cat News by Georgia Dunn: https://comiccaster.xyz/rss/breaking-cat-news
   - Brevity by Dan Thompson: https://comiccaster.xyz/rss/brevity
   - Brewster Rockit by Tim Rickard: https://comiccaster.xyz/rss/brewsterrockit
-  - Brian McFadden: https://comiccaster.xyz/rss/brian-mcfadden
-  - Brilliant Mind Of Edison Lee: https://comiccaster.xyz/rss/brilliant-mind-of-edison-lee
-  - Bringing Up Father (Spanish): https://comiccaster.xyz/rss/educando-a-papa
   - Broom Hilda by Russell Myers: https://comiccaster.xyz/rss/broomhilda
   - Buckles by David Gilbert: https://comiccaster.xyz/rss/buckles
   - Bully by Andrew Paavola: https://comiccaster.xyz/rss/bully
@@ -125,7 +118,6 @@
   - Crabgrass by Tauhid Bondia: https://comiccaster.xyz/rss/crabgrass
   - Crankshaft by Tom Batiuk and Dan Davis: https://comiccaster.xyz/rss/crankshaft
   - Crock: https://comiccaster.xyz/rss/crock
-  - Crock (Spanish): https://comiccaster.xyz/rss/crock-spanish
   - Crumb by David Fletcher: https://comiccaster.xyz/rss/crumb
   - Cul de Sac by Richard Thompson: https://comiccaster.xyz/rss/culdesac
   - Curses! by Chelsea Carr: https://comiccaster.xyz/rss/curses
@@ -137,7 +129,6 @@
   - Deep Dark Fears by Fran Krause: https://comiccaster.xyz/rss/deep-dark-fears
   - DeFlocked by Jeff Corriveau: https://comiccaster.xyz/rss/deflocked
   - Dennis The Menace: https://comiccaster.xyz/rss/dennis-the-menace
-  - Dennis The Menace (Spanish): https://comiccaster.xyz/rss/daniel-el-travieso
   - Diamond Lil by Brett Koth: https://comiccaster.xyz/rss/diamondlil
   - Dick Tracy: https://comiccaster.xyz/rss/dick-tracy
   - Dick Tracy by Mike Curtis: https://comiccaster.xyz/rss/dicktracy
@@ -148,7 +139,6 @@
   - Don Brutus by Chip Sansom: https://comiccaster.xyz/rss/don-brutus
   - Doodle for Food by Megan McKay: https://comiccaster.xyz/rss/doodle-for-food
   - Doodle Town by Melissa Lomax: https://comiccaster.xyz/rss/doodle-town
-  - Doonesbury by Garry Trudeau: https://comiccaster.xyz/rss/doonesbury
   - Drabble by Kevin Fagan: https://comiccaster.xyz/rss/drabble
   - Dumplings: https://comiccaster.xyz/rss/dumplings
   - Dustin: https://comiccaster.xyz/rss/dustin
@@ -199,12 +189,10 @@
   - Globetrotter by Ainsley Ashby: https://comiccaster.xyz/rss/globetrotter
   - Goats by Jon Rosenberg: https://comiccaster.xyz/rss/goats
   - Goomer: https://comiccaster.xyz/rss/goomer
-  - Goomer (Spanish): https://comiccaster.xyz/rss/goomer-spanish
   - Grand Avenue by Mike Thompson: https://comiccaster.xyz/rss/grand-avenue
   - Gray Matters by Stuart Carlson: https://comiccaster.xyz/rss/gray-matters
   - Green Humour by Rohan Chakravarty: https://comiccaster.xyz/rss/green-humour
   - Hagar The Horrible: https://comiccaster.xyz/rss/hagar-the-horrible
-  - Hagar The Horrible (Spanish): https://comiccaster.xyz/rss/olafo
   - Haircut Practice by Adam Koford: https://comiccaster.xyz/rss/haircut-practice
   - Half Full by Maria Scrivan: https://comiccaster.xyz/rss/half-full
   - Harley by Dan Thompson: https://comiccaster.xyz/rss/harley
@@ -238,7 +226,6 @@
   - Junk Drawer by Ellis Rosen: https://comiccaster.xyz/rss/junk-drawer
   - Justo y Franco by Thaves: https://comiccaster.xyz/rss/justo-y-franco
   - Katzenjammer Kids: https://comiccaster.xyz/rss/katzenjammer-kids
-  - Katzenjammer Kids (Spanish): https://comiccaster.xyz/rss/maldades-de-dos-pilluelos
   - Kevin and Kell: https://comiccaster.xyz/rss/kevin-and-kell
   - Kid Beowulf by Alexis E. Fajardo: https://comiccaster.xyz/rss/kid-beowulf
   - Kirk Walters: https://comiccaster.xyz/rss/kirk-walters
@@ -246,9 +233,7 @@
   - Kliban by B. Kliban: https://comiccaster.xyz/rss/kliban
   - Kliban's Cats by B. Kliban: https://comiccaster.xyz/rss/klibans-cats
   - La Cucaracha by Lalo Alcaraz: https://comiccaster.xyz/rss/lacucaracha
-  - Lalo Y Lola (Spanish): https://comiccaster.xyz/rss/lalo-y-lola
   - Lard's World Peace Tips by Keith Tutt and Daniel Saunders: https://comiccaster.xyz/rss/lards-world-peace-tips
-  - Las Hermanas Stone by Jan Eliot: https://comiccaster.xyz/rss/stonesoup_espanol
   - Last Kiss by John Lustig: https://comiccaster.xyz/rss/lastkiss
   - Laughing Redhead Comics by Teresa Logan: https://comiccaster.xyz/rss/laughing-redhead-comics
   - Lay Lines by Carol Lay: https://comiccaster.xyz/rss/lay-lines
@@ -275,19 +260,14 @@
   - Lug Nuts by J.C. Duffy: https://comiccaster.xyz/rss/lug-nuts
   - Lunarbaboon by Christopher Grady: https://comiccaster.xyz/rss/lunarbaboon
   - Macanudo: https://comiccaster.xyz/rss/macanudo
-  - Macanudo (Spanish): https://comiccaster.xyz/rss/macanudo-spanish
   - Maintaining by Nate Creekmore: https://comiccaster.xyz/rss/maintaining
   - Mandrake The Magician: https://comiccaster.xyz/rss/mandrake-the-magician
-  - Mandrake The Magician (Spanish): https://comiccaster.xyz/rss/mandrake-the-magician-spanish
   - Mannequin on the Moon by Ian Boothby and Pia Guerra: https://comiccaster.xyz/rss/mannequin-on-the-moon
   - Maria's Day by John Zakour and Scott Roberts: https://comiccaster.xyz/rss/marias-day
   - Mark Trail: https://comiccaster.xyz/rss/mark-trail
-  - Mark Trail (Spanish): https://comiccaster.xyz/rss/mark-trail-spanish
   - Marmaduke by Brad Anderson: https://comiccaster.xyz/rss/marmaduke
   - Marvin: https://comiccaster.xyz/rss/marvin
-  - Marvin (Spanish): https://comiccaster.xyz/rss/marvin-spanish
   - Mary Worth: https://comiccaster.xyz/rss/mary-worth
-  - Mary Worth (Spanish): https://comiccaster.xyz/rss/maria-de-oro
   - Mazetoons: https://comiccaster.xyz/rss/mazetoons
   - Medium Large by Francesco Marciuliano: https://comiccaster.xyz/rss/medium-large
   - Messycow Comics by Chen Weng: https://comiccaster.xyz/rss/messy-cow
@@ -300,15 +280,12 @@
   - Monty by Jim Meddick: https://comiccaster.xyz/rss/monty
   - Monty Diaros by Jim Meddick: https://comiccaster.xyz/rss/monty-diaros
   - Moose And Molly: https://comiccaster.xyz/rss/moose-and-molly
-  - Moose And Molly (Spanish): https://comiccaster.xyz/rss/quintin
   - Mostly Gravy: https://comiccaster.xyz/rss/mostly-gravy
   - Mother Goose and Grimm by Mike Peters: https://comiccaster.xyz/rss/mother-goose-and-grimm
   - Motley Classics by Larry Wright: https://comiccaster.xyz/rss/motley-classics
-  - Mr. Abernathy (Spanish): https://comiccaster.xyz/rss/don-abundio
   - Mr. Lowe by Mark Pett: https://comiccaster.xyz/rss/mr-lowe
   - Mutt & Jeff by Bud Fisher: https://comiccaster.xyz/rss/muttandjeff
   - Mutts: https://comiccaster.xyz/rss/mutts
-  - Mutts (Spanish): https://comiccaster.xyz/rss/motas
   - My Dad is Dracula by Jason Poland: https://comiccaster.xyz/rss/my-dad-is-dracula
   - MythTickle by Justin Thompson: https://comiccaster.xyz/rss/mythtickle
   - Nancy by Olivia Jaimes: https://comiccaster.xyz/rss/nancy
@@ -344,7 +321,6 @@
   - Overboard by Chip Dunham: https://comiccaster.xyz/rss/overboard
   - Ozy and Millie by Dana Simpson: https://comiccaster.xyz/rss/ozy-and-millie
   - Palurdeando: https://comiccaster.xyz/rss/palurdeando
-  - Palurdeando (Spanish): https://comiccaster.xyz/rss/palurdeando-spanish
   - Pardon My Planet: https://comiccaster.xyz/rss/pardon-my-planet
   - Peanuts Begins by Charles Schulz: https://comiccaster.xyz/rss/peanuts-begins
   - Peanuts by Charles Schulz: https://comiccaster.xyz/rss/peanuts
@@ -363,13 +339,11 @@
   - Poorcraft by C. Spike Trotman: https://comiccaster.xyz/rss/poorcraft
   - Poorly Drawn Lines by Reza Farazmand: https://comiccaster.xyz/rss/poorly-drawn-lines
   - Popeye: https://comiccaster.xyz/rss/popeye
-  - Popeye (Spanish): https://comiccaster.xyz/rss/popeye-spanish
   - Popeye’s Cartoon Club: https://comiccaster.xyz/rss/popeyes-cartoon-club
   - Pot-Shots by Ashleigh Brilliant: https://comiccaster.xyz/rss/pot-shots
   - PreTeena by Allison Barrows: https://comiccaster.xyz/rss/preteena
   - Prickly City by Scott Stantis: https://comiccaster.xyz/rss/pricklycity
   - Prince Valiant: https://comiccaster.xyz/rss/prince-valiant
-  - Principe Valiente (Spanish): https://comiccaster.xyz/rss/principe-valiente
   - Pros & Cons: https://comiccaster.xyz/rss/pros-cons
   - Questionable Quotebook by Sam Hepburn: https://comiccaster.xyz/rss/questionable-quotebook
   - Rabbits Against Magic by Jonathan Lemon: https://comiccaster.xyz/rss/rabbitsagainstmagic
@@ -381,12 +355,10 @@
   - Red and Rover by Brian Basset: https://comiccaster.xyz/rss/redandrover
   - Red Meat by Max Cannon: https://comiccaster.xyz/rss/redmeat
   - Rex Morgan M D: https://comiccaster.xyz/rss/rex-morgan-m-d
-  - Rex Morgan M.D. (Spanish): https://comiccaster.xyz/rss/rex-morgan-md-spanish
   - Rhymes with Orange: https://comiccaster.xyz/rss/rhymes-with-orange
   - Richard's Poor Almanac by Richard Thompson: https://comiccaster.xyz/rss/richards-poor-almanac
   - Rip Haywire by Dan Thompson: https://comiccaster.xyz/rss/riphaywire
   - Ripley's Believe It or Not by John Graziano: https://comiccaster.xyz/rss/ripleysbelieveitornot
-  - Ripley’s ¡Aunque Usted no lo Crea! by John Graziano: https://comiccaster.xyz/rss/ripleys-en-espanol
   - Robbie and Bobby by Jason Poland: https://comiccaster.xyz/rss/robbie-and-bobby
   - Rose Is Rose by Don Wimmer: https://comiccaster.xyz/rss/roseisrose
   - Rosebuds: https://comiccaster.xyz/rss/rosebuds
@@ -395,7 +367,6 @@
   - Sales: https://comiccaster.xyz/rss/sales
   - Sally Forth: https://comiccaster.xyz/rss/sally-forth
   - Sam And Silo: https://comiccaster.xyz/rss/sam-and-silo
-  - Sam And Silo (Spanish): https://comiccaster.xyz/rss/soso-y-siso
   - Sarah's Scribbles by Sarah Andersen: https://comiccaster.xyz/rss/sarahs-scribbles
   - Saturday Morning Breakfast Cereal by Zach Weinersmith: https://comiccaster.xyz/rss/saturday-morning-breakfast-cereal
   - Savage Chickens by Doug Savage: https://comiccaster.xyz/rss/savage-chickens
@@ -410,7 +381,6 @@
   - Skin Horse by Shaenon K. Garrity and Jeffrey C. Wells: https://comiccaster.xyz/rss/skinhorse
   - Skippy by Percy Crosby: https://comiccaster.xyz/rss/skippy
   - Slylock Fox: https://comiccaster.xyz/rss/slylock-fox-and-comics-for-kids
-  - Slylock Fox (Spanish): https://comiccaster.xyz/rss/solo-para-ninos
   - Small Potatoes by Paul Madonna: https://comiccaster.xyz/rss/small-potatoes
   - Snow Sez by T. Shepherd: https://comiccaster.xyz/rss/snow-sez
   - Speed Bump by Dave Coverly: https://comiccaster.xyz/rss/speedbump
@@ -453,7 +423,6 @@
   - The Duplex by Glenn McCoy: https://comiccaster.xyz/rss/duplex
   - The Elderberries by Phil Frank: https://comiccaster.xyz/rss/theelderberries
   - The Family Circus: https://comiccaster.xyz/rss/family-circus
-  - The Family Circus (Spanish): https://comiccaster.xyz/rss/circulo-familiar
   - The Flying McCoys by Glenn McCoy: https://comiccaster.xyz/rss/theflyingmccoys
   - The Fusco Brothers by J.C. Duffy: https://comiccaster.xyz/rss/thefuscobrothers
   - The Grizzwells by Bill Schorr: https://comiccaster.xyz/rss/thegrizzwells
@@ -469,21 +438,17 @@
   - The Other Coast by Adrian Raeside: https://comiccaster.xyz/rss/theothercoast
   - The Pajama Diaries: https://comiccaster.xyz/rss/pajama-diaries
   - The Phantom: https://comiccaster.xyz/rss/phantom
-  - The Phantom (Spanish): https://comiccaster.xyz/rss/el-fantasma
   - The Planet Syndicate: https://comiccaster.xyz/rss/the-planet-syndicate
   - The Saga of Brann Bjornson: https://comiccaster.xyz/rss/the-saga-of-brann-bjornson
   - The Upside Down World of Gustave Verbeek by Gustave Verbeek: https://comiccaster.xyz/rss/upside-down-world-of-gustave-verbeek
   - The Wandering Melon by Mike Shiell: https://comiccaster.xyz/rss/the-wandering-melon
   - The Worried Well by Dana Maier: https://comiccaster.xyz/rss/the-worried-well
-  - They’ll Do It Every Time (Spanish): https://comiccaster.xyz/rss/nunca-falta-alguien-asi
   - Thin Lines by Randy Glasbergen: https://comiccaster.xyz/rss/thinlines
   - Tiger: https://comiccaster.xyz/rss/tiger
-  - Tiger (Spanish): https://comiccaster.xyz/rss/tigrillo
   - Tina’s Groove: https://comiccaster.xyz/rss/tina-s-groove
   - Tiny Sepuku by Ken Cursoe: https://comiccaster.xyz/rss/tinysepuku
   - Today's Szep by Paul Szep: https://comiccaster.xyz/rss/todays-szep
   - Todd The Dinosaur: https://comiccaster.xyz/rss/todd-the-dinosaur
-  - Tom the Dancing Bug by Ruben Bolling: https://comiccaster.xyz/rss/tomthedancingbug
   - Too Much Coffee Man by Shannon Wheeler: https://comiccaster.xyz/rss/toomuchcoffeeman
   - Trucutú by Jonathan Lemon: https://comiccaster.xyz/rss/trucutu
   - Tutelandia by Tute: https://comiccaster.xyz/rss/tutelandia
@@ -503,7 +468,6 @@
   - Widdershins by Kate Ashwin: https://comiccaster.xyz/rss/widdershins
   - Wide Open! by Rich Powell: https://comiccaster.xyz/rss/wide-open
   - Willy Black: https://comiccaster.xyz/rss/willy-black
-  - Willy Black (Spanish): https://comiccaster.xyz/rss/willy-black-spanish
   - Win, Lose, Drew by Drew Litton: https://comiccaster.xyz/rss/drewlitton
   - Wizard of Id by Parker and Hart: https://comiccaster.xyz/rss/wizardofid
   - Wizard of Id Classics by Parker and Hart: https://comiccaster.xyz/rss/wizard-of-id-classics
@@ -525,31 +489,64 @@
   - Zits: https://comiccaster.xyz/rss/zits
 - keyname: comics_other_languages
   field_type: select
-  name: Comics in other languages
+  name: 'Comics in other languages: 50'
   multiple: true
   help_text: Use <kbd>⌘</kbd>+<kbd>click</kbd> (Mac) or <kbd>ctrl</kbd>+<kbd>click</kbd> (Windows) to select multiple items. Use <kbd>Shift</kbd>+<kbd>click</kbd> to select a whole range at once.
   optional: true
   options:
+  - A Toda Velocidad (Spanish): a-toda-velocidad
   - Baldo en Español by Hector D. Cantú and Carlos Castellanos: baldoespanol
+  - Barney Google And Snuffy Smith (Spanish): tapon
+  - Beetle Bailey (Spanish): beto-el-recluta
+  - Benitin y Eneas by Pierre S. De Beaumont: muttandjeffespanol
+  - Blondie (Spanish): pepita
+  - Bringing Up Father (Spanish): educando-a-papa
   - Calvin and Hobbes en Español by Bill Watterson: calvinandhobbesespanol
+  - Crock (Spanish): crock-spanish
+  - Dennis The Menace (Spanish): daniel-el-travieso
   - FoxTrot en Español by Bill Amend: foxtrotespanol
   - Fred Basset en Español by Alex Graham: fredbassetespanol
   - Garfield en Español by Jim Davis: garfieldespanol
   - Ginger Meggs en Español by Jason Chatfield: gingermeggs-espanol
+  - Goomer (Spanish): goomer-spanish
+  - Hagar The Horrible (Spanish): olafo
   - Heathcliff en Español by George Gately: heathcliffespanol
+  - Katzenjammer Kids (Spanish): maldades-de-dos-pilluelos
   - La Cucaracha en Español by Lalo Alcaraz: la-cucaracha-en-espanol
+  - Lalo Y Lola (Spanish): lalo-y-lola
+  - Las Hermanas Stone by Jan Eliot: stonesoup_espanol
   - Lio en Español by Mark Tatulli: lioespanol
   - Lola en Español by Todd Clark: lola-en-espanol
   - Luann en Español by Greg Evans: luannspanish
+  - Macanudo (Spanish): macanudo-spanish
+  - Mandrake The Magician (Spanish): mandrake-the-magician-spanish
+  - Mark Trail (Spanish): mark-trail-spanish
+  - Marvin (Spanish): marvin-spanish
+  - Mary Worth (Spanish): maria-de-oro
+  - Moose And Molly (Spanish): quintin
+  - Mr. Abernathy (Spanish): don-abundio
+  - Mutts (Spanish): motas
   - Overboard en Español by Chip Dunham: overboardespanol
+  - Palurdeando (Spanish): palurdeando-spanish
   - Peanuts en Español by Charles Schulz: peanuts-espanol
+  - Popeye (Spanish): popeye-spanish
+  - Principe Valiente (Spanish): principe-valiente
+  - Rex Morgan M.D. (Spanish): rex-morgan-md-spanish
+  - Ripley’s ¡Aunque Usted no lo Crea! by John Graziano: ripleys-en-espanol
+  - Sam And Silo (Spanish): soso-y-siso
+  - Slylock Fox (Spanish): solo-para-ninos
   - Tarzán en Español by Edgar Rice Burroughs: tarzan-en-espanol
+  - The Family Circus (Spanish): circulo-familiar
+  - The Phantom (Spanish): el-fantasma
+  - They’ll Do It Every Time (Spanish): nunca-falta-alguien-asi
+  - Tiger (Spanish): tigrillo
+  - Willy Black (Spanish): willy-black-spanish
   - Wizard of Id en Español by Parker and Hart: wizardofidespanol
   - WuMo en Español by Wulff & Morgenthaler: wumoespanol
   - Ziggy en Español by Tom Wilson & Tom II: ziggyespanol
 - keyname: comics_political
   field_type: select
-  name: Political Comics
+  name: 'Political Comics: 58'
   multiple: true
   help_text: Use <kbd>⌘</kbd>+<kbd>click</kbd> (Mac) or <kbd>ctrl</kbd>+<kbd>click</kbd> (Windows) to select multiple items. Use <kbd>Shift</kbd>+<kbd>click</kbd> to select a whole range at once.
   optional: true
