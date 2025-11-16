@@ -172,7 +172,7 @@ def create_updated_settings():
         'field_type': 'author_bio',
         'description': f"Access a collection of {total_all} comic RSS feeds and enjoy fresh content every day.<br /><br />\n<strong>Features:</strong><br />\n"
                        f"● Displays the most recent comic or a random comic<br />\n"
-                       f"● Supports multiple RSS sources\n"
+                       f"● Supports multiple RSS sources<br />\n"
                         f"● Add your own RSS feeds"
     ,
     'github_url': 'https://github.com/ExcuseMi/trmnl-more-comics-plugin',
