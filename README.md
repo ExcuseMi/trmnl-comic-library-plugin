@@ -13,47 +13,9 @@ A TRMNL plugin that aggregates hundreds of comic RSS feeds to provide daily comi
 
 ## How It Works
 
-The plugin fetches comics from validated RSS feeds and displays them on your TRMNL. You can choose from hundreds of pre-configured comics or add your own feeds.## 🚀 TRMNL Plugin(s)
-
-*Last updated: 2025-11-15 13:37:34 UTC*
-
-
-## 🔒 Plugin ID: 180935
-
-**Status**: ⏳ Not yet published on TRMNL or API unavailable
-
-This plugin is configured but either hasn't been published to the TRMNL marketplace yet or the API is temporarily unavailable.
-
-**Plugin URL**: https://usetrmnl.com/recipes/180935
-
----
-
-<!-- PLUGIN_STATS_END -->
-
+The plugin fetches comics from validated RSS feeds and displays them on your TRMNL. You can choose from hundreds of pre-configured comics or add your own feeds.
 
 <!-- PLUGIN_STATS_START -->
-## 🚀 TRMNL Plugin(s)
 
-*Last updated: 2025-11-16 06:36:02 UTC*
-
-
-## <img src="assets/plugin-images/180935_icon.png" alt="More Comics icon" width="32"/> [More Comics](https://usetrmnl.com/recipes/180935)
-
-![More Comics screenshot](assets/plugin-images/180935_screenshot.png)
-
-### Description
-Access a collection of 401 comic RSS feeds and enjoy fresh content every day.<br /><br />
-<strong>Features:</strong><br />
-● Displays the most recent comic or a random comic<br />
-● Supports multiple RSS sources
-
-### 📊 Statistics
-
-| Metric | Value |
-|--------|-------|
-| Installs | 1 |
-| Forks | 3 |
-
----
 
 <!-- PLUGIN_STATS_END -->
