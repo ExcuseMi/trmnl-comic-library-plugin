@@ -187,7 +187,7 @@ def create_updated_settings():
         author = comic.get("author", "")
         slug = comic.get("slug", None)
         if slug:
-            display_name = f"{name} by {author}" if author else name
+            display_name = f"{name} by {author}" if author and author != name else name
             comics_options.append({display_name: f"https://comiccaster.xyz/rss/{slug}"})
 
     # Add validated extra feeds to comics options
@@ -214,7 +214,7 @@ def create_updated_settings():
         name = comic.get("name", "Unknown")
         author = comic.get("author", "")
         slug = comic.get("slug", "unknown")
-        display_name = f"{name} by {author}" if author else name
+        display_name = f"{name} by {author}" if author and author != name else name
         other_lang_options.append({display_name: slug})
 
     other_lang_field = {
@@ -234,7 +234,7 @@ def create_updated_settings():
         name = comic.get("name", "Unknown")
         author = comic.get("author", "")
         slug = comic.get("slug", "unknown")
-        display_name = f"{name} by {author}" if author else name
+        display_name = f"{name} by {author}" if author and author != name else name
         political_options.append({display_name: slug})
 
     political_field = {
