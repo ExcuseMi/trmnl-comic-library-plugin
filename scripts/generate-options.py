@@ -170,8 +170,12 @@ def create_updated_settings():
         'keyname': 'about',
         'name': 'About This Plugin',
         'field_type': 'author_bio',
-        'description': f"Access a collection of {total_all} comic RSS feeds and enjoy fresh content every day.<br /><br />\n<strong>Features:</strong><br />\n● Displays the most recent comic or a random comic<br />\n● Supports multiple RSS sources",
-        'github_url': 'https://github.com/ExcuseMi/trmnl-more-comics-plugin',
+        'description': f"Access a collection of {total_all} comic RSS feeds and enjoy fresh content every day.<br /><br />\n<strong>Features:</strong><br />\n"
+                       f"● Displays the most recent comic or a random comic<br />\n"
+                       f"● Supports multiple RSS sources\n"
+                        f"● Add your own RSS feeds"
+    ,
+    'github_url': 'https://github.com/ExcuseMi/trmnl-more-comics-plugin',
         'learn_more_url': 'https://comiccaster.xyz'
     }
     custom_fields.append(about_field)
@@ -180,9 +184,11 @@ def create_updated_settings():
     comics_options = []
     for comic in sorted(regular_comics, key=lambda x: x.get("name", "Unknown").lower()):
         name = comic.get("name", "Unknown")
+        author = comic.get("author", "")
         slug = comic.get("slug", None)
         if slug:
-            comics_options.append({name: f"https://comiccaster.xyz/rss/{slug}"})
+            display_name = f"{name} by {author}" if author else name
+            comics_options.append({display_name: f"https://comiccaster.xyz/rss/{slug}"})
 
     # Add validated extra feeds to comics options
     for name, url in validated_extra_feeds.items():
@@ -206,8 +212,10 @@ def create_updated_settings():
     other_lang_options = []
     for comic in sorted(other_language_comics, key=lambda x: x.get("name", "Unknown").lower()):
         name = comic.get("name", "Unknown")
+        author = comic.get("author", "")
         slug = comic.get("slug", "unknown")
-        other_lang_options.append({name: slug})
+        display_name = f"{name} by {author}" if author else name
+        other_lang_options.append({display_name: slug})
 
     other_lang_field = {
         'keyname': 'comics_other_languages',
@@ -224,8 +232,10 @@ def create_updated_settings():
     political_options = []
     for comic in sorted(political_data, key=lambda x: x.get("name", "Unknown").lower()):
         name = comic.get("name", "Unknown")
+        author = comic.get("author", "")
         slug = comic.get("slug", "unknown")
-        political_options.append({name: slug})
+        display_name = f"{name} by {author}" if author else name
+        political_options.append({display_name: slug})
 
     political_field = {
         'keyname': 'comics_political',
