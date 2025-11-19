@@ -35,4 +35,3 @@ jobs:
         commit_message: "📝 Update comic options [automated]"
         commit_author: "GitHub Actions <actions@github.com>"
         file_pattern: "updated_settings.yml failed_feeds_report.yml"
-        pull_strategy: "NO_REBASE"
