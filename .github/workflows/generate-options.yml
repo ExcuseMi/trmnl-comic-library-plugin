@@ -1,6 +1,13 @@
 permissions:
   contents: write
 
+on:
+  workflow_dispatch:  # Allows manual triggering
+  schedule:
+    - cron: '0 0 * * *'  # Runs daily at midnight UTC
+  push:
+    branches: [ main ]
+
 jobs:
   generate-options:
     runs-on: ubuntu-latest
@@ -28,4 +35,4 @@ jobs:
         commit_message: "📝 Update comic options [automated]"
         commit_author: "GitHub Actions <actions@github.com>"
         file_pattern: "updated_settings.yml failed_feeds_report.yml"
-        pull_strategy: "NO_REBASE"   # <-- This prevents the non-fast-forward error
+        pull_strategy: "NO_REBASE"
