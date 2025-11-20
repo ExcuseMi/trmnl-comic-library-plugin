@@ -1,7 +1,7 @@
 - keyname: about
   name: About This Plugin
   field_type: author_bio
-  description: 'Access a collection of 574 comic RSS feeds and enjoy fresh content every day.<br /><br />
+  description: 'Access a collection of 576 comic RSS feeds and enjoy fresh content every day.<br /><br />
 
     <strong>Features:</strong><br />
 
@@ -16,7 +16,7 @@
   learn_more_url: https://comiccaster.xyz
 - keyname: comics
   field_type: select
-  name: 'Comics: 466'
+  name: 'Comics: 468'
   multiple: true
   help_text: Use <kbd>⌘</kbd>+<kbd>click</kbd> (Mac) or <kbd>ctrl</kbd>+<kbd>click</kbd> (Windows) to select multiple items. Use <kbd>Shift</kbd>+<kbd>click</kbd> to select a whole range at once.
   optional: true
@@ -423,6 +423,8 @@
   - The Duplex by Glenn McCoy: https://comiccaster.xyz/rss/duplex
   - The Elderberries by Phil Frank: https://comiccaster.xyz/rss/theelderberries
   - The Family Circus: https://comiccaster.xyz/rss/family-circus
+  - The Far Side - Daily Dose by Gary Larson: https://comiccaster.xyz/rss/farside-daily
+  - The Far Side - New Stuff by Gary Larson: https://comiccaster.xyz/rss/farside-new
   - The Flying McCoys by Glenn McCoy: https://comiccaster.xyz/rss/theflyingmccoys
   - The Fusco Brothers by J.C. Duffy: https://comiccaster.xyz/rss/thefuscobrothers
   - The Grizzwells by Bill Schorr: https://comiccaster.xyz/rss/thegrizzwells
