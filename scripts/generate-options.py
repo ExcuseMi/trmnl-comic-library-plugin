@@ -1,7 +1,9 @@
 from pathlib import Path
+import os
 
 import requests
 import yaml
+from dotenv import load_dotenv
 
 from rss_feed_validator import RSSFeedValidator
 
@@ -15,6 +17,24 @@ OTHER_LANGUAGES_KEYSWORDS: list[str] = [
 ]
 
 
+def load_environment():
+    """Load environment variables from plugins.env file"""
+    current_dir = Path.cwd()
+
+    # If we're in the scripts directory, look for plugins.env in the parent directory
+    if current_dir.name == 'scripts':
+        env_path = current_dir.parent / "plugins.env"
+    else:
+        # We're already in the repository root
+        env_path = current_dir / "plugins.env"
+
+    if env_path.exists():
+        load_dotenv(env_path)
+        print(f"Loaded environment from: {env_path}")
+    else:
+        print(f"plugins.env not found at {env_path}, using system environment variables")
+
+
 def is_other_language(name: str, slug: str, author: str):
     if name:
         lower_name = name.lower()
@@ -25,6 +45,16 @@ def is_other_language(name: str, slug: str, author: str):
             if keyword in lower_name or keyword in slug_lower or keyword in author_lower:
                 return True
     return False
+
+
+def get_excluded_feeds():
+    """Get list of feeds to exclude from environment variable"""
+    exclusions_str = os.environ.get('EXCLUSIONS', '')
+    if exclusions_str:
+        excluded_feeds = [url.strip() for url in exclusions_str.split(',') if url.strip()]
+        print(f"Excluding {len(excluded_feeds)} feeds: {excluded_feeds}")
+        return excluded_feeds
+    return []
 
 
 def get_comics_data(url: str):
@@ -77,7 +107,18 @@ def get_failed_feeds_path():
     return output_path.parent / "failed_feeds_report.yml"
 
 
+def should_exclude_feed(feed_url: str, excluded_feeds: list) -> bool:
+    """Check if a feed should be excluded based on the EXCLUSIONS list"""
+    return feed_url in excluded_feeds
+
+
 def create_updated_settings():
+    # Load environment variables first
+    load_environment()
+
+    # Get excluded feeds from environment
+    excluded_feeds = get_excluded_feeds()
+
     # Get the current comics data
     comics_data = get_comics_data(URL)
     political_data = get_comics_data(URL_POLITICAL)
@@ -95,53 +136,74 @@ def create_updated_settings():
     validator = RSSFeedValidator(timeout=15)
     all_invalid_results = []
 
-    # Validate regular comics (excluding those that are political)
+    # Validate regular comics (excluding those that are political and excluded feeds)
     print("\n--- Regular Comics ---")
     regular_feeds = {}
     for comic in comics_data:
         name = comic.get("name", "Unknown")
         slug = comic.get("slug", None)
         author = comic.get("author", "")
+        feed_url = f"https://comiccaster.xyz/rss/{slug}" if slug else None
 
-        # Exclude comics that are political or in other languages
+        # Exclude comics that are political, in other languages, or in the exclusion list
         if slug and not is_other_language(name, slug, author) and slug not in political_slugs:
-            regular_feeds[name] = f"https://comiccaster.xyz/rss/{slug}"
+            if feed_url and not should_exclude_feed(feed_url, excluded_feeds):
+                regular_feeds[name] = feed_url
+            else:
+                print(f"  Excluded: {name} ({feed_url})")
 
     regular_valid, regular_invalid = validator.validate_multiple_feeds(regular_feeds)
     all_invalid_results.extend(regular_invalid)
 
-    # Validate other language comics (excluding those that are political)
+    # Validate other language comics (excluding those that are political and excluded feeds)
     print("\n--- Comics in Other Languages ---")
     other_lang_feeds = {}
     for comic in comics_data:
         name = comic.get("name", "Unknown")
         slug = comic.get("slug", None)
         author = comic.get("author", "")
+        feed_url = f"https://comiccaster.xyz/rss/{slug}" if slug else None
 
-        # Exclude comics that are political
+        # Exclude comics that are political or in the exclusion list
         if slug and is_other_language(name, slug, author) and slug not in political_slugs:
-            other_lang_feeds[name] = f"https://comiccaster.xyz/rss/{slug}"
+            if feed_url and not should_exclude_feed(feed_url, excluded_feeds):
+                other_lang_feeds[name] = feed_url
+            else:
+                print(f"  Excluded: {name} ({feed_url})")
 
     other_lang_valid, other_lang_invalid = validator.validate_multiple_feeds(other_lang_feeds)
     all_invalid_results.extend(other_lang_invalid)
 
-    # Validate political comics
+    # Validate political comics (excluding excluded feeds)
     print("\n--- Political Comics ---")
     political_feeds = {}
     for comic in political_data:
         name = comic.get("name", "Unknown")
         slug = comic.get("slug", None)
+        feed_url = f"https://comiccaster.xyz/rss/{slug}" if slug else None
+
         if slug:
-            political_feeds[name] = f"https://comiccaster.xyz/rss/{slug}"
+            if feed_url and not should_exclude_feed(feed_url, excluded_feeds):
+                political_feeds[name] = feed_url
+            else:
+                print(f"  Excluded: {name} ({feed_url})")
 
     political_valid, political_invalid = validator.validate_multiple_feeds(political_feeds)
     all_invalid_results.extend(political_invalid)
 
-    # Validate extra feeds
+    # Validate extra feeds (excluding excluded feeds)
     validated_extra_feeds = {}
     if extra_feeds:
         print("\n--- Extra Feeds ---")
-        extra_valid, extra_invalid = validator.validate_multiple_feeds(extra_feeds)
+        # Filter out excluded extra feeds
+        filtered_extra_feeds = {}
+        for name, url in extra_feeds.items():
+            if not should_exclude_feed(url, excluded_feeds):
+                filtered_extra_feeds[name] = url
+            else:
+                print(f"  Excluded: {name} ({url})")
+
+        extra_valid, extra_invalid = validator.validate_multiple_feeds(filtered_extra_feeds)
         all_invalid_results.extend(extra_invalid)
         validated_extra_feeds = {result.name: result.url for result in extra_valid}
     else:
@@ -172,15 +234,16 @@ def create_updated_settings():
     for comic in comics_data:
         name = comic.get("name", "Unknown")
         slug = comic.get("slug", None)
+        feed_url = f"https://comiccaster.xyz/rss/{slug}" if slug else None
 
-        # Only include if not political
-        if slug not in political_slugs:
+        # Only include if not political and not excluded
+        if slug not in political_slugs and feed_url and not should_exclude_feed(feed_url, excluded_feeds):
             if name in valid_regular_names:
                 regular_comics.append(comic)
             elif name in valid_other_lang_names:
                 other_language_comics.append(comic)
 
-    # Filter political comics to only valid ones
+    # Filter political comics to only valid ones and not excluded
     valid_political_names = {result.name for result in political_valid}
     political_data = [comic for comic in political_data if comic.get("name") in valid_political_names]
 
