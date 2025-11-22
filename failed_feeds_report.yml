@@ -1,6 +1,10 @@
-report_date: '2025-11-21 00:52:31'
-total_failed: 25
+report_date: '2025-11-22 00:49:51'
+total_failed: 26
 failed_feeds:
+- name: The Far Side - New Stuff
+  url: https://comiccaster.xyz/rss/farside-new
+  error: No items found in RSS feed
+  status: needs_investigation
 - name: Bob Gorrell
   url: https://comiccaster.xyz/rss/bobgorrell
   error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/bobgorrell'
