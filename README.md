@@ -18,7 +18,7 @@ The plugin fetches comics from validated RSS feeds and displays them on your TRM
 <!-- PLUGIN_STATS_START -->
 ## 🚀 TRMNL Plugin(s)
 
-*Last updated: 2026-01-01 06:42:42 UTC*
+*Last updated: 2026-01-02 06:43:00 UTC*
 
 
 ## <img src="assets/plugin-images/178211_icon.png" alt="Movie Guesser icon" width="32"/> [Movie Guesser](https://usetrmnl.com/recipes/178211)
@@ -34,7 +34,7 @@ Movie Guesser - Test your film knowledge!<br /><br /> This plugin displays rando
 | Metric | Value |
 |--------|-------|
 | Installs | 1 |
-| Forks | 72 |
+| Forks | 74 |
 
 ---
 
