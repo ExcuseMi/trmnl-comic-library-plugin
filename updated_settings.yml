@@ -1,7 +1,7 @@
 - keyname: about
   name: About This Plugin
   field_type: author_bio
-  description: 'Access a collection of 575 comic RSS feeds and enjoy fresh content every day.<br /><br />
+  description: 'Access a collection of 576 comic RSS feeds and enjoy fresh content every day.<br /><br />
 
     <strong>Features:</strong><br />
 
@@ -14,9 +14,10 @@
     ● Frequently updated to keep all RSS sources valid and up to date'
   github_url: https://github.com/ExcuseMi/trmnl-more-comics-plugin
   learn_more_url: https://comiccaster.xyz
+  category: comics
 - keyname: comics
   field_type: select
-  name: 'Comics: 467'
+  name: 'Comics: 468'
   multiple: true
   help_text: Use <kbd>⌘</kbd>+<kbd>click</kbd> (Mac) or <kbd>ctrl</kbd>+<kbd>click</kbd> (Windows) to select multiple items. Use <kbd>Shift</kbd>+<kbd>click</kbd> to select a whole range at once.
   optional: true

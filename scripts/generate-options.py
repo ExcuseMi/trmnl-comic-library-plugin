@@ -269,7 +269,8 @@ def create_updated_settings():
                        f"● Frequently updated to keep all RSS sources valid and up to date"
         ,
         'github_url': 'https://github.com/ExcuseMi/trmnl-more-comics-plugin',
-        'learn_more_url': 'https://comiccaster.xyz'
+        'learn_more_url': 'https://comiccaster.xyz',
+        'category': 'comics'
     }
     custom_fields.append(about_field)
 
