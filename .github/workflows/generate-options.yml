@@ -24,7 +24,7 @@ jobs:
         python-version: '3.x'
 
     - name: Install dependencies
-      run: pip install requests pyyaml
+      run: pip install requests pyyaml python-dotenv
 
     - name: Generate updated comic options
       run: python scripts/generate-options.py
