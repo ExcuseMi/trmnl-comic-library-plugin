@@ -18,23 +18,27 @@ The plugin fetches comics from validated RSS feeds and displays them on your TRM
 <!-- PLUGIN_STATS_START -->
 ## 🚀 TRMNL Plugin(s)
 
-*Last updated: 2026-01-28 06:47:36 UTC*
+*Last updated: 2026-01-28 20:14:09 UTC*
 
 
-## <img src="assets/plugin-images/178211_icon.png" alt="Movie Guesser icon" width="32"/> [Movie Guesser](https://usetrmnl.com/recipes/178211)
+## <img src="assets/plugin-images/180935_icon.png" alt="Comic Library icon" width="32"/> [Comic Library](https://usetrmnl.com/recipes/180935)
 
-![Movie Guesser screenshot](assets/plugin-images/178211_screenshot.png)
+![Comic Library screenshot](assets/plugin-images/180935_screenshot.png)
 
 ### Description
-Movie Guesser - Test your film knowledge!<br /><br /> This plugin displays random movie images from 2000 top-rated films. Challenge yourself to identify movies from a single frame.<br /><br /> <b>Features:</b><br /> ● Random backdrops from critically acclaimed films<br /> ● Customizable filters for genre, year, and popularity<br /> ● QR code reveals movie via TMDB link<br />
-<b>How it works:</b><br /> Each refresh shows a new random still from your filtered movie selection. Scan the QR code to reveal the answer and see full movie details.<br /><br /> Powered by <a href=https://www.themoviedb.org/>TheMovieDB</a>
+Access a collection of 576 comic RSS feeds and enjoy fresh content every day.<br /><br />
+<strong>Features:</strong><br />
+● Displays the most recent comic or a random comic<br />
+● Supports multiple RSS sources<br />
+● Add your own RSS feeds<br />
+● Frequently updated to keep all RSS sources valid and up to date
 
 ### 📊 Statistics
 
 | Metric | Value |
 |--------|-------|
 | Installs | 1 |
-| Forks | 91 |
+| Forks | 34 |
 
 ---
 
