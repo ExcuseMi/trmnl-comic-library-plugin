@@ -268,7 +268,7 @@ def create_updated_settings():
                        f"● Add your own RSS feeds<br />\n"
                        f"● Frequently updated to keep all RSS sources valid and up to date"
         ,
-        'github_url': 'https://github.com/ExcuseMi/trmnl-more-comics-plugin',
+        'github_url': 'https://github.com/ExcuseMi/trmnl-comic-library-plugin',
         'learn_more_url': 'https://comiccaster.xyz',
         'category': 'comics'
     }
