@@ -1,7 +1,7 @@
 # trmnl-comic-library-plugin
 
 A TRMNL plugin that aggregates hundreds of comic RSS feeds to provide daily comics on your display.
-
+Previously named More Comics.
 ## Features
 
 - Access hundreds of comics from [ComicCaster](https://comiccaster.xyz)
