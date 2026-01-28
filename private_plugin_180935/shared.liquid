@@ -1,4 +1,4 @@
-{% assign orientation = trmnl.plugin_settings.custom_fields_values.orientation | default: "portrait" %}
+{% assign image_filter = trmnl.plugin_settings.custom_fields_values.image_filter | default: "none" %}
 
 {%- comment -%} Check if item is an array by trying to access first element {%- endcomment -%}
 {%- assign test_item = IDX_1.rss.channel.item[0] -%}
@@ -23,6 +23,9 @@
     display: block;
     object-fit: contain;
     object-position: center;
+    {% if image_filter and image_filter != "none" %}
+    filter: {{image_filter}};
+    {% endif %}
   }
 </style>
 
