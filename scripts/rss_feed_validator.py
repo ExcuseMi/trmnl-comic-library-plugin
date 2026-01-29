@@ -170,47 +170,42 @@ class RSSFeedValidator:
 
     def _is_generic_promo(self, item, title: str) -> bool:
         """Check if this is generic promotional content rather than a comic strip"""
-        # Check for generic promotional keywords in title
-        generic_title_keywords = [
-            "read", "explore the archive", "dive into", "check out",
-            "by creator", "on gocomics", "comic strip by creator"
-        ]
-        
-        title_lower = title.lower() if title else ""
-        if any(keyword in title_lower for keyword in generic_title_keywords):
-            return True
         
         # Check if the link just goes to the main comic page (not a specific strip)
         link = item.find('link')
+        link_has_date = False
         if link is not None and link.text:
-            link_text = link.text.lower()
-            # If link doesn't have a date pattern or specific strip identifier
-            if not any(char.isdigit() for char in link_text.split('/')[-1]):
-                return True
+            link_text = link.text
+            # Check if link has a date pattern (YYYY/MM/DD or YYYY-MM-DD)
+            if any(char.isdigit() for char in link_text.split('/')[-1]):
+                link_has_date = True
         
-        # Check description for generic promotional text
-        description = item.find('description')
-        if description is not None and description.text:
-            desc_lower = description.text.lower()
-            promo_keywords = [
-                "explore the archive", "dive into", "read extra content",
-                "by creator", "generic_fb", "social_fb"
-            ]
-            if any(keyword in desc_lower for keyword in promo_keywords):
+        # If link doesn't have a date, it's likely promotional
+        if not link_has_date:
+            # Double check: does the description contain generic FB/social images?
+            description = item.find('description')
+            if description is not None and description.text:
+                parser = ImageExtractor()
+                parser.feed(description.text)
+                if parser.image_url:
+                    url_lower = parser.image_url.lower()
+                    # These are definitely generic social media promo images
+                    if 'generic_fb' in url_lower or 'social_fb_generic' in url_lower:
+                        return True
+                    # If it's a GoComics asset without a date in the link, likely promo
+                    if 'gocomicscmsassets' in url_lower and not link_has_date:
+                        return True
+            
+            # If no date in link and we have suspicious patterns, it's promo
+            title_lower = title.lower() if title else ""
+            desc_lower = description.text.lower() if description is not None and description.text else ""
+            
+            # Very specific promo indicators
+            if 'explore the archive' in desc_lower and 'read extra content' in desc_lower:
                 return True
-        
-        # Check if image URL contains generic social media or promotional identifiers
-        description = item.find('description')
-        if description is not None and description.text:
-            parser = ImageExtractor()
-            parser.feed(description.text)
-            if parser.image_url:
-                url_lower = parser.image_url.lower()
-                if any(keyword in url_lower for keyword in ['generic', 'social_fb', 'social_', 'og_image']):
-                    return True
         
         return False
-
+    
     def _is_valid_image_url(self, url: str) -> bool:
         """Check if URL looks like a valid image URL"""
         if not url:
