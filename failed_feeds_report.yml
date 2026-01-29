@@ -1,247 +1,303 @@
-report_date: '2026-01-29 17:06:29'
-total_failed: 61
+report_date: '2026-01-29 17:08:49'
+total_failed: 60
 failed_feeds:
 - name: Art by Moga
   url: https://comiccaster.xyz/rss/artbymoga
   error: Feed contains only generic promotional content
+  feed_type: rss
   status: needs_investigation
 - name: The Awkward Yeti
   url: https://comiccaster.xyz/rss/the-awkward-yeti
   error: Feed contains only generic promotional content
+  feed_type: rss
   status: needs_investigation
 - name: Berger & Wyse
   url: https://comiccaster.xyz/rss/berger-and-wyse
   error: Feed contains only generic promotional content
+  feed_type: rss
   status: needs_investigation
 - name: Bird and Moon
   url: https://comiccaster.xyz/rss/bird-and-moon
   error: Feed contains only generic promotional content
+  feed_type: rss
   status: needs_investigation
 - name: Catana Comics
   url: https://comiccaster.xyz/rss/little-moments-of-love
   error: Feed contains only generic promotional content
+  feed_type: rss
   status: needs_investigation
 - name: Cat's Cafe
   url: https://comiccaster.xyz/rss/cats-cafe
   error: Feed contains only generic promotional content
+  feed_type: rss
   status: needs_investigation
 - name: Claw
   url: https://comiccaster.xyz/rss/claw
   error: Feed contains only generic promotional content
+  feed_type: rss
   status: needs_investigation
 - name: The Daily Drawing
   url: https://comiccaster.xyz/rss/the-daily-drawing
   error: Feed contains only generic promotional content
+  feed_type: rss
   status: needs_investigation
 - name: Doodle for Food
   url: https://comiccaster.xyz/rss/doodle-for-food
   error: Feed contains only generic promotional content
+  feed_type: rss
   status: needs_investigation
 - name: Emmy Lou
   url: https://comiccaster.xyz/rss/emmy-lou
   error: Feed contains only generic promotional content
+  feed_type: rss
   status: needs_investigation
 - name: Everyday People Cartoons
   url: https://comiccaster.xyz/rss/everyday-people-cartoons
   error: Feed contains only generic promotional content
+  feed_type: rss
   status: needs_investigation
 - name: False Knees
   url: https://comiccaster.xyz/rss/false-knees
   error: Feed contains only generic promotional content
+  feed_type: rss
   status: needs_investigation
 - name: Four Eyes
   url: https://comiccaster.xyz/rss/four-eyes
   error: Feed contains only generic promotional content
+  feed_type: rss
   status: needs_investigation
 - name: Get a Life
   url: https://comiccaster.xyz/rss/getalife
   error: Feed contains only generic promotional content
+  feed_type: rss
   status: needs_investigation
 - name: Hot Comics for Cool People
   url: https://comiccaster.xyz/rss/hot-comics-for-cool-people
   error: Feed contains only generic promotional content
+  feed_type: rss
   status: needs_investigation
 - name: Invisible Bread
   url: https://comiccaster.xyz/rss/invisible-bread
   error: Feed contains only generic promotional content
+  feed_type: rss
   status: needs_investigation
 - name: Little Nemo
   url: https://comiccaster.xyz/rss/little-nemo
   error: Feed contains only generic promotional content
+  feed_type: rss
   status: needs_investigation
 - name: Liz Climo Cartoons
   url: https://comiccaster.xyz/rss/liz-climo-cartoons
   error: Feed contains only generic promotional content
+  feed_type: rss
   status: needs_investigation
 - name: Mannequin on the Moon
   url: https://comiccaster.xyz/rss/mannequin-on-the-moon
   error: Feed contains only generic promotional content
+  feed_type: rss
   status: needs_investigation
 - name: The Martian Confederacy
   url: https://comiccaster.xyz/rss/the-martian-confederacy
   error: Feed contains only generic promotional content
+  feed_type: rss
   status: needs_investigation
 - name: Messycow Comics
   url: https://comiccaster.xyz/rss/messy-cow
   error: Feed contains only generic promotional content
+  feed_type: rss
   status: needs_investigation
 - name: Mexikid Stories
   url: https://comiccaster.xyz/rss/mexikid-stories
   error: Feed contains only generic promotional content
+  feed_type: rss
   status: needs_investigation
 - name: Now Recharging
   url: https://comiccaster.xyz/rss/now-recharging
   error: Feed contains only generic promotional content
+  feed_type: rss
   status: needs_investigation
 - name: Oh, Brother!
   url: https://comiccaster.xyz/rss/oh-brother
   error: Feed contains only generic promotional content
+  feed_type: rss
   status: needs_investigation
 - name: Origins of the Sunday Comics
   url: https://comiccaster.xyz/rss/origins-of-the-sunday-comics
   error: Feed contains only generic promotional content
+  feed_type: rss
   status: needs_investigation
 - name: Outland
   url: https://comiccaster.xyz/rss/outland
   error: Feed contains only generic promotional content
+  feed_type: rss
   status: needs_investigation
 - name: Pibgorn
   url: https://comiccaster.xyz/rss/pibgorn
   error: Feed contains only generic promotional content
+  feed_type: rss
   status: needs_investigation
 - name: Pibgorn Sketches
   url: https://comiccaster.xyz/rss/pibgornsketches
   error: Feed contains only generic promotional content
+  feed_type: rss
   status: needs_investigation
 - name: Poorcraft
   url: https://comiccaster.xyz/rss/poorcraft
   error: Feed contains only generic promotional content
+  feed_type: rss
   status: needs_investigation
 - name: Randolph Itch, 2 a.m.
   url: https://comiccaster.xyz/rss/randolphitch
   error: Feed contains only generic promotional content
+  feed_type: rss
   status: needs_investigation
 - name: Red Meat
   url: https://comiccaster.xyz/rss/redmeat
   error: Feed contains only generic promotional content
+  feed_type: rss
   status: needs_investigation
 - name: Scenes from a Multiverse
   url: https://comiccaster.xyz/rss/scenes-from-a-multiverse
   error: Feed contains only generic promotional content
+  feed_type: rss
   status: needs_investigation
 - name: Shen Comix
   url: https://comiccaster.xyz/rss/shen-comix
   error: Feed contains only generic promotional content
+  feed_type: rss
   status: needs_investigation
 - name: Sketchshark Comics
   url: https://comiccaster.xyz/rss/sketchshark-comics
   error: Feed contains only generic promotional content
+  feed_type: rss
   status: needs_investigation
 - name: Small Potatoes
   url: https://comiccaster.xyz/rss/small-potatoes
   error: Feed contains only generic promotional content
+  feed_type: rss
   status: needs_investigation
 - name: Sunny Street
   url: https://comiccaster.xyz/rss/sunny-street
   error: Feed contains only generic promotional content
+  feed_type: rss
   status: needs_investigation
 - name: Today's Szep
   url: https://comiccaster.xyz/rss/todays-szep
   error: Feed contains only generic promotional content
+  feed_type: rss
   status: needs_investigation
 - name: The Upside Down World of Gustave Verbeek
   url: https://comiccaster.xyz/rss/upside-down-world-of-gustave-verbeek
   error: Feed contains only generic promotional content
+  feed_type: rss
   status: needs_investigation
 - name: Wawawiwa
   url: https://comiccaster.xyz/rss/wawawiwa
   error: Feed contains only generic promotional content
+  feed_type: rss
   status: needs_investigation
 - name: Widdershins
   url: https://comiccaster.xyz/rss/widdershins
   error: Feed contains only generic promotional content
+  feed_type: rss
   status: needs_investigation
 - name: Yeah It’s Chill
   url: https://comiccaster.xyz/rss/yeah-its-chill
   error: Feed contains only generic promotional content
+  feed_type: rss
   status: needs_investigation
 - name: Yes, I'm Hot in This
   url: https://comiccaster.xyz/rss/yesimhotinthis
   error: Feed contains only generic promotional content
+  feed_type: rss
   status: needs_investigation
 - name: The Far Side - New Stuff
   url: https://comiccaster.xyz/rss/farside-new
   error: No items found in RSS feed
+  feed_type: rss
   status: needs_investigation
 - name: Bob Gorrell
   url: https://comiccaster.xyz/rss/bobgorrell
   error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/bobgorrell'
+  feed_type: null
   status: needs_investigation
 - name: Matt Bors
   url: https://comiccaster.xyz/rss/matt-bors
   error: No valid image found in enclosure or description
+  feed_type: rss
   status: needs_investigation
 - name: Pat Oliphant
   url: https://comiccaster.xyz/rss/patoliphant
   error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/patoliphant'
+  feed_type: null
   status: needs_investigation
 - name: Rebecca Hendin
   url: https://comiccaster.xyz/rss/rebecca-hendin
   error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/rebecca-hendin'
+  feed_type: null
   status: needs_investigation
 - name: Steve Benson
   url: https://comiccaster.xyz/rss/stevebenson
   error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/stevebenson'
+  feed_type: null
   status: needs_investigation
 - name: (th)ink
   url: https://comiccaster.xyz/rss/think
   error: Feed contains only generic promotional content
+  feed_type: rss
   status: needs_investigation
 - name: ViewsAfrica
   url: https://comiccaster.xyz/rss/viewsafrica
   error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/viewsafrica'
+  feed_type: null
   status: needs_investigation
 - name: David M. Hitch
   url: https://comiccaster.xyz/rss/david-m-hitch
   error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/david-m-hitch'
+  feed_type: null
   status: needs_investigation
 - name: Ed Gamble
   url: https://comiccaster.xyz/rss/ed-gamble
   error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/ed-gamble'
+  feed_type: null
   status: needs_investigation
 - name: Jimmy Margulies
   url: https://comiccaster.xyz/rss/jimmy-margulies
   error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/jimmy-margulies'
+  feed_type: null
   status: needs_investigation
 - name: Lee Judge
   url: https://comiccaster.xyz/rss/lee-judge
   error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/lee-judge'
+  feed_type: null
   status: needs_investigation
 - name: Mallard Fillmore
   url: https://comiccaster.xyz/rss/mallard-fillmore
   error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/mallard-fillmore'
+  feed_type: null
   status: needs_investigation
 - name: Mike Shelton
   url: https://comiccaster.xyz/rss/mike-shelton
   error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/mike-shelton'
+  feed_type: null
   status: needs_investigation
 - name: Mike Smith
   url: https://comiccaster.xyz/rss/mike-smith
   error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/mike-smith'
+  feed_type: null
   status: needs_investigation
 - name: DAA Industry Opt Out
   url: https://comiccaster.xyz/rss/privacy-policy#daa
   error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/privacy-policy#daa'
+  feed_type: null
   status: needs_investigation
 - name: CA Notice at Collection
   url: https://comiccaster.xyz/rss/privacy-policy#california
   error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/privacy-policy#california'
+  feed_type: null
   status: needs_investigation
 - name: Your CA Privacy Rights/Shine the Light
   url: https://comiccaster.xyz/rss/privacy-policy#shine
   error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/privacy-policy#shine'
-  status: needs_investigation
-- name: XKCD
-  url: https://xkcd.com/atom.xml
-  error: No channel element found in RSS
+  feed_type: null
   status: needs_investigation

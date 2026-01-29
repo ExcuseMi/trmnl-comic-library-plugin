@@ -1,7 +1,7 @@
 - keyname: about
   name: About This Plugin
   field_type: author_bio
-  description: 'Access a collection of 533 comic RSS feeds and enjoy fresh content every day.<br /><br />
+  description: 'Access a collection of 534 comic RSS feeds and enjoy fresh content every day.<br /><br />
 
     <strong>Features:</strong><br />
 
@@ -17,7 +17,7 @@
   category: comics
 - keyname: comics
   field_type: select
-  name: 'Comics: 426'
+  name: 'Comics: 427'
   multiple: true
   help_text: Use <kbd>⌘</kbd>+<kbd>click</kbd> (Mac) or <kbd>ctrl</kbd>+<kbd>click</kbd> (Windows) to select multiple items. Use <kbd>Shift</kbd>+<kbd>click</kbd> to select a whole range at once.
   optional: true
@@ -442,6 +442,7 @@
   - Worry Lines: https://comiccaster.xyz/rss/worry-lines
   - Wrong Hands by John Atkinson: https://comiccaster.xyz/rss/wrong-hands
   - WuMo by Wulff & Morgenthaler: https://comiccaster.xyz/rss/wumo
+  - XKCD: https://xkcd.com/atom.xml
   - Yaffle by Jeffrey Caulfield and Brian Ponshock: https://comiccaster.xyz/rss/yaffle
   - Zack Hill by John Newcombe: https://comiccaster.xyz/rss/zackhill
   - Zen Pencils by Gavin Aung Than: https://comiccaster.xyz/rss/zen-pencils
