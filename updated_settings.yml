@@ -1,23 +1,23 @@
 - keyname: about
   name: About This Plugin
   field_type: author_bio
-  description: 'Access a collection of 534 comic RSS feeds and enjoy fresh content every day.<br /><br />
+  description: 'Access a collection of 533 comic RSS / Atom feeds and enjoy fresh content every day.<br /><br />
 
     <strong>Features:</strong><br />
 
     ● Displays the most recent comic or a random comic<br />
 
-    ● Supports multiple RSS sources<br />
+    ● Supports multiple RSS / Atom sources<br />
 
-    ● Add your own RSS feeds<br />
+    ● Add your own RSS / Atom feeds<br />
 
-    ● Frequently updated to keep all RSS sources valid and up to date'
+    ● Frequently updated to keep all RSS / Atom sources valid and up to date'
   github_url: https://github.com/ExcuseMi/trmnl-comic-library-plugin
   learn_more_url: https://comiccaster.xyz
   category: comics
 - keyname: comics
   field_type: select
-  name: 'Comics: 427'
+  name: 'Comics: 426'
   multiple: true
   help_text: Use <kbd>⌘</kbd>+<kbd>click</kbd> (Mac) or <kbd>ctrl</kbd>+<kbd>click</kbd> (Windows) to select multiple items. Use <kbd>Shift</kbd>+<kbd>click</kbd> to select a whole range at once.
   optional: true
@@ -201,7 +201,6 @@
   - Ink Pen by Phil Dunlap: https://comiccaster.xyz/rss/inkpen
   - Insanity Streak: https://comiccaster.xyz/rss/insanity-streak
   - Intelligent Life: https://comiccaster.xyz/rss/intelligent
-  - Irregular Webcomic: https://www.irregularwebcomic.net/rss3.xml
   - It's All About You by Tony Murphy: https://comiccaster.xyz/rss/itsallaboutyou
   - Jake Likes Onions by Jake Thompson: https://comiccaster.xyz/rss/jake-likes-onions
   - Jane's World by Paige Braddock: https://comiccaster.xyz/rss/janesworld
@@ -584,8 +583,8 @@
   optional: true
 - keyname: extra_rss_feeds
   field_type: multi_string
-  name: Extra RSS Feeds
-  description: List of extra rss feeds.<br />Any RSS URL added here will be added as a                                         source.
+  name: Extra RSS / Atom Feeds
+  description: List of extra rss/atom feeds.<br />Any RSS / Atom URL added here will be added as a source.
   placeholder: https://rssfeed.com
 - keyname: image_filter
   field_type: select
