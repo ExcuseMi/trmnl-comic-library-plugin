@@ -613,13 +613,10 @@
   - ViewsMidEast: viewsmideast
   - Walt Handelsman: walthandelsman
 - keyname: only_show_latest
-  field_type: select
+  field_type: boolean
   name: Latest Comic Only
   description: Show only the most recent comic from each RSS feed.
-  options:
-  - 'Yes'
-  - 'No'
-  default: 'No'
+  default: false
   optional: true
 - keyname: extra_rss_feeds
   field_type: multi_string
