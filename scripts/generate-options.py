@@ -267,11 +267,11 @@ def create_updated_settings():
         'keyname': 'about',
         'name': 'About This Plugin',
         'field_type': 'author_bio',
-        'description': f"Access a collection of {total_all} comic RSS feeds and enjoy fresh content every day.<br /><br />\n<strong>Features:</strong><br />\n"
+        'description': f"Access a collection of {total_all} comic RSS / Atom feeds and enjoy fresh content every day.<br /><br />\n<strong>Features:</strong><br />\n"
                        f"● Displays the most recent comic or a random comic<br />\n"
-                       f"● Supports multiple RSS sources<br />\n"
-                       f"● Add your own RSS feeds<br />\n"
-                       f"● Frequently updated to keep all RSS sources valid and up to date"
+                       f"● Supports multiple RSS / Atom sources<br />\n"
+                       f"● Add your own RSS / Atom feeds<br />\n"
+                       f"● Frequently updated to keep all RSS / Atom sources valid and up to date"
         ,
         'github_url': 'https://github.com/ExcuseMi/trmnl-comic-library-plugin',
         'learn_more_url': 'https://comiccaster.xyz',
@@ -369,8 +369,8 @@ def create_updated_settings():
     extra_rss_feeds = {
         'keyname': 'extra_rss_feeds',
         'field_type': 'multi_string',
-        'name': 'Extra RSS Feeds',
-        'description': "List of extra rss feeds.<br />Any RSS URL added here will be added as a                                         source.",
+        'name': 'Extra RSS / Atom Feeds',
+        'description': "List of extra rss/atom feeds.<br />Any RSS / Atom URL added here will be added as a source.",
         'placeholder': 'https://rssfeed.com'
     }
     custom_fields.append(extra_rss_feeds)
