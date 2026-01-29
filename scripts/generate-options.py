@@ -357,6 +357,15 @@ def create_updated_settings():
         'optional': True
     }
     custom_fields.append(only_latest_field)
+    show_caption = {
+        'keyname': 'show_caption',
+        'field_type': 'boolean',
+        'name': 'Show caption',
+        'description': 'Show the caption',
+        'default': True,
+        'optional': True
+    }
+    custom_fields.append(show_caption)
     extra_rss_feeds = {
         'keyname': 'extra_rss_feeds',
         'field_type': 'multi_string',
