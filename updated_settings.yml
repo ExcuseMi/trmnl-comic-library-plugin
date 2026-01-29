@@ -1,7 +1,7 @@
 - keyname: about
   name: About This Plugin
   field_type: author_bio
-  description: 'Access a collection of 533 comic RSS / Atom feeds and enjoy fresh content every day.<br /><br />
+  description: 'Access a collection of 534 comic RSS / Atom feeds and enjoy fresh content every day.<br /><br />
 
     <strong>Features:</strong><br />
 
@@ -17,7 +17,7 @@
   category: comics
 - keyname: comics
   field_type: select
-  name: 'Comics: 426'
+  name: 'Comics: 427'
   multiple: true
   help_text: Use <kbd>⌘</kbd>+<kbd>click</kbd> (Mac) or <kbd>ctrl</kbd>+<kbd>click</kbd> (Windows) to select multiple items. Use <kbd>Shift</kbd>+<kbd>click</kbd> to select a whole range at once.
   optional: true
@@ -201,6 +201,7 @@
   - Ink Pen by Phil Dunlap: https://comiccaster.xyz/rss/inkpen
   - Insanity Streak: https://comiccaster.xyz/rss/insanity-streak
   - Intelligent Life: https://comiccaster.xyz/rss/intelligent
+  - Irregular Webcomic: https://www.irregularwebcomic.net/rss3.xml
   - It's All About You by Tony Murphy: https://comiccaster.xyz/rss/itsallaboutyou
   - Jake Likes Onions by Jake Thompson: https://comiccaster.xyz/rss/jake-likes-onions
   - Jane's World by Paige Braddock: https://comiccaster.xyz/rss/janesworld

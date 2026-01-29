@@ -1,5 +1,5 @@
-report_date: '2026-01-29 17:51:53'
-total_failed: 61
+report_date: '2026-01-29 18:04:08'
+total_failed: 60
 failed_feeds:
 - name: Art by Moga
   url: https://comiccaster.xyz/rss/artbymoga
@@ -299,11 +299,5 @@ failed_feeds:
 - name: Your CA Privacy Rights/Shine the Light
   url: https://comiccaster.xyz/rss/privacy-policy#shine
   error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/privacy-policy#shine'
-  feed_type: null
-  status: needs_investigation
-- name: Irregular Webcomic
-  url: https://www.irregularwebcomic.net/rss3.xml
-  error: 'Request failed: HTTPSConnectionPool(host=''www.irregularwebcomic.net'',
-    port=443): Read timed out. (read timeout=15)'
   feed_type: null
   status: needs_investigation
