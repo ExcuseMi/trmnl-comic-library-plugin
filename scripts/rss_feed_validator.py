@@ -19,6 +19,7 @@ class ValidationResult:
     comic_title: Optional[str] = None
     image_url: Optional[str] = None
     image_source: Optional[str] = None  # 'enclosure' or 'description'
+    feed_type: Optional[str] = None  # 'rss' or 'atom'
 
 
 class ImageExtractor(HTMLParser):
@@ -35,7 +36,7 @@ class ImageExtractor(HTMLParser):
 
 
 class RSSFeedValidator:
-    """Validates RSS feeds for comic plugin compatibility"""
+    """Validates RSS and Atom feeds for comic plugin compatibility"""
 
     def __init__(self, timeout: int = 10):
         self.timeout = timeout
@@ -46,10 +47,10 @@ class RSSFeedValidator:
 
     def validate_feed(self, url: str, name: str = None) -> ValidationResult:
         """
-        Validate a single RSS feed
+        Validate a single RSS or Atom feed
 
         Args:
-            url: RSS feed URL
+            url: RSS/Atom feed URL
             name: Optional name for logging
 
         Returns:
@@ -59,89 +60,26 @@ class RSSFeedValidator:
         print(f"Validating: {display_name}", end=" ... ")
 
         try:
-            # Fetch the RSS feed
+            # Fetch the feed
             response = self.session.get(url, timeout=self.timeout)
             response.raise_for_status()
 
             # Parse XML
             root = ET.fromstring(response.content)
 
-            # Find channel and items
-            channel = root.find('channel')
-            if channel is None:
-                print(f"❌ No channel element - {url}")
+            # Detect feed type
+            if root.tag == 'rss' or root.tag.endswith('}rss'):
+                return self._validate_rss_feed(root, url, name)
+            elif root.tag == 'feed' or root.tag.endswith('}feed'):
+                return self._validate_atom_feed(root, url, name)
+            else:
+                print(f"❌ Unknown feed type - {url}")
                 return ValidationResult(
                     url=url,
                     name=name,
                     is_valid=False,
-                    error_message="No channel element found in RSS"
+                    error_message=f"Unknown feed type: {root.tag}"
                 )
-
-            items = channel.findall('item')
-            if not items:
-                print(f"❌ No items found - {url}")
-                return ValidationResult(
-                    url=url,
-                    name=name,
-                    is_valid=False,
-                    error_message="No items found in RSS feed"
-                )
-
-            # Try to extract image from first item
-            first_item = items[0]
-            title_elem = first_item.find('title')
-            title = title_elem.text if title_elem is not None else "Untitled"
-            
-            # Check for generic promotional content
-            if self._is_generic_promo(first_item, title):
-                print(f"❌ Generic promo content - {url}")
-                return ValidationResult(
-                    url=url,
-                    name=name,
-                    is_valid=False,
-                    error_message="Feed contains only generic promotional content"
-                )
-
-            # Try enclosure first (preferred method)
-            enclosure = first_item.find('enclosure')
-            if enclosure is not None:
-                image_url = enclosure.get('url')
-                if image_url and self._is_valid_image_url(image_url):
-                    print("✓ Valid (enclosure)")
-                    return ValidationResult(
-                        url=url,
-                        name=name,
-                        is_valid=True,
-                        comic_title=title,
-                        image_url=image_url,
-                        image_source='enclosure'
-                    )
-
-            # Fallback: try to extract from description
-            description = first_item.find('description')
-            if description is not None and description.text:
-                parser = ImageExtractor()
-                parser.feed(description.text)
-
-                if parser.image_url and self._is_valid_image_url(parser.image_url):
-                    print("✓ Valid (description)")
-                    return ValidationResult(
-                        url=url,
-                        name=name,
-                        is_valid=True,
-                        comic_title=title,
-                        image_url=parser.image_url,
-                        image_source='description'
-                    )
-
-            # No valid image found
-            print(f"❌ No valid image - {url}")
-            return ValidationResult(
-                url=url,
-                name=name,
-                is_valid=False,
-                error_message="No valid image found in enclosure or description"
-            )
 
         except requests.RequestException as e:
             print(f"❌ Request failed - {url}")
@@ -168,41 +106,234 @@ class RSSFeedValidator:
                 error_message=f"Unexpected error: {str(e)}"
             )
 
-    def _is_generic_promo(self, item, title: str) -> bool:
-        """Check if this is generic promotional content rather than a comic strip"""
+    def _validate_rss_feed(self, root: ET.Element, url: str, name: str = None) -> ValidationResult:
+        """Validate an RSS feed"""
+        # Find channel and items
+        channel = root.find('channel')
+        if channel is None:
+            print(f"❌ No channel element - {url}")
+            return ValidationResult(
+                url=url,
+                name=name,
+                is_valid=False,
+                error_message="No channel element found in RSS",
+                feed_type='rss'
+            )
+
+        items = channel.findall('item')
+        if not items:
+            print(f"❌ No items found - {url}")
+            return ValidationResult(
+                url=url,
+                name=name,
+                is_valid=False,
+                error_message="No items found in RSS feed",
+                feed_type='rss'
+            )
+
+        # Try to extract image from first item
+        first_item = items[0]
+        title_elem = first_item.find('title')
+        title = title_elem.text if title_elem is not None else "Untitled"
         
-        # Check if the link just goes to the main comic page (not a specific strip)
+        # Check for generic promotional content
+        if self._is_generic_promo_rss(first_item, title):
+            print(f"❌ Generic promo content - {url}")
+            return ValidationResult(
+                url=url,
+                name=name,
+                is_valid=False,
+                error_message="Feed contains only generic promotional content",
+                feed_type='rss'
+            )
+
+        # Try enclosure first (preferred method)
+        enclosure = first_item.find('enclosure')
+        if enclosure is not None:
+            image_url = enclosure.get('url')
+            if image_url and self._is_valid_image_url(image_url):
+                print("✓ Valid (RSS enclosure)")
+                return ValidationResult(
+                    url=url,
+                    name=name,
+                    is_valid=True,
+                    comic_title=title,
+                    image_url=image_url,
+                    image_source='enclosure',
+                    feed_type='rss'
+                )
+
+        # Fallback: try to extract from description
+        description = first_item.find('description')
+        if description is not None and description.text:
+            parser = ImageExtractor()
+            parser.feed(description.text)
+
+            if parser.image_url and self._is_valid_image_url(parser.image_url):
+                print("✓ Valid (RSS description)")
+                return ValidationResult(
+                    url=url,
+                    name=name,
+                    is_valid=True,
+                    comic_title=title,
+                    image_url=parser.image_url,
+                    image_source='description',
+                    feed_type='rss'
+                )
+
+        # No valid image found
+        print(f"❌ No valid image - {url}")
+        return ValidationResult(
+            url=url,
+            name=name,
+            is_valid=False,
+            error_message="No valid image found in enclosure or description",
+            feed_type='rss'
+        )
+
+    def _validate_atom_feed(self, root: ET.Element, url: str, name: str = None) -> ValidationResult:
+        """Validate an Atom feed"""
+        # Handle namespaces
+        ns = {'atom': 'http://www.w3.org/2005/Atom'}
+        
+        # Try without namespace first, then with
+        entries = root.findall('entry')
+        if not entries:
+            entries = root.findall('atom:entry', ns)
+        
+        if not entries:
+            print(f"❌ No entries found - {url}")
+            return ValidationResult(
+                url=url,
+                name=name,
+                is_valid=False,
+                error_message="No entries found in Atom feed",
+                feed_type='atom'
+            )
+
+        # Try to extract image from first entry
+        first_entry = entries[0]
+        
+        # Get title (try without namespace first, then with)
+        title_elem = first_entry.find('title')
+        if title_elem is None:
+            title_elem = first_entry.find('atom:title', ns)
+        title = title_elem.text if title_elem is not None else "Untitled"
+        
+        # Get link (for promo check)
+        link_elem = first_entry.find('link')
+        if link_elem is None:
+            link_elem = first_entry.find('atom:link', ns)
+        
+        # Check for generic promotional content
+        if self._is_generic_promo_atom(first_entry, title, link_elem, ns):
+            print(f"❌ Generic promo content - {url}")
+            return ValidationResult(
+                url=url,
+                name=name,
+                is_valid=False,
+                error_message="Feed contains only generic promotional content",
+                feed_type='atom'
+            )
+
+        # Try to extract from summary or content
+        summary = first_entry.find('summary')
+        if summary is None:
+            summary = first_entry.find('atom:summary', ns)
+        
+        content = first_entry.find('content')
+        if content is None:
+            content = first_entry.find('atom:content', ns)
+        
+        description_text = None
+        if summary is not None and summary.text:
+            description_text = summary.text
+        elif content is not None and content.text:
+            description_text = content.text
+        
+        if description_text:
+            parser = ImageExtractor()
+            parser.feed(description_text)
+
+            if parser.image_url and self._is_valid_image_url(parser.image_url):
+                print("✓ Valid (Atom summary/content)")
+                return ValidationResult(
+                    url=url,
+                    name=name,
+                    is_valid=True,
+                    comic_title=title,
+                    image_url=parser.image_url,
+                    image_source='summary',
+                    feed_type='atom'
+                )
+
+        # No valid image found
+        print(f"❌ No valid image - {url}")
+        return ValidationResult(
+            url=url,
+            name=name,
+            is_valid=False,
+            error_message="No valid image found in summary or content",
+            feed_type='atom'
+        )
+
+    def _is_generic_promo_rss(self, item: ET.Element, title: str) -> bool:
+        """Check if RSS item is generic promotional content"""
         link = item.find('link')
         link_has_date = False
         if link is not None and link.text:
             link_text = link.text
-            # Check if link has a date pattern (YYYY/MM/DD or YYYY-MM-DD)
             if any(char.isdigit() for char in link_text.split('/')[-1]):
                 link_has_date = True
         
-        # If link doesn't have a date, it's likely promotional
         if not link_has_date:
-            # Double check: does the description contain generic FB/social images?
             description = item.find('description')
             if description is not None and description.text:
                 parser = ImageExtractor()
                 parser.feed(description.text)
                 if parser.image_url:
                     url_lower = parser.image_url.lower()
-                    # These are definitely generic social media promo images
                     if 'generic_fb' in url_lower or 'social_fb_generic' in url_lower:
                         return True
-                    # If it's a GoComics asset without a date in the link, likely promo
                     if 'gocomicscmsassets' in url_lower and not link_has_date:
                         return True
             
-            # If no date in link and we have suspicious patterns, it's promo
             title_lower = title.lower() if title else ""
             desc_lower = description.text.lower() if description is not None and description.text else ""
             
-            # Very specific promo indicators
             if 'explore the archive' in desc_lower and 'read extra content' in desc_lower:
                 return True
+        
+        return False
+
+    def _is_generic_promo_atom(self, entry: ET.Element, title: str, link_elem: Optional[ET.Element], ns: dict) -> bool:
+        """Check if Atom entry is generic promotional content"""
+        link_has_date = False
+        
+        if link_elem is not None:
+            link_href = link_elem.get('href')
+            if link_href and any(char.isdigit() for char in link_href.split('/')[-1]):
+                link_has_date = True
+        
+        if not link_has_date:
+            # Check summary for generic content
+            summary = entry.find('summary')
+            if summary is None:
+                summary = entry.find('atom:summary', ns)
+            
+            if summary is not None and summary.text:
+                parser = ImageExtractor()
+                parser.feed(summary.text)
+                if parser.image_url:
+                    url_lower = parser.image_url.lower()
+                    if 'generic_fb' in url_lower or 'social_fb_generic' in url_lower:
+                        return True
+                    if 'gocomicscmsassets' in url_lower:
+                        return True
+                
+                summary_lower = summary.text.lower()
+                if 'explore the archive' in summary_lower and 'read extra content' in summary_lower:
+                    return True
         
         return False
     
@@ -219,7 +350,7 @@ class RSSFeedValidator:
 
     def validate_multiple_feeds(self, feeds: Dict[str, str]) -> Tuple[List[ValidationResult], List[ValidationResult]]:
         """
-        Validate multiple RSS feeds
+        Validate multiple RSS/Atom feeds
 
         Args:
             feeds: Dictionary of {name: url}
@@ -272,6 +403,7 @@ class RSSFeedValidator:
                 'name': result.name,
                 'url': result.url,
                 'error': result.error_message,
+                'feed_type': result.feed_type,
                 'status': 'needs_investigation'
             }
             report['failed_feeds'].append(feed_info)
