@@ -32,6 +32,9 @@ jobs:
       - name: Install dependencies
         run: pip install requests
 
+      - name: Create assets directory
+        run: mkdir -p assets/plugin-images
+
       - name: Update README with plugin stats
         run: python scripts/update_plugin_stats.py
 
