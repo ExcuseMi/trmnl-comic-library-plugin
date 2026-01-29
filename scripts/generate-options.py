@@ -16,6 +16,11 @@ OTHER_LANGUAGES_KEYSWORDS: list[str] = [
     "spanish"
 ]
 
+INVALID_SLUGS = {
+    "about", "login", "terms", "privacy-policy",
+    "submit-your-comics", "blog", "comics",
+    "genre", "creator"
+}
 
 def load_environment():
     """Load environment variables from plugins.env file"""
@@ -146,7 +151,7 @@ def create_updated_settings():
         feed_url = f"https://comiccaster.xyz/rss/{slug}" if slug else None
 
         # Exclude comics that are political, in other languages, or in the exclusion list
-        if slug and not is_other_language(name, slug, author) and slug not in political_slugs:
+        if slug and slug not in INVALID_SLUGS and not is_other_language(name, slug, author) and slug not in political_slugs:
             if feed_url and not should_exclude_feed(feed_url, excluded_feeds):
                 regular_feeds[name] = feed_url
             else:
@@ -165,7 +170,7 @@ def create_updated_settings():
         feed_url = f"https://comiccaster.xyz/rss/{slug}" if slug else None
 
         # Exclude comics that are political or in the exclusion list
-        if slug and is_other_language(name, slug, author) and slug not in political_slugs:
+        if slug and slug not in INVALID_SLUGS and is_other_language(name, slug, author) and slug not in political_slugs:
             if feed_url and not should_exclude_feed(feed_url, excluded_feeds):
                 other_lang_feeds[name] = feed_url
             else:
@@ -183,7 +188,7 @@ def create_updated_settings():
         feed_url = f"https://comiccaster.xyz/rss/{slug}" if slug else None
 
         if slug:
-            if feed_url and not should_exclude_feed(feed_url, excluded_feeds):
+            if feed_url and slug not in INVALID_SLUGS and not should_exclude_feed(feed_url, excluded_feeds):
                 political_feeds[name] = feed_url
             else:
                 print(f"  Excluded: {name} ({feed_url})")
