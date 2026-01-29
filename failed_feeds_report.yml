@@ -1,5 +1,5 @@
-report_date: '2026-01-29 16:07:48'
-total_failed: 60
+report_date: '2026-01-29 17:06:29'
+total_failed: 61
 failed_feeds:
 - name: Art by Moga
   url: https://comiccaster.xyz/rss/artbymoga
@@ -240,4 +240,8 @@ failed_feeds:
 - name: Your CA Privacy Rights/Shine the Light
   url: https://comiccaster.xyz/rss/privacy-policy#shine
   error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/privacy-policy#shine'
+  status: needs_investigation
+- name: XKCD
+  url: https://xkcd.com/atom.xml
+  error: No channel element found in RSS
   status: needs_investigation
