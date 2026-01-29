@@ -1,5 +1,5 @@
-report_date: '2026-01-29 14:08:37'
-total_failed: 17
+report_date: '2026-01-29 15:30:14'
+total_failed: 18
 failed_feeds:
 - name: The Far Side - New Stuff
   url: https://comiccaster.xyz/rss/farside-new
@@ -68,4 +68,8 @@ failed_feeds:
 - name: Your CA Privacy Rights/Shine the Light
   url: https://comiccaster.xyz/rss/privacy-policy#shine
   error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/privacy-policy#shine'
+  status: needs_investigation
+- name: Irregular Webcomic
+  url: https://www.irregularwebcomic.net/rss3.xml
+  error: 'Request failed: 403 Client Error: Forbidden for url: https://www.irregularwebcomic.net/rss3.xml'
   status: needs_investigation
