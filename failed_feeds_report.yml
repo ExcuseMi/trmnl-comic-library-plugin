@@ -1,5 +1,5 @@
-report_date: '2026-01-29 13:57:55'
-total_failed: 26
+report_date: '2026-01-29 14:08:37'
+total_failed: 17
 failed_feeds:
 - name: The Far Side - New Stuff
   url: https://comiccaster.xyz/rss/farside-new
@@ -29,26 +29,6 @@ failed_feeds:
   url: https://comiccaster.xyz/rss/viewsafrica
   error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/viewsafrica'
   status: needs_investigation
-- name: Action
-  url: https://comiccaster.xyz/rss/genre
-  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/genre'
-  status: needs_investigation
-- name: All comics
-  url: https://comiccaster.xyz/rss/comics
-  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/comics'
-  status: needs_investigation
-- name: John Hambrock
-  url: https://comiccaster.xyz/rss/creator
-  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/creator'
-  status: needs_investigation
-- name: News
-  url: https://comiccaster.xyz/rss/blog
-  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/blog'
-  status: needs_investigation
-- name: Log in
-  url: https://comiccaster.xyz/rss/login
-  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/login'
-  status: needs_investigation
 - name: David M. Hitch
   url: https://comiccaster.xyz/rss/david-m-hitch
   error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/david-m-hitch'
@@ -77,14 +57,6 @@ failed_feeds:
   url: https://comiccaster.xyz/rss/mike-smith
   error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/mike-smith'
   status: needs_investigation
-- name: About
-  url: https://comiccaster.xyz/rss/about
-  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/about'
-  status: needs_investigation
-- name: Privacy Policy
-  url: https://comiccaster.xyz/rss/privacy-policy
-  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/privacy-policy'
-  status: needs_investigation
 - name: DAA Industry Opt Out
   url: https://comiccaster.xyz/rss/privacy-policy#daa
   error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/privacy-policy#daa'
@@ -96,12 +68,4 @@ failed_feeds:
 - name: Your CA Privacy Rights/Shine the Light
   url: https://comiccaster.xyz/rss/privacy-policy#shine
   error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/privacy-policy#shine'
-  status: needs_investigation
-- name: Terms of Use
-  url: https://comiccaster.xyz/rss/terms
-  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/terms'
-  status: needs_investigation
-- name: Publish Your Comics With Us!
-  url: https://comiccaster.xyz/rss/submit-your-comics
-  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/submit-your-comics'
   status: needs_investigation
