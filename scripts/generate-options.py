@@ -345,11 +345,10 @@ def create_updated_settings():
     # Only show latest field
     only_latest_field = {
         'keyname': 'only_show_latest',
-        'field_type': 'select',
+        'field_type': 'boolean',
         'name': 'Latest Comic Only',
         'description': 'Show only the most recent comic from each RSS feed.',
-        'options': ['Yes', 'No'],
-        'default': 'No',
+        'default': false,
         'optional': True
     }
     custom_fields.append(only_latest_field)
