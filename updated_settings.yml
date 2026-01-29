@@ -576,6 +576,12 @@
   description: Show only the most recent comic from each RSS feed.
   default: false
   optional: true
+- keyname: show_caption
+  field_type: boolean
+  name: Show caption
+  description: Show the caption
+  default: true
+  optional: true
 - keyname: extra_rss_feeds
   field_type: multi_string
   name: Extra RSS Feeds
