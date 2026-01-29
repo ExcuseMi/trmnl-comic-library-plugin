@@ -348,7 +348,7 @@ def create_updated_settings():
         'field_type': 'boolean',
         'name': 'Latest Comic Only',
         'description': 'Show only the most recent comic from each RSS feed.',
-        'default': false,
+        'default': False,
         'optional': True
     }
     custom_fields.append(only_latest_field)
