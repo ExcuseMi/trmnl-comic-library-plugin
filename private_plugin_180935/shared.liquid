@@ -43,6 +43,8 @@
       {{ comic.title }}
     {%- endif -%}
   </span>
+  <span class="instance">{{trmnl.plugin_settings.instance_name | escape }}
+  </span>
 </div>
 
 
@@ -228,7 +230,7 @@
           img.naturalWidth, sectionHeight
         );
 
-        const sectionImg = document.createElement('img');
+        const sectComic LibraryionImg = document.createElement('img');
         sectionImg.src = sectionCanvas.toDataURL();
         sectionImg.className = img.className;
         sectionImg.style.width = '100%';
