@@ -12,21 +12,15 @@ custom_fields:
 - keyname: about
   name: About This Plugin
   field_type: author_bio
-  description: |-
-    Access a collection of 533 comic RSS / Atom feeds and enjoy fresh content every day.<br /><br />
-    <strong>Features:</strong><br />
-    ● Displays the most recent comic or a random comic<br />
-    ● Supports multiple RSS / Atom sources<br />
-    ● Add your own RSS / Atom feeds<br />
-    ● Frequently updated to keep all RSS / Atom sources valid and up to date
+  description: "Access a collection of 534 comic RSS / Atom feeds and enjoy fresh content every day. \nFeatures: \n● Displays the most recent comic or a random comic \n● Supports multiple RSS / Atom sources \n● Add your own RSS / Atom feeds \n● Frequently updated to keep all RSS / Atom sources valid and up to date"
   github_url: https://github.com/ExcuseMi/trmnl-comic-library-plugin
   learn_more_url: https://comiccaster.xyz
   category: comics
 - keyname: comics
   field_type: select
-  name: 'Comics: 426'
+  name: 'Comics: 427'
   multiple: true
-  help_text: Use <kbd>⌘</kbd>+<kbd>click</kbd> (Mac) or <kbd>ctrl</kbd>+<kbd>click</kbd> (Windows) to select multiple items. Use <kbd>Shift</kbd>+<kbd>click</kbd> to select a whole range at once.
+  help_text: Use ⌘+click (Mac) or ctrl+click (Windows) to select multiple items. Use Shift+click to select a whole range at once.
   optional: true
   options:
   - 1 and Done by Eric Scott: https://comiccaster.xyz/rss/1-and-done
@@ -327,6 +321,7 @@ custom_fields:
   - Prickly City by Scott Stantis: https://comiccaster.xyz/rss/pricklycity
   - Prince Valiant: https://comiccaster.xyz/rss/prince-valiant
   - Pros & Cons: https://comiccaster.xyz/rss/pros-cons
+  - Questionable Content by Jeph Jacques: https://questionablecontent.net/QCRSS.xml
   - Questionable Quotebook by Sam Hepburn: https://comiccaster.xyz/rss/questionable-quotebook
   - Rabbits Against Magic by Jonathan Lemon: https://comiccaster.xyz/rss/rabbitsagainstmagic
   - Rae The Doe: https://comiccaster.xyz/rss/rae-the-doe
@@ -448,7 +443,7 @@ custom_fields:
   - Worry Lines: https://comiccaster.xyz/rss/worry-lines
   - Wrong Hands by John Atkinson: https://comiccaster.xyz/rss/wrong-hands
   - WuMo by Wulff & Morgenthaler: https://comiccaster.xyz/rss/wumo
-  - XKCD: https://xkcd.com/atom.xml
+  - XKCD by Randall Munroe: https://xkcd.com/atom.xml
   - Yaffle by Jeffrey Caulfield and Brian Ponshock: https://comiccaster.xyz/rss/yaffle
   - Zack Hill by John Newcombe: https://comiccaster.xyz/rss/zackhill
   - Zen Pencils by Gavin Aung Than: https://comiccaster.xyz/rss/zen-pencils
@@ -459,7 +454,7 @@ custom_fields:
   field_type: select
   name: 'Comics in other languages: 50'
   multiple: true
-  help_text: Use <kbd>⌘</kbd>+<kbd>click</kbd> (Mac) or <kbd>ctrl</kbd>+<kbd>click</kbd> (Windows) to select multiple items. Use <kbd>Shift</kbd>+<kbd>click</kbd> to select a whole range at once.
+  help_text: Use ⌘+click (Mac) or ctrl+click (Windows) to select multiple items. Use Shift+click to select a whole range at once.
   optional: true
   options:
   - A Toda Velocidad (Spanish): a-toda-velocidad
@@ -516,7 +511,7 @@ custom_fields:
   field_type: select
   name: 'Political Comics: 57'
   multiple: true
-  help_text: Use <kbd>⌘</kbd>+<kbd>click</kbd> (Mac) or <kbd>ctrl</kbd>+<kbd>click</kbd> (Windows) to select multiple items. Use <kbd>Shift</kbd>+<kbd>click</kbd> to select a whole range at once.
+  help_text: Use ⌘+click (Mac) or ctrl+click (Windows) to select multiple items. Use Shift+click to select a whole range at once.
   optional: true
   options:
   - Al Goodwyn Editorial Cartoons: algoodwyn
@@ -591,7 +586,7 @@ custom_fields:
 - keyname: extra_rss_feeds
   field_type: multi_string
   name: Extra RSS / Atom Feeds
-  description: List of extra rss/atom feeds.<br />Any RSS / Atom URL added here will be added as a source.
+  description: List of extra rss/atom feeds. Any RSS / Atom URL added here will be added as a source.
   placeholder: https://rssfeed.com
 - keyname: image_filter
   field_type: select

@@ -1,5 +1,5 @@
-report_date: '2026-01-29 18:04:08'
-total_failed: 60
+report_date: '2026-01-30 02:16:44'
+total_failed: 61
 failed_feeds:
 - name: Art by Moga
   url: https://comiccaster.xyz/rss/artbymoga
@@ -223,7 +223,7 @@ failed_feeds:
   status: needs_investigation
 - name: Matt Bors
   url: https://comiccaster.xyz/rss/matt-bors
-  error: No valid image found in enclosure or description
+  error: No valid image found in enclosure, description, or content:encoded
   feed_type: rss
   status: needs_investigation
 - name: Pat Oliphant
@@ -300,4 +300,9 @@ failed_feeds:
   url: https://comiccaster.xyz/rss/privacy-policy#shine
   error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/privacy-policy#shine'
   feed_type: null
+  status: needs_investigation
+- name: Gunnerkrigg Court
+  url: https://www.gunnerkrigg.com/rss.xml
+  error: No valid image found in enclosure, description, or content:encoded
+  feed_type: rss
   status: needs_investigation

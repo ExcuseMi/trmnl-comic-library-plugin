@@ -14,11 +14,11 @@
   <div class="flex flex--col flex--center">
     <div class="flex flex--center flex--grow mb--1" id="image-container" style="overflow: hidden;">
       {%- for imageUrl in comic.imageUrls -%}
-        <img src="{{ imageUrl }}" class="comic-image image-dither" alt="Image {{ forloop.index }}" />
+        <img src="{{ imageUrl }}" class="image comic-image image-dither" alt="Image {{ forloop.index }}" />
       {%- endfor -%}
     </div>
     {%- if trmnl.plugin_settings.custom_fields_values.show_caption != "false" and comic.caption -%}
-    <div class="label label--sm">{{ comic.caption }}</div>
+    <div class="label label--xs label--gray" data-clamp="3">{{ comic.caption }}</div>
     {%- endif -%}
   </div>
   {%- else -%}

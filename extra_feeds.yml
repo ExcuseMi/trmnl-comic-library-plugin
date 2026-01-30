@@ -1,2 +1,10 @@
-XKCD: "https://xkcd.com/atom.xml"
-"Irregular Webcomic": "https://www.irregularwebcomic.net/rss3.xml"
+extra_feeds:
+  - name: "XKCD"
+    author: "Randall Munroe"
+    url: "https://xkcd.com/atom.xml"
+  - name: "Questionable Content"
+    author: "Jeph Jacques"
+    url: "https://questionablecontent.net/QCRSS.xml"
+  - name: "Gunnerkrigg Court"
+    author: "Tom Siddell"
+    url: "https://www.gunnerkrigg.com/rss.xml"

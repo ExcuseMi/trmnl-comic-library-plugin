@@ -87,8 +87,9 @@ def load_extra_feeds():
     if extra_feeds_path.exists():
         with open(extra_feeds_path, 'r') as f:
             extra_feeds = yaml.safe_load(f) or {}
-        print(f"Loaded {len(extra_feeds)} extra feeds from {extra_feeds_path}")
-        return extra_feeds
+            extra_feeds_list = extra_feeds.get('extra_feeds', [])
+        print(f"Loaded {len(extra_feeds_list)} extra feeds from {extra_feeds_path}")
+        return extra_feeds_list
     else:
         print(f"extra_feeds.yml not found at {extra_feeds_path}, skipping extra feeds")
         return {}
@@ -116,7 +117,6 @@ def should_exclude_feed(feed_url: str, excluded_feeds: list) -> bool:
     """Check if a feed should be excluded based on the EXCLUSIONS list"""
     return feed_url in excluded_feeds
 
-
 def create_updated_settings():
     # Load environment variables first
     load_environment()
@@ -137,7 +137,6 @@ def create_updated_settings():
     print("\n" + "=" * 60)
     print("VALIDATING ALL RSS FEEDS")
     print("=" * 60)
-
     validator = RSSFeedValidator(timeout=15)
     all_invalid_results = []
 
@@ -151,7 +150,8 @@ def create_updated_settings():
         feed_url = f"https://comiccaster.xyz/rss/{slug}" if slug else None
 
         # Exclude comics that are political, in other languages, or in the exclusion list
-        if slug and slug not in INVALID_SLUGS and not is_other_language(name, slug, author) and slug not in political_slugs:
+        if slug and slug not in INVALID_SLUGS and not is_other_language(name, slug,
+                                                                        author) and slug not in political_slugs:
             if feed_url and not should_exclude_feed(feed_url, excluded_feeds):
                 regular_feeds[name] = feed_url
             else:
@@ -186,7 +186,6 @@ def create_updated_settings():
         name = comic.get("name", "Unknown")
         slug = comic.get("slug", None)
         feed_url = f"https://comiccaster.xyz/rss/{slug}" if slug else None
-
         if slug:
             if feed_url and slug not in INVALID_SLUGS and not should_exclude_feed(feed_url, excluded_feeds):
                 political_feeds[name] = feed_url
@@ -197,12 +196,16 @@ def create_updated_settings():
     all_invalid_results.extend(political_invalid)
 
     # Validate extra feeds (excluding excluded feeds)
-    validated_extra_feeds = {}
+    validated_extra_feeds = {}  # Will store {name: {'url': url, 'author': author}}
     if extra_feeds:
         print("\n--- Extra Feeds ---")
         # Filter out excluded extra feeds
         filtered_extra_feeds = {}
-        for name, url in extra_feeds.items():
+        for feed in extra_feeds:
+            url = feed.get('url')
+            name = feed.get('name')
+            author = feed.get('author', '')
+
             if not should_exclude_feed(url, excluded_feeds):
                 filtered_extra_feeds[name] = url
             else:
@@ -210,7 +213,16 @@ def create_updated_settings():
 
         extra_valid, extra_invalid = validator.validate_multiple_feeds(filtered_extra_feeds)
         all_invalid_results.extend(extra_invalid)
-        validated_extra_feeds = {result.name: result.url for result in extra_valid}
+
+        # Store validated extra feeds with their authors
+        for result in extra_valid:
+            # Find the original feed data to get the author
+            original_feed = next((f for f in extra_feeds if f.get('name') == result.name), None)
+            if original_feed:
+                validated_extra_feeds[result.name] = {
+                    'url': result.url,
+                    'author': original_feed.get('author', '')
+                }
     else:
         print("\n--- Extra Feeds ---")
         print("No extra feeds to validate")
@@ -267,12 +279,11 @@ def create_updated_settings():
         'keyname': 'about',
         'name': 'About This Plugin',
         'field_type': 'author_bio',
-        'description': f"Access a collection of {total_all} comic RSS / Atom feeds and enjoy fresh content every day.<br /><br />\n<strong>Features:</strong><br />\n"
-                       f"● Displays the most recent comic or a random comic<br />\n"
-                       f"● Supports multiple RSS / Atom sources<br />\n"
-                       f"● Add your own RSS / Atom feeds<br />\n"
-                       f"● Frequently updated to keep all RSS / Atom sources valid and up to date"
-        ,
+        'description': f"Access a collection of {total_all} comic RSS / Atom feeds and enjoy fresh content every day. \nFeatures: \n"
+                       f"● Displays the most recent comic or a random comic \n"
+                       f"● Supports multiple RSS / Atom sources \n"
+                       f"● Add your own RSS / Atom feeds \n"
+                       f"● Frequently updated to keep all RSS / Atom sources valid and up to date",
         'github_url': 'https://github.com/ExcuseMi/trmnl-comic-library-plugin',
         'learn_more_url': 'https://comiccaster.xyz',
         'category': 'comics'
@@ -289,9 +300,12 @@ def create_updated_settings():
             display_name = f"{name} by {author}" if author and author != name else name
             comics_options.append({display_name: f"https://comiccaster.xyz/rss/{slug}"})
 
-    # Add validated extra feeds to comics options
-    for name, url in validated_extra_feeds.items():
-        comics_options.append({name: url})
+    # Add validated extra feeds to comics options WITH author info
+    for name, feed_data in validated_extra_feeds.items():
+        author = feed_data['author']
+        url = feed_data['url']
+        display_name = f"{name} by {author}" if author and author != name else name
+        comics_options.append({display_name: url})
 
     # Sort all comics options by name (case insensitive)
     comics_options.sort(key=lambda x: list(x.keys())[0].lower())
@@ -301,7 +315,7 @@ def create_updated_settings():
         'field_type': 'select',
         'name': f'Comics: {len(comics_options)}',
         'multiple': True,
-        'help_text': 'Use <kbd>⌘</kbd>+<kbd>click</kbd> (Mac) or <kbd>ctrl</kbd>+<kbd>click</kbd> (Windows) to select multiple items. Use <kbd>Shift</kbd>+<kbd>click</kbd> to select a whole range at once.',
+        'help_text': 'Use ⌘+click (Mac) or ctrl+click (Windows) to select multiple items. Use Shift+click to select a whole range at once.',
         'optional': True,
         'options': comics_options
     }
@@ -321,7 +335,7 @@ def create_updated_settings():
         'field_type': 'select',
         'name': f'Comics in other languages: {len(other_lang_options)}',
         'multiple': True,
-        'help_text': 'Use <kbd>⌘</kbd>+<kbd>click</kbd> (Mac) or <kbd>ctrl</kbd>+<kbd>click</kbd> (Windows) to select multiple items. Use <kbd>Shift</kbd>+<kbd>click</kbd> to select a whole range at once.',
+        'help_text': 'Use ⌘+click (Mac) or ctrl+click (Windows) to select multiple items. Use Shift+click to select a whole range at once.',
         'optional': True,
         'options': other_lang_options
     }
@@ -341,7 +355,7 @@ def create_updated_settings():
         'field_type': 'select',
         'name': f'Political Comics: {len(political_options)}',
         'multiple': True,
-        'help_text': 'Use <kbd>⌘</kbd>+<kbd>click</kbd> (Mac) or <kbd>ctrl</kbd>+<kbd>click</kbd> (Windows) to select multiple items. Use <kbd>Shift</kbd>+<kbd>click</kbd> to select a whole range at once.',
+        'help_text': 'Use ⌘+click (Mac) or ctrl+click (Windows) to select multiple items. Use Shift+click to select a whole range at once.',
         'optional': True,
         'options': political_options
     }
@@ -357,6 +371,7 @@ def create_updated_settings():
         'optional': True
     }
     custom_fields.append(only_latest_field)
+
     show_caption = {
         'keyname': 'show_caption',
         'field_type': 'boolean',
@@ -366,14 +381,16 @@ def create_updated_settings():
         'optional': True
     }
     custom_fields.append(show_caption)
+
     extra_rss_feeds = {
         'keyname': 'extra_rss_feeds',
         'field_type': 'multi_string',
         'name': 'Extra RSS / Atom Feeds',
-        'description': "List of extra rss/atom feeds.<br />Any RSS / Atom URL added here will be added as a source.",
+        'description': "List of extra rss/atom feeds. Any RSS / Atom URL added here will be added as a source.",
         'placeholder': 'https://rssfeed.com'
     }
     custom_fields.append(extra_rss_feeds)
+
     image_filter = {
         'keyname': 'image_filter',
         'field_type': 'select',
@@ -415,7 +432,6 @@ def create_updated_settings():
     print(f"Political comics: {total_political}")
     print(f"Extra feeds (validated): {total_extra}")
     print(f"Total unique comics: {total_all}")
-
 
 if __name__ == "__main__":
     create_updated_settings()
