@@ -1,4 +1,5 @@
 import json
+import sys
 from pathlib import Path
 import os
 
@@ -7,6 +8,7 @@ import yaml
 from dotenv import load_dotenv
 
 from rss_feed_validator import RSSFeedValidator
+from scripts.upload_plugin import Colors
 
 URL = "https://comiccaster.xyz/comics_list.json"
 URL_POLITICAL = "https://comiccaster.xyz/political_comics_list.json"
@@ -442,7 +444,6 @@ def create_updated_settings():
 
     print(f"✓ Successfully updated {settings_path}")
 
-    output_path = settings_path  # used later by the overview generator
     # Print summary
     print(f"\n" + "=" * 60)
     print("FINAL SUMMARY")
@@ -452,6 +453,20 @@ def create_updated_settings():
     print(f"Political comics: {total_political}")
     print(f"Extra feeds (validated): {total_extra}")
     print(f"Total unique comics: {total_all}")
+
+    total_valid = len(regular_valid) + len(other_lang_valid) + len(political_valid) + len(extra_valid)
+    total_invalid = len(regular_invalid) + len(other_lang_invalid) + len(political_invalid) + len(extra_invalid)
+
+    if total_valid == 0:
+        print("✗ ABORT: Zero valid feeds — likely no internet or API down. Not writing anything.", Colors.RED)
+        sys.exit(1)
+
+    if total_valid < total_invalid:
+        print(f"✗ ABORT: More invalid ({total_invalid}) than valid ({total_valid}) feeds.", Colors.YELLOW)
+        print("  Writing anyway — check failed_feeds_report.yml for details.", Colors.YELLOW)
+        sys.exit(1)
+
+
     from generate_comic_overview import generate_overview
 
     comics_author    = {c.get("name"): c.get("author", "") for c in comics_data}
@@ -475,13 +490,13 @@ def create_updated_settings():
         })
 
     # save the cache — standalone mode reads this back
-    json_path = output_path.parent / "comic_overview_data.json"
+    json_path = settings_path.parent.parent / "comic_overview_data.json"
     with open(json_path, "w", encoding="utf-8") as f:
         json.dump(overview_data, f, ensure_ascii=False, indent=2)
     print(f"✓ Cached overview data: {json_path}")
 
     # render the HTML from it
-    generate_overview(overview_data, output_path.parent / "comic_overview.html")
+    generate_overview(overview_data, settings_path.parent.parent / "comic_overview.html")
 
 if __name__ == "__main__":
     create_updated_settings()
