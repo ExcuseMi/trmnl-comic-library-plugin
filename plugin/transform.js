@@ -178,7 +178,7 @@ function transform(input) {
   if (itemsWithImages.length === 0) return emptyResult();
 
   let selectedItem;
-  if (input.trmnl?.plugin_settings?.custom_fields_values?.only_show_latest === "yes") {
+  if (input.trmnl?.plugin_settings?.custom_fields_values?.only_show_latest === "true") {
     selectedItem = itemsWithImages[0];
   } else {
     selectedItem = itemsWithImages[Date.now() % itemsWithImages.length];

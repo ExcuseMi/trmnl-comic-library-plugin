@@ -79,6 +79,13 @@
         const container = document.getElementById(config.containerId);
         if (!container) return;
 
+        // Set container styles for centering
+        container.style.display = 'flex';
+        container.style.alignItems = 'center';
+        container.style.justifyContent = 'center';
+        container.style.width = '100%';
+        container.style.height = '100%';
+
         const images = Array.from(container.querySelectorAll(config.imageSelector));
         if (images.length === 0) return;
 
@@ -170,6 +177,20 @@
             container.style.flexDirection = bestLayout.direction;
             container.style.flexWrap = bestLayout.wrap || 'nowrap';
             container.style.gap = config.gap + 'px';
+            
+            // For column layout, center horizontally
+            if (bestLayout.direction === 'column') {
+              container.style.alignItems = 'center';
+            } 
+            // For row layout, center vertically
+            else if (bestLayout.direction === 'row' && !bestLayout.wrap) {
+              container.style.alignItems = 'center';
+            }
+            // For grid layout, center both ways
+            else if (bestLayout.wrap === 'wrap') {
+              container.style.alignItems = 'center';
+              container.style.justifyContent = 'center';
+            }
 
             bestLayout.sizes.forEach((size, i) => {
               const img = loadedImages[i];
@@ -182,8 +203,14 @@
                 img.style.objectFit = 'contain';
                 img.style.flexShrink = '0';
                 img.style.display = 'block';
+                img.style.margin = '0 auto'; // Center individual images if needed
               }
             });
+
+            // Calculate total size and center within container
+            setTimeout(() => {
+              TRMNLImageLayout._centerLayoutInContainer(container, loadedImages, bestLayout.direction, config.gap);
+            }, 50);
           }
         });
       };
@@ -210,6 +237,9 @@
       container.innerHTML = '';
       container.style.flexDirection = 'column';
       container.style.gap = gap + 'px';
+      container.style.alignItems = 'center';
+      container.style.justifyContent = 'center';
+      container.style.overflowY = 'auto';
 
       for (let i = 0; i < numSections; i++) {
         const sectionCanvas = document.createElement('canvas');
@@ -230,7 +260,7 @@
           img.naturalWidth, sectionHeight
         );
 
-        const sectComic LibraryionImg = document.createElement('img');
+        const sectionImg = document.createElement('img');
         sectionImg.src = sectionCanvas.toDataURL();
         sectionImg.className = img.className;
         sectionImg.style.width = '100%';
@@ -238,6 +268,7 @@
         sectionImg.style.maxHeight = containerHeight + 'px';
         sectionImg.style.objectFit = 'contain';
         sectionImg.style.display = 'block';
+        sectionImg.style.margin = '0 auto';
 
         container.appendChild(sectionImg);
       }
@@ -323,6 +354,50 @@
       const coverage = (avgWidth * cols * avgHeight * rows) / (containerWidth * containerHeight);
 
       return { direction: 'row', wrap: 'wrap', sizes, coverage };
+    },
+
+    _centerLayoutInContainer: function(container, images, direction, gap) {
+      // Calculate total dimensions
+      let totalWidth = 0;
+      let totalHeight = 0;
+      
+      if (direction === 'column') {
+        // For column layout
+        totalWidth = Math.max(...images.map(img => img.offsetWidth));
+        totalHeight = images.reduce((sum, img) => sum + img.offsetHeight, 0) + (gap * (images.length - 1));
+        
+        // Center horizontally
+        if (totalWidth < container.offsetWidth) {
+          container.style.alignItems = 'center';
+        }
+        
+        // Center vertically if there's space
+        if (totalHeight < container.offsetHeight) {
+          const marginTop = (container.offsetHeight - totalHeight) / 2;
+          container.style.paddingTop = marginTop + 'px';
+        }
+        
+      } else if (direction === 'row') {
+        // For row layout
+        totalWidth = images.reduce((sum, img) => sum + img.offsetWidth, 0) + (gap * (images.length - 1));
+        totalHeight = Math.max(...images.map(img => img.offsetHeight));
+        
+        // Center vertically
+        if (totalHeight < container.offsetHeight) {
+          container.style.alignItems = 'center';
+        }
+        
+        // Center horizontally if there's space
+        if (totalWidth < container.offsetWidth) {
+          const marginLeft = (container.offsetWidth - totalWidth) / 2;
+          container.style.paddingLeft = marginLeft + 'px';
+        }
+        
+      } else {
+        // For grid layout, already centered with justify-content: center
+        container.style.alignItems = 'center';
+        container.style.justifyContent = 'center';
+      }
     }
   };
 

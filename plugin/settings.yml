@@ -1,10 +1,10 @@
+---
 strategy: polling
 no_screen_padding: 'no'
 dark_mode: 'no'
 static_data: ''
 polling_verb: get
-polling_url: "{% assign cleaned_comics = comics\r\n  | replace: '[', ''\r\n  | replace: ']', ''\r\n  | replace: '\"', ''\r\n  | replace: ' ', '' %}\r\n{% assign cleaned_comics_other_languages = comics_other_languages\r\n  | replace: '[', ''\r\n  | replace: ']', ''\r\n  | replace: '\"', ''\r\n  | replace: ' ', '' %}\r\n{% assign cleaned_political = comics_political\r\n  | replace: '[', ''\r\n  | replace: ']', ''\r\n  | replace: '\"', ''\r\n  | replace: ' ', '' %}\r\n{% assign merged_string = \"\" %}\r\n{% if cleaned_comics != \"\" %}\r\n  {% assign merged_string = cleaned_comics %}\r\n{% endif %}\r\n{% if cleaned_comics_other_languages != \"\" %}\r\n  {% if merged_string != \"\" %}\r\n    {% assign merged_string = merged_string | append: \",\" | append: cleaned_comics_other_languages %}\r\n  {% else %}\r\n    {% assign merged_string = cleaned_comics_other_languages %}\r\n  {% endif %}\r\n{% endif %}\r\n{% if cleaned_political != \"\" %}\r\n  {% if merged_string != \"\" %}\r\n    {% assign\
-  \ merged_string = merged_string | append: \",\" | append: cleaned_political %}\r\n  {% else %}\r\n    {% assign merged_string = cleaned_political %}\r\n  {% endif %}\r\n{% endif %}\r\n{% if extra_rss_feeds != \"\" %}\r\n  {% if merged_string != \"\" %}\r\n    {% assign merged_string = merged_string | append: \",\" | append: extra_rss_feeds %}\r\n  {% else %}\r\n    {% assign merged_string = extra_rss_feeds %}\r\n  {% endif %}\r\n{% endif %}\r\n{% assign merged_list = merged_string | split: \",\" %}\r\n{% if merged_list.size > 0 %}\r\n  {% assign random_index = \"now\" | date: \"%s\" | modulo: merged_list.size %}\r\n  {% assign item_type = merged_list[random_index] %}\r\n{{ item_type }}\r\n{% endif %}"
+polling_url: "{% unless trmnl.user.id == 6458 %}\r\n{% assign cleaned_comics = comics\r\n  | replace: '[', ''\r\n  | replace: ']', ''\r\n  | replace: '\"', ''\r\n  | replace: ' ', '' %}\r\n{% assign cleaned_comics_other_languages = comics_other_languages\r\n  | replace: '[', ''\r\n  | replace: ']', ''\r\n  | replace: '\"', ''\r\n  | replace: ' ', '' %}\r\n{% assign cleaned_political = comics_political\r\n  | replace: '[', ''\r\n  | replace: ']', ''\r\n  | replace: '\"', ''\r\n  | replace: ' ', '' %}\r\n{% assign merged_string = \"\" %}\r\n{% if cleaned_comics != \"\" %}\r\n  {% assign merged_string = cleaned_comics %}\r\n{% endif %}\r\n{% if cleaned_comics_other_languages != \"\" %}\r\n  {% if merged_string != \"\" %}\r\n    {% assign merged_string = merged_string | append: \",\" | append: cleaned_comics_other_languages %}\r\n  {% else %}\r\n    {% assign merged_string = cleaned_comics_other_languages %}\r\n  {% endif %}\r\n{% endif %}\r\n{% if cleaned_political != \"\" %}\r\n  {% if merged_string != \"\" %}\r\n    {% assign merged_string = merged_string | append: \",\" | append: cleaned_political %}\r\n  {% else %}\r\n    {% assign merged_string = cleaned_political %}\r\n  {% endif %}\r\n{% endif %}\r\n{% if extra_rss_feeds != \"\" %}\r\n  {% if merged_string != \"\" %}\r\n    {% assign merged_string = merged_string | append: \",\" | append: extra_rss_feeds %}\r\n  {% else %}\r\n    {% assign merged_string = extra_rss_feeds %}\r\n  {% endif %}\r\n{% endif %}\r\n{% assign merged_list = merged_string | split: \",\" %}\r\n{% if merged_list.size > 0 %}\r\n  {% assign random_index = \"now\" | date: \"%s\" | modulo: merged_list.size %}\r\n  {% assign item_type = merged_list[random_index] %}\r\n{{ item_type }}\r\n{% endif %}\r\n{% else %}\r\nhttps://excusemi.github.io/trmnl-comic-library-plugin/data/demo_data.atom\r\n{% endunless %}"
 polling_headers: ''
 polling_body: ''
 id: 180935
@@ -26,7 +26,7 @@ custom_fields:
   - 1 and Done by Eric Scott: https://comiccaster.xyz/rss/1-and-done
   - 9 Chickweed Lane by Brooke McEldowney: https://comiccaster.xyz/rss/9-chickweed-lane
   - 9 to 5 by Harley Schwadron: https://comiccaster.xyz/rss/9to5
-  - '@Tavicat by Rikki Simons': https://comiccaster.xyz/rss/tavicat
+  - "@Tavicat by Rikki Simons": https://comiccaster.xyz/rss/tavicat
   - A Problem Like Jamal by Tauhid Bondia: https://comiccaster.xyz/rss/a-problem-like-jamal
   - Aaggghhh by Ham: https://comiccaster.xyz/rss/aaggghhh
   - Adam@Home by Rob Harrell: https://comiccaster.xyz/rss/adamathome
@@ -355,6 +355,7 @@ custom_fields:
   - Sarah's Scribbles by Sarah Andersen: https://comiccaster.xyz/rss/sarahs-scribbles
   - Saturday Morning Breakfast Cereal by Zach Weinersmith: https://comiccaster.xyz/rss/saturday-morning-breakfast-cereal
   - Saturday Morning Breakfast Cereal by Zach Weinersmith: https://www.smbc-comics.com/comic/rss
+  - Savage Chickens by Doug Savage: https://comiccaster.xyz/rss/savage-chickens
   - Scary Gary by Mark Buford: https://comiccaster.xyz/rss/scarygary
   - Sherman's Lagoon by Jim Toomey: https://comiccaster.xyz/rss/shermanslagoon
   - Shirley and Son Classics by Jerry Bittle: https://comiccaster.xyz/rss/shirley-and-son-classics
@@ -451,7 +452,6 @@ custom_fields:
   - Wizard of Id by Parker and Hart: https://comiccaster.xyz/rss/wizardofid
   - Wizard of Id Classics by Parker and Hart: https://comiccaster.xyz/rss/wizard-of-id-classics
   - Wondermark by David Malki: https://comiccaster.xyz/rss/wondermark
-  - Work Chronicles: https://workchronicles.substack.com/feed
   - Working Cats: https://comiccaster.xyz/rss/working-cats
   - Working Daze by John Zakour and Scott Roberts: https://comiccaster.xyz/rss/working-daze
   - Working It Out by Charlos Gary: https://comiccaster.xyz/rss/workingitout
