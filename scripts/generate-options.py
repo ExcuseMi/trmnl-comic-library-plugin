@@ -279,10 +279,11 @@ def create_updated_settings():
         'keyname': 'about',
         'name': 'About This Plugin',
         'field_type': 'author_bio',
-        'description': f"Access a collection of {total_all} comic RSS / Atom feeds and enjoy fresh content every day. \nFeatures: \n"
-                       f"● Displays the most recent comic or a random comic \n"
-                       f"● Supports multiple RSS / Atom sources \n"
-                       f"● Add your own RSS / Atom feeds \n"
+        'description': f"Access a collection of 534 comic RSS / Atom feeds and enjoy fresh content every day. <br />"
+                       f"Features: <br />"
+                       f"● Displays the most recent comic or a random comic <br />"
+                       f"● Supports multiple RSS / Atom sources <br />"
+                       f"● Add your own RSS / Atom feeds <br />"
                        f"● Frequently updated to keep all RSS / Atom sources valid and up to date",
         'github_url': 'https://github.com/ExcuseMi/trmnl-comic-library-plugin',
         'learn_more_url': 'https://comiccaster.xyz',
