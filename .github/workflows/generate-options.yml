@@ -7,14 +7,6 @@ on:
   workflow_dispatch:  # Manual trigger
   schedule:
     - cron: '0 0 * * *'  # Daily at midnight UTC
-  push:
-    branches: [ main ]
-    paths:
-      - plugin/settings.yml
-      - failed_feeds_report.yml
-      - comic_overview_data.json
-      - comic_overview.html
-      - updated_settings.yml
 
 jobs:
   generate-options:
