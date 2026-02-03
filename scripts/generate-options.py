@@ -340,7 +340,8 @@ def create_updated_settings():
         author = comic.get("author", "")
         slug = comic.get("slug", "unknown")
         display_name = f"{name} by {author}" if author and author != name else name
-        other_lang_options.append({display_name: slug})
+        url = comic.get('url')
+        other_lang_options.append({display_name: url})
 
     other_lang_field = {
         'keyname': 'comics_other_languages',
@@ -360,7 +361,9 @@ def create_updated_settings():
         author = comic.get("author", "")
         slug = comic.get("slug", "unknown")
         display_name = f"{name} by {author}" if author and author != name else name
-        political_options.append({display_name: slug})
+        url = comic.get('url')
+
+        political_options.append({display_name: url})
 
     political_field = {
         'keyname': 'comics_political',
