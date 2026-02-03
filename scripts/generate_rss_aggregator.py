@@ -75,7 +75,7 @@ def generate_atom_feed(
     for entry_idx in range(entries):
         entry = SubElement(feed, 'entry')
 
-        SubElement(entry, 'title').text = 'Comic Library — Daily Comics'
+        SubElement(entry, 'title').text = 'Comic Library'
 
         entry_link = SubElement(entry, 'link')
         entry_link.set('href', 'https://excusemi.github.io/trmnl-comic-library-plugin/')
