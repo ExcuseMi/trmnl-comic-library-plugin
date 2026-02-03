@@ -2,7 +2,7 @@
 """
 generate_rss_aggregator.py
 
-Creates an Atom feed with multiple comic entries (6 by default).
+Creates an Atom feed with ONE entry containing multiple comic images.
 Can be run standalone or imported as a library.
 
 Standalone: python scripts/generate_rss_aggregator.py [--count 6] [--mode recent]
@@ -26,7 +26,7 @@ def generate_atom_feed(
         mode: str = "recent"
 ):
     """
-    Generate an Atom feed with multiple comic entries.
+    Generate an Atom feed with ONE entry containing multiple comic images.
 
     Args:
         comics: List of comic dicts with keys: name, image_url, link, caption, title
@@ -67,32 +67,34 @@ def generate_atom_feed(
     SubElement(feed, 'id').text = 'https://excusemi.github.io/trmnl-comic-library-plugin/'
     SubElement(feed, 'updated').text = datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
 
-    # Create entry for each comic
-    for idx, comic in enumerate(selected):
-        entry = SubElement(feed, 'entry')
+    # Create ONE entry with all comics inside
+    entry = SubElement(feed, 'entry')
 
+    SubElement(entry, 'title').text = 'Comic Library — Daily Comics'
+
+    entry_link = SubElement(entry, 'link')
+    entry_link.set('href', 'https://excusemi.github.io/trmnl-comic-library-plugin/')
+    entry_link.set('rel', 'alternate')
+
+    SubElement(entry, 'updated').text = datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
+    SubElement(entry, 'id').text = f'comic-library-{datetime.now(timezone.utc).strftime("%Y%m%d")}'
+
+    # Build HTML with ALL images in one summary
+    summary = SubElement(entry, 'summary')
+    summary.set('type', 'html')
+
+    html = ''
+    for comic in selected:
+        img_url = comic.get('image_url')
         comic_name = comic.get('name') or 'Unknown'
         comic_title = comic.get('title') or comic_name
-        img_url = comic.get('image_url')
-        comic_link = comic.get('link') or 'https://excusemi.github.io/trmnl-comic-library-plugin/'
         caption = comic.get('caption') or comic_title
 
-        SubElement(entry, 'title').text = comic_title
+        # Each image on its own line with title/alt for caption
+        html += f'<img src="{img_url}" title="{caption}" alt="{caption}" /><br/>'
 
-        entry_link = SubElement(entry, 'link')
-        entry_link.set('href', comic_link)
-        entry_link.set('rel', 'alternate')
-
-        SubElement(entry, 'updated').text = datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
-        SubElement(entry, 'id').text = f'comic-library-{datetime.now(timezone.utc).strftime("%Y%m%d")}-{idx}'
-
-        # Summary with img tag - manually build to avoid HTML entity escaping
-        # We can't use .text because it will escape < and >
-        summary = SubElement(entry, 'summary')
-        summary.set('type', 'html')
-        # Store raw HTML - we'll fix escaping in the final XML
-        summary.text = f'<img src="{img_url}" title="{caption}" alt="{caption}" />'
-        summary.set('_raw_html', 'true')  # marker for post-processing
+    summary.text = html
+    summary.set('_raw_html', 'true')  # marker for post-processing
 
     # Pretty print XML
     rough_string = tostring(feed, encoding='utf-8')
@@ -130,7 +132,7 @@ def generate_atom_feed(
         f.write(pretty_xml)
 
     print(f"✓ Atom feed written: {output_path}")
-    print(f"  Contains {len(selected)} entries")
+    print(f"  Contains 1 entry with {len(selected)} images")
 
 
 def _resolve_base() -> Path:
