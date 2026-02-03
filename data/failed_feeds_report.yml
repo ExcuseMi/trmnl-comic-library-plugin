@@ -1,5 +1,5 @@
-report_date: '2026-02-03 22:45:40'
-total_failed: 61
+report_date: '2026-02-03 22:58:50'
+total_failed: 62
 failed_feeds:
 - name: Art by Moga
   url: https://comiccaster.xyz/rss/artbymoga
@@ -155,6 +155,12 @@ failed_feeds:
   url: https://comiccaster.xyz/rss/redmeat
   error: Feed contains only generic promotional content
   feed_type: rss
+  status: needs_investigation
+- name: Savage Chickens
+  url: https://comiccaster.xyz/rss/savage-chickens
+  error: 'Request failed: HTTPSConnectionPool(host=''comiccaster.xyz'', port=443):
+    Read timed out. (read timeout=15)'
+  feed_type: null
   status: needs_investigation
 - name: Scenes from a Multiverse
   url: https://comiccaster.xyz/rss/scenes-from-a-multiverse

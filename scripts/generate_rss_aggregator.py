@@ -18,10 +18,10 @@ from xml.dom import minidom
 
 
 def generate_rss_aggregator(
-    all_results: list,
-    output_path: Path,
-    count: int = 6,
-    mode: str = "recent"
+        all_results: list,
+        output_path: Path,
+        count: int = 6,
+        mode: str = "recent"
 ):
     """
     Generate an RSS feed with one item containing multiple comic images.
@@ -63,33 +63,32 @@ def generate_rss_aggregator(
     SubElement(channel, 'language').text = 'en'
     SubElement(channel, 'lastBuildDate').text = datetime.utcnow().strftime('%a, %d %b %Y %H:%M:%S GMT')
 
-    # Single item with all comics
-    item = SubElement(channel, 'item')
-    SubElement(item, 'title').text = 'Comic Library — Daily Comics'
-    SubElement(item, 'link').text = 'https://excusemi.github.io/trmnl-comic-library-plugin/'
-    SubElement(item, 'description').text = 'All your comics in one plugin'
-    SubElement(item, 'pubDate').text = datetime.utcnow().strftime('%a, %d %b %Y %H:%M:%S GMT')
-    SubElement(item, 'guid', isPermaLink='false').text = f"comic-library-{datetime.utcnow().strftime('%Y%m%d')}"
-
-    # Build content:encoded with all images
-    content_html = '<div style="display:flex; flex-direction:column; gap:20px;">\n'
+    # Build HTML with all comic images
+    content_html = ''
     for result in selected:
         comic_name = result.name or "Unknown"
         img_url = result.image_url
         comic_link = result.link or 'https://excusemi.github.io/trmnl-comic-library-plugin/'
         caption = result.caption or comic_name
 
-        content_html += f'  <div style="border:1px solid #ccc; padding:10px; border-radius:8px;">\n'
-        content_html += f'    <h3 style="margin:0 0 10px 0;">{comic_name}</h3>\n'
-        content_html += f'    <a href="{comic_link}" target="_blank"><img src="{img_url}" alt="{caption}" style="max-width:100%; height:auto;"/></a>\n'
+        content_html += f'<div style="margin:20px 0; border:1px solid #ccc; padding:10px; border-radius:8px;">\n'
+        content_html += f'  <h3 style="margin:0 0 10px 0;">{comic_name}</h3>\n'
+        content_html += f'  <a href="{comic_link}" target="_blank"><img src="{img_url}" alt="{caption}" style="max-width:100%; height:auto;"/></a>\n'
         if caption and caption != comic_name:
-            content_html += f'    <p style="margin:10px 0 0 0; font-style:italic; color:#666;">{caption}</p>\n'
-        content_html += f'  </div>\n'
+            content_html += f'  <p style="margin:10px 0 0 0; font-style:italic; color:#666;">{caption}</p>\n'
+        content_html += f'</div>\n'
 
-    content_html += '</div>'
+    # Single item with all comics
+    item = SubElement(channel, 'item')
+    SubElement(item, 'title').text = 'Comic Library — Daily Comics'
+    SubElement(item, 'link').text = 'https://excusemi.github.io/trmnl-comic-library-plugin/'
 
-    content_encoded = SubElement(item, '{http://purl.org/rss/1.0/modules/content/}encoded')
-    content_encoded.text = content_html
+    # Put content in BOTH description and encoded for maximum compatibility
+    SubElement(item, 'description').text = content_html
+    SubElement(item, '{http://purl.org/rss/1.0/modules/content/}encoded').text = content_html
+
+    SubElement(item, 'pubDate').text = datetime.utcnow().strftime('%a, %d %b %Y %H:%M:%S GMT')
+    SubElement(item, 'guid', isPermaLink='false').text = f"comic-library-{datetime.utcnow().strftime('%Y%m%d')}"
 
     # Pretty print XML
     rough_string = tostring(rss, encoding='utf-8')
@@ -100,7 +99,7 @@ def generate_rss_aggregator(
     lines = [line for line in pretty_xml.split('\n') if line.strip()]
     pretty_xml = '\n'.join(lines)
 
-    with open(output_path, 'w', encoding='utf-8') as f:
+    with open(output_path, 'wh', encoding='utf-8') as f:
         f.write(pretty_xml)
 
     print(f"✓ RSS feed written: {output_path}")
