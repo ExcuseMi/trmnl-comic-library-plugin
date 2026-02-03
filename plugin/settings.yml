@@ -18,11 +18,12 @@ custom_fields:
   category: comics
 - keyname: comics
   field_type: select
-  name: 'Comics: 440'
+  name: 'Comics: 442'
   multiple: true
   help_text: Use ⌘+click (Mac) or ctrl+click (Windows) to select multiple items. Use Shift+click to select a whole range at once.
   optional: true
   options:
+  - 1 and Done by Eric Scott: https://comiccaster.xyz/rss/1-and-done
   - 9 Chickweed Lane by Brooke McEldowney: https://comiccaster.xyz/rss/9-chickweed-lane
   - 9 to 5 by Harley Schwadron: https://comiccaster.xyz/rss/9to5
   - '@Tavicat by Rikki Simons': https://comiccaster.xyz/rss/tavicat
@@ -65,6 +66,7 @@ custom_fields:
   - Beetle Bailey: https://comiccaster.xyz/rss/beetle-bailey-1
   - Ben by Daniel Shelton: https://comiccaster.xyz/rss/ben
   - Berkeley Mews by Ben Zaehringer: https://comiccaster.xyz/rss/berkeley-mews
+  - Betty by Gerry Rasmussen: https://comiccaster.xyz/rss/betty
   - Between Friends: https://comiccaster.xyz/rss/between-friends
   - Beware of Toddler: https://comiccaster.xyz/rss/beware-of-toddler
   - BFGF Syndrome by Patabot: https://comiccaster.xyz/rss/bfgf-syndrome
