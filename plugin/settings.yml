@@ -14,7 +14,7 @@ custom_fields:
   field_type: author_bio
   description: 'Access a collection of 534 comic RSS / Atom feeds and enjoy fresh content every day. <br />Features: <br />● Displays the most recent comic or a random comic <br />● Supports multiple RSS / Atom sources <br />● Add your own RSS / Atom feeds <br />● Frequently updated to keep all RSS / Atom sources valid and up to date'
   github_url: https://github.com/ExcuseMi/trmnl-comic-library-plugin
-  learn_more_url: https://comiccaster.xyz
+  learn_more_url: https://raw.githubusercontent.com/ExcuseMi/trmnl-comic-library-plugin/refs/heads/main/comic_overview.html
   category: comics
 - keyname: comics
   field_type: select
