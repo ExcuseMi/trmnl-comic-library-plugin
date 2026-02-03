@@ -493,13 +493,13 @@ def create_updated_settings():
                 "category":  category,
             })
     # save the cache — standalone mode reads this back
-    json_path = settings_path.parent / "comic_overview_data.json"
+    json_path = settings_path.parent.parent / "comic_overview_data.json"
     with open(json_path, "w", encoding="utf-8") as f:
         json.dump(overview_data, f, ensure_ascii=False, indent=2)
     print(f"✓ Cached overview data: {json_path}")
 
     # render the HTML from it
-    generate_overview(overview_data, settings_path.parent / "comic_overview.html")
+    generate_overview(overview_data, settings_path.parent.parent / "comic_overview.html")
 
 if __name__ == "__main__":
     create_updated_settings()
