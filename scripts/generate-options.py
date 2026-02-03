@@ -8,7 +8,6 @@ import yaml
 from dotenv import load_dotenv
 
 from rss_feed_validator import RSSFeedValidator
-from scripts.upload_plugin import Colors
 
 URL = "https://comiccaster.xyz/comics_list.json"
 URL_POLITICAL = "https://comiccaster.xyz/political_comics_list.json"
@@ -458,12 +457,11 @@ def create_updated_settings():
     total_invalid = len(regular_invalid) + len(other_lang_invalid) + len(political_invalid) + len(extra_invalid)
 
     if total_valid == 0:
-        print("✗ ABORT: Zero valid feeds — likely no internet or API down. Not writing anything.", Colors.RED)
+        print("✗ ABORT: Zero valid feeds — likely no internet or API down. Not writing anything.")
         sys.exit(1)
 
     if total_valid < total_invalid:
-        print(f"✗ ABORT: More invalid ({total_invalid}) than valid ({total_valid}) feeds.", Colors.YELLOW)
-        print("  Writing anyway — check failed_feeds_report.yml for details.", Colors.YELLOW)
+        print(f"✗ ABORT: More invalid ({total_invalid}) than valid ({total_valid}) feeds.")
         sys.exit(1)
 
 
