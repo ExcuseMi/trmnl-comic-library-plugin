@@ -21,7 +21,7 @@ from xml.dom import minidom
 def generate_atom_feed(
         comics: list[dict],
         output_path: Path,
-        count: int = 12,
+        comics_per_entry: int = 3,
         entries: int = 3,
         mode: str = "recent"
 ):
@@ -31,7 +31,7 @@ def generate_atom_feed(
     Args:
         comics: List of comic dicts with keys: name, image_url, link, caption, title
         output_path: Where to write demo_data.atom
-        count: Total number of comics to include (default 12)
+        comics_per_entry: Number of comics to include in each entry (default 3)
         entries: Number of entries to create (default 3)
         mode: "recent" for first N, "random" for random selection
     """
@@ -46,16 +46,7 @@ def generate_atom_feed(
         print("✗ No valid comics with images found")
         return
 
-    # Select comics based on mode
-    if mode == "random":
-        selected = random.sample(valid, min(count, len(valid)))
-        print(f"  Selected {len(selected)} random comics")
-    else:  # recent
-        selected = valid[:count]
-        print(f"  Selected {len(selected)} most recent comics")
-
-    # Calculate images per entry
-    images_per_entry = len(selected) // entries
+    print(f"  Found {len(valid)} valid comics with images")
 
     # Build Atom feed
     feed = Element('feed')
@@ -71,7 +62,7 @@ def generate_atom_feed(
     SubElement(feed, 'id').text = 'https://excusemi.github.io/trmnl-comic-library-plugin/'
     SubElement(feed, 'updated').text = datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
 
-    # Create multiple entries
+    # Create multiple entries, each with its own random selection
     for entry_idx in range(entries):
         entry = SubElement(feed, 'entry')
 
@@ -84,15 +75,29 @@ def generate_atom_feed(
         SubElement(entry, 'updated').text = datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
         SubElement(entry, 'id').text = f'comic-library-{datetime.now(timezone.utc).strftime("%Y%m%d")}-{entry_idx}'
 
+        # Select comics for THIS entry
+        if mode == "random":
+            # Get random comics for this entry (with replacement allowed)
+            entry_comics = random.choices(valid, k=comics_per_entry)
+            print(f"  Entry {entry_idx + 1}: Selected {len(entry_comics)} random comics")
+        else:  # recent
+            # For "recent" mode, start from beginning and take slices
+            # but ensure we have enough comics by wrapping around if needed
+            start_idx = entry_idx * comics_per_entry
+            end_idx = start_idx + comics_per_entry
+            if end_idx <= len(valid):
+                entry_comics = valid[start_idx:end_idx]
+            else:
+                # Not enough comics, start from beginning again
+                wrapped_valid = valid + valid
+                entry_comics = wrapped_valid[start_idx:end_idx]
+            print(f"  Entry {entry_idx + 1}: Comics {start_idx + 1}-{end_idx}")
+
         # Build HTML with images for this entry
         summary = SubElement(entry, 'summary')
         summary.set('type', 'html')
 
         html = ''
-        start_idx = entry_idx * images_per_entry
-        end_idx = start_idx + images_per_entry
-        entry_comics = selected[start_idx:end_idx]
-
         for comic in entry_comics:
             img_url = comic.get('image_url')
             # Use custom caption
@@ -121,7 +126,7 @@ def generate_atom_feed(
         f.write(pretty_xml)
 
     print(f"✓ Atom feed written: {output_path}")
-    print(f"  Contains {entries} entries with {images_per_entry} images each")
+    print(f"  Contains {entries} entries with {comics_per_entry} comics each")
 
 
 def _resolve_base() -> Path:
@@ -138,8 +143,8 @@ if __name__ == "__main__":
                         help="Path to comic_overview_data.json (default: data/comic_overview_data.json)")
     parser.add_argument("--output", type=Path,
                         help="Output path (default: data/demo_data.atom)")
-    parser.add_argument("--count", type=int, default=12,
-                        help="Total number of comics to include (default: 12)")
+    parser.add_argument("--comics-per-entry", type=int, default=3,
+                        help="Number of comics per entry (default: 3)")
     parser.add_argument("--entries", type=int, default=3,
                         help="Number of entries to create (default: 3)")
     parser.add_argument("--mode", choices=["recent", "random"], default="recent",
@@ -163,7 +168,7 @@ if __name__ == "__main__":
     generate_atom_feed(
         comics=comics,
         output_path=output_path,
-        count=args.count,
+        comics_per_entry=args.comics_per_entry,
         entries=args.entries,
         mode=args.mode
     )
