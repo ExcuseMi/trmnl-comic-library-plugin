@@ -53,7 +53,7 @@ def generate_atom_feed(
     feed.set('xmlns', 'http://www.w3.org/2005/Atom')
     feed.set('xml:lang', 'en')
 
-    SubElement(feed, 'title').text = 'Comic Library'
+    SubElement(feed, 'title').text = ''
 
     link = SubElement(feed, 'link')
     link.set('href', 'https://excusemi.github.io/trmnl-comic-library-plugin/')
