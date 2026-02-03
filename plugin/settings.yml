@@ -1,10 +1,10 @@
----
 strategy: polling
 no_screen_padding: 'no'
 dark_mode: 'no'
 static_data: ''
 polling_verb: get
-polling_url: "{% assign cleaned_comics = comics\r\n  | replace: '[', ''\r\n  | replace: ']', ''\r\n  | replace: '\"', ''\r\n  | replace: ' ', '' %}\r\n{% assign cleaned_comics_other_languages = comics_other_languages\r\n  | replace: '[', ''\r\n  | replace: ']', ''\r\n  | replace: '\"', ''\r\n  | replace: ' ', '' %}\r\n{% assign cleaned_political = comics_political\r\n  | replace: '[', ''\r\n  | replace: ']', ''\r\n  | replace: '\"', ''\r\n  | replace: ' ', '' %}\r\n{% assign merged_string = \"\" %}\r\n{% if cleaned_comics != \"\" %}\r\n  {% assign merged_string = cleaned_comics %}\r\n{% endif %}\r\n{% if cleaned_comics_other_languages != \"\" %}\r\n  {% if merged_string != \"\" %}\r\n    {% assign merged_string = merged_string | append: \",\" | append: cleaned_comics_other_languages %}\r\n  {% else %}\r\n    {% assign merged_string = cleaned_comics_other_languages %}\r\n  {% endif %}\r\n{% endif %}\r\n{% if cleaned_political != \"\" %}\r\n  {% if merged_string != \"\" %}\r\n    {% assign merged_string = merged_string | append: \",\" | append: cleaned_political %}\r\n  {% else %}\r\n    {% assign merged_string = cleaned_political %}\r\n  {% endif %}\r\n{% endif %}\r\n{% if extra_rss_feeds != \"\" %}\r\n  {% if merged_string != \"\" %}\r\n    {% assign merged_string = merged_string | append: \",\" | append: extra_rss_feeds %}\r\n  {% else %}\r\n    {% assign merged_string = extra_rss_feeds %}\r\n  {% endif %}\r\n{% endif %}\r\n{% assign merged_list = merged_string | split: \",\" %}\r\n{% if merged_list.size > 0 %}\r\n  {% assign random_index = \"now\" | date: \"%s\" | modulo: merged_list.size %}\r\n  {% assign item_type = merged_list[random_index] %}\r\n{{ item_type }}\r\n{% endif %}"
+polling_url: "{% assign cleaned_comics = comics\r\n  | replace: '[', ''\r\n  | replace: ']', ''\r\n  | replace: '\"', ''\r\n  | replace: ' ', '' %}\r\n{% assign cleaned_comics_other_languages = comics_other_languages\r\n  | replace: '[', ''\r\n  | replace: ']', ''\r\n  | replace: '\"', ''\r\n  | replace: ' ', '' %}\r\n{% assign cleaned_political = comics_political\r\n  | replace: '[', ''\r\n  | replace: ']', ''\r\n  | replace: '\"', ''\r\n  | replace: ' ', '' %}\r\n{% assign merged_string = \"\" %}\r\n{% if cleaned_comics != \"\" %}\r\n  {% assign merged_string = cleaned_comics %}\r\n{% endif %}\r\n{% if cleaned_comics_other_languages != \"\" %}\r\n  {% if merged_string != \"\" %}\r\n    {% assign merged_string = merged_string | append: \",\" | append: cleaned_comics_other_languages %}\r\n  {% else %}\r\n    {% assign merged_string = cleaned_comics_other_languages %}\r\n  {% endif %}\r\n{% endif %}\r\n{% if cleaned_political != \"\" %}\r\n  {% if merged_string != \"\" %}\r\n    {% assign\
+  \ merged_string = merged_string | append: \",\" | append: cleaned_political %}\r\n  {% else %}\r\n    {% assign merged_string = cleaned_political %}\r\n  {% endif %}\r\n{% endif %}\r\n{% if extra_rss_feeds != \"\" %}\r\n  {% if merged_string != \"\" %}\r\n    {% assign merged_string = merged_string | append: \",\" | append: extra_rss_feeds %}\r\n  {% else %}\r\n    {% assign merged_string = extra_rss_feeds %}\r\n  {% endif %}\r\n{% endif %}\r\n{% assign merged_list = merged_string | split: \",\" %}\r\n{% if merged_list.size > 0 %}\r\n  {% assign random_index = \"now\" | date: \"%s\" | modulo: merged_list.size %}\r\n  {% assign item_type = merged_list[random_index] %}\r\n{{ item_type }}\r\n{% endif %}"
 polling_headers: ''
 polling_body: ''
 id: 180935
@@ -12,13 +12,13 @@ custom_fields:
 - keyname: about
   name: About This Plugin
   field_type: author_bio
-  description: "Access a collection of 534 comic RSS / Atom feeds and enjoy fresh content every day. \nFeatures: \n● Displays the most recent comic or a random comic \n● Supports multiple RSS / Atom sources \n● Add your own RSS / Atom feeds \n● Frequently updated to keep all RSS / Atom sources valid and up to date"
+  description: 'Access a collection of 534 comic RSS / Atom feeds and enjoy fresh content every day. <br />Features: <br />● Displays the most recent comic or a random comic <br />● Supports multiple RSS / Atom sources <br />● Add your own RSS / Atom feeds <br />● Frequently updated to keep all RSS / Atom sources valid and up to date'
   github_url: https://github.com/ExcuseMi/trmnl-comic-library-plugin
   learn_more_url: https://comiccaster.xyz
   category: comics
 - keyname: comics
   field_type: select
-  name: 'Comics: 427'
+  name: 'Comics: 442'
   multiple: true
   help_text: Use ⌘+click (Mac) or ctrl+click (Windows) to select multiple items. Use Shift+click to select a whole range at once.
   optional: true
@@ -26,7 +26,7 @@ custom_fields:
   - 1 and Done by Eric Scott: https://comiccaster.xyz/rss/1-and-done
   - 9 Chickweed Lane by Brooke McEldowney: https://comiccaster.xyz/rss/9-chickweed-lane
   - 9 to 5 by Harley Schwadron: https://comiccaster.xyz/rss/9to5
-  - "@Tavicat by Rikki Simons": https://comiccaster.xyz/rss/tavicat
+  - '@Tavicat by Rikki Simons': https://comiccaster.xyz/rss/tavicat
   - A Problem Like Jamal by Tauhid Bondia: https://comiccaster.xyz/rss/a-problem-like-jamal
   - Aaggghhh by Ham: https://comiccaster.xyz/rss/aaggghhh
   - Adam@Home by Rob Harrell: https://comiccaster.xyz/rss/adamathome
@@ -73,6 +73,7 @@ custom_fields:
   - Big Nate by Lincoln Peirce: https://comiccaster.xyz/rss/bignate
   - Big Top by Rob Harrell: https://comiccaster.xyz/rss/bigtop
   - Birdbrains by Thom Bluemel: https://comiccaster.xyz/rss/birdbrains
+  - BirdChonk: https://tapas.io/rss/series/258749/
   - Bizarro: https://comiccaster.xyz/rss/bizarro
   - 'Bleeker: The Rechargeable Dog by Jonathan Mahood': https://comiccaster.xyz/rss/bleeker
   - Bliss by Harry Bliss: https://comiccaster.xyz/rss/bliss
@@ -97,6 +98,8 @@ custom_fields:
   - C'est la Vie by Jennifer Babcock: https://comiccaster.xyz/rss/cestlavie
   - Calvin and Hobbes by Bill Watterson: https://comiccaster.xyz/rss/calvinandhobbes
   - Carpe Diem: https://comiccaster.xyz/rss/carpe-diem
+  - Cassandra Comic: https://tapas.io/rss/series/35182/
+  - Cat and Girl: https://catandgirl.com/feed/
   - Cathy by Cathy Guisewite: https://comiccaster.xyz/rss/cathy
   - Cathy Commiserations by Cathy Guisewite: https://comiccaster.xyz/rss/cathy-commiserations
   - Cattitude — Doggonit by Anthony Smith: https://comiccaster.xyz/rss/cattitude-doggonit
@@ -114,6 +117,7 @@ custom_fields:
   - Crabgrass by Tauhid Bondia: https://comiccaster.xyz/rss/crabgrass
   - Crankshaft by Tom Batiuk and Dan Davis: https://comiccaster.xyz/rss/crankshaft
   - Crock: https://comiccaster.xyz/rss/crock
+  - Crow Time: https://www.webtoons.com/en/challenge/crow-time/rss?title_no=693372
   - Crumb by David Fletcher: https://comiccaster.xyz/rss/crumb
   - Cul de Sac by Richard Thompson: https://comiccaster.xyz/rss/culdesac
   - Curses! by Chelsea Carr: https://comiccaster.xyz/rss/curses
@@ -140,10 +144,12 @@ custom_fields:
   - Edge City by Terry and Patty LaBan: https://comiccaster.xyz/rss/edge-city
   - Eek! by Scott Nickel: https://comiccaster.xyz/rss/eek
   - El Café de Poncho by Paul Gilligan: https://comiccaster.xyz/rss/el-cafe-de-poncho
+  - Eldritch Darling: https://www.webtoons.com/en/challenge/eldritch-darling/rss?title_no=821877
   - Endtown by Aaron Neathery: https://comiccaster.xyz/rss/endtown
   - Eye Lie Popeye: https://comiccaster.xyz/rss/eye-lie-popeye
   - Eyebeam by Sam Hurt: https://comiccaster.xyz/rss/eyebeam
   - F Minus by Tony Carrillo: https://comiccaster.xyz/rss/fminus
+  - False Knees: https://www.webtoons.com/en/challenge/false-knees/rss?title_no=79544
   - Family Tree by Signe Wilkinson: https://comiccaster.xyz/rss/familytree
   - Farcus by David Waisglass and Gordon Coulthart: https://comiccaster.xyz/rss/farcus
   - Fat Cats by Charlie Podrebarac: https://comiccaster.xyz/rss/fat-cats
@@ -154,6 +160,7 @@ custom_fields:
   - For Better or For Worse by Lynn Johnston: https://comiccaster.xyz/rss/forbetterorforworse
   - For Heaven's Sake by Mike Morgan: https://comiccaster.xyz/rss/forheavenssake
   - Fowl Language by Brian Gordon: https://comiccaster.xyz/rss/fowl-language
+  - Foxes in Love: https://foxes-in-love.tumblr.com/rss
   - FoxTrot by Bill Amend: https://comiccaster.xyz/rss/foxtrot
   - FoxTrot Classics by Bill Amend: https://comiccaster.xyz/rss/foxtrotclassics
   - Francis by Patrick J. Marrin: https://comiccaster.xyz/rss/francis
@@ -324,11 +331,13 @@ custom_fields:
   - Questionable Content by Jeph Jacques: https://questionablecontent.net/QCRSS.xml
   - Questionable Quotebook by Sam Hepburn: https://comiccaster.xyz/rss/questionable-quotebook
   - Rabbits Against Magic by Jonathan Lemon: https://comiccaster.xyz/rss/rabbitsagainstmagic
+  - Raccoon Comic: https://www.webtoons.com/en/challenge/raccoon-comic/rss?title_no=250929
   - Rae The Doe: https://comiccaster.xyz/rss/rae-the-doe
   - Raising Duncan by Chris Browne: https://comiccaster.xyz/rss/raising-duncan
   - Real Life Adventures by Gary Wise and Lance Aldrich: https://comiccaster.xyz/rss/reallifeadventures
   - Reality Check by Dave Whamond: https://comiccaster.xyz/rss/realitycheck
   - Red and Rover by Brian Basset: https://comiccaster.xyz/rss/redandrover
+  - Red Green Blue: https://www.webtoons.com/en/challenge/redgreenblue/rss?title_no=587922
   - Rex Morgan M D: https://comiccaster.xyz/rss/rex-morgan-m-d
   - Rhymes with Orange: https://comiccaster.xyz/rss/rhymes-with-orange
   - Richard's Poor Almanac by Richard Thompson: https://comiccaster.xyz/rss/richards-poor-almanac
@@ -342,8 +351,10 @@ custom_fields:
   - Sales: https://comiccaster.xyz/rss/sales
   - Sally Forth: https://comiccaster.xyz/rss/sally-forth
   - Sam And Silo: https://comiccaster.xyz/rss/sam-and-silo
+  - Sarah's Scribbles: https://sarahcandersen.com/rss
   - Sarah's Scribbles by Sarah Andersen: https://comiccaster.xyz/rss/sarahs-scribbles
   - Saturday Morning Breakfast Cereal by Zach Weinersmith: https://comiccaster.xyz/rss/saturday-morning-breakfast-cereal
+  - Saturday Morning Breakfast Cereal by Zach Weinersmith: https://www.smbc-comics.com/comic/rss
   - Savage Chickens by Doug Savage: https://comiccaster.xyz/rss/savage-chickens
   - Scary Gary by Mark Buford: https://comiccaster.xyz/rss/scarygary
   - Sherman's Lagoon by Jim Toomey: https://comiccaster.xyz/rss/shermanslagoon
@@ -365,6 +376,7 @@ custom_fields:
   - Super-Fun-Pak Comix by Ruben Bolling: https://comiccaster.xyz/rss/super-fun-pak-comix
   - Swan Eaters by Georgia Dunn: https://comiccaster.xyz/rss/swan-eaters
   - Sweet and Sour Pork by Bob Holt: https://comiccaster.xyz/rss/sweet-and-sour-pork
+  - Swords: https://swordscomic.com/comic/feed/
   - Sylvia by Nicole Hollander: https://comiccaster.xyz/rss/sylvia
   - Take it from the Tinkersons: https://comiccaster.xyz/rss/take-it-from-the-tinkersons
   - Tank McNamara by Bill Hinds: https://comiccaster.xyz/rss/tankmcnamara
@@ -407,9 +419,11 @@ custom_fields:
   - The Other Coast by Adrian Raeside: https://comiccaster.xyz/rss/theothercoast
   - The Pajama Diaries: https://comiccaster.xyz/rss/pajama-diaries
   - The Phantom: https://comiccaster.xyz/rss/phantom
+  - The Pigeon Gazette by JaneyJane: https://www.webtoons.com/en/challenge/the-pigeon-gazette/rss?title_no=38949
   - The Planet Syndicate: https://comiccaster.xyz/rss/the-planet-syndicate
   - The Saga of Brann Bjornson: https://comiccaster.xyz/rss/the-saga-of-brann-bjornson
   - The Wandering Melon by Mike Shiell: https://comiccaster.xyz/rss/the-wandering-melon
+  - The Weekly Roll: https://www.webtoons.com/en/challenge/the-weekly-roll/rss?title_no=358889
   - The Worried Well by Dana Maier: https://comiccaster.xyz/rss/the-worried-well
   - Thin Lines by Randy Glasbergen: https://comiccaster.xyz/rss/thinlines
   - Tiger: https://comiccaster.xyz/rss/tiger
@@ -431,6 +445,7 @@ custom_fields:
   - Watch Your Head by Cory Thomas: https://comiccaster.xyz/rss/watchyourhead
   - WaynoVision by Wayno: https://comiccaster.xyz/rss/waynovision
   - Wee Pals by Morrie Turner: https://comiccaster.xyz/rss/weepals
+  - What's Up Beanie: https://www.webtoons.com/en/challenge/whats-up-beanie/rss?title_no=295880
   - Wide Open! by Rich Powell: https://comiccaster.xyz/rss/wide-open
   - Willy Black: https://comiccaster.xyz/rss/willy-black
   - Win, Lose, Drew by Drew Litton: https://comiccaster.xyz/rss/drewlitton

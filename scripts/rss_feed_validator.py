@@ -1,3 +1,5 @@
+import re
+
 import requests
 import xml.etree.ElementTree as ET
 from html.parser import HTMLParser
@@ -20,19 +22,22 @@ class ValidationResult:
     image_url: Optional[str] = None
     image_source: Optional[str] = None  # 'enclosure' or 'description'
     feed_type: Optional[str] = None  # 'rss' or 'atom'
-
+    link: Optional[str] = None
+    caption: Optional[str] = None
 
 class ImageExtractor(HTMLParser):
-    """HTML parser to extract image URLs from description fields"""
-
     def __init__(self):
         super().__init__()
-        self.image_url = None
+        self.image_url   = None
+        self.image_title = None   # <img title="…">  — xkcd uses this
+        self.image_alt   = None   # <img alt="…">
 
     def handle_starttag(self, tag, attrs):
         if tag == 'img' and not self.image_url:
-            attrs_dict = dict(attrs)
-            self.image_url = attrs_dict.get('src')
+            attrs_dict       = dict(attrs)
+            self.image_url   = attrs_dict.get('src')
+            self.image_title = attrs_dict.get('title')
+            self.image_alt   = attrs_dict.get('alt')
 
 
 class RSSFeedValidator:
@@ -44,6 +49,41 @@ class RSSFeedValidator:
         self.session.headers.update({
             'User-Agent': 'Mozilla/5.0 (compatible; ComicRSSValidator/1.0)'
         })
+
+    @staticmethod
+    def _extract_caption(parser: 'ImageExtractor', item_title: str | None, feed_name: str | None) -> str | None:
+        """Port of JS extractCaption — img title > short alt > nothing."""
+        if parser is None:
+            return None
+
+        # 1. <img title="…">  (xkcd style)
+        if parser.image_title:
+            text = parser.image_title.strip()
+            if 0 < len(text) <= 200:
+                return text
+
+        # 2. Short alt, reject transcripts / generic echoes
+        if parser.image_alt:
+            text = parser.image_alt.strip()
+
+            # looks like a transcript
+            if re.search(r"panel\s*\d+|^panel|narration|sfx|\u2014|:", text, re.IGNORECASE):
+                return None
+
+            # just echoing the title/feed name back
+            normalized = text.lower()
+            bad = {t.lower() for t in (item_title, feed_name) if t}
+            if normalized in bad:
+                return None
+
+            # single brand word like "Bizarro"
+            if re.fullmatch(r"[A-Z][a-z]+", text):
+                return None
+
+            if 0 < len(text) <= 140:
+                return text
+
+        return None
 
     def validate_feed(self, url: str, name: str = None) -> ValidationResult:
         """
@@ -168,10 +208,20 @@ class RSSFeedValidator:
                 feed_type='rss'
             )
 
-        # Try to extract image from first item
         first_item = items[0]
         title_elem = first_item.find('title')
         title = title_elem.text if title_elem is not None else "Untitled"
+
+        # Extract link upfront — used in every valid return
+        link_elem  = first_item.find('link')
+        comic_link = link_elem.text if link_elem is not None else None
+
+        # Resolve description and content:encoded upfront too —
+        # we may need them for caption even when image comes from enclosure
+        description      = first_item.find('description')
+        content_encoded  = first_item.find('{http://purl.org/rss/1.0/modules/content/}encoded')
+        if content_encoded is None:
+            content_encoded = first_item.find('content:encoded')
 
         # Check for generic promotional content
         if self._is_generic_promo_rss(first_item, title):
@@ -184,12 +234,11 @@ class RSSFeedValidator:
                 feed_type='rss'
             )
 
-        # Try enclosure first (preferred method)
+        # Try enclosure first (preferred method for the image)
         enclosure = first_item.find('enclosure')
         if enclosure is not None:
             image_url = enclosure.get('url')
             if image_url and self._is_valid_image_url(image_url):
-                # Test if image is accessible (check for hotlink protection)
                 if not self._test_image_access(image_url, url):
                     print(f"❌ Hotlink protection - {url}")
                     return ValidationResult(
@@ -200,6 +249,16 @@ class RSSFeedValidator:
                         feed_type='rss'
                     )
 
+                # Image came from enclosure, but caption lives in
+                # description / content:encoded — run extractor on
+                # the best available text just for that.
+                caption_parser = None
+                caption_text   = (content_encoded.text if content_encoded is not None else None) \
+                              or (description.text      if description      is not None else None)
+                if caption_text:
+                    caption_parser = ImageExtractor()
+                    caption_parser.feed(caption_text)
+
                 print("✓ Valid (RSS enclosure)")
                 return ValidationResult(
                     url=url,
@@ -208,17 +267,17 @@ class RSSFeedValidator:
                     comic_title=title,
                     image_url=image_url,
                     image_source='enclosure',
-                    feed_type='rss'
+                    feed_type='rss',
+                    link=comic_link,
+                    caption=self._extract_caption(caption_parser, title, name),
                 )
 
         # Try description
-        description = first_item.find('description')
         if description is not None and description.text:
             parser = ImageExtractor()
             parser.feed(description.text)
 
             if parser.image_url and self._is_valid_image_url(parser.image_url):
-                # Test if image is accessible
                 if not self._test_image_access(parser.image_url, url):
                     print(f"❌ Hotlink protection - {url}")
                     return ValidationResult(
@@ -237,21 +296,17 @@ class RSSFeedValidator:
                     comic_title=title,
                     image_url=parser.image_url,
                     image_source='description',
-                    feed_type='rss'
+                    feed_type='rss',
+                    link=comic_link,
+                    caption=self._extract_caption(parser, title, name),
                 )
 
         # Try content:encoded (WordPress and other feeds use this)
-        # Handle both with and without namespace
-        content_encoded = first_item.find('{http://purl.org/rss/1.0/modules/content/}encoded')
-        if content_encoded is None:
-            content_encoded = first_item.find('content:encoded')
-
         if content_encoded is not None and content_encoded.text:
             parser = ImageExtractor()
             parser.feed(content_encoded.text)
 
             if parser.image_url and self._is_valid_image_url(parser.image_url):
-                # Test if image is accessible
                 if not self._test_image_access(parser.image_url, url):
                     print(f"❌ Hotlink protection - {url}")
                     return ValidationResult(
@@ -270,7 +325,9 @@ class RSSFeedValidator:
                     comic_title=title,
                     image_url=parser.image_url,
                     image_source='content:encoded',
-                    feed_type='rss'
+                    feed_type='rss',
+                    link=comic_link,
+                    caption=self._extract_caption(parser, title, name),
                 )
 
         # No valid image found
@@ -285,10 +342,8 @@ class RSSFeedValidator:
 
     def _validate_atom_feed(self, root: ET.Element, url: str, name: str = None) -> ValidationResult:
         """Validate an Atom feed"""
-        # Handle namespaces
         ns = {'atom': 'http://www.w3.org/2005/Atom'}
 
-        # Try without namespace first, then with
         entries = root.findall('entry')
         if not entries:
             entries = root.findall('atom:entry', ns)
@@ -303,19 +358,19 @@ class RSSFeedValidator:
                 feed_type='atom'
             )
 
-        # Try to extract image from first entry
         first_entry = entries[0]
 
-        # Get title (try without namespace first, then with)
+        # title
         title_elem = first_entry.find('title')
         if title_elem is None:
             title_elem = first_entry.find('atom:title', ns)
         title = title_elem.text if title_elem is not None else "Untitled"
 
-        # Get link (for promo check)
-        link_elem = first_entry.find('link')
+        # link  —  already needed for promo check, reuse for the result
+        link_elem  = first_entry.find('link')
         if link_elem is None:
             link_elem = first_entry.find('atom:link', ns)
+        comic_link = link_elem.get('href') if link_elem is not None else None
 
         # Check for generic promotional content
         if self._is_generic_promo_atom(first_entry, title, link_elem, ns):
@@ -328,7 +383,7 @@ class RSSFeedValidator:
                 feed_type='atom'
             )
 
-        # Try to extract from summary or content
+        # summary / content
         summary = first_entry.find('summary')
         if summary is None:
             summary = first_entry.find('atom:summary', ns)
@@ -348,7 +403,6 @@ class RSSFeedValidator:
             parser.feed(description_text)
 
             if parser.image_url and self._is_valid_image_url(parser.image_url):
-                # Test if image is accessible
                 if not self._test_image_access(parser.image_url, url):
                     print(f"❌ Hotlink protection - {url}")
                     return ValidationResult(
@@ -367,7 +421,9 @@ class RSSFeedValidator:
                     comic_title=title,
                     image_url=parser.image_url,
                     image_source='summary',
-                    feed_type='atom'
+                    feed_type='atom',
+                    link=comic_link,
+                    caption=self._extract_caption(parser, title, name),
                 )
 
         # No valid image found
@@ -419,7 +475,6 @@ class RSSFeedValidator:
                 link_has_date = True
 
         if not link_has_date:
-            # Check summary for generic content
             summary = entry.find('summary')
             if summary is None:
                 summary = entry.find('atom:summary', ns)
@@ -494,7 +549,6 @@ class RSSFeedValidator:
             print("\n✓ All feeds validated successfully! No failed feeds report needed.")
             return
 
-        # Create report structure
         report = {
             'report_date': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
             'total_failed': len(invalid_results),
@@ -511,7 +565,6 @@ class RSSFeedValidator:
             }
             report['failed_feeds'].append(feed_info)
 
-        # Save to YAML
         with open(output_path, 'w') as f:
             yaml.dump(report, f, default_flow_style=False, allow_unicode=True, sort_keys=False)
 

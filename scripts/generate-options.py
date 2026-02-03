@@ -1,3 +1,4 @@
+import json
 from pathlib import Path
 import os
 
@@ -116,7 +117,14 @@ def get_failed_feeds_path():
 def should_exclude_feed(feed_url: str, excluded_feeds: list) -> bool:
     """Check if a feed should be excluded based on the EXCLUSIONS list"""
     return feed_url in excluded_feeds
+def get_settings_path():
+    """Get the correct path for plugin/settings.yml"""
+    current_dir = Path.cwd()
 
+    if current_dir.name == 'scripts':
+        return current_dir.parent / "plugin" / "settings.yml"
+    else:
+        return current_dir / "plugin" / "settings.yml"
 def create_updated_settings():
     # Load environment variables first
     load_environment()
@@ -197,6 +205,8 @@ def create_updated_settings():
 
     # Validate extra feeds (excluding excluded feeds)
     validated_extra_feeds = {}  # Will store {name: {'url': url, 'author': author}}
+    extra_valid = []  # <-- add these two
+    extra_invalid = []
     if extra_feeds:
         print("\n--- Extra Feeds ---")
         # Filter out excluded extra feeds
@@ -286,7 +296,7 @@ def create_updated_settings():
                        f"● Add your own RSS / Atom feeds <br />"
                        f"● Frequently updated to keep all RSS / Atom sources valid and up to date",
         'github_url': 'https://github.com/ExcuseMi/trmnl-comic-library-plugin',
-        'learn_more_url': 'https://comiccaster.xyz',
+        'learn_more_url': 'https://raw.githubusercontent.com/ExcuseMi/trmnl-comic-library-plugin/refs/heads/main/comic_overview.html',
         'category': 'comics'
     }
     custom_fields.append(about_field)
@@ -409,21 +419,30 @@ def create_updated_settings():
     }
     custom_fields.append(image_filter)
 
-    # Get the correct output path
-    output_path = get_output_path()
-    print(f"\nWriting to: {output_path.absolute()}")
+    # Load existing settings.yml and update only custom_fields
+    settings_path = get_settings_path()
+    if not settings_path.exists():
+        print(f"[!] settings.yml not found at {settings_path}")
+        raise SystemExit(1)
 
-    # Use the custom YAML representer to format the output properly
+    print(f"\nUpdating: {settings_path.absolute()}")
+
+    with open(settings_path, 'r', encoding='utf-8') as f:
+        settings = yaml.safe_load(f)
+
+    settings['custom_fields'] = custom_fields
+
     def represent_dict_order(dumper, data):
         return dumper.represent_mapping('tag:yaml.org,2002:map', data.items())
 
     yaml.add_representer(dict, represent_dict_order)
 
-    with open(output_path, 'w') as f:
-        yaml.dump(custom_fields, f, default_flow_style=False, allow_unicode=True, sort_keys=False, width=1000)
+    with open(settings_path, 'w', encoding='utf-8') as f:
+        yaml.dump(settings, f, default_flow_style=False, allow_unicode=True, sort_keys=False, width=1000)
 
-    print(f"✓ Successfully created {output_path}")
+    print(f"✓ Successfully updated {settings_path}")
 
+    output_path = settings_path  # used later by the overview generator
     # Print summary
     print(f"\n" + "=" * 60)
     print("FINAL SUMMARY")
@@ -433,6 +452,36 @@ def create_updated_settings():
     print(f"Political comics: {total_political}")
     print(f"Extra feeds (validated): {total_extra}")
     print(f"Total unique comics: {total_all}")
+    from generate_comic_overview import generate_overview
+
+    comics_author    = {c.get("name"): c.get("author", "") for c in comics_data}
+    political_author = {c.get("name"): c.get("author", "") for c in political_data}
+    extra_author     = {f.get("name"): f.get("author", "") for f in extra_feeds} if extra_feeds else {}
+
+    overview_data = []
+    for result in regular_valid + other_lang_valid + political_valid + extra_valid:
+        author = (
+            extra_author.get(result.name)
+            or political_author.get(result.name)
+            or comics_author.get(result.name, "")
+        )
+        overview_data.append({
+            "name":      result.name,
+            "author":    author,
+            "title":     result.comic_title,
+            "image_url": result.image_url,
+            "link":      result.link,
+            "caption":   result.caption,
+        })
+
+    # save the cache — standalone mode reads this back
+    json_path = output_path.parent / "comic_overview_data.json"
+    with open(json_path, "w", encoding="utf-8") as f:
+        json.dump(overview_data, f, ensure_ascii=False, indent=2)
+    print(f"✓ Cached overview data: {json_path}")
+
+    # render the HTML from it
+    generate_overview(overview_data, output_path.parent / "comic_overview.html")
 
 if __name__ == "__main__":
     create_updated_settings()

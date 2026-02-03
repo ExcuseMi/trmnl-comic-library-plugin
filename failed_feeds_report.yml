@@ -1,4 +1,4 @@
-report_date: '2026-02-03 09:34:46'
+report_date: '2026-02-03 15:20:26'
 total_failed: 61
 failed_feeds:
 - name: Art by Moga
@@ -201,7 +201,7 @@ failed_feeds:
   error: Feed contains only generic promotional content
   feed_type: rss
   status: needs_investigation
-- name: Yeah Itâ€™s Chill
+- name: Yeah It’s Chill
   url: https://comiccaster.xyz/rss/yeah-its-chill
   error: Feed contains only generic promotional content
   feed_type: rss
