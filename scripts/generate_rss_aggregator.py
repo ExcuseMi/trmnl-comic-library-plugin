@@ -2,10 +2,10 @@
 """
 generate_rss_aggregator.py
 
-Creates an Atom feed with ONE entry containing multiple comic images.
+Creates an Atom feed with multiple entries containing comic images.
 Can be run standalone or imported as a library.
 
-Standalone: python scripts/generate_rss_aggregator.py [--count 6] [--mode recent]
+Standalone: python scripts/generate_rss_aggregator.py [--comics-per-entry 3] [--entries 3] [--mode recent]
 Library:    from generate_rss_aggregator import generate_atom_feed
 """
 
@@ -21,8 +21,8 @@ from xml.dom import minidom
 def generate_atom_feed(
         comics: list[dict],
         output_path: Path,
-        comics_per_entry: int = 3,
-        entries: int = 3,
+        comics_per_entry: int = 4,
+        entries: int = 12,
         mode: str = "recent"
 ):
     """
@@ -48,6 +48,28 @@ def generate_atom_feed(
 
     print(f"  Found {len(valid)} valid comics with images")
 
+    # Calculate total comics needed
+    total_comics_needed = comics_per_entry * entries
+    print(f"  Need {total_comics_needed} comics total ({entries} entries × {comics_per_entry} comics each)")
+
+    # Select comics based on mode
+    if mode == "random":
+        if total_comics_needed <= len(valid):
+            # Get unique random comics for all entries
+            selected_all = random.sample(valid, total_comics_needed)
+        else:
+            # Not enough unique comics, use random choices (with replacement)
+            selected_all = random.choices(valid, k=total_comics_needed)
+            print(f"  Warning: Not enough unique comics for {total_comics_needed} items, some comics may repeat")
+    else:  # recent
+        if total_comics_needed <= len(valid):
+            selected_all = valid[:total_comics_needed]
+        else:
+            # Not enough comics, wrap around
+            repeats = (total_comics_needed // len(valid)) + 1
+            selected_all = (valid * repeats)[:total_comics_needed]
+            print(f"  Warning: Not enough comics, wrapping around {repeats} times")
+
     # Build Atom feed
     feed = Element('feed')
     feed.set('xmlns', 'http://www.w3.org/2005/Atom')
@@ -62,11 +84,11 @@ def generate_atom_feed(
     SubElement(feed, 'id').text = 'https://excusemi.github.io/trmnl-comic-library-plugin/'
     SubElement(feed, 'updated').text = datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
 
-    # Create multiple entries, each with its own random selection
+    # Create multiple entries
     for entry_idx in range(entries):
         entry = SubElement(feed, 'entry')
 
-        SubElement(entry, 'title').text =  datetime.now(timezone.utc).strftime('%Y-%m-%d')
+        SubElement(entry, 'title').text = datetime.now(timezone.utc).strftime('%Y-%m-%d')
 
         entry_link = SubElement(entry, 'link')
         entry_link.set('href', 'https://excusemi.github.io/trmnl-comic-library-plugin/')
@@ -75,23 +97,15 @@ def generate_atom_feed(
         SubElement(entry, 'updated').text = datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
         SubElement(entry, 'id').text = f'comic-library-{datetime.now(timezone.utc).strftime("%Y%m%d")}-{entry_idx}'
 
-        # Select comics for THIS entry
+        # Get comics for this specific entry
+        start_idx = entry_idx * comics_per_entry
+        end_idx = start_idx + comics_per_entry
+        entry_comics = selected_all[start_idx:end_idx]
+
         if mode == "random":
-            # Get random comics for this entry (with replacement allowed)
-            entry_comics = random.choices(valid, k=comics_per_entry)
-            print(f"  Entry {entry_idx + 1}: Selected {len(entry_comics)} random comics")
-        else:  # recent
-            # For "recent" mode, start from beginning and take slices
-            # but ensure we have enough comics by wrapping around if needed
-            start_idx = entry_idx * comics_per_entry
-            end_idx = start_idx + comics_per_entry
-            if end_idx <= len(valid):
-                entry_comics = valid[start_idx:end_idx]
-            else:
-                # Not enough comics, start from beginning again
-                wrapped_valid = valid + valid
-                entry_comics = wrapped_valid[start_idx:end_idx]
-            print(f"  Entry {entry_idx + 1}: Comics {start_idx + 1}-{end_idx}")
+            print(f"  Entry {entry_idx + 1}: Comics {start_idx + 1}-{end_idx} (random)")
+        else:
+            print(f"  Entry {entry_idx + 1}: Comics {start_idx + 1}-{end_idx} (recent)")
 
         # Build HTML with images for this entry
         summary = SubElement(entry, 'summary')
@@ -125,8 +139,9 @@ def generate_atom_feed(
     with open(output_path, 'w', encoding='utf-8') as f:
         f.write(pretty_xml)
 
-    print(f"✓ Atom feed written: {output_path}")
+    print(f"\n✓ Atom feed written: {output_path}")
     print(f"  Contains {entries} entries with {comics_per_entry} comics each")
+    print(f"  Mode: {mode}")
 
 
 def _resolve_base() -> Path:
