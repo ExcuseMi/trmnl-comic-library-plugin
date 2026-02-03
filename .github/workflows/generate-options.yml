@@ -1,3 +1,5 @@
+name: Update Comic Options
+
 permissions:
   contents: write
 
@@ -13,8 +15,6 @@ on:
       - comic_overview_data.json
       - comic_overview.html
       - updated_settings.yml
-
-
 
 jobs:
   generate-options:
