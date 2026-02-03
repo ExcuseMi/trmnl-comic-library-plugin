@@ -7,6 +7,14 @@ on:
     - cron: '0 0 * * *'  # Daily at midnight UTC
   push:
     branches: [ main ]
+    paths:
+      - plugin/settings.yml
+      - failed_feeds_report.yml
+      - comic_overview_data.json
+      - comic_overview.html
+      - updated_settings.yml
+
+
 
 jobs:
   generate-options:
@@ -36,11 +44,6 @@ jobs:
       with:
         commit_message: "📝 Update comic options [automated]"
         commit_author: "GitHub Actions <actions@github.com>"
-        file_pattern: |
-          plugin/settings.yml
-          failed_feeds_report.yml
-          comic_overview_data.json
-          comic_overview.html
 
     - name: Upload plugin to TRMNL
       env:
