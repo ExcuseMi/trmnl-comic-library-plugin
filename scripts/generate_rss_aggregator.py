@@ -10,6 +10,7 @@ Library:    from generate_rss_aggregator import generate_atom_feed
 """
 
 import json
+import re
 import random
 import argparse
 from pathlib import Path
@@ -85,10 +86,13 @@ def generate_atom_feed(
         SubElement(entry, 'updated').text = datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
         SubElement(entry, 'id').text = f'comic-library-{datetime.now(timezone.utc).strftime("%Y%m%d")}-{idx}'
 
-        # Summary with img tag (xkcd-style)
+        # Summary with img tag - manually build to avoid HTML entity escaping
+        # We can't use .text because it will escape < and >
         summary = SubElement(entry, 'summary')
         summary.set('type', 'html')
+        # Store raw HTML - we'll fix escaping in the final XML
         summary.text = f'<img src="{img_url}" title="{caption}" alt="{caption}" />'
+        summary.set('_raw_html', 'true')  # marker for post-processing
 
     # Pretty print XML
     rough_string = tostring(feed, encoding='utf-8')
@@ -98,6 +102,29 @@ def generate_atom_feed(
     # Remove extra blank lines
     lines = [line for line in pretty_xml.split('\n') if line.strip()]
     pretty_xml = '\n'.join(lines)
+
+    # CRITICAL FIX: Un-escape HTML entities in summary elements
+    # The XML library escapes < and > to &lt; and &gt;, but Atom feeds with type="html"
+    # should have raw HTML for parsers to extract image URLs correctly
+    # We only un-escape within summary tags that we marked
+
+    def unescape_summary(match):
+        # Un-escape HTML entities in summary content
+        content = match.group(1)
+        content = content.replace('&lt;', '<')
+        content = content.replace('&gt;', '>')
+        content = content.replace('&quot;', '"')
+        content = content.replace('&apos;', "'")
+        return f'<summary type="html">{content}</summary>'
+
+    # Remove the marker attribute and un-escape HTML in summary tags
+    pretty_xml = pretty_xml.replace(' _raw_html="true"', '')
+    pretty_xml = re.sub(
+        r'<summary type="html">(.+?)</summary>',
+        unescape_summary,
+        pretty_xml,
+        flags=re.DOTALL
+    )
 
     with open(output_path, 'w', encoding='utf-8') as f:
         f.write(pretty_xml)
