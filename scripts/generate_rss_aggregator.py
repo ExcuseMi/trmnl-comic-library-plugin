@@ -21,16 +21,18 @@ from xml.dom import minidom
 def generate_atom_feed(
         comics: list[dict],
         output_path: Path,
-        count: int = 6,
+        count: int = 12,
+        entries: int = 3,
         mode: str = "recent"
 ):
     """
-    Generate an Atom feed with ONE entry containing multiple comic images.
+    Generate an Atom feed with multiple entries, each containing multiple comic images.
 
     Args:
         comics: List of comic dicts with keys: name, image_url, link, caption, title
         output_path: Where to write demo_data.atom
-        count: Number of comics to include (default 6)
+        count: Total number of comics to include (default 12)
+        entries: Number of entries to create (default 3)
         mode: "recent" for first N, "random" for random selection
     """
     print(f"\n{'=' * 60}")
@@ -52,6 +54,9 @@ def generate_atom_feed(
         selected = valid[:count]
         print(f"  Selected {len(selected)} most recent comics")
 
+    # Calculate images per entry
+    images_per_entry = len(selected) // entries
+
     # Build Atom feed
     feed = Element('feed')
     feed.set('xmlns', 'http://www.w3.org/2005/Atom')
@@ -66,34 +71,38 @@ def generate_atom_feed(
     SubElement(feed, 'id').text = 'https://excusemi.github.io/trmnl-comic-library-plugin/'
     SubElement(feed, 'updated').text = datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
 
-    # Create ONE entry with all comics inside
-    entry = SubElement(feed, 'entry')
+    # Create multiple entries
+    for entry_idx in range(entries):
+        entry = SubElement(feed, 'entry')
 
-    SubElement(entry, 'title').text = 'Comic Library — Daily Comics'
+        SubElement(entry, 'title').text = 'Comic Library — Daily Comics'
 
-    entry_link = SubElement(entry, 'link')
-    entry_link.set('href', 'https://excusemi.github.io/trmnl-comic-library-plugin/')
-    entry_link.set('rel', 'alternate')
+        entry_link = SubElement(entry, 'link')
+        entry_link.set('href', 'https://excusemi.github.io/trmnl-comic-library-plugin/')
+        entry_link.set('rel', 'alternate')
 
-    SubElement(entry, 'updated').text = datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
-    SubElement(entry, 'id').text = f'comic-library-{datetime.now(timezone.utc).strftime("%Y%m%d")}'
+        SubElement(entry, 'updated').text = datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
+        SubElement(entry, 'id').text = f'comic-library-{datetime.now(timezone.utc).strftime("%Y%m%d")}-{entry_idx}'
 
-    # Build HTML with ALL images in one summary
-    summary = SubElement(entry, 'summary')
-    summary.set('type', 'html')
+        # Build HTML with images for this entry
+        summary = SubElement(entry, 'summary')
+        summary.set('type', 'html')
 
-    html = ''
-    for comic in selected:
-        img_url = comic.get('image_url')
-        comic_name = comic.get('name') or 'Unknown'
-        comic_title = comic.get('title') or comic_name
-        caption = comic.get('caption') or comic_title
+        html = ''
+        start_idx = entry_idx * images_per_entry
+        end_idx = start_idx + images_per_entry
+        entry_comics = selected[start_idx:end_idx]
 
-        # Each image on its own line with title/alt for caption
-        html += f'<img src="{img_url}" title="{caption}" alt="{caption}" /><br/>'
+        for comic in entry_comics:
+            img_url = comic.get('image_url')
+            # Use custom caption
+            caption = 'All your comics in 1 plugin'
 
-    # Keep HTML escaped - it will become __content__ string like xkcd
-    summary.text = html
+            # Each image on its own line with title/alt for caption
+            html += f'<img src="{img_url}" title="{caption}" alt="{caption}" /><br/>'
+
+        # Keep HTML escaped - it will become __content__ string like xkcd
+        summary.text = html
 
     # Pretty print XML
     rough_string = tostring(feed, encoding='utf-8')
@@ -112,7 +121,7 @@ def generate_atom_feed(
         f.write(pretty_xml)
 
     print(f"✓ Atom feed written: {output_path}")
-    print(f"  Contains 1 entry with {len(selected)} images")
+    print(f"  Contains {entries} entries with {images_per_entry} images each")
 
 
 def _resolve_base() -> Path:
@@ -129,8 +138,10 @@ if __name__ == "__main__":
                         help="Path to comic_overview_data.json (default: data/comic_overview_data.json)")
     parser.add_argument("--output", type=Path,
                         help="Output path (default: data/demo_data.atom)")
-    parser.add_argument("--count", type=int, default=6,
-                        help="Number of comics to include (default: 6)")
+    parser.add_argument("--count", type=int, default=12,
+                        help="Total number of comics to include (default: 12)")
+    parser.add_argument("--entries", type=int, default=3,
+                        help="Number of entries to create (default: 3)")
     parser.add_argument("--mode", choices=["recent", "random"], default="recent",
                         help="Selection mode: recent or random (default: recent)")
     args = parser.parse_args()
@@ -153,6 +164,7 @@ if __name__ == "__main__":
         comics=comics,
         output_path=output_path,
         count=args.count,
+        entries=args.entries,
         mode=args.mode
     )
 
