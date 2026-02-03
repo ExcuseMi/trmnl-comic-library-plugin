@@ -82,6 +82,38 @@ def _render_cat_button(cat: str) -> str:
         f'style="border-color:{col}44; color:{col}">&#x25cf; {escape(cat)}</button>'
     )
 
+def _render_plugin_badge() -> str:
+    """Render subtle plugin badge"""
+    return '''
+<div class="plugin-badge" style="
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #1a1d27;
+    border: 1px solid #2e3345;
+    border-radius: 8px;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    transition: all 0.3s;
+" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(0, 0, 0, 0.4)';"
+   onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(0, 0, 0, 0.3)';">
+    <a href="https://trmnl.com/recipes/180935/install" 
+       target="_blank" 
+       rel="noopener noreferrer"
+       style="
+           color: #e2e4ea;
+           text-decoration: none;
+           display: flex;
+           align-items: center;
+           gap: 0.5rem;
+       ">
+        <span style="color: #7c6aff;">⚡</span>
+        <span>Get Plugin</span>
+    </a>
+</div>
+'''
 
 def _render_page(comics: list[dict]) -> str:
     cards = "\n".join(_render_card(c) for c in comics)
@@ -142,6 +174,17 @@ def _render_page(comics: list[dict]) -> str:
     font-weight: 600;
     color: var(--accent-hi);
     letter-spacing: -0.02em;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }}
+  
+  header h1 .logo {{
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    object-fit: cover;
+    border: 1px solid var(--border);
   }}
   .header-meta {{ font-size: 0.82rem; color: var(--text-dim); }}
 
@@ -264,7 +307,7 @@ def _render_page(comics: list[dict]) -> str:
 <body>
 
 <header>
-  <h1>&#x1f4da; Comic Library</h1>
+  <h1><img src="https://github.com/ExcuseMi/trmnl-comic-library-plugin/blob/main/assets/plugin-images/180935_icon.png?raw=true" class="logo" /> Comic Library</h1>
   <span class="header-meta">{ok} / {total} feeds loaded &middot; generated {now}</span>
 </header>
 
@@ -347,6 +390,7 @@ def _render_page(comics: list[dict]) -> str:
   render();
 }})();
 </script>
+{_render_plugin_badge()}
 </body>
 </html>"""
 
