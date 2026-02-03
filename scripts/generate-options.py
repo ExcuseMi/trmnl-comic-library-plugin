@@ -290,7 +290,8 @@ def create_updated_settings():
         'keyname': 'about',
         'name': 'About This Plugin',
         'field_type': 'author_bio',
-        'description': f"Access a collection of 534 comic RSS / Atom feeds and enjoy fresh content every day. <br />"
+        'description': f"Access an daily updated collection of {total_all} comic RSS / Atom feeds and enjoy fresh content every day.<br />"
+                       f"<a href='https://excusemi.github.io/trmnl-comic-library-plugin/'>Click here to see all supported comics!</a><br />"
                        f"Features: <br />"
                        f"● Displays the most recent comic or a random comic <br />"
                        f"● Supports multiple RSS / Atom sources <br />"
