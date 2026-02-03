@@ -4,12 +4,6 @@ on:
   schedule:
     - cron: '0 6 * * *'
   workflow_dispatch:
-  push:
-    branches: [ main ]
-    paths:
-      - '.github/workflows/update-plugin-stats.yml'
-      - 'scripts/update_plugin_stats.py'
-      - 'plugins.env'
 
 # Grant explicit permissions
 permissions:
