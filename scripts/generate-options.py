@@ -472,21 +472,22 @@ def create_updated_settings():
     extra_author     = {f.get("name"): f.get("author", "") for f in extra_feeds} if extra_feeds else {}
 
     overview_data = []
-    for result in regular_valid + other_lang_valid + political_valid + extra_valid:
-        author = (
-            extra_author.get(result.name)
-            or political_author.get(result.name)
-            or comics_author.get(result.name, "")
-        )
-        overview_data.append({
-            "name":      result.name,
-            "author":    author,
-            "title":     result.comic_title,
-            "image_url": result.image_url,
-            "link":      result.link,
-            "caption":   result.caption,
-        })
-
+    for category, results, author_map in [
+        ("Comics",          regular_valid,   comics_author),
+        ("Other Languages", other_lang_valid, comics_author),
+        ("Political",       political_valid,  political_author),
+        ("Comics",          extra_valid,      extra_author),
+    ]:
+        for result in results:
+            overview_data.append({
+                "name":      result.name,
+                "author":    author_map.get(result.name, ""),
+                "title":     result.comic_title,
+                "image_url": result.image_url,
+                "link":      result.link,
+                "caption":   result.caption,
+                "category":  category,
+            })
     # save the cache — standalone mode reads this back
     json_path = settings_path.parent.parent / "comic_overview_data.json"
     with open(json_path, "w", encoding="utf-8") as f:
