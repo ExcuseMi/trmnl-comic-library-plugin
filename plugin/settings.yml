@@ -18,12 +18,11 @@ custom_fields:
   category: comics
 - keyname: comics
   field_type: select
-  name: 'Comics: 442'
+  name: 'Comics: 440'
   multiple: true
   help_text: Use ⌘+click (Mac) or ctrl+click (Windows) to select multiple items. Use Shift+click to select a whole range at once.
   optional: true
   options:
-  - 1 and Done by Eric Scott: https://comiccaster.xyz/rss/1-and-done
   - 9 Chickweed Lane by Brooke McEldowney: https://comiccaster.xyz/rss/9-chickweed-lane
   - 9 to 5 by Harley Schwadron: https://comiccaster.xyz/rss/9to5
   - '@Tavicat by Rikki Simons': https://comiccaster.xyz/rss/tavicat
@@ -66,7 +65,6 @@ custom_fields:
   - Beetle Bailey: https://comiccaster.xyz/rss/beetle-bailey-1
   - Ben by Daniel Shelton: https://comiccaster.xyz/rss/ben
   - Berkeley Mews by Ben Zaehringer: https://comiccaster.xyz/rss/berkeley-mews
-  - Betty by Gerry Rasmussen: https://comiccaster.xyz/rss/betty
   - Between Friends: https://comiccaster.xyz/rss/between-friends
   - Beware of Toddler: https://comiccaster.xyz/rss/beware-of-toddler
   - BFGF Syndrome by Patabot: https://comiccaster.xyz/rss/bfgf-syndrome
@@ -472,56 +470,56 @@ custom_fields:
   help_text: Use ⌘+click (Mac) or ctrl+click (Windows) to select multiple items. Use Shift+click to select a whole range at once.
   optional: true
   options:
-  - A Toda Velocidad (Spanish): a-toda-velocidad
-  - Baldo en Español by Hector D. Cantú and Carlos Castellanos: baldoespanol
-  - Barney Google And Snuffy Smith (Spanish): tapon
-  - Beetle Bailey (Spanish): beto-el-recluta
-  - Benitin y Eneas by Pierre S. De Beaumont: muttandjeffespanol
-  - Blondie (Spanish): pepita
-  - Bringing Up Father (Spanish): educando-a-papa
-  - Calvin and Hobbes en Español by Bill Watterson: calvinandhobbesespanol
-  - Crock (Spanish): crock-spanish
-  - Dennis The Menace (Spanish): daniel-el-travieso
-  - FoxTrot en Español by Bill Amend: foxtrotespanol
-  - Fred Basset en Español by Alex Graham: fredbassetespanol
-  - Garfield en Español by Jim Davis: garfieldespanol
-  - Ginger Meggs en Español by Jason Chatfield: gingermeggs-espanol
-  - Goomer (Spanish): goomer-spanish
-  - Hagar The Horrible (Spanish): olafo
-  - Heathcliff en Español by George Gately: heathcliffespanol
-  - Katzenjammer Kids (Spanish): maldades-de-dos-pilluelos
-  - La Cucaracha en Español by Lalo Alcaraz: la-cucaracha-en-espanol
-  - Lalo Y Lola (Spanish): lalo-y-lola
-  - Las Hermanas Stone by Jan Eliot: stonesoup_espanol
-  - Lio en Español by Mark Tatulli: lioespanol
-  - Lola en Español by Todd Clark: lola-en-espanol
-  - Luann en Español by Greg Evans: luannspanish
-  - Macanudo (Spanish): macanudo-spanish
-  - Mandrake The Magician (Spanish): mandrake-the-magician-spanish
-  - Mark Trail (Spanish): mark-trail-spanish
-  - Marvin (Spanish): marvin-spanish
-  - Mary Worth (Spanish): maria-de-oro
-  - Moose And Molly (Spanish): quintin
-  - Mr. Abernathy (Spanish): don-abundio
-  - Mutts (Spanish): motas
-  - Overboard en Español by Chip Dunham: overboardespanol
-  - Palurdeando (Spanish): palurdeando-spanish
-  - Peanuts en Español by Charles Schulz: peanuts-espanol
-  - Popeye (Spanish): popeye-spanish
-  - Principe Valiente (Spanish): principe-valiente
-  - Rex Morgan M.D. (Spanish): rex-morgan-md-spanish
-  - Ripley’s ¡Aunque Usted no lo Crea! by John Graziano: ripleys-en-espanol
-  - Sam And Silo (Spanish): soso-y-siso
-  - Slylock Fox (Spanish): solo-para-ninos
-  - Tarzán en Español by Edgar Rice Burroughs: tarzan-en-espanol
-  - The Family Circus (Spanish): circulo-familiar
-  - The Phantom (Spanish): el-fantasma
-  - They’ll Do It Every Time (Spanish): nunca-falta-alguien-asi
-  - Tiger (Spanish): tigrillo
-  - Willy Black (Spanish): willy-black-spanish
-  - Wizard of Id en Español by Parker and Hart: wizardofidespanol
-  - WuMo en Español by Wulff & Morgenthaler: wumoespanol
-  - Ziggy en Español by Tom Wilson & Tom II: ziggyespanol
+  - A Toda Velocidad (Spanish): https://comicskingdom.com/a-toda-velocidad
+  - Baldo en Español by Hector D. Cantú and Carlos Castellanos: https://www.gocomics.com/baldoespanol
+  - Barney Google And Snuffy Smith (Spanish): https://comicskingdom.com/tapon
+  - Beetle Bailey (Spanish): https://comicskingdom.com/beto-el-recluta
+  - Benitin y Eneas by Pierre S. De Beaumont: https://www.gocomics.com/muttandjeffespanol
+  - Blondie (Spanish): https://comicskingdom.com/pepita
+  - Bringing Up Father (Spanish): https://comicskingdom.com/educando-a-papa
+  - Calvin and Hobbes en Español by Bill Watterson: https://www.gocomics.com/calvinandhobbesespanol
+  - Crock (Spanish): https://comicskingdom.com/crock-spanish
+  - Dennis The Menace (Spanish): https://comicskingdom.com/daniel-el-travieso
+  - FoxTrot en Español by Bill Amend: https://www.gocomics.com/foxtrotespanol
+  - Fred Basset en Español by Alex Graham: https://www.gocomics.com/fredbassetespanol
+  - Garfield en Español by Jim Davis: https://www.gocomics.com/garfieldespanol
+  - Ginger Meggs en Español by Jason Chatfield: https://www.gocomics.com/gingermeggs-espanol
+  - Goomer (Spanish): https://comicskingdom.com/goomer-spanish
+  - Hagar The Horrible (Spanish): https://comicskingdom.com/olafo
+  - Heathcliff en Español by George Gately: https://www.gocomics.com/heathcliffespanol
+  - Katzenjammer Kids (Spanish): https://comicskingdom.com/maldades-de-dos-pilluelos
+  - La Cucaracha en Español by Lalo Alcaraz: https://www.gocomics.com/la-cucaracha-en-espanol
+  - Lalo Y Lola (Spanish): https://comicskingdom.com/lalo-y-lola
+  - Las Hermanas Stone by Jan Eliot: https://www.gocomics.com/stonesoup_espanol
+  - Lio en Español by Mark Tatulli: https://www.gocomics.com/lioespanol
+  - Lola en Español by Todd Clark: https://www.gocomics.com/lola-en-espanol
+  - Luann en Español by Greg Evans: https://www.gocomics.com/luannspanish
+  - Macanudo (Spanish): https://comicskingdom.com/macanudo-spanish
+  - Mandrake The Magician (Spanish): https://comicskingdom.com/mandrake-the-magician-spanish
+  - Mark Trail (Spanish): https://comicskingdom.com/mark-trail-spanish
+  - Marvin (Spanish): https://comicskingdom.com/marvin-spanish
+  - Mary Worth (Spanish): https://comicskingdom.com/maria-de-oro
+  - Moose And Molly (Spanish): https://comicskingdom.com/quintin
+  - Mr. Abernathy (Spanish): https://comicskingdom.com/don-abundio
+  - Mutts (Spanish): https://comicskingdom.com/motas
+  - Overboard en Español by Chip Dunham: https://www.gocomics.com/overboardespanol
+  - Palurdeando (Spanish): https://comicskingdom.com/palurdeando-spanish
+  - Peanuts en Español by Charles Schulz: https://www.gocomics.com/peanuts-espanol
+  - Popeye (Spanish): https://comicskingdom.com/popeye-spanish
+  - Principe Valiente (Spanish): https://comicskingdom.com/principe-valiente
+  - Rex Morgan M.D. (Spanish): https://comicskingdom.com/rex-morgan-md-spanish
+  - Ripley’s ¡Aunque Usted no lo Crea! by John Graziano: https://www.gocomics.com/ripleys-en-espanol
+  - Sam And Silo (Spanish): https://comicskingdom.com/soso-y-siso
+  - Slylock Fox (Spanish): https://comicskingdom.com/solo-para-ninos
+  - Tarzán en Español by Edgar Rice Burroughs: https://www.gocomics.com/tarzan-en-espanol
+  - The Family Circus (Spanish): https://comicskingdom.com/circulo-familiar
+  - The Phantom (Spanish): https://comicskingdom.com/el-fantasma
+  - They’ll Do It Every Time (Spanish): https://comicskingdom.com/nunca-falta-alguien-asi
+  - Tiger (Spanish): https://comicskingdom.com/tigrillo
+  - Willy Black (Spanish): https://comicskingdom.com/willy-black-spanish
+  - Wizard of Id en Español by Parker and Hart: https://www.gocomics.com/wizardofidespanol
+  - WuMo en Español by Wulff & Morgenthaler: https://www.gocomics.com/wumoespanol
+  - Ziggy en Español by Tom Wilson & Tom II: https://www.gocomics.com/ziggyespanol
 - keyname: comics_political
   field_type: select
   name: 'Political Comics: 57'
@@ -529,63 +527,63 @@ custom_fields:
   help_text: Use ⌘+click (Mac) or ctrl+click (Windows) to select multiple items. Use Shift+click to select a whole range at once.
   optional: true
   options:
-  - Al Goodwyn Editorial Cartoons: algoodwyn
-  - Bill Bramhall: bill-bramhall
-  - Brian McFadden: brian-mcfadden
-  - Chip Bok: chipbok
-  - Chris Britt: chrisbritt
-  - Clay Bennett: claybennett
-  - Clay Jones: clayjones
-  - Dana Summers: danasummers
-  - Doonesbury: doonesbury
-  - Drew Sheneman: drewsheneman
-  - Eric Allie: eric-allie
-  - Gary Markstein: garymarkstein
-  - Gary Varvel: garyvarvel
-  - Henry Payne: henrypayne
-  - Jack Ohman: jackohman
-  - Jeff Danziger: jeffdanziger
-  - Jeff Stahler: jeffstahler
-  - Jen Sorensen: jen-sorensen
-  - Jim Morin: jimmorin
-  - Joe Heller: joe-heller
-  - Joel Pett: joelpett
-  - Joey Weatherford: joey-weatherford
-  - John Deering: johndeering
-  - Kevin Kallaugher: kal
-  - Kevin Necessary Editorial Cartoons: kevin-necessary-editorial-cartoons
-  - Lalo Alcaraz: laloalcaraz
-  - Lisa Benson: lisabenson
-  - M2Bulls: m2bulls
-  - Marshall Ramsey: marshallramsey
-  - Matt Davies: mattdavies
-  - Matt Wuerker: mattwuerker
-  - Michael Ramirez: michaelramirez
-  - Mike Beckom: mike-beckom
-  - Mike Lester: mike-lester
-  - Mike Luckovich: mikeluckovich
-  - Nick Anderson: nickanderson
-  - Pedro X. Molina: pedroxmolina
-  - Phil Hands: phil-hands
-  - Rob Rogers: robrogers
-  - Robert Ariail: robert-ariail
-  - Scott Stantis: scottstantis
-  - Steve Breen: stevebreen
-  - Steve Kelley: stevekelley
-  - Ted Rall: ted-rall
-  - The Brilliant Mind Of Edison Lee: brilliant-mind-of-edison-lee
-  - Tim Campbell: tim-campbell
-  - Tom the Dancing Bug: tomthedancingbug
-  - Tom Toles: tomtoles
-  - Two Party Opera: two-party-opera
-  - Views of the World: viewsoftheworld
-  - ViewsAmerica: viewsamerica
-  - ViewsAsia: viewsasia
-  - ViewsBusiness: viewsbusiness
-  - ViewsEurope: viewseurope
-  - ViewsLatinAmerica: viewslatinamerica
-  - ViewsMidEast: viewsmideast
-  - Walt Handelsman: walthandelsman
+  - Al Goodwyn Editorial Cartoons: https://www.gocomics.com/algoodwyn
+  - Bill Bramhall: https://www.gocomics.com/bill-bramhall
+  - Brian McFadden: https://www.gocomics.com/brian-mcfadden
+  - Chip Bok: https://www.gocomics.com/chipbok
+  - Chris Britt: https://www.gocomics.com/chrisbritt
+  - Clay Bennett: https://www.gocomics.com/claybennett
+  - Clay Jones: https://www.gocomics.com/clayjones
+  - Dana Summers: https://www.gocomics.com/danasummers
+  - Doonesbury: https://www.gocomics.com/doonesbury
+  - Drew Sheneman: https://www.gocomics.com/drewsheneman
+  - Eric Allie: https://www.gocomics.com/eric-allie
+  - Gary Markstein: https://www.gocomics.com/garymarkstein
+  - Gary Varvel: https://www.gocomics.com/garyvarvel
+  - Henry Payne: https://www.gocomics.com/henrypayne
+  - Jack Ohman: https://www.gocomics.com/jackohman
+  - Jeff Danziger: https://www.gocomics.com/jeffdanziger
+  - Jeff Stahler: https://www.gocomics.com/jeffstahler
+  - Jen Sorensen: https://www.gocomics.com/jen-sorensen
+  - Jim Morin: https://www.gocomics.com/jimmorin
+  - Joe Heller: https://www.gocomics.com/joe-heller
+  - Joel Pett: https://www.gocomics.com/joelpett
+  - Joey Weatherford: https://www.gocomics.com/joey-weatherford
+  - John Deering: https://www.gocomics.com/johndeering
+  - Kevin Kallaugher: https://www.gocomics.com/kal
+  - Kevin Necessary Editorial Cartoons: https://www.gocomics.com/kevin-necessary-editorial-cartoons
+  - Lalo Alcaraz: https://www.gocomics.com/laloalcaraz
+  - Lisa Benson: https://www.gocomics.com/lisabenson
+  - M2Bulls: https://www.gocomics.com/m2bulls
+  - Marshall Ramsey: https://www.gocomics.com/marshallramsey
+  - Matt Davies: https://www.gocomics.com/mattdavies
+  - Matt Wuerker: https://www.gocomics.com/mattwuerker
+  - Michael Ramirez: https://www.gocomics.com/michaelramirez
+  - Mike Beckom: https://www.gocomics.com/mike-beckom
+  - Mike Lester: https://www.gocomics.com/mike-lester
+  - Mike Luckovich: https://www.gocomics.com/mikeluckovich
+  - Nick Anderson: https://www.gocomics.com/nickanderson
+  - Pedro X. Molina: https://www.gocomics.com/pedroxmolina
+  - Phil Hands: https://www.gocomics.com/phil-hands
+  - Rob Rogers: https://www.gocomics.com/robrogers
+  - Robert Ariail: https://www.gocomics.com/robert-ariail
+  - Scott Stantis: https://www.gocomics.com/scottstantis
+  - Steve Breen: https://www.gocomics.com/stevebreen
+  - Steve Kelley: https://www.gocomics.com/stevekelley
+  - Ted Rall: https://www.gocomics.com/ted-rall
+  - The Brilliant Mind Of Edison Lee: https://comicskingdom.com/brilliant-mind-of-edison-lee
+  - Tim Campbell: https://www.gocomics.com/tim-campbell
+  - Tom the Dancing Bug: https://www.gocomics.com/tomthedancingbug
+  - Tom Toles: https://www.gocomics.com/tomtoles
+  - Two Party Opera: https://www.gocomics.com/two-party-opera
+  - Views of the World: https://www.gocomics.com/viewsoftheworld
+  - ViewsAmerica: https://www.gocomics.com/viewsamerica
+  - ViewsAsia: https://www.gocomics.com/viewsasia
+  - ViewsBusiness: https://www.gocomics.com/viewsbusiness
+  - ViewsEurope: https://www.gocomics.com/viewseurope
+  - ViewsLatinAmerica: https://www.gocomics.com/viewslatinamerica
+  - ViewsMidEast: https://www.gocomics.com/viewsmideast
+  - Walt Handelsman: https://www.gocomics.com/walthandelsman
 - keyname: only_show_latest
   field_type: boolean
   name: Latest Comic Only
