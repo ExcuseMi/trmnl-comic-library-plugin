@@ -435,8 +435,8 @@ if __name__ == "__main__":
     )
     parser.add_argument("--json",   type=Path, default=base / "comic_overview_data.json",
                         help="Path to the cached JSON (default: <repo>/comic_overview_data.json)")
-    parser.add_argument("--output", type=Path, default=base / "comic_overview.html",
-                        help="Output HTML path (default: <repo>/comic_overview.html)")
+    parser.add_argument("--output", type=Path, default=base / "index.html",
+                        help="Output HTML path (default: <repo>/index.html)")
     args = parser.parse_args()
 
     if not args.json.exists():

@@ -297,7 +297,7 @@ def create_updated_settings():
                        f"● Add your own RSS / Atom feeds <br />"
                        f"● Frequently updated to keep all RSS / Atom sources valid and up to date",
         'github_url': 'https://github.com/ExcuseMi/trmnl-comic-library-plugin',
-        'learn_more_url': 'https://excusemi.github.io/trmnl-comic-library-plugin/comic_overview.html',
+        'learn_more_url': 'https://excusemi.github.io/trmnl-comic-library-plugin',
         'category': 'comics'
     }
     custom_fields.append(about_field)
@@ -499,7 +499,7 @@ def create_updated_settings():
     print(f"✓ Cached overview data: {json_path}")
 
     # render the HTML from it
-    generate_overview(overview_data, settings_path.parent.parent / "comic_overview.html")
+    generate_overview(overview_data, settings_path.parent.parent / "index.html")
 
 if __name__ == "__main__":
     create_updated_settings()
