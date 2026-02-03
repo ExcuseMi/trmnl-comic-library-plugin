@@ -24,6 +24,7 @@ INVALID_SLUGS = {
     "genre", "creator"
 }
 
+
 def load_environment():
     """Load environment variables from plugins.env file"""
     current_dir = Path.cwd()
@@ -97,27 +98,28 @@ def load_extra_feeds():
         return {}
 
 
-def get_output_path():
-    """Get the correct output path that works from both root and scripts directory"""
+def get_data_dir():
+    """Get the data directory path"""
     current_dir = Path.cwd()
-
-    # If we're in the scripts directory, go up one level to repository root
     if current_dir.name == 'scripts':
-        return current_dir.parent / "updated_settings.yml"
+        return current_dir.parent / "data"
     else:
-        # We're already in the repository root
-        return current_dir / "updated_settings.yml"
+        return current_dir / "data"
 
 
 def get_failed_feeds_path():
-    """Get the path for the failed feeds report - same directory as updated_settings.yml"""
-    output_path = get_output_path()
-    return output_path.parent / "failed_feeds_report.yml"
+    """Get the path for the failed feeds report in data/"""
+    data_dir = get_data_dir()
+    data_dir.mkdir(exist_ok=True)
+    return data_dir / "failed_feeds_report.yml"
+
 
 
 def should_exclude_feed(feed_url: str, excluded_feeds: list) -> bool:
     """Check if a feed should be excluded based on the EXCLUSIONS list"""
     return feed_url in excluded_feeds
+
+
 def get_settings_path():
     """Get the correct path for plugin/settings.yml"""
     current_dir = Path.cwd()
@@ -126,6 +128,8 @@ def get_settings_path():
         return current_dir.parent / "plugin" / "settings.yml"
     else:
         return current_dir / "plugin" / "settings.yml"
+
+
 def create_updated_settings():
     # Load environment variables first
     load_environment()
@@ -469,38 +473,51 @@ def create_updated_settings():
         print(f"✗ ABORT: More invalid ({total_invalid}) than valid ({total_valid}) feeds.")
         sys.exit(1)
 
-
     from generate_comic_overview import generate_overview
 
-    comics_author    = {c.get("name"): c.get("author", "") for c in comics_data}
+    comics_author = {c.get("name"): c.get("author", "") for c in comics_data}
     political_author = {c.get("name"): c.get("author", "") for c in political_data}
-    extra_author     = {f.get("name"): f.get("author", "") for f in extra_feeds} if extra_feeds else {}
+    extra_author = {f.get("name"): f.get("author", "") for f in extra_feeds} if extra_feeds else {}
 
     overview_data = []
     for category, results, author_map in [
-        ("Comics",          regular_valid,   comics_author),
+        ("Comics", regular_valid, comics_author),
         ("Other Languages", other_lang_valid, comics_author),
-        ("Political",       political_valid,  political_author),
-        ("Comics",          extra_valid,      extra_author),
+        ("Political", political_valid, political_author),
+        ("Comics", extra_valid, extra_author),
     ]:
         for result in results:
             overview_data.append({
-                "name":      result.name,
-                "author":    author_map.get(result.name, ""),
-                "title":     result.comic_title,
+                "name": result.name,
+                "author": author_map.get(result.name, ""),
+                "title": result.comic_title,
                 "image_url": result.image_url,
-                "link":      result.link,
-                "caption":   result.caption,
-                "category":  category,
+                "link": result.link,
+                "caption": result.caption,
+                "category": category,
             })
     # save the cache — standalone mode reads this back
-    json_path = settings_path.parent.parent / "comic_overview_data.json"
+    data_dir = get_data_dir()
+    data_dir.mkdir(exist_ok=True)
+    json_path = data_dir / "comic_overview_data.json"
     with open(json_path, "w", encoding="utf-8") as f:
         json.dump(overview_data, f, ensure_ascii=False, indent=2)
     print(f"✓ Cached overview data: {json_path}")
 
     # render the HTML from it
     generate_overview(overview_data, settings_path.parent.parent / "index.html")
+    # Generate RSS aggregator feed with top 6 comics
+    from generate_rss_aggregator import generate_rss_aggregator
+
+    all_valid_results = regular_valid + other_lang_valid + political_valid + extra_valid
+    rss_output_path = data_dir / "comic_library.rss"
+    generate_rss_aggregator(
+        all_results=all_valid_results,
+        output_path=rss_output_path,
+        count=6,
+        mode="recent"  # or "random" for random selection
+    )
+
 
 if __name__ == "__main__":
     create_updated_settings()

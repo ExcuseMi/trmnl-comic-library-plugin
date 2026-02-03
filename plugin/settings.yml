@@ -12,13 +12,13 @@ custom_fields:
 - keyname: about
   name: About This Plugin
   field_type: author_bio
-  description: 'Access an daily updated collection of 549 comic RSS / Atom feeds and enjoy fresh content every day.<br /><a href=''https://excusemi.github.io/trmnl-comic-library-plugin/''>Click here to see all supported comics!</a><br />Features: <br />● Displays the most recent comic or a random comic <br />● Supports multiple RSS / Atom sources <br />● Add your own RSS / Atom feeds <br />● Frequently updated to keep all RSS / Atom sources valid and up to date'
+  description: 'Access an daily updated collection of 550 comic RSS / Atom feeds and enjoy fresh content every day.<br /><a href=''https://excusemi.github.io/trmnl-comic-library-plugin/''>Click here to see all supported comics!</a><br />Features: <br />● Displays the most recent comic or a random comic <br />● Supports multiple RSS / Atom sources <br />● Add your own RSS / Atom feeds <br />● Frequently updated to keep all RSS / Atom sources valid and up to date'
   github_url: https://github.com/ExcuseMi/trmnl-comic-library-plugin
   learn_more_url: https://excusemi.github.io/trmnl-comic-library-plugin
   category: comics
 - keyname: comics
   field_type: select
-  name: 'Comics: 442'
+  name: 'Comics: 443'
   multiple: true
   help_text: Use ⌘+click (Mac) or ctrl+click (Windows) to select multiple items. Use Shift+click to select a whole range at once.
   optional: true
@@ -452,6 +452,7 @@ custom_fields:
   - Wizard of Id by Parker and Hart: https://comiccaster.xyz/rss/wizardofid
   - Wizard of Id Classics by Parker and Hart: https://comiccaster.xyz/rss/wizard-of-id-classics
   - Wondermark by David Malki: https://comiccaster.xyz/rss/wondermark
+  - Work Chronicles: https://workchronicles.substack.com/feed
   - Working Cats: https://comiccaster.xyz/rss/working-cats
   - Working Daze by John Zakour and Scott Roberts: https://comiccaster.xyz/rss/working-daze
   - Working It Out by Charlos Gary: https://comiccaster.xyz/rss/workingitout

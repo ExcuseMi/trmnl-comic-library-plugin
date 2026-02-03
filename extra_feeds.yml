@@ -40,3 +40,5 @@ extra_feeds:
     url: "https://www.webtoons.com/en/challenge/the-weekly-roll/rss?title_no=358889"
   - name: "What's Up Beanie"
     url: "https://www.webtoons.com/en/challenge/whats-up-beanie/rss?title_no=295880"
+  - name: "Work Chronicles"
+    url: "https://workchronicles.substack.com/feed"
