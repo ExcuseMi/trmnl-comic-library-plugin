@@ -2,96 +2,96 @@
 """
 generate_rss_aggregator.py
 
-Creates a single RSS feed item with multiple comic images.
-Called from generate-options.py after validation.
+Creates an Atom feed with multiple comic entries (6 by default).
+Can be run standalone or imported as a library.
 
-The feed contains ONE item with 6 comic images (most recent or random).
-Feed title: "Comic Library"
-Item description: "All your comics in one plugin"
+Standalone: python scripts/generate_rss_aggregator.py [--count 6] [--mode recent]
+Library:    from generate_rss_aggregator import generate_atom_feed
 """
 
+import json
 import random
+import argparse
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, timezone
 from xml.etree.ElementTree import Element, SubElement, tostring
 from xml.dom import minidom
 
 
-def generate_rss_aggregator(
-        all_results: list,
+def generate_atom_feed(
+        comics: list[dict],
         output_path: Path,
         count: int = 6,
         mode: str = "recent"
 ):
     """
-    Generate an RSS feed with one item containing multiple comic images.
+    Generate an Atom feed with multiple comic entries.
 
     Args:
-        all_results: List of ValidationResult objects from validator
-        output_path: Where to write comic_library.rss
+        comics: List of comic dicts with keys: name, image_url, link, caption, title
+        output_path: Where to write demo_data.atom
         count: Number of comics to include (default 6)
-        mode: "recent" for most recent, "random" for random selection
+        mode: "recent" for first N, "random" for random selection
     """
     print(f"\n{'=' * 60}")
-    print("GENERATING RSS AGGREGATOR FEED")
+    print("GENERATING ATOM FEED")
     print(f"{'=' * 60}")
 
-    # Filter to only valid results with images
-    valid_with_images = [r for r in all_results if r.image_url and not hasattr(r, 'error')]
+    # Filter to only comics with images
+    valid = [c for c in comics if c.get('image_url') and not c.get('error')]
 
-    if len(valid_with_images) == 0:
+    if len(valid) == 0:
         print("✗ No valid comics with images found")
         return
 
     # Select comics based on mode
     if mode == "random":
-        selected = random.sample(valid_with_images, min(count, len(valid_with_images)))
+        selected = random.sample(valid, min(count, len(valid)))
         print(f"  Selected {len(selected)} random comics")
     else:  # recent
-        selected = valid_with_images[:count]
+        selected = valid[:count]
         print(f"  Selected {len(selected)} most recent comics")
 
-    # Build RSS 2.0 feed
-    rss = Element('rss', version='2.0')
-    rss.set('xmlns:atom', 'http://www.w3.org/2005/Atom')
-    rss.set('xmlns:content', 'http://purl.org/rss/1.0/modules/content/')
+    # Build Atom feed
+    feed = Element('feed')
+    feed.set('xmlns', 'http://www.w3.org/2005/Atom')
+    feed.set('xml:lang', 'en')
 
-    channel = SubElement(rss, 'channel')
-    SubElement(channel, 'title').text = 'Comic Library'
-    SubElement(channel, 'link').text = 'https://excusemi.github.io/trmnl-comic-library-plugin/'
-    SubElement(channel, 'description').text = 'Daily comics aggregated into one feed'
-    SubElement(channel, 'language').text = 'en'
-    SubElement(channel, 'lastBuildDate').text = datetime.utcnow().strftime('%a, %d %b %Y %H:%M:%S GMT')
+    SubElement(feed, 'title').text = 'Comic Library'
 
-    # Build HTML with all comic images
-    content_html = ''
-    for result in selected:
-        comic_name = result.name or "Unknown"
-        img_url = result.image_url
-        comic_link = result.link or 'https://excusemi.github.io/trmnl-comic-library-plugin/'
-        caption = result.caption or comic_name
+    link = SubElement(feed, 'link')
+    link.set('href', 'https://excusemi.github.io/trmnl-comic-library-plugin/')
+    link.set('rel', 'alternate')
 
-        content_html += f'<div style="margin:20px 0; border:1px solid #ccc; padding:10px; border-radius:8px;">\n'
-        content_html += f'  <h3 style="margin:0 0 10px 0;">{comic_name}</h3>\n'
-        content_html += f'  <a href="{comic_link}" target="_blank"><img src="{img_url}" alt="{caption}" style="max-width:100%; height:auto;"/></a>\n'
-        if caption and caption != comic_name:
-            content_html += f'  <p style="margin:10px 0 0 0; font-style:italic; color:#666;">{caption}</p>\n'
-        content_html += f'</div>\n'
+    SubElement(feed, 'id').text = 'https://excusemi.github.io/trmnl-comic-library-plugin/'
+    SubElement(feed, 'updated').text = datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
 
-    # Single item with all comics
-    item = SubElement(channel, 'item')
-    SubElement(item, 'title').text = 'Comic Library — Daily Comics'
-    SubElement(item, 'link').text = 'https://excusemi.github.io/trmnl-comic-library-plugin/'
+    # Create entry for each comic
+    for idx, comic in enumerate(selected):
+        entry = SubElement(feed, 'entry')
 
-    # Put content in BOTH description and encoded for maximum compatibility
-    SubElement(item, 'description').text = content_html
-    SubElement(item, '{http://purl.org/rss/1.0/modules/content/}encoded').text = content_html
+        comic_name = comic.get('name') or 'Unknown'
+        comic_title = comic.get('title') or comic_name
+        img_url = comic.get('image_url')
+        comic_link = comic.get('link') or 'https://excusemi.github.io/trmnl-comic-library-plugin/'
+        caption = comic.get('caption') or comic_title
 
-    SubElement(item, 'pubDate').text = datetime.utcnow().strftime('%a, %d %b %Y %H:%M:%S GMT')
-    SubElement(item, 'guid', isPermaLink='false').text = f"comic-library-{datetime.utcnow().strftime('%Y%m%d')}"
+        SubElement(entry, 'title').text = comic_title
+
+        entry_link = SubElement(entry, 'link')
+        entry_link.set('href', comic_link)
+        entry_link.set('rel', 'alternate')
+
+        SubElement(entry, 'updated').text = datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
+        SubElement(entry, 'id').text = f'comic-library-{datetime.now(timezone.utc).strftime("%Y%m%d")}-{idx}'
+
+        # Summary with img tag (xkcd-style)
+        summary = SubElement(entry, 'summary')
+        summary.set('type', 'html')
+        summary.text = f'<img src="{img_url}" title="{caption}" alt="{caption}" />'
 
     # Pretty print XML
-    rough_string = tostring(rss, encoding='utf-8')
+    rough_string = tostring(feed, encoding='utf-8')
     reparsed = minidom.parseString(rough_string)
     pretty_xml = reparsed.toprettyxml(indent="  ", encoding='utf-8').decode('utf-8')
 
@@ -99,14 +99,53 @@ def generate_rss_aggregator(
     lines = [line for line in pretty_xml.split('\n') if line.strip()]
     pretty_xml = '\n'.join(lines)
 
-    with open(output_path, 'wh', encoding='utf-8') as f:
+    with open(output_path, 'w', encoding='utf-8') as f:
         f.write(pretty_xml)
 
-    print(f"✓ RSS feed written: {output_path}")
-    print(f"  Contains {len(selected)} comics")
-    print(f"  Feed URL: file://{output_path.absolute()}")
+    print(f"✓ Atom feed written: {output_path}")
+    print(f"  Contains {len(selected)} entries")
+
+
+def _resolve_base() -> Path:
+    """Root of the repo, whether we're run from scripts/ or from root."""
+    here = Path(__file__).resolve().parent
+    return here.parent if here.name == "scripts" else here
 
 
 if __name__ == "__main__":
-    print("This script is meant to be called from generate-options.py")
-    print("It requires validated feed results as input.")
+    parser = argparse.ArgumentParser(
+        description="Generate Atom feed from comic_overview_data.json"
+    )
+    parser.add_argument("--json", type=Path,
+                        help="Path to comic_overview_data.json (default: data/comic_overview_data.json)")
+    parser.add_argument("--output", type=Path,
+                        help="Output path (default: data/demo_data.atom)")
+    parser.add_argument("--count", type=int, default=6,
+                        help="Number of comics to include (default: 6)")
+    parser.add_argument("--mode", choices=["recent", "random"], default="recent",
+                        help="Selection mode: recent or random (default: recent)")
+    args = parser.parse_args()
+
+    base = _resolve_base()
+    json_path = args.json or base / "data" / "comic_overview_data.json"
+    output_path = args.output or base / "data" / "demo_data.atom"
+
+    if not json_path.exists():
+        print(f"✗ JSON not found: {json_path}")
+        print("  Run generate-options.py first to create it.")
+        raise SystemExit(1)
+
+    with open(json_path, encoding='utf-8') as f:
+        comics = json.load(f)
+
+    print(f"[*] Loaded {len(comics)} comics from {json_path}")
+
+    generate_atom_feed(
+        comics=comics,
+        output_path=output_path,
+        count=args.count,
+        mode=args.mode
+    )
+
+    print(f"\n[*] Feed URL: {output_path.absolute()}")
+    print("[*] Use this as a polling URL in your TRMNL private plugin")

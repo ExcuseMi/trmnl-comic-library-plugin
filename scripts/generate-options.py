@@ -507,13 +507,11 @@ def create_updated_settings():
     # render the HTML from it
     generate_overview(overview_data, settings_path.parent.parent / "index.html")
     # Generate RSS aggregator feed with top 6 comics
-    from generate_rss_aggregator import generate_rss_aggregator
-
-    all_valid_results = regular_valid + other_lang_valid + political_valid + extra_valid
-    rss_output_path = data_dir / "comic_library.rss"
-    generate_rss_aggregator(
-        all_results=all_valid_results,
-        output_path=rss_output_path,
+    from generate_rss_aggregator import generate_atom_feed
+    atom_output_path = data_dir / "demo-data.atom"
+    generate_atom_feed(
+        comics=overview_data,
+        output_path=atom_output_path,
         count=6,
         mode="recent"  # or "random" for random selection
     )
