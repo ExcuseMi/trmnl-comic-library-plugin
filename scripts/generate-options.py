@@ -338,10 +338,11 @@ def create_updated_settings():
     for comic in sorted(other_language_comics, key=lambda x: x.get("name", "Unknown").lower()):
         name = comic.get("name", "Unknown")
         author = comic.get("author", "")
-        slug = comic.get("slug", "unknown")
-        display_name = f"{name} by {author}" if author and author != name else name
-        url = comic.get('url')
-        other_lang_options.append({display_name: url})
+        slug = comic.get("slug", "")
+        if slug:
+            display_name = f"{name} by {author}" if author and author != name else name
+            feed_url = f"https://comiccaster.xyz/rss/{slug}" if slug else None
+            other_lang_options.append({display_name: feed_url})
 
     other_lang_field = {
         'keyname': 'comics_other_languages',
@@ -361,9 +362,9 @@ def create_updated_settings():
         author = comic.get("author", "")
         slug = comic.get("slug", "unknown")
         display_name = f"{name} by {author}" if author and author != name else name
-        url = comic.get('url')
+        feed_url = f"https://comiccaster.xyz/rss/{slug}" if slug else None
 
-        political_options.append({display_name: url})
+        political_options.append({display_name: feed_url})
 
     political_field = {
         'keyname': 'comics_political',
