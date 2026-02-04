@@ -1,0 +1,7 @@
+# Feeds to exclude from the Comic Library plugin
+# Add RSS/Atom feed URLs here to prevent them from being included in the plugin
+
+excluded_feeds:
+  - https://comiccaster.xyz/rss/randolphitch
+  - https://comiccaster.xyz/rss/false-knees
+  - https://comiccaster.xyz/rss/a-problem-like-jamal

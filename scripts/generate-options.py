@@ -56,13 +56,19 @@ def is_other_language(name: str, slug: str, author: str):
 
 
 def get_excluded_feeds():
-    """Get list of feeds to exclude from environment variable"""
-    exclusions_str = os.environ.get('EXCLUSIONS', '')
-    if exclusions_str:
-        excluded_feeds = [url.strip() for url in exclusions_str.split(',') if url.strip()]
-        print(f"Excluding {len(excluded_feeds)} feeds: {excluded_feeds}")
+    """Get list of feeds to exclude from data/excluded_feeds.yml"""
+    data_dir = get_data_dir()
+    excluded_feeds_path = data_dir / "excluded_feeds.yml"
+
+    if excluded_feeds_path.exists():
+        with open(excluded_feeds_path, 'r') as f:
+            excluded_data = yaml.safe_load(f) or {}
+            excluded_feeds = excluded_data.get('excluded_feeds', [])
+        print(f"Loaded {len(excluded_feeds)} excluded feeds from {excluded_feeds_path}")
         return excluded_feeds
-    return []
+    else:
+        print(f"No exclusions file found at {excluded_feeds_path}")
+        return []
 
 
 def get_comics_data(url: str):
