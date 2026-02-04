@@ -512,7 +512,7 @@ def create_updated_settings():
     generate_atom_feed(
         comics=overview_data,
         output_path=atom_output_path,
-        count=6,
+        entries=4,
         mode="recent"  # or "random" for random selection
     )
 
