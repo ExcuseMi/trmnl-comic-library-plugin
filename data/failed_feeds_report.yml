@@ -1,5 +1,5 @@
-report_date: '2026-02-04 14:29:44'
-total_failed: 59
+report_date: '2026-02-04 13:38:33'
+total_failed: 60
 failed_feeds:
 - name: Art by Moga
   url: https://comiccaster.xyz/rss/artbymoga
@@ -191,7 +191,7 @@ failed_feeds:
   error: Feed contains only generic promotional content
   feed_type: rss
   status: needs_investigation
-- name: Yeah It’s Chill
+- name: Yeah Itâ€™s Chill
   url: https://comiccaster.xyz/rss/yeah-its-chill
   error: Feed contains only generic promotional content
   feed_type: rss
@@ -295,4 +295,9 @@ failed_feeds:
   url: https://www.gunnerkrigg.com/rss.xml
   error: No valid image found in enclosure, description, or content:encoded
   feed_type: rss
+  status: needs_investigation
+- name: Work Chronicles
+  url: https://workchronicles.substack.com/feed
+  error: 'Request failed: 403 Client Error: Forbidden for url: https://workchronicles.substack.com/feed'
+  feed_type: null
   status: needs_investigation
