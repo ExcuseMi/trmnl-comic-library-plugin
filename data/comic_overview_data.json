@@ -2484,6 +2484,15 @@
     "category": "Comics"
   },
   {
+    "name": "Savage Chickens",
+    "author": "Doug Savage",
+    "title": "Savage Chickens - 2026-02-03",
+    "image_url": "https://featureassets.gocomics.com/assets/e390ddf0d20f013ebadd005056a9545d",
+    "link": "https://www.gocomics.com/savage-chickens/2026/02/03",
+    "caption": null,
+    "category": "Comics"
+  },
+  {
     "name": "Scary Gary",
     "author": "Mark Buford",
     "title": "Scary Gary - 2026-02-03",
@@ -4781,9 +4790,9 @@
   {
     "name": "Questionable Content",
     "author": "Jeph Jacques",
-    "title": "Language Development",
-    "image_url": "http://www.questionablecontent.net/comics/5756.png",
-    "link": "http://questionablecontent.net/view.php?comic=5756",
+    "title": "Comics",
+    "image_url": "http://www.questionablecontent.net/comics/5757.png",
+    "link": "http://questionablecontent.net/view.php?comic=5757",
     "caption": null,
     "category": "Comics"
   },
