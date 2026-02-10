@@ -1,5 +1,5 @@
-report_date: '2026-02-10 21:35:12'
-total_failed: 60
+report_date: '2026-02-10 20:36:47'
+total_failed: 61
 failed_feeds:
 - name: Art by Moga
   url: https://comiccaster.xyz/rss/artbymoga
@@ -300,4 +300,9 @@ failed_feeds:
   url: https://www.gunnerkrigg.com/rss.xml
   error: No valid image found
   feed_type: rss
+  status: needs_investigation
+- name: Work Chronicles
+  url: https://workchronicles.substack.com/feed
+  error: HTTP 403
+  feed_type: null
   status: needs_investigation
