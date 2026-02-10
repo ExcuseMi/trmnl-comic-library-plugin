@@ -433,7 +433,7 @@ if __name__ == "__main__":
         description="Re-render comic_overview.html from the cached JSON. "
                     "No network calls — just tweak the HTML and re-run."
     )
-    parser.add_argument("--json",   type=Path, default=base / "comic_overview_data.json",
+    parser.add_argument("--json",   type=Path, default=base / "data/comic_overview_data.json",
                         help="Path to the cached JSON (default: <repo>/comic_overview_data.json)")
     parser.add_argument("--output", type=Path, default=base / "index.html",
                         help="Output HTML path (default: <repo>/index.html)")

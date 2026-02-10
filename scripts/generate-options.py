@@ -1,13 +1,15 @@
 import json
+import subprocess
 import sys
+from datetime import datetime
 from pathlib import Path
+from types import SimpleNamespace
+from typing import Dict, List, Tuple
 import os
 
 import requests
 import yaml
 from dotenv import load_dotenv
-
-from rss_feed_validator import RSSFeedValidator
 
 URL = "https://comiccaster.xyz/comics_list.json"
 URL_POLITICAL = "https://comiccaster.xyz/political_comics_list.json"
@@ -126,6 +128,91 @@ def should_exclude_feed(feed_url: str, excluded_feeds: list) -> bool:
     return feed_url in excluded_feeds
 
 
+def validate_feeds_via_docker(
+    feeds: Dict[str, str],
+    timeout: int = 15000,
+    concurrency: int = 20,
+) -> Tuple[List[SimpleNamespace], List[SimpleNamespace]]:
+    """Validate feeds by running the Node.js validator inside Docker.
+
+    Args:
+        feeds: Dictionary of {name: url}
+        timeout: Per-feed timeout in milliseconds
+        concurrency: Max parallel fetches inside the container
+
+    Returns:
+        Tuple of (valid_results, invalid_results) as SimpleNamespace objects
+        with the same attributes as the old ValidationResult dataclass.
+    """
+    if not feeds:
+        return [], []
+
+    payload = json.dumps({
+        "feeds": [{"name": n, "url": u} for n, u in feeds.items()],
+        "timeout": timeout,
+        "concurrency": concurrency,
+    })
+
+    proc = subprocess.run(
+        ["docker", "run", "--rm", "-i", "trmnl-feed-validator"],
+        input=payload,
+        capture_output=True,
+        text=True,
+    )
+
+    # Progress messages go to stderr — print them so CI sees progress
+    if proc.stderr:
+        print(proc.stderr, end="")
+
+    if proc.returncode != 0:
+        print(f"[!] Docker validator exited with code {proc.returncode}")
+        # Treat every feed as invalid
+        return [], [
+            SimpleNamespace(url=u, name=n, is_valid=False,
+                            error_message="Docker validator failed",
+                            comic_title=None, image_url=None,
+                            image_source=None, feed_type=None,
+                            link=None, caption=None)
+            for n, u in feeds.items()
+        ]
+
+    results_json = json.loads(proc.stdout)
+    valid, invalid = [], []
+    for r in results_json:
+        obj = SimpleNamespace(**r)
+        (valid if obj.is_valid else invalid).append(obj)
+    return valid, invalid
+
+
+def save_failed_feeds_report(invalid_results: list, output_path: Path):
+    """Save a detailed report of failed RSS feeds"""
+    if not invalid_results:
+        print("\n✓ All feeds validated successfully! No failed feeds report needed.")
+        return
+
+    report = {
+        'report_date': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+        'total_failed': len(invalid_results),
+        'failed_feeds': []
+    }
+
+    for result in invalid_results:
+        feed_info = {
+            'name': result.name,
+            'url': result.url,
+            'error': result.error_message,
+            'feed_type': result.feed_type,
+            'status': 'needs_investigation'
+        }
+        report['failed_feeds'].append(feed_info)
+
+    with open(output_path, 'w') as f:
+        yaml.dump(report, f, default_flow_style=False, allow_unicode=True, sort_keys=False)
+
+    print(f"\n⚠️  Failed feeds report saved to: {output_path}")
+    print(f"   {len(invalid_results)} feed(s) need investigation")
+
+
 def get_settings_path():
     """Get the correct path for plugin/settings.yml"""
     current_dir = Path.cwd()
@@ -156,7 +243,6 @@ def create_updated_settings():
     print("\n" + "=" * 60)
     print("VALIDATING ALL RSS FEEDS")
     print("=" * 60)
-    validator = RSSFeedValidator(timeout=15)
     all_invalid_results = []
 
     # Validate regular comics (excluding those that are political and excluded feeds)
@@ -176,7 +262,7 @@ def create_updated_settings():
             else:
                 print(f"  Excluded: {name} ({feed_url})")
 
-    regular_valid, regular_invalid = validator.validate_multiple_feeds(regular_feeds)
+    regular_valid, regular_invalid = validate_feeds_via_docker(regular_feeds)
     all_invalid_results.extend(regular_invalid)
 
     # Validate other language comics (excluding those that are political and excluded feeds)
@@ -195,7 +281,7 @@ def create_updated_settings():
             else:
                 print(f"  Excluded: {name} ({feed_url})")
 
-    other_lang_valid, other_lang_invalid = validator.validate_multiple_feeds(other_lang_feeds)
+    other_lang_valid, other_lang_invalid = validate_feeds_via_docker(other_lang_feeds)
     all_invalid_results.extend(other_lang_invalid)
 
     # Validate political comics (excluding excluded feeds)
@@ -211,12 +297,12 @@ def create_updated_settings():
             else:
                 print(f"  Excluded: {name} ({feed_url})")
 
-    political_valid, political_invalid = validator.validate_multiple_feeds(political_feeds)
+    political_valid, political_invalid = validate_feeds_via_docker(political_feeds)
     all_invalid_results.extend(political_invalid)
 
     # Validate extra feeds (excluding excluded feeds)
     validated_extra_feeds = {}  # Will store {name: {'url': url, 'author': author}}
-    extra_valid = []  # <-- add these two
+    extra_valid = []
     extra_invalid = []
     if extra_feeds:
         print("\n--- Extra Feeds ---")
@@ -232,7 +318,7 @@ def create_updated_settings():
             else:
                 print(f"  Excluded: {name} ({url})")
 
-        extra_valid, extra_invalid = validator.validate_multiple_feeds(filtered_extra_feeds)
+        extra_valid, extra_invalid = validate_feeds_via_docker(filtered_extra_feeds)
         all_invalid_results.extend(extra_invalid)
 
         # Store validated extra feeds with their authors
@@ -259,7 +345,7 @@ def create_updated_settings():
     print(f"✗ Invalid: {total_invalid} ({total_invalid / (total_valid + total_invalid) * 100:.1f}%)")
 
     # Save failed feeds report
-    validator.save_failed_feeds_report(all_invalid_results, get_failed_feeds_path())
+    save_failed_feeds_report(all_invalid_results, get_failed_feeds_path())
 
     # Separate regular comics from other languages (only valid ones, excluding political)
     regular_comics = []

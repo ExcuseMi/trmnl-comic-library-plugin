@@ -1823,7 +1823,7 @@
     "title": "Lunarbaboon",
     "image_url": "https://cdn.tinyview.com/lunarbaboon/2026/02/05/weed/previewnew-6.jpg",
     "link": "https://tinyview.com/lunarbaboon/2026/02/05/weed",
-    "caption": null,
+    "caption": "Cover Image",
     "category": "Comics"
   },
   {
@@ -3038,7 +3038,7 @@
     "title": "Nick Anderson",
     "image_url": "https://cdn.tinyview.com/nick-anderson/2026/02/08/bad-bunny/020926.Bad_Bunny_Halftime_Show_-copy-2.jpg",
     "link": "https://tinyview.com/nick-anderson/2026/02/08/bad-bunny",
-    "caption": null,
+    "caption": "Cover Image",
     "category": "Comics"
   },
   {
@@ -3627,15 +3627,6 @@
     "category": "Comics"
   },
   {
-    "name": "Pros & Cons",
-    "author": "",
-    "title": "Pros & Cons - 2026-02-01",
-    "image_url": "https://wp.comicskingdom.com/comicskingdom-redesign-uploads-production/2023/07/Pros-amp-Cons.ENG_.2023-07-31.1.jpeg",
-    "link": "https://comicskingdom.com/pros-cons/2026-02-01",
-    "caption": null,
-    "category": "Comics"
-  },
-  {
     "name": "Rae The Doe",
     "author": "",
     "title": "Rae The Doe - 2026-02-10",
@@ -3794,7 +3785,7 @@
     "title": "The Far Side - 2026-02-10 #2",
     "image_url": "https://comiccaster.xyz/.netlify/functions/proxy-farside-image?url=https%3A%2F%2Ffeatureassets.amuniversal.com%2Fassets%2F44d6bc30dcc90137caaf005056a9545d",
     "link": "https://www.thefarside.com/2026/02/10/4",
-    "caption": "“What is this? … Some kind of cruel hoax?”",
+    "caption": "The Far Side comic",
     "category": "Comics"
   },
   {
@@ -3803,7 +3794,7 @@
     "title": "Daily Cartoon: Monday, February 9th",
     "image_url": "https://media.newyorker.com/cartoons/698a14d3b98527bf6dd118ee/master/w_1600%2Cc_limit/A61643.jpeg",
     "link": "https://www.newyorker.com/cartoons/daily-cartoon/monday-february-9th-bad-bunny-garden",
-    "caption": null,
+    "caption": "Daily Cartoon",
     "category": "Comics"
   },
   {
@@ -4766,7 +4757,7 @@
     "title": "Brilliant Mind Of Edison Lee - 2026-02-10",
     "image_url": "https://wp.comicskingdom.com/comicskingdom-redesign-uploads-production/2026/02/Y2tUaGUgQnJpbGxpYW50IE1pbmQgT2YgRWRpc29uIExlZS1FTkctNTg2MjAzMQ.jpg",
     "link": "https://comicskingdom.com/brilliant-mind-of-edison-lee/2026-02-10",
-    "caption": "Brilliant Mind Of Edison Lee",
+    "caption": null,
     "category": "Political"
   },
   {
@@ -4844,7 +4835,7 @@
   {
     "name": "Foxes in Love",
     "author": "",
-    "title": "Untitled",
+    "title": "undefined",
     "image_url": "https://64.media.tumblr.com/4fe4a3077c2af109ea1e468619d5365e/ac6da60d0dd164e2-e0/s640x960/18af358aea6f855e9a9c3cd1a6e57da5dd33d153.jpg",
     "link": "https://foxes-in-love.tumblr.com/post/808082350853472256",
     "caption": null,
@@ -4892,7 +4883,7 @@
     "title": "CMXCI ~ The Prestige",
     "image_url": "https://swordscomic.com/cdn-cgi/image/width=1440,format=auto/media/Swords/images/Swords991T.png",
     "link": "https://swordscomic.com/comic/CMXCI/",
-    "caption": "I'm seeing double!  Four Monster Magicians!",
+    "caption": "I&#x27;m seeing double!  Four Monster Magicians!",
     "category": "Comics"
   },
   {
@@ -4919,6 +4910,15 @@
     "title": "Secret project!",
     "image_url": "https://swebtoon-phinf.pstatic.net/20250730_157/1753804257379cBHpP_PNG/4e9a99ad-cf97-47d4-bba6-a1144e31720b4217874149756390801.png",
     "link": "https://www.webtoons.com/en/canvas/whats-up-beanie/secret-project/viewer?title_no=295880&episode_no=557",
+    "caption": null,
+    "category": "Comics"
+  },
+  {
+    "name": "Work Chronicles",
+    "author": "",
+    "title": "(comic) Handover? We Don't Do That.",
+    "image_url": "https://substackcdn.com/image/fetch/$s_!CfAC!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7b739ff8-97ae-4fe4-8370-10c35fdd3bba_4800x4800.png",
+    "link": "https://workchronicles.substack.com/p/comic-handover-we-dont-do-that",
     "caption": null,
     "category": "Comics"
   }

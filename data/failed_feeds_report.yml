@@ -1,4 +1,4 @@
-report_date: '2026-02-10 17:12:19'
+report_date: '2026-02-10 21:15:39'
 total_failed: 60
 failed_feeds:
 - name: Art by Moga
@@ -201,34 +201,39 @@ failed_feeds:
   error: Feed contains only generic promotional content
   feed_type: rss
   status: needs_investigation
+- name: Pros & Cons
+  url: https://comiccaster.xyz/rss/pros-cons
+  error: No valid image found
+  feed_type: rss
+  status: needs_investigation
 - name: The Far Side - New Stuff
   url: https://comiccaster.xyz/rss/farside-new
-  error: No items found in RSS feed
+  error: No items/entries found in feed
   feed_type: rss
   status: needs_investigation
 - name: Bob Gorrell
   url: https://comiccaster.xyz/rss/bobgorrell
-  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/bobgorrell'
+  error: HTTP 404
   feed_type: null
   status: needs_investigation
 - name: Matt Bors
   url: https://comiccaster.xyz/rss/matt-bors
-  error: No valid image found in enclosure, description, or content:encoded
+  error: No valid image found
   feed_type: rss
   status: needs_investigation
 - name: Pat Oliphant
   url: https://comiccaster.xyz/rss/patoliphant
-  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/patoliphant'
+  error: HTTP 404
   feed_type: null
   status: needs_investigation
 - name: Rebecca Hendin
   url: https://comiccaster.xyz/rss/rebecca-hendin
-  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/rebecca-hendin'
+  error: HTTP 404
   feed_type: null
   status: needs_investigation
 - name: Steve Benson
   url: https://comiccaster.xyz/rss/stevebenson
-  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/stevebenson'
+  error: HTTP 404
   feed_type: null
   status: needs_investigation
 - name: (th)ink
@@ -238,66 +243,61 @@ failed_feeds:
   status: needs_investigation
 - name: ViewsAfrica
   url: https://comiccaster.xyz/rss/viewsafrica
-  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/viewsafrica'
+  error: HTTP 404
   feed_type: null
   status: needs_investigation
 - name: David M. Hitch
   url: https://comiccaster.xyz/rss/david-m-hitch
-  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/david-m-hitch'
+  error: HTTP 404
   feed_type: null
   status: needs_investigation
 - name: Ed Gamble
   url: https://comiccaster.xyz/rss/ed-gamble
-  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/ed-gamble'
+  error: HTTP 404
   feed_type: null
   status: needs_investigation
 - name: Jimmy Margulies
   url: https://comiccaster.xyz/rss/jimmy-margulies
-  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/jimmy-margulies'
+  error: HTTP 404
   feed_type: null
   status: needs_investigation
 - name: Lee Judge
   url: https://comiccaster.xyz/rss/lee-judge
-  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/lee-judge'
+  error: HTTP 404
   feed_type: null
   status: needs_investigation
 - name: Mallard Fillmore
   url: https://comiccaster.xyz/rss/mallard-fillmore
-  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/mallard-fillmore'
+  error: HTTP 404
   feed_type: null
   status: needs_investigation
 - name: Mike Shelton
   url: https://comiccaster.xyz/rss/mike-shelton
-  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/mike-shelton'
+  error: HTTP 404
   feed_type: null
   status: needs_investigation
 - name: Mike Smith
   url: https://comiccaster.xyz/rss/mike-smith
-  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/mike-smith'
+  error: HTTP 404
   feed_type: null
   status: needs_investigation
 - name: DAA Industry Opt Out
   url: https://comiccaster.xyz/rss/privacy-policy#daa
-  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/privacy-policy#daa'
+  error: HTTP 404
   feed_type: null
   status: needs_investigation
 - name: CA Notice at Collection
   url: https://comiccaster.xyz/rss/privacy-policy#california
-  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/privacy-policy#california'
+  error: HTTP 404
   feed_type: null
   status: needs_investigation
 - name: Your CA Privacy Rights/Shine the Light
   url: https://comiccaster.xyz/rss/privacy-policy#shine
-  error: 'Request failed: 404 Client Error: Not Found for url: https://comiccaster.xyz/rss/privacy-policy#shine'
+  error: HTTP 404
   feed_type: null
   status: needs_investigation
 - name: Gunnerkrigg Court
   url: https://www.gunnerkrigg.com/rss.xml
-  error: No valid image found in enclosure, description, or content:encoded
+  error: No valid image found
   feed_type: rss
-  status: needs_investigation
-- name: Work Chronicles
-  url: https://workchronicles.substack.com/feed
-  error: 'Request failed: 403 Client Error: Forbidden for url: https://workchronicles.substack.com/feed'
-  feed_type: null
   status: needs_investigation

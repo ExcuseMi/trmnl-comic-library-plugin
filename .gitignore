@@ -212,3 +212,7 @@ __marimo__/
 /.idea/trmnl-random-daily-comics-plugin.iml
 /.idea/vcs.xml
 .idea/trmnl-comic-library-plugin.iml
+
+# Node validator (copied at build time, not source-of-truth)
+scripts/node-validator/node_modules/
+scripts/node-validator/transform.js

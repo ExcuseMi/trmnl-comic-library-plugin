@@ -24,7 +24,12 @@ jobs:
         python-version: '3.x'
 
     - name: Install dependencies
-      run: pip install requests pyyaml python-dotenv beautifulsoup4
+      run: pip install requests pyyaml python-dotenv
+
+    - name: Build feed validator Docker image
+      run: |
+        cp plugin/transform.js scripts/node-validator/transform.js
+        docker build -t trmnl-feed-validator scripts/node-validator/
 
     - name: Generate updated comic options
       env:
