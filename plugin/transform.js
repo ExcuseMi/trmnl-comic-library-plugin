@@ -190,18 +190,18 @@ function transform(input) {
     ? [enclosureUrl]
     : filterImages(getImageUrls(description));
 
-  return {
-    comic: {
-      title: selectedItem?.title + "" || "No comics found",
-      source: feedTitle,
-      imageUrls,
-      caption: extractCaption(
-        description,
-        selectedItem?.title,
-        feedTitle
-      ),
-      link: getLink(selectedItem),
-      pubDate: getPubDate(selectedItem)
-    }
-  };
+    return {
+      comic: {
+        title: decodeEntities(selectedItem?.title + "" || "No comics found"),
+        source: feedTitle,
+        imageUrls,
+        caption: extractCaption(
+          description,
+          selectedItem?.title,
+          feedTitle
+        ),
+        link: getLink(selectedItem),
+        pubDate: getPubDate(selectedItem)
+      }
+    };
 }
