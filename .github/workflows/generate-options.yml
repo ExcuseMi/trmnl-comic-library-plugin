@@ -24,7 +24,7 @@ jobs:
         python-version: '3.x'
 
     - name: Install dependencies
-      run: pip install requests pyyaml python-dotenv
+      run: pip install requests pyyaml python-dotenv beautifulsoup4
 
     - name: Generate updated comic options
       env:

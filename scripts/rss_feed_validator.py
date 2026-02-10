@@ -51,16 +51,46 @@ class RSSFeedValidator:
         })
 
     @staticmethod
-    def _extract_caption(parser: 'ImageExtractor', item_title: str | None, feed_name: str | None) -> str | None:
-        """Port of JS extractCaption — img title > short alt > nothing."""
+    def _extract_caption(parser: 'ImageExtractor', item_title: str | None,
+                         feed_name: str | None, description_html: str | None = None) -> str | None:
+        """Extract caption from image attributes or description HTML."""
         if parser is None:
             return None
+
+        # First try to get caption from description HTML (for comics like The Far Side)
+        if description_html:
+            try:
+                from bs4 import BeautifulSoup
+                soup = BeautifulSoup(description_html, 'html.parser')
+                img_tag = soup.find('img')
+                if img_tag:
+                    next_p = img_tag.find_next('p')
+                    if next_p:
+                        p_text = next_p.get_text().strip()
+                        if p_text and 0 < len(p_text) <= 200:
+                            # Filter out generic captions like "Comic strip for 2026/02/04"
+                            if RSSFeedValidator._is_generic_caption(p_text):
+                                return None
+
+                            # Check if it looks like a comic caption
+                            has_italic = (
+                                    next_p.get('style', '').find('italic') != -1 or
+                                    bool(next_p.find(['i', 'em'])) or
+                                    '"' in p_text or '“' in p_text
+                            )
+                            if has_italic and not re.search(r"panel\s*\d+|^panel|narration|sfx|:",
+                                                            p_text, re.IGNORECASE):
+                                return p_text
+            except:
+                pass  # Fall back to image attributes
 
         # 1. <img title="…">  (xkcd style)
         if parser.image_title:
             text = parser.image_title.strip()
             if 0 < len(text) <= 200:
-                return text
+                # Filter out generic captions
+                if not RSSFeedValidator._is_generic_caption(text):
+                    return text
 
         # 2. Short alt, reject transcripts / generic echoes
         if parser.image_alt:
@@ -80,10 +110,69 @@ class RSSFeedValidator:
             if re.fullmatch(r"[A-Z][a-z]+", text):
                 return None
 
+            # Generic alt text (like "The Far Side comic")
+            generic_phrases = {'comic', 'cartoon', 'image', 'picture', 'illustration'}
+            if any(phrase in normalized for phrase in generic_phrases):
+                return None
+
+            # Filter out generic captions
+            if RSSFeedValidator._is_generic_caption(text):
+                return None
+
             if 0 < len(text) <= 140:
                 return text
 
         return None
+
+    @staticmethod
+    def _is_generic_caption(caption: str) -> bool:
+        """Check if a caption is generic (like 'Comic strip for 2026/02/04')."""
+        if not caption:
+            return True
+
+        caption_lower = caption.lower().strip()
+
+        # Generic comic descriptions
+        generic_patterns = [
+            r'^comic\s*(?:strip|panel)?\s*(?:for|from)?\s*\d{4}[/\\\-]\d{2}[/\\\-]\d{2}$',
+            r'^comic\s*(?:strip|panel)?\s*(?:for|from)?\s*\w+\s+\d{1,2},\s*\d{4}$',
+            r'^comic\s*(?:of|for)\s+the\s+day$',
+            r'^daily\s+comic$',
+            r'^today[^\w]*s?\s+comic$',
+            r'^strip\s+for\s+\d{4}[/\\\-]\d{2}[/\\\-]\d{2}$',
+            r'^for\s+\d{4}[/\\\-]\d{2}[/\\\-]\d{2}$',
+        ]
+
+        for pattern in generic_patterns:
+            if re.match(pattern, caption_lower):
+                return True
+
+        # Generic phrases
+        generic_phrases = [
+            'comic strip for',
+            'comic for',
+            'daily comic',
+            'today\'s comic',
+            'this week\'s comic',
+            'strip for',
+            'panel for',
+        ]
+
+        for phrase in generic_phrases:
+            if phrase in caption_lower:
+                return True
+
+        # Date-only patterns
+        date_patterns = [
+            r'^\d{4}[/\\\-]\d{2}[/\\\-]\d{2}$',
+            r'^\w+\s+\d{1,2},\s*\d{4}$',
+        ]
+
+        for pattern in date_patterns:
+            if re.match(pattern, caption_lower):
+                return True
+
+        return False
 
     def validate_feed(self, url: str, name: str = None) -> ValidationResult:
         """
@@ -269,7 +358,8 @@ class RSSFeedValidator:
                     image_source='enclosure',
                     feed_type='rss',
                     link=comic_link,
-                    caption=self._extract_caption(caption_parser, title, name),
+                    caption=self._extract_caption(caption_parser, title, name,
+                                                  description_html=description.text)
                 )
 
         # Try description
@@ -298,7 +388,8 @@ class RSSFeedValidator:
                     image_source='description',
                     feed_type='rss',
                     link=comic_link,
-                    caption=self._extract_caption(parser, title, name),
+                    caption=self._extract_caption(parser, title, name,
+                                                  description_html=description.text),
                 )
 
         # Try content:encoded (WordPress and other feeds use this)

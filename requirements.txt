@@ -1,3 +1,4 @@
 requests
 pyyaml
 python-dotenv
+beautifulsoup4
