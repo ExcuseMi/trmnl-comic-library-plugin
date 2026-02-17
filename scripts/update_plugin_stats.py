@@ -212,31 +212,22 @@ The plugin exists but data is not available yet. This usually means it's very ne
 """
         return markdown
 
-    stats = plugin.get('stats', {})
-
     # Use local image paths or fallback to original URLs
     icon_path = image_paths.get('icon') if image_paths else plugin.get('icon_url', '')
     screenshot_path = image_paths.get('screenshot') if image_paths else plugin.get('screenshot_url', '')
 
     name = plugin.get('name', 'Unknown Plugin')
     description = plugin.get('author_bio', {}).get('description', 'No description available')
-    installs = stats.get('installs', 0)
-    forks = stats.get('forks', 0)
 
     markdown = f"""
 ## <img src="{icon_path}" alt="{name} icon" width="32"/> [{name}](https://usetrmnl.com/recipes/{plugin_id})
+
+![Installs](https://trmnl-badges.gohk.xyz/badge/installs?recipe={plugin_id}) ![Forks](https://trmnl-badges.gohk.xyz/badge/forks?recipe={plugin_id})
 
 ![{name} screenshot]({screenshot_path})
 
 ### Description
 {description}
-
-### 📊 Statistics
-
-| Metric | Value |
-|--------|-------|
-| Installs | {installs:,} |
-| Forks | {forks:,} |
 
 ---
 """
