@@ -20,22 +20,17 @@ The plugin fetches comics from validated RSS feeds and displays them on your TRM
 <!-- PLUGIN_STATS_START -->
 ## 🚀 TRMNL Plugin(s)
 
-*Last updated: 2026-02-17 10:34:12 UTC*
+*Last updated: 2026-02-17 10:34:49 UTC*
 
 
 ## <img src="assets/plugin-images/180935_icon.png" alt="Comic Library icon" width="32"/> [Comic Library](https://usetrmnl.com/recipes/180935)
+
+![Installs](https://trmnl-badges.gohk.xyz/badge/installs?recipe=180935) ![Forks](https://trmnl-badges.gohk.xyz/badge/forks?recipe=180935)
 
 ![Comic Library screenshot](assets/plugin-images/180935_screenshot.png)
 
 ### Description
 Access an daily updated collection of 547 comic RSS / Atom feeds and enjoy fresh content every day.<br /><a href='https://excusemi.github.io/trmnl-comic-library-plugin/'>Click here to see all supported comics!</a><br />Features: <br />● Displays the most recent comic or a random comic <br />● Supports multiple RSS / Atom sources <br />● Add your own RSS / Atom feeds <br />● Frequently updated to keep all RSS / Atom sources valid and up to date
-
-### 📊 Statistics
-
-| Metric | Value |
-|--------|-------|
-| Installs | 1 |
-| Forks | 41 |
 
 ---
 
