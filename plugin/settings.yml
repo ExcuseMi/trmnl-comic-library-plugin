@@ -13,13 +13,13 @@ custom_fields:
 - keyname: about
   name: About This Plugin
   field_type: author_bio
-  description: 'Access an daily updated collection of 547 comic RSS / Atom feeds and enjoy fresh content every day.<br /><a href=''https://excusemi.github.io/trmnl-comic-library-plugin/''>Click here to see all supported comics!</a><br />Features: <br />● Displays the most recent comic or a random comic <br />● Supports multiple RSS / Atom sources <br />● Add your own RSS / Atom feeds <br />● Frequently updated to keep all RSS / Atom sources valid and up to date'
+  description: 'Access an daily updated collection of 590 comic RSS / Atom feeds and enjoy fresh content every day.<br /><a href=''https://excusemi.github.io/trmnl-comic-library-plugin/''>Click here to see all supported comics!</a><br />Features: <br />● Displays the most recent comic or a random comic <br />● Supports multiple RSS / Atom sources <br />● Add your own RSS / Atom feeds <br />● Frequently updated to keep all RSS / Atom sources valid and up to date'
   github_url: https://github.com/ExcuseMi/trmnl-comic-library-plugin
   learn_more_url: https://excusemi.github.io/trmnl-comic-library-plugin
   category: comics
 - keyname: comics
   field_type: select
-  name: 'Comics: 440'
+  name: 'Comics: 480'
   multiple: true
   help_text: Use ⌘+click (Mac) or ctrl+click (Windows) to select multiple items. Use Shift+click to select a whole range at once.
   optional: true
@@ -44,6 +44,8 @@ custom_fields:
   - Angry Little Girls by Lela Lee: https://comiccaster.xyz/rss/angry-little-girls
   - Animal Crackers by Mike Osbun: https://comiccaster.xyz/rss/animalcrackers
   - Annie by Jay Maeder and Alan Kupperberg: https://comiccaster.xyz/rss/annie
+  - Apartment 3-G: https://comiccaster.xyz/rss/apartment-3-g_1
+  - Archie by Archie Comics: https://comiccaster.xyz/rss/creators-archie
   - Arctic Circle: https://comiccaster.xyz/rss/arctic-circle
   - Arlo and Janis by Jimmy Johnson: https://comiccaster.xyz/rss/arloandjanis
   - Ask Shagg by Peter Guren: https://comiccaster.xyz/rss/askshagg
@@ -60,16 +62,19 @@ custom_fields:
   - Barkeater Lake by Corey Pandolph: https://comiccaster.xyz/rss/barkeaterlake
   - Barney & Clyde by Gene Weingarten; Dan Weingarten & David Clark: https://comiccaster.xyz/rss/barneyandclyde
   - Barney Google And Snuffy Smith: https://comiccaster.xyz/rss/barney-google-and-snuffy-smith
+  - Barney Google And Snuffy Smith Vintage: https://comiccaster.xyz/rss/barney-google-and-snuffy-smith-vintage
   - Basic Instructions by Scott Meyer: https://comiccaster.xyz/rss/basicinstructions
   - Batch Rejection by Garey McKee: https://comiccaster.xyz/rss/batch-rejection
   - Beardo by Dan Dougherty: https://comiccaster.xyz/rss/beardo
   - Beetle Bailey: https://comiccaster.xyz/rss/beetle-bailey-1
+  - Beetle Bailey Vintage: https://comiccaster.xyz/rss/beetle-bailey-vintage
   - Ben by Daniel Shelton: https://comiccaster.xyz/rss/ben
   - Berkeley Mews by Ben Zaehringer: https://comiccaster.xyz/rss/berkeley-mews
   - Betty by Gerry Rasmussen: https://comiccaster.xyz/rss/betty
   - Between Friends: https://comiccaster.xyz/rss/between-friends
   - Beware of Toddler: https://comiccaster.xyz/rss/beware-of-toddler
   - BFGF Syndrome by Patabot: https://comiccaster.xyz/rss/bfgf-syndrome
+  - Big Ben Bolt: https://comiccaster.xyz/rss/big-ben-bolt
   - Big Nate by Lincoln Peirce: https://comiccaster.xyz/rss/bignate
   - Big Top by Rob Harrell: https://comiccaster.xyz/rss/bigtop
   - Birdbrains by Thom Bluemel: https://comiccaster.xyz/rss/birdbrains
@@ -83,6 +88,7 @@ custom_fields:
   - Bo Nanas by John Kovaleski: https://comiccaster.xyz/rss/bonanas
   - Bob the Angry Flower by Stephen Notley: https://comiccaster.xyz/rss/bob-the-angry-flower
   - Bob the Squirrel by Frank Page: https://comiccaster.xyz/rss/bobthesquirrel
+  - Boner’s Ark: https://comiccaster.xyz/rss/boners-ark
   - Boomerangs by Jack Pullan: https://comiccaster.xyz/rss/boomerangs
   - Bottomliners by Eric and Bill Teitelbaum: https://comiccaster.xyz/rss/bottomliners
   - Bound and Gagged by Dana Summers: https://comiccaster.xyz/rss/boundandgagged
@@ -91,12 +97,16 @@ custom_fields:
   - Breaking Cat News by Georgia Dunn: https://comiccaster.xyz/rss/breaking-cat-news
   - Brevity by Dan Thompson: https://comiccaster.xyz/rss/brevity
   - Brewster Rockit by Tim Rickard: https://comiccaster.xyz/rss/brewsterrockit
+  - Brick Bradford: https://comiccaster.xyz/rss/brick-bradford
+  - Bringing Up Father: https://comiccaster.xyz/rss/bringing-up-father
   - Broom Hilda by Russell Myers: https://comiccaster.xyz/rss/broomhilda
   - Buckles by David Gilbert: https://comiccaster.xyz/rss/buckles
   - Bully by Andrew Paavola: https://comiccaster.xyz/rss/bully
   - Buni by Ryan Pagelow: https://comiccaster.xyz/rss/buni
+  - Buz Sawyer: https://comiccaster.xyz/rss/buz-sawyer
   - C'est la Vie by Jennifer Babcock: https://comiccaster.xyz/rss/cestlavie
   - Calvin and Hobbes by Bill Watterson: https://comiccaster.xyz/rss/calvinandhobbes
+  - Caption It!: https://comiccaster.xyz/rss/caption-it
   - Carpe Diem: https://comiccaster.xyz/rss/carpe-diem
   - Cassandra Comic: https://tapas.io/rss/series/35182/
   - Cat and Girl: https://catandgirl.com/feed/
@@ -155,6 +165,9 @@ custom_fields:
   - Fat Cats by Charlie Podrebarac: https://comiccaster.xyz/rss/fat-cats
   - Flash Forward: https://comiccaster.xyz/rss/flash-forward
   - Flash Gordon: https://comiccaster.xyz/rss/flash-gordon
+  - Flash Gordon Vintage: https://comiccaster.xyz/rss/flash-gordon-vintage
+  - Flash Gordon Vintage Sundays: https://comiccaster.xyz/rss/flash-gordon-vintage-sunday
+  - Flo & Friends: https://comiccaster.xyz/rss/flo-and-friends
   - Flo and Friends by Jenny Campbell: https://comiccaster.xyz/rss/floandfriends
   - Foolish Mortals by Tom Horacek: https://comiccaster.xyz/rss/foolish-mortals
   - For Better or For Worse by Lynn Johnston: https://comiccaster.xyz/rss/forbetterorforworse
@@ -193,13 +206,16 @@ custom_fields:
   - Haircut Practice by Adam Koford: https://comiccaster.xyz/rss/haircut-practice
   - Half Full by Maria Scrivan: https://comiccaster.xyz/rss/half-full
   - Harley by Dan Thompson: https://comiccaster.xyz/rss/harley
+  - Heart Of Juliet Jones: https://comiccaster.xyz/rss/heart-of-juliet-jones
   - Heart of the City by Steenz: https://comiccaster.xyz/rss/heartofthecity
   - Heathcliff by George Gately: https://comiccaster.xyz/rss/heathcliff
   - Herb and Jamaal by Stephen Bentley: https://comiccaster.xyz/rss/herbandjamaal
   - Herman by Jim Unger: https://comiccaster.xyz/rss/herman
   - Hi and Lois: https://comiccaster.xyz/rss/hi-and-lois
+  - Hi and Lois Vintage: https://comiccaster.xyz/rss/hi-and-lois-vintage
   - Home and Away by Steve Sicula: https://comiccaster.xyz/rss/homeandaway
   - Home Free by Tom Toro: https://comiccaster.xyz/rss/homefree
+  - Humor Me: https://comiccaster.xyz/rss/humor-me
   - Hutch Owen by Tom Hart: https://comiccaster.xyz/rss/hutch-owen
   - Imagine This by Lucas Turnbloom: https://comiccaster.xyz/rss/imaginethis
   - Imogen Quest by Olivia Walch: https://comiccaster.xyz/rss/imogen-quest
@@ -216,17 +232,23 @@ custom_fields:
   - Jerry King Comics by Jerry King: https://comiccaster.xyz/rss/jerry-king-comics
   - Jim Benton Cartoons by Jim Benton: https://comiccaster.xyz/rss/jim-benton-cartoons
   - John Branch: https://comiccaster.xyz/rss/john-branch
+  - Johnny Hazard: https://comiccaster.xyz/rss/johnny-hazard
   - Judge Parker: https://comiccaster.xyz/rss/judge-parker
+  - Judge Parker Vintage: https://comiccaster.xyz/rss/judge-parker-vintage
   - JumpStart by Robb Armstrong: https://comiccaster.xyz/rss/jumpstart
+  - Jungle Jim Sundays: https://comiccaster.xyz/rss/jungle-jim-sundays
   - Junk Drawer by Ellis Rosen: https://comiccaster.xyz/rss/junk-drawer
   - Justo y Franco by Thaves: https://comiccaster.xyz/rss/justo-y-franco
   - Katzenjammer Kids: https://comiccaster.xyz/rss/katzenjammer-kids
+  - Katzenjammer Kids Vintage Sundays: https://comiccaster.xyz/rss/katzenjammer-kids-vintage-sunday
   - Kevin and Kell: https://comiccaster.xyz/rss/kevin-and-kell
   - Kid Beowulf by Alexis E. Fajardo: https://comiccaster.xyz/rss/kid-beowulf
+  - King of the Royal Mounted: https://comiccaster.xyz/rss/king-of-the-royal-mounted
   - Kirk Walters: https://comiccaster.xyz/rss/kirk-walters
   - Kitchen Capers by David Banks: https://comiccaster.xyz/rss/kitchen-capers
   - Kliban by B. Kliban: https://comiccaster.xyz/rss/kliban
   - Kliban's Cats by B. Kliban: https://comiccaster.xyz/rss/klibans-cats
+  - Krazy Kat: https://comiccaster.xyz/rss/krazy-kat
   - La Cucaracha by Lalo Alcaraz: https://comiccaster.xyz/rss/lacucaracha
   - Lard's World Peace Tips by Keith Tutt and Daniel Saunders: https://comiccaster.xyz/rss/lards-world-peace-tips
   - Last Kiss by John Lustig: https://comiccaster.xyz/rss/lastkiss
@@ -241,6 +263,7 @@ custom_fields:
   - Lio by Mark Tatulli: https://comiccaster.xyz/rss/lio
   - Little Dog Lost by Steve Boreman: https://comiccaster.xyz/rss/littledoglost
   - Little Fried Chicken and Sushi by Khalid Birdsong: https://comiccaster.xyz/rss/little-fried-chicken-and-sushi
+  - Little Iodine Sundays: https://comiccaster.xyz/rss/little-iodine-sundays
   - Lola by Todd Clark: https://comiccaster.xyz/rss/lola
   - Long Story Short by Daniel Beyer: https://comiccaster.xyz/rss/long-story-short
   - Looks Good on Paper by Dan Collins: https://comiccaster.xyz/rss/looks-good-on-paper
@@ -255,8 +278,11 @@ custom_fields:
   - Macanudo: https://comiccaster.xyz/rss/macanudo
   - Maintaining by Nate Creekmore: https://comiccaster.xyz/rss/maintaining
   - Mandrake The Magician: https://comiccaster.xyz/rss/mandrake-the-magician
+  - Mandrake The Magician Vintage: https://comiccaster.xyz/rss/mandrake-the-magician-vintage
+  - Mandrake The Magician Vintage Sundays: https://comiccaster.xyz/rss/mandrake-the-magician-vintage-sunday
   - Maria's Day by John Zakour and Scott Roberts: https://comiccaster.xyz/rss/marias-day
   - Mark Trail: https://comiccaster.xyz/rss/mark-trail
+  - Mark Trail Vintage: https://comiccaster.xyz/rss/mark-trail-vintage
   - Marmaduke by Brad Anderson: https://comiccaster.xyz/rss/marmaduke
   - Marvin: https://comiccaster.xyz/rss/marvin
   - Mary Worth: https://comiccaster.xyz/rss/mary-worth
@@ -295,6 +321,7 @@ custom_fields:
   - Nothing is Not Something by Greg Wallace: https://comiccaster.xyz/rss/nothing-is-not-something
   - Oddly Enough: https://comiccaster.xyz/rss/oddly-enough
   - Off the Mark by Mark Parisi: https://comiccaster.xyz/rss/offthemark
+  - Office Hours: https://comiccaster.xyz/rss/office-hours
   - Olive & Popeye: https://comiccaster.xyz/rss/olive-popeye
   - Ollie and Quentin by Piers Baker: https://comiccaster.xyz/rss/ollie-and-quentin
   - On A Claire Day by Carla Ventresca and Henry Beckett: https://comiccaster.xyz/rss/onaclaireday
@@ -327,10 +354,13 @@ custom_fields:
   - PreTeena by Allison Barrows: https://comiccaster.xyz/rss/preteena
   - Prickly City by Scott Stantis: https://comiccaster.xyz/rss/pricklycity
   - Prince Valiant: https://comiccaster.xyz/rss/prince-valiant
+  - Prince Valiant Vintage Sundays: https://comiccaster.xyz/rss/prince-valiant-vintage-sunday
   - Questionable Content by Jeph Jacques: https://questionablecontent.net/QCRSS.xml
   - Questionable Quotebook by Sam Hepburn: https://comiccaster.xyz/rss/questionable-quotebook
+  - Quincy: https://comiccaster.xyz/rss/quincy
   - Rabbits Against Magic by Jonathan Lemon: https://comiccaster.xyz/rss/rabbitsagainstmagic
   - Raccoon Comic: https://www.webtoons.com/en/challenge/raccoon-comic/rss?title_no=250929
+  - Radio Patrol: https://comiccaster.xyz/rss/radio-patrol
   - Rae The Doe: https://comiccaster.xyz/rss/rae-the-doe
   - Raising Duncan by Chris Browne: https://comiccaster.xyz/rss/raising-duncan
   - Real Life Adventures by Gary Wise and Lance Aldrich: https://comiccaster.xyz/rss/reallifeadventures
@@ -341,11 +371,13 @@ custom_fields:
   - Rhymes with Orange: https://comiccaster.xyz/rss/rhymes-with-orange
   - Richard's Poor Almanac by Richard Thompson: https://comiccaster.xyz/rss/richards-poor-almanac
   - Rip Haywire by Dan Thompson: https://comiccaster.xyz/rss/riphaywire
+  - Rip Kirby: https://comiccaster.xyz/rss/rip-kirby
   - Ripley's Believe It or Not by John Graziano: https://comiccaster.xyz/rss/ripleysbelieveitornot
   - Robbie and Bobby by Jason Poland: https://comiccaster.xyz/rss/robbie-and-bobby
   - Rose Is Rose by Don Wimmer: https://comiccaster.xyz/rss/roseisrose
   - Rosebuds: https://comiccaster.xyz/rss/rosebuds
   - Rubes by Leigh Rubin: https://comiccaster.xyz/rss/rubes
+  - Rugrats: https://comiccaster.xyz/rss/rugrats
   - Safe Havens: https://comiccaster.xyz/rss/safe-havens
   - Sales: https://comiccaster.xyz/rss/sales
   - Sally Forth: https://comiccaster.xyz/rss/sally-forth
@@ -356,14 +388,17 @@ custom_fields:
   - Saturday Morning Breakfast Cereal by Zach Weinersmith: https://www.smbc-comics.com/comic/rss
   - Savage Chickens by Doug Savage: https://comiccaster.xyz/rss/savage-chickens
   - Scary Gary by Mark Buford: https://comiccaster.xyz/rss/scarygary
+  - Secret Agent X-9: https://comiccaster.xyz/rss/secret-agent-x-9
   - Sherman's Lagoon by Jim Toomey: https://comiccaster.xyz/rss/shermanslagoon
   - Shirley and Son Classics by Jerry Bittle: https://comiccaster.xyz/rss/shirley-and-son-classics
   - Shoe by Susie MacNelly: https://comiccaster.xyz/rss/shoe
+  - Shrimp and Grits: https://comiccaster.xyz/rss/shrimp-and-grits
   - Six Chix: https://comiccaster.xyz/rss/six-chix
   - Skin Horse by Shaenon K. Garrity and Jeffrey C. Wells: https://comiccaster.xyz/rss/skinhorse
   - Skippy by Percy Crosby: https://comiccaster.xyz/rss/skippy
   - Slylock Fox: https://comiccaster.xyz/rss/slylock-fox-and-comics-for-kids
   - Snow Sez by T. Shepherd: https://comiccaster.xyz/rss/snow-sez
+  - Spectickles: https://comiccaster.xyz/rss/spectickles
   - Speed Bump by Dave Coverly: https://comiccaster.xyz/rss/speedbump
   - Spirit of the Staircase by Matthew Foltz-Gray: https://comiccaster.xyz/rss/spirit-of-the-staircase
   - Spot the Frog by Mark Heath: https://comiccaster.xyz/rss/spot-the-frog
@@ -418,14 +453,19 @@ custom_fields:
   - The Other Coast by Adrian Raeside: https://comiccaster.xyz/rss/theothercoast
   - The Pajama Diaries: https://comiccaster.xyz/rss/pajama-diaries
   - The Phantom: https://comiccaster.xyz/rss/phantom
+  - The Phantom Vintage: https://comiccaster.xyz/rss/the-phantom-vintage
+  - The Phantom Vintage Sundays: https://comiccaster.xyz/rss/the-phantom-vintage-sunday
   - The Pigeon Gazette by JaneyJane: https://www.webtoons.com/en/challenge/the-pigeon-gazette/rss?title_no=38949
   - The Planet Syndicate: https://comiccaster.xyz/rss/the-planet-syndicate
   - The Saga of Brann Bjornson: https://comiccaster.xyz/rss/the-saga-of-brann-bjornson
   - The Wandering Melon by Mike Shiell: https://comiccaster.xyz/rss/the-wandering-melon
   - The Weekly Roll: https://www.webtoons.com/en/challenge/the-weekly-roll/rss?title_no=358889
   - The Worried Well by Dana Maier: https://comiccaster.xyz/rss/the-worried-well
+  - Thimble Theater: https://comiccaster.xyz/rss/thimble-theater
   - Thin Lines by Randy Glasbergen: https://comiccaster.xyz/rss/thinlines
   - Tiger: https://comiccaster.xyz/rss/tiger
+  - Tiger Vintage: https://comiccaster.xyz/rss/tiger-vintage
+  - Tiger Vintage Sundays: https://comiccaster.xyz/rss/tiger-vintage-sunday
   - Tina’s Groove: https://comiccaster.xyz/rss/tina-s-groove
   - Tiny Sepuku by Ken Cursoe: https://comiccaster.xyz/rss/tinysepuku
   - Todd The Dinosaur: https://comiccaster.xyz/rss/todd-the-dinosaur
@@ -466,12 +506,13 @@ custom_fields:
   - Zits: https://comiccaster.xyz/rss/zits
 - keyname: comics_other_languages
   field_type: select
-  name: 'Comics in other languages: 50'
+  name: 'Comics in other languages: 53'
   multiple: true
   help_text: Use ⌘+click (Mac) or ctrl+click (Windows) to select multiple items. Use Shift+click to select a whole range at once.
   optional: true
   options:
   - A Toda Velocidad (Spanish): https://comiccaster.xyz/rss/a-toda-velocidad
+  - Archie Spanish: https://comiccaster.xyz/rss/archie-spanish
   - Baldo en Español by Hector D. Cantú and Carlos Castellanos: https://comiccaster.xyz/rss/baldoespanol
   - Barney Google And Snuffy Smith (Spanish): https://comiccaster.xyz/rss/tapon
   - Beetle Bailey (Spanish): https://comiccaster.xyz/rss/beto-el-recluta
@@ -488,6 +529,7 @@ custom_fields:
   - Goomer (Spanish): https://comiccaster.xyz/rss/goomer-spanish
   - Hagar The Horrible (Spanish): https://comiccaster.xyz/rss/olafo
   - Heathcliff en Español by George Gately: https://comiccaster.xyz/rss/heathcliffespanol
+  - Heathcliff Spanish: https://comiccaster.xyz/rss/heathcliff-spanish
   - Katzenjammer Kids (Spanish): https://comiccaster.xyz/rss/maldades-de-dos-pilluelos
   - La Cucaracha en Español by Lalo Alcaraz: https://comiccaster.xyz/rss/la-cucaracha-en-espanol
   - Lalo Y Lola (Spanish): https://comiccaster.xyz/rss/lalo-y-lola
@@ -519,6 +561,7 @@ custom_fields:
   - Tiger (Spanish): https://comiccaster.xyz/rss/tigrillo
   - Willy Black (Spanish): https://comiccaster.xyz/rss/willy-black-spanish
   - Wizard of Id en Español by Parker and Hart: https://comiccaster.xyz/rss/wizardofidespanol
+  - Wizard of Id Spanish: https://comiccaster.xyz/rss/wizard-of-id-spanish
   - WuMo en Español by Wulff & Morgenthaler: https://comiccaster.xyz/rss/wumoespanol
   - Ziggy en Español by Tom Wilson & Tom II: https://comiccaster.xyz/rss/ziggyespanol
 - keyname: comics_political
