@@ -17,6 +17,7 @@ custom_fields:
   github_url: https://github.com/ExcuseMi/trmnl-comic-library-plugin
   learn_more_url: https://excusemi.github.io/trmnl-comic-library-plugin
   category: comics
+  help_text: TRMNL X Ready
 - keyname: comics
   field_type: select
   name: 'Comics: 480'
