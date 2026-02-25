@@ -1,10 +1,11 @@
----
 strategy: polling
 no_screen_padding: 'no'
 dark_mode: 'no'
 static_data: ''
 polling_verb: get
-polling_url: "{% unless trmnl.user.id == 6458 %}\r\n{% assign cleaned_comics = comics\r\n  | replace: '[', ''\r\n  | replace: ']', ''\r\n  | replace: '\"', ''\r\n  | replace: ' ', '' %}\r\n{% assign cleaned_comics_other_languages = comics_other_languages\r\n  | replace: '[', ''\r\n  | replace: ']', ''\r\n  | replace: '\"', ''\r\n  | replace: ' ', '' %}\r\n{% assign cleaned_political = comics_political\r\n  | replace: '[', ''\r\n  | replace: ']', ''\r\n  | replace: '\"', ''\r\n  | replace: ' ', '' %}\r\n{% assign merged_string = \"\" %}\r\n{% if cleaned_comics != \"\" %}\r\n  {% assign merged_string = cleaned_comics %}\r\n{% endif %}\r\n{% if cleaned_comics_other_languages != \"\" %}\r\n  {% if merged_string != \"\" %}\r\n    {% assign merged_string = merged_string | append: \",\" | append: cleaned_comics_other_languages %}\r\n  {% else %}\r\n    {% assign merged_string = cleaned_comics_other_languages %}\r\n  {% endif %}\r\n{% endif %}\r\n{% if cleaned_political != \"\" %}\r\n  {% if merged_string != \"\" %}\r\n    {% assign merged_string = merged_string | append: \",\" | append: cleaned_political %}\r\n  {% else %}\r\n    {% assign merged_string = cleaned_political %}\r\n  {% endif %}\r\n{% endif %}\r\n{% if extra_rss_feeds != \"\" %}\r\n  {% if merged_string != \"\" %}\r\n    {% assign merged_string = merged_string | append: \",\" | append: extra_rss_feeds %}\r\n  {% else %}\r\n    {% assign merged_string = extra_rss_feeds %}\r\n  {% endif %}\r\n{% endif %}\r\n{% assign merged_list = merged_string | split: \",\" %}\r\n{% comment %}Fallback to demo data if no items selected{% endcomment %}\r\n{% if merged_list.size > 0 and merged_list != empty %}\r\n  {% assign random_index = \"now\" | date: \"%s\" | modulo: merged_list.size %}\r\n  {% assign item_type = merged_list[random_index] %}\r\n  {% unless item_type contains \"http://\" or item_type contains \"https://\" %}\r\n    {% assign item_type = \"https://comiccaster.xyz/rss/\" | append: item_type %}\r\n  {% endunless %}\r\n{{ item_type }}\r\n{% else %}\r\nhttps://excusemi.github.io/trmnl-comic-library-plugin/data/demo_data.atom\r\n{% endif %}\r\n{% else %}\r\nhttps://excusemi.github.io/trmnl-comic-library-plugin/data/demo_data.atom\r\n{% endunless %}"
+polling_url: "{% unless trmnl.user.id == 6458 %}\r\n{% assign cleaned_comics = comics\r\n  | replace: '[', ''\r\n  | replace: ']', ''\r\n  | replace: '\"', ''\r\n  | replace: ' ', '' %}\r\n{% assign cleaned_comics_other_languages = comics_other_languages\r\n  | replace: '[', ''\r\n  | replace: ']', ''\r\n  | replace: '\"', ''\r\n  | replace: ' ', '' %}\r\n{% assign cleaned_political = comics_political\r\n  | replace: '[', ''\r\n  | replace: ']', ''\r\n  | replace: '\"', ''\r\n  | replace: ' ', '' %}\r\n{% assign merged_string = \"\" %}\r\n{% if cleaned_comics != \"\" %}\r\n  {% assign merged_string = cleaned_comics %}\r\n{% endif %}\r\n{% if cleaned_comics_other_languages != \"\" %}\r\n  {% if merged_string != \"\" %}\r\n    {% assign merged_string = merged_string | append: \",\" | append: cleaned_comics_other_languages %}\r\n  {% else %}\r\n    {% assign merged_string = cleaned_comics_other_languages %}\r\n  {% endif %}\r\n{% endif %}\r\n{% if cleaned_political != \"\" %}\r\n  {% if merged_string\
+  \ != \"\" %}\r\n    {% assign merged_string = merged_string | append: \",\" | append: cleaned_political %}\r\n  {% else %}\r\n    {% assign merged_string = cleaned_political %}\r\n  {% endif %}\r\n{% endif %}\r\n{% if extra_rss_feeds != \"\" %}\r\n  {% if merged_string != \"\" %}\r\n    {% assign merged_string = merged_string | append: \",\" | append: extra_rss_feeds %}\r\n  {% else %}\r\n    {% assign merged_string = extra_rss_feeds %}\r\n  {% endif %}\r\n{% endif %}\r\n{% assign merged_list = merged_string | split: \",\" %}\r\n{% comment %}Fallback to demo data if no items selected{% endcomment %}\r\n{% if merged_list.size > 0 and merged_list != empty %}\r\n  {% assign random_index = \"now\" | date: \"%s\" | modulo: merged_list.size %}\r\n  {% assign item_type = merged_list[random_index] %}\r\n  {% unless item_type contains \"http://\" or item_type contains \"https://\" %}\r\n    {% assign item_type = \"https://comiccaster.xyz/rss/\" | append: item_type %}\r\n  {% endunless %}\r\n{{\
+  \ item_type }}\r\n{% else %}\r\nhttps://excusemi.github.io/trmnl-comic-library-plugin/data/demo_data.atom\r\n{% endif %}\r\n{% else %}\r\nhttps://excusemi.github.io/trmnl-comic-library-plugin/data/demo_data.atom\r\n{% endunless %}"
 polling_headers: ''
 polling_body: ''
 id: 180935
@@ -15,7 +16,6 @@ custom_fields:
   description: 'Access an daily updated collection of 590 comic RSS / Atom feeds and enjoy fresh content every day.<br /><a href=''https://excusemi.github.io/trmnl-comic-library-plugin/''>Click here to see all supported comics!</a><br />Features: <br />● Displays the most recent comic or a random comic <br />● Supports multiple RSS / Atom sources <br />● Add your own RSS / Atom feeds <br />● Frequently updated to keep all RSS / Atom sources valid and up to date'
   github_url: https://github.com/ExcuseMi/trmnl-comic-library-plugin
   learn_more_url: https://excusemi.github.io/trmnl-comic-library-plugin
-  help_text: TRMNL X Ready
   category: comics
 - keyname: comics
   field_type: select
@@ -27,7 +27,7 @@ custom_fields:
   - 1 and Done by Eric Scott: https://comiccaster.xyz/rss/1-and-done
   - 9 Chickweed Lane by Brooke McEldowney: https://comiccaster.xyz/rss/9-chickweed-lane
   - 9 to 5 by Harley Schwadron: https://comiccaster.xyz/rss/9to5
-  - "@Tavicat by Rikki Simons": https://comiccaster.xyz/rss/tavicat
+  - '@Tavicat by Rikki Simons': https://comiccaster.xyz/rss/tavicat
   - Aaggghhh by Ham: https://comiccaster.xyz/rss/aaggghhh
   - Adam@Home by Rob Harrell: https://comiccaster.xyz/rss/adamathome
   - ADHDinos by Pina Vazquez: https://comiccaster.xyz/rss/adhdinos
