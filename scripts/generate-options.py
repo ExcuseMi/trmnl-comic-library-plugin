@@ -395,7 +395,8 @@ def create_updated_settings():
                        f"● Frequently updated to keep all RSS / Atom sources valid and up to date",
         'github_url': 'https://github.com/ExcuseMi/trmnl-comic-library-plugin',
         'learn_more_url': 'https://excusemi.github.io/trmnl-comic-library-plugin',
-        'category': 'comics'
+        'category': 'comics',
+        'help_text': 'TRMNL X Ready'
     }
     custom_fields.append(about_field)
 
