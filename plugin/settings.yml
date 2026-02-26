@@ -13,7 +13,7 @@ custom_fields:
 - keyname: about
   name: About This Plugin
   field_type: author_bio
-  description: 'Access an daily updated collection of 590 comic RSS / Atom feeds and enjoy fresh content every day.<br /><a href=''https://excusemi.github.io/trmnl-comic-library-plugin/''>Click here to see all supported comics!</a><br />Features: <br />● Displays the most recent comic or a random comic <br />● Supports multiple RSS / Atom sources <br />● Add your own RSS / Atom feeds <br />● Frequently updated to keep all RSS / Atom sources valid and up to date'
+  description: 'Access an daily updated collection of 588 comic RSS / Atom feeds and enjoy fresh content every day.<br /><a href=''https://excusemi.github.io/trmnl-comic-library-plugin/''>Click here to see all supported comics!</a><br />Features: <br />● Displays the most recent comic or a random comic <br />● Supports multiple RSS / Atom sources <br />● Add your own RSS / Atom feeds <br />● Frequently updated to keep all RSS / Atom sources valid and up to date'
   github_url: https://github.com/ExcuseMi/trmnl-comic-library-plugin
   learn_more_url: https://excusemi.github.io/trmnl-comic-library-plugin
   category: comics
@@ -507,7 +507,7 @@ custom_fields:
   - Zits: https://comiccaster.xyz/rss/zits
 - keyname: comics_other_languages
   field_type: select
-  name: 'Comics in other languages: 53'
+  name: 'Comics in other languages: 51'
   multiple: true
   help_text: Use ⌘+click (Mac) or ctrl+click (Windows) to select multiple items. Use Shift+click to select a whole range at once.
   optional: true
@@ -524,7 +524,6 @@ custom_fields:
   - Crock (Spanish): https://comiccaster.xyz/rss/crock-spanish
   - Dennis The Menace (Spanish): https://comiccaster.xyz/rss/daniel-el-travieso
   - FoxTrot en Español by Bill Amend: https://comiccaster.xyz/rss/foxtrotespanol
-  - Fred Basset en Español by Alex Graham: https://comiccaster.xyz/rss/fredbassetespanol
   - Garfield en Español by Jim Davis: https://comiccaster.xyz/rss/garfieldespanol
   - Ginger Meggs en Español by Jason Chatfield: https://comiccaster.xyz/rss/gingermeggs-espanol
   - Goomer (Spanish): https://comiccaster.xyz/rss/goomer-spanish
@@ -532,7 +531,6 @@ custom_fields:
   - Heathcliff en Español by George Gately: https://comiccaster.xyz/rss/heathcliffespanol
   - Heathcliff Spanish: https://comiccaster.xyz/rss/heathcliff-spanish
   - Katzenjammer Kids (Spanish): https://comiccaster.xyz/rss/maldades-de-dos-pilluelos
-  - La Cucaracha en Español by Lalo Alcaraz: https://comiccaster.xyz/rss/la-cucaracha-en-espanol
   - Lalo Y Lola (Spanish): https://comiccaster.xyz/rss/lalo-y-lola
   - Las Hermanas Stone by Jan Eliot: https://comiccaster.xyz/rss/stonesoup_espanol
   - Lio en Español by Mark Tatulli: https://comiccaster.xyz/rss/lioespanol

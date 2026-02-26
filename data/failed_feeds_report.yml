@@ -1,5 +1,5 @@
-report_date: '2026-02-25 09:18:13'
-total_failed: 61
+report_date: '2026-02-26 01:06:57'
+total_failed: 63
 failed_feeds:
 - name: Art by Moga
   url: https://comiccaster.xyz/rss/artbymoga
@@ -210,6 +210,16 @@ failed_feeds:
   url: https://comiccaster.xyz/rss/farside-new
   error: No items/entries found in feed
   feed_type: rss
+  status: needs_investigation
+- name: Fred Basset en Español
+  url: https://comiccaster.xyz/rss/fredbassetespanol
+  error: 'Request failed: This operation was aborted'
+  feed_type: null
+  status: needs_investigation
+- name: La Cucaracha en Español
+  url: https://comiccaster.xyz/rss/la-cucaracha-en-espanol
+  error: 'Request failed: This operation was aborted'
+  feed_type: null
   status: needs_investigation
 - name: Bob Gorrell
   url: https://comiccaster.xyz/rss/bobgorrell
