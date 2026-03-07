@@ -20,7 +20,7 @@ The plugin fetches comics from validated RSS feeds and displays them on your TRM
 <!-- PLUGIN_STATS_START -->
 ## 🚀 TRMNL Plugin(s)
 
-*Last updated: 2026-03-06 07:00:30 UTC*
+*Last updated: 2026-03-07 06:52:34 UTC*
 
 
 ## <img src="assets/plugin-images/180935_icon.png" alt="Comic Library icon" width="32"/> [Comic Library](https://usetrmnl.com/recipes/180935)
