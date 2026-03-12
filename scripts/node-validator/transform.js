@@ -281,33 +281,57 @@ function transform(input) {
     ? rawTitle
     : (linkTitle !== feedTitle ? linkTitle : null) || feedTitle || rawTitle || "No comics found";
 
-  // If the final title is effectively the same as the feed source (ignoring punctuation/case),
-  // replace it with a nicely formatted publication date.
   const pubDate = getPubDate(selectedItem);
-  const normalizedItem = normalizeForComparison(itemTitle);
-  const normalizedFeed = normalizeForComparison(feedTitle);
-  if (normalizedItem && normalizedFeed && normalizedItem === normalizedFeed && pubDate) {
-    const date = new Date(pubDate);
-    if (!isNaN(date.getTime())) {
-      // Format as "MMM DD, YYYY" (e.g. "Mar 12, 2026")
-      itemTitle = date.toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'short',
-        day: 'numeric'
-      });
+  const caption = extractCaption(description, selectedItem?.title, feedTitle);
+
+  // Final title and caption, with two overrides:
+  // 1. If the computed title is longer than 100 characters, move it to caption (if empty) and use date/feed as title.
+  // 2. If title matches feed (after normalising), replace with nicely formatted date.
+  let finalTitle = itemTitle;
+  let finalCaption = caption;
+
+  if (finalTitle.length > 100) {
+    // Move long title to caption if no caption yet
+    if (!finalCaption) {
+      finalCaption = finalTitle;
+    }
+    // Set title to date if available, else feed name
+    if (pubDate) {
+      const date = new Date(pubDate);
+      if (!isNaN(date.getTime())) {
+        finalTitle = date.toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'short',
+          day: 'numeric'
+        });
+      } else {
+        finalTitle = feedTitle || "Comic";
+      }
+    } else {
+      finalTitle = feedTitle || "Comic";
+    }
+  } else {
+    // Standard rule: if title equals feed name (ignoring punctuation/case), replace with date
+    const normalizedItem = normalizeForComparison(finalTitle);
+    const normalizedFeed = normalizeForComparison(feedTitle);
+    if (normalizedItem && normalizedFeed && normalizedItem === normalizedFeed && pubDate) {
+      const date = new Date(pubDate);
+      if (!isNaN(date.getTime())) {
+        finalTitle = date.toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'short',
+          day: 'numeric'
+        });
+      }
     }
   }
 
   return {
     comic: {
-      title: itemTitle,
+      title: finalTitle,
       source: feedTitle,
       imageUrls,
-      caption: extractCaption(
-        description,
-        selectedItem?.title,
-        feedTitle
-      ),
+      caption: finalCaption,
       link: getLink(selectedItem),
       pubDate
     }
