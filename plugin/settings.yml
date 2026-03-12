@@ -20,7 +20,7 @@ custom_fields:
   help_text: TRMNL X Ready
 - keyname: comics
   field_type: select
-  name: 'Comics: 479'
+  name: 'Comics: 478'
   multiple: true
   help_text: Use ⌘+click (Mac) or ctrl+click (Windows) to select multiple items. Use Shift+click to select a whole range at once.
   optional: true
@@ -505,7 +505,7 @@ custom_fields:
   - Zits: https://comiccaster.xyz/rss/zits
 - keyname: comics_other_languages
   field_type: select
-  name: 'Comics in other languages: 53'
+  name: 'Comics in other languages: 54'
   multiple: true
   help_text: Use ⌘+click (Mac) or ctrl+click (Windows) to select multiple items. Use Shift+click to select a whole range at once.
   optional: true
@@ -521,7 +521,7 @@ custom_fields:
   - Calvin and Hobbes en Español by Bill Watterson: https://comiccaster.xyz/rss/calvinandhobbesespanol
   - Crock (Spanish): https://comiccaster.xyz/rss/crock-spanish
   - Dennis The Menace (Spanish): https://comiccaster.xyz/rss/daniel-el-travieso
-  - Don Brutus by Chip Sansom (Spanish): https://comiccaster.xyz/rss/don-brutus
+  - Don Brutus by Chip Sansom: https://comiccaster.xyz/rss/don-brutus
   - FoxTrot en Español by Bill Amend: https://comiccaster.xyz/rss/foxtrotespanol
   - Fred Basset en Español by Alex Graham: https://comiccaster.xyz/rss/fredbassetespanol
   - Garfield en Español by Jim Davis: https://comiccaster.xyz/rss/garfieldespanol
