@@ -115,7 +115,7 @@ def get_image_extension(url: str):
 
 def fetch_plugin_data(plugin_id: str, max_retries=3):
     """Fetch plugin data from TRMNL API with retry logic"""
-    url = f"https://usetrmnl.com/recipes/{plugin_id}.json"
+    url = f"https://trmnl.com/recipes/{plugin_id}.json"
 
     for attempt in range(max_retries):
         try:
@@ -190,7 +190,7 @@ def generate_plugin_section(data, plugin_id: str, image_paths: dict):
 
 This plugin is configured but either hasn't been published to the TRMNL marketplace yet or the API is temporarily unavailable.
 
-**Plugin URL**: https://usetrmnl.com/recipes/{plugin_id}
+**Plugin URL**: https://trmnl.com/recipes/{plugin_id}
 
 ---
 """
@@ -206,7 +206,7 @@ This plugin is configured but either hasn't been published to the TRMNL marketpl
 
 The plugin exists but data is not available yet. This usually means it's very new or still being processed.
 
-**Plugin URL**: https://usetrmnl.com/recipes/{plugin_id}
+**Plugin URL**: https://trmnl.com/recipes/{plugin_id}
 
 ---
 """
@@ -220,7 +220,7 @@ The plugin exists but data is not available yet. This usually means it's very ne
     description = plugin.get('author_bio', {}).get('description', 'No description available')
 
     markdown = f"""
-## <img src="{icon_path}" alt="{name} icon" width="32"/> [{name}](https://usetrmnl.com/recipes/{plugin_id})
+## <img src="{icon_path}" alt="{name} icon" width="32"/> [{name}](https://trmnl.com/recipes/{plugin_id})
 
 ![Installs](https://trmnl-badges.gohk.xyz/badge/installs?recipe={plugin_id}) ![Forks](https://trmnl-badges.gohk.xyz/badge/forks?recipe={plugin_id})
 
