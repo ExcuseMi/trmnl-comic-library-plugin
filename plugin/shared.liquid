@@ -213,10 +213,6 @@
                 }
               });
 
-              // Calculate total size and center within container
-              setTimeout(() => {
-                TRMNLImageLayout._centerLayoutInContainer(container, loadedImages, bestLayout.direction, config.gap);
-              }, 50);
             }
           }
         });
@@ -382,49 +378,6 @@
       return { direction: 'row', wrap: 'wrap', sizes, coverage, cols, cellWidth };
     },
 
-    _centerLayoutInContainer: function(container, images, direction, gap) {
-      // Calculate total dimensions
-      let totalWidth = 0;
-      let totalHeight = 0;
-      
-      if (direction === 'column') {
-        // For column layout
-        totalWidth = Math.max(...images.map(img => img.offsetWidth));
-        totalHeight = images.reduce((sum, img) => sum + img.offsetHeight, 0) + (gap * (images.length - 1));
-        
-        // Center horizontally
-        if (totalWidth < container.offsetWidth) {
-          container.style.alignItems = 'center';
-        }
-        
-        // Center vertically if there's space
-        if (totalHeight < container.offsetHeight) {
-          const marginTop = (container.offsetHeight - totalHeight) / 2;
-          container.style.paddingTop = marginTop + 'px';
-        }
-        
-      } else if (direction === 'row') {
-        // For row layout
-        totalWidth = images.reduce((sum, img) => sum + img.offsetWidth, 0) + (gap * (images.length - 1));
-        totalHeight = Math.max(...images.map(img => img.offsetHeight));
-        
-        // Center vertically
-        if (totalHeight < container.offsetHeight) {
-          container.style.alignItems = 'center';
-        }
-        
-        // Center horizontally if there's space
-        if (totalWidth < container.offsetWidth) {
-          const marginLeft = (container.offsetWidth - totalWidth) / 2;
-          container.style.paddingLeft = marginLeft + 'px';
-        }
-        
-      } else {
-        // For grid layout, already centered with justify-content: center
-        container.style.alignItems = 'center';
-        container.style.justifyContent = 'center';
-      }
-    }
   };
 
   // Export to global scope
