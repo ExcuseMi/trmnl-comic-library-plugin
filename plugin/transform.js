@@ -189,7 +189,8 @@ function transform(input) {
       const isGeneric =
         badCaptions.includes(normalized) ||
         GENERIC_CAPTIONS.has(normalized) ||
-        /^[A-Z][a-z]+$/.test(text); // single-word brand like "Bizarro"
+        /^[A-Z][a-z]+$/.test(text) || // single-word brand like "Bizarro"
+        /comic strip for \d/i.test(text); // GoComics date caption e.g. "Comic strip for 2026/03/12"
 
       if (
         !looksLikeTranscript &&
