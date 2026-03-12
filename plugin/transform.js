@@ -140,7 +140,32 @@ function transform(input) {
   function extractCaption(html, itemTitle, feedTitle) {
     if (!html) return null;
 
-    // 1. Prefer <img title=""> (xkcd-style)
+    // 1. Plain text (no HTML tags) — e.g. TinyView direct feed descriptions
+    if (!/<[a-z]/i.test(html)) {
+      const text = decodeEntities(html.trim());
+      const normalized = text.toLowerCase();
+      const badCaptions = [itemTitle?.toLowerCase(), feedTitle?.toLowerCase()].filter(Boolean);
+      if (
+        text.length > 0 &&
+        text.length <= 200 &&
+        !badCaptions.includes(normalized) &&
+        !GENERIC_CAPTIONS.has(normalized)
+      ) {
+        return text;
+      }
+      return null;
+    }
+
+    // 2. Italic paragraph tagline (e.g. TinyView/ADHDinos ComicCaster style)
+    const italicParaMatch = html.match(/<p[^>]*font-style:\s*italic[^>]*>([^<]+)<\/p>/i);
+    if (italicParaMatch && italicParaMatch[1]) {
+      const text = decodeEntities(italicParaMatch[1]).trim();
+      if (text.length > 0 && text.length <= 200) {
+        return text;
+      }
+    }
+
+    // 4. Prefer <img title=""> (xkcd-style)
     const titleMatch = html.match(/<img[^>]*title="([^"]*)"[^>]*>/i);
     if (titleMatch && titleMatch[1]) {
       const text = decodeEntities(titleMatch[1]).trim();
@@ -149,7 +174,7 @@ function transform(input) {
       }
     }
 
-    // 2. Very short alt text ONLY (reject transcripts + generic names)
+    // 5. Very short alt text ONLY (reject transcripts + generic names)
     const altMatch = html.match(/<img[^>]*alt="([^"]*)"[^>]*>/i);
     if (altMatch && altMatch[1]) {
       const text = decodeEntities(altMatch[1]).trim();
@@ -178,7 +203,7 @@ function transform(input) {
       }
     }
 
-    // 3. No caption (preferred over bad caption)
+    // 5. No caption (preferred over bad caption)
     return null;
   }
 
@@ -252,9 +277,22 @@ function transform(input) {
     ? [enclosureUrl]
     : applyImageStrategy(filterImages(getImageUrls(description)), strategy);
 
+  function titleFromLink(link) {
+    if (!link) return null;
+    const slug = link.split('/').filter(Boolean).pop();
+    // Skip pure date/id segments (only digits and hyphens)
+    if (!slug || /^[\d-]+$/.test(slug)) return null;
+    return slug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+  }
+
+  const rawTitle = decodeEntities(selectedItem?.title + "");
+  const itemTitle = (rawTitle && rawTitle !== feedTitle)
+    ? rawTitle
+    : (titleFromLink(getLink(selectedItem)) || rawTitle || "No comics found");
+
     return {
       comic: {
-        title: decodeEntities(selectedItem?.title + "" || "No comics found"),
+        title: itemTitle,
         source: feedTitle,
         imageUrls,
         caption: extractCaption(
