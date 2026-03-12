@@ -55,12 +55,13 @@ def get_plugin_config():
             config = json.load(f)
         excluded = config.get('excluded_feeds', [])
         categories = config.get('feed_categories', {})
+        extra_feeds = config.get('extra_feeds', [])
         print(f"Loaded plugin config from {config_path} "
               f"({len(excluded)} exclusions, {len(categories)} category overrides)")
-        return excluded, categories
+        return excluded, categories, extra_feeds
     else:
         print(f"No plugin config found at {config_path}")
-        return [], {}
+        return [], {}, []
 
 
 def is_other_language(slug: str, name: str, author: str, feed_categories: dict):
@@ -87,31 +88,6 @@ def get_comics_data(url: str):
     r.raise_for_status()
     return r.json()
 
-
-def get_extra_feeds_path():
-    """Get the correct path for extra_feeds.yml that works from both root and scripts directory"""
-    current_dir = Path.cwd()
-
-    # If we're in the scripts directory, look for extra_feeds.yml in the parent directory
-    if current_dir.name == 'scripts':
-        return current_dir.parent / "extra_feeds.yml"
-    else:
-        # We're already in the repository root
-        return current_dir / "extra_feeds.yml"
-
-
-def load_extra_feeds():
-    """Load additional RSS feeds from extra_feeds.yml"""
-    extra_feeds_path = get_extra_feeds_path()
-    if extra_feeds_path.exists():
-        with open(extra_feeds_path, 'r') as f:
-            extra_feeds = yaml.safe_load(f) or {}
-            extra_feeds_list = extra_feeds.get('extra_feeds', [])
-        print(f"Loaded {len(extra_feeds_list)} extra feeds from {extra_feeds_path}")
-        return extra_feeds_list
-    else:
-        print(f"extra_feeds.yml not found at {extra_feeds_path}, skipping extra feeds")
-        return {}
 
 
 def get_data_dir():
@@ -236,12 +212,11 @@ def create_updated_settings():
     load_environment()
 
     # Get plugin config (excluded feeds + category overrides)
-    excluded_feeds, feed_categories = get_plugin_config()
+    excluded_feeds, feed_categories, extra_feeds = get_plugin_config()
 
     # Get the current comics data
     comics_data = get_comics_data(URL)
     political_data = get_comics_data(URL_POLITICAL)
-    extra_feeds = load_extra_feeds()
 
     # Create a set of political comic slugs for efficient lookup
     political_slugs = {comic.get("slug") for comic in political_data if comic.get("slug")}
