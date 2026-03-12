@@ -18,11 +18,6 @@ assign container_id = 'image-container' | append_random
     {% endif %}
   }
 
-  .preserve-instance {
-    flex: 1 0 0; 
-    overflow: hidden; 
-    text-overflow: ellipsis;
-  }
   /* Force image container to shrink to content and remove bottom margin */
   #{{container_id}} {
     flex-grow: 0 !important;      /* overrides flex--grow class */
@@ -54,7 +49,7 @@ assign container_id = 'image-container' | append_random
   {%- assign _prefix = comic.source | append: ' - ' -%}
   {%- assign _instance_title = comic.title | remove_first: _prefix -%}
   {%- if _instance_title != comic.source and _instance_title != '' -%}
-    <span class="instance">{{ _instance_title }}</span>
+    <span class="instance {% if view >= 3 %} portrait:hidden lg:portrait:inline{% endif %}">{{ _instance_title }}</span>
   {%- elsif trmnl.plugin_settings.instance_name -%}
     <span class="instance">{{ trmnl.plugin_settings.instance_name | escape }}</span>
   {%- endif -%}
