@@ -34,6 +34,7 @@ function cleanFeedTitle(title) {
     ' - Webtoons',
     ' - Comics Kingdom',
     ' - ComicsKingdom',
+    ' - Creators',
     ' (GoComics)',
     ' (TinyView)',
     '.com'
