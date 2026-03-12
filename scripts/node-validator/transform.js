@@ -5,8 +5,6 @@
 //   trim:   'first'|'last'   — remove one image from the start or end after filtering
 //   pick:   'first'|'last'   — select a single image from the result
 const FALLBACK_FEED_IMAGE_STRATEGIES = {
-  // Keep numbered panels (skip Banner), drop the last one (overview)
-  'adhdinos': { filter: 'numbered', trim: 'last' },
 };
 
 // Captions that are too generic to be useful regardless of feed
