@@ -1,3 +1,18 @@
+// Per-feed image selection strategies
+// Key: substring of normalized feed title (lowercase, alphanumeric only)
+// Value: 'first' | 'last' | 'all'
+const FEED_IMAGE_STRATEGIES = {
+  'adhdinos': 'last',
+};
+
+// Captions that are too generic to be useful regardless of feed
+const GENERIC_CAPTIONS = new Set([
+  'cover image',
+  'comic image',
+  'strip image',
+  'comic strip',
+]);
+
 function transform(input) {
   let items = [];
   let isAtom = false;
@@ -77,6 +92,26 @@ function transform(input) {
     });
   }
 
+  function normalizeFeedKey(title) {
+    if (!title) return '';
+    return title.toLowerCase().replace(/[^a-z0-9]/g, '');
+  }
+
+  function getFeedImageStrategy(title) {
+    const normalized = normalizeFeedKey(title);
+    for (const [key, strategy] of Object.entries(FEED_IMAGE_STRATEGIES)) {
+      if (normalized.includes(key)) return strategy;
+    }
+    return 'all';
+  }
+
+  function applyImageStrategy(urls, strategy) {
+    if (urls.length === 0) return urls;
+    if (strategy === 'last') return [urls[urls.length - 1]];
+    if (strategy === 'first') return [urls[0]];
+    return urls;
+  }
+
   function extractCaption(html, itemTitle, feedTitle) {
     if (!html) return null;
 
@@ -105,6 +140,7 @@ function transform(input) {
 
       const isGeneric =
         badCaptions.includes(normalized) ||
+        GENERIC_CAPTIONS.has(normalized) ||
         /^[A-Z][a-z]+$/.test(text); // single-word brand like "Bizarro"
 
       if (
@@ -186,9 +222,10 @@ function transform(input) {
 
   const description = getDescription(selectedItem);
   const enclosureUrl = selectedItem?.enclosure?.url;
+  const strategy = getFeedImageStrategy(feedTitle);
   const imageUrls = enclosureUrl
     ? [enclosureUrl]
-    : filterImages(getImageUrls(description));
+    : applyImageStrategy(filterImages(getImageUrls(description)), strategy);
 
     return {
       comic: {
