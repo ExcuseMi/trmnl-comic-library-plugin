@@ -228,8 +228,29 @@ function transform(input) {
     };
   }
 
-  function normalizeForComparison(str) {
-    return str ? str.toLowerCase().replace(/[^a-z0-9]/g, '') : '';
+  // Helper to compare title and feed source more flexibly
+  function isEquivalentToFeed(title, feed) {
+    if (!title || !feed) return false;
+
+    // Normalize both: lowercase, remove all non-alphanumeric
+    const normTitle = title.toLowerCase().replace(/[^a-z0-9]/g, '');
+    const normFeed = feed.toLowerCase().replace(/[^a-z0-9]/g, '');
+    if (normTitle === normFeed) return true;
+
+    // Try removing common leading articles from the feed and compare
+    const articles = ['the', 'a', 'an'];
+    for (const article of articles) {
+      if (normFeed.startsWith(article)) {
+        const stripped = normFeed.slice(article.length);
+        if (stripped === normTitle) return true;
+      }
+      // Also check if title starts with article and stripped matches feed
+      if (normTitle.startsWith(article)) {
+        const stripped = normTitle.slice(article.length);
+        if (stripped === normFeed) return true;
+      }
+    }
+    return false;
   }
 
   const itemsWithImages = items.filter(item => {
@@ -286,7 +307,7 @@ function transform(input) {
 
   // Final title and caption, with two overrides:
   // 1. If the computed title is longer than 100 characters, move it to caption (if empty) and use date/feed as title.
-  // 2. If title matches feed (after normalising), replace with nicely formatted date.
+  // 2. If title is equivalent to feed source (flexible comparison), replace with nicely formatted date.
   let finalTitle = itemTitle;
   let finalCaption = caption;
 
@@ -311,10 +332,8 @@ function transform(input) {
       finalTitle = feedTitle || "Comic";
     }
   } else {
-    // Standard rule: if title equals feed name (ignoring punctuation/case), replace with date
-    const normalizedItem = normalizeForComparison(finalTitle);
-    const normalizedFeed = normalizeForComparison(feedTitle);
-    if (normalizedItem && normalizedFeed && normalizedItem === normalizedFeed && pubDate) {
+    // Flexible title‑vs‑feed equivalence check
+    if (isEquivalentToFeed(finalTitle, feedTitle) && pubDate) {
       const date = new Date(pubDate);
       if (!isNaN(date.getTime())) {
         finalTitle = date.toLocaleDateString('en-US', {
