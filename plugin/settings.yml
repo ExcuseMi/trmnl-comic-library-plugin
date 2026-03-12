@@ -13,14 +13,14 @@ custom_fields:
 - keyname: about
   name: About This Plugin
   field_type: author_bio
-  description: 'Access an daily updated collection of 589 comic RSS / Atom feeds and enjoy fresh content every day.<br /><a href=''https://excusemi.github.io/trmnl-comic-library-plugin/''>Click here to see all supported comics!</a><br />Features: <br />● Displays the most recent comic or a random comic <br />● Supports multiple RSS / Atom sources <br />● Add your own RSS / Atom feeds <br />● Frequently updated to keep all RSS / Atom sources valid and up to date'
+  description: 'Access an daily updated collection of 587 comic RSS / Atom feeds and enjoy fresh content every day.<br /><a href=''https://excusemi.github.io/trmnl-comic-library-plugin/''>Click here to see all supported comics!</a><br />Features: <br />● Displays the most recent comic or a random comic <br />● Supports multiple RSS / Atom sources <br />● Add your own RSS / Atom feeds <br />● Frequently updated to keep all RSS / Atom sources valid and up to date'
   github_url: https://github.com/ExcuseMi/trmnl-comic-library-plugin
   learn_more_url: https://excusemi.github.io/trmnl-comic-library-plugin
   category: comics
   help_text: TRMNL X Ready
 - keyname: comics
   field_type: select
-  name: 'Comics: 478'
+  name: 'Comics: 476'
   multiple: true
   help_text: Use ⌘+click (Mac) or ctrl+click (Windows) to select multiple items. Use Shift+click to select a whole range at once.
   optional: true
@@ -382,9 +382,7 @@ custom_fields:
   - Sales: https://comiccaster.xyz/rss/sales
   - Sally Forth: https://comiccaster.xyz/rss/sally-forth
   - Sam And Silo: https://comiccaster.xyz/rss/sam-and-silo
-  - Sarah's Scribbles: https://sarahcandersen.com/rss
-  - Sarah's Scribbles by Sarah Andersen: https://comiccaster.xyz/rss/sarahs-scribbles
-  - Saturday Morning Breakfast Cereal by Zach Weinersmith: https://comiccaster.xyz/rss/saturday-morning-breakfast-cereal
+  - Sarah's Scribbles by Sarah Andersen: https://sarahcandersen.com/rss
   - Saturday Morning Breakfast Cereal by Zach Weinersmith: https://www.smbc-comics.com/comic/rss
   - Savage Chickens by Doug Savage: https://comiccaster.xyz/rss/savage-chickens
   - Scary Gary by Mark Buford: https://comiccaster.xyz/rss/scarygary
