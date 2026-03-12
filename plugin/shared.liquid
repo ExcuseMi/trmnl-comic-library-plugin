@@ -7,9 +7,10 @@
     filter: {{trmnl.plugin_settings.custom_fields_values.image_filter}};
     {% endif %}
   }
-  /* Remove bottom margin from image container */
+  /* Force image container to shrink to content and remove bottom margin */
   #image-container {
-    margin-bottom: 0 !important;
+    flex-grow: 0 !important;      /* overrides flex--grow class */
+    margin-bottom: 0 !important;  /* removes mb--1 margin */
   }
 </style>
 
@@ -48,6 +49,9 @@
   'use strict';
 
   const TRMNLImageLayout = {
+    /**
+     * Initialize the image layout system
+     */
     init: function(options) {
       const config = {
         containerId: options.containerId || 'image-container',
@@ -63,7 +67,7 @@
         const container = document.getElementById(config.containerId);
         if (!container) return;
 
-        // Get parent (the flex column) which has full screen height
+        // Get the parent (flex column) which has the full screen height
         const parent = container.closest('.flex--col') || container.parentElement;
         if (!parent) return;
 
@@ -75,12 +79,12 @@
           return;
         }
 
-        // Prepare container – DO NOT set height:100%
+        // Prepare container – but DO NOT set height:100%
         container.style.display = 'flex';
         container.style.alignItems = 'center';
         container.style.justifyContent = 'center';
         container.style.width = '100%';
-        // container.style.height = '100%';  // REMOVED
+        // container.style.height = '100%';   // <-- REMOVED – let content determine height
 
         const images = Array.from(container.querySelectorAll(config.imageSelector));
         if (images.length === 0) return;
@@ -107,8 +111,6 @@
               TRMNLImageLayout._displayTallImageInSections(
                 img, container, parentWidth, parentHeight, config.gap
               );
-              // After splitting, measure and set container height
-              TRMNLImageLayout._fitContainerToImages(container, loadedImages, config.gap);
               return;
             }
           }
@@ -201,9 +203,6 @@
                 }
               });
             }
-
-            // After applying layout, shrink container to fit the images
-            TRMNLImageLayout._fitContainerToImages(container, loadedImages, config.gap);
           }
         });
       };
@@ -227,30 +226,6 @@
       } else {
         startLayout();
       }
-    },
-
-    // New helper: set container height to exactly wrap the images
-    _fitContainerToImages: function(container, loadedImages, gap) {
-      // Force a reflow to ensure all styles are applied
-      container.offsetHeight;
-
-      // Use a short timeout to let the browser paint
-      setTimeout(() => {
-        const imageRects = loadedImages.map(img => img.getBoundingClientRect());
-        const containerRect = container.getBoundingClientRect();
-
-        // Find the bottom of the lowest image (relative to container top)
-        let maxBottom = -Infinity;
-        imageRects.forEach(rect => {
-          const bottom = rect.bottom - containerRect.top;
-          if (bottom > maxBottom) maxBottom = bottom;
-        });
-
-        // Add a tiny extra for safety (in case of rounding)
-        const newHeight = Math.ceil(maxBottom);
-        container.style.height = newHeight + 'px';
-        container.style.flexGrow = '0'; // override flex--grow class
-      }, 10);
     },
 
     // ------------------------------------------------------------------------
