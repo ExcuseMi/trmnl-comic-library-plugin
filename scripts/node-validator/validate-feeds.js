@@ -9,6 +9,16 @@ const { XMLParser } = require('fast-xml-parser');
 // ---------------------------------------------------------------------------
 const transformCode = fs.readFileSync(__dirname + '/transform.js', 'utf-8');
 
+// Load comic_parser_data.json so the validator exercises the live config
+// (same data the plugin fetches from GitHub at runtime)
+let parserConfig = {};
+try {
+  const configPath = __dirname + '/../../data/comic_parser_data.json';
+  parserConfig = JSON.parse(fs.readFileSync(configPath, 'utf-8'));
+} catch {
+  // File missing or unreadable — transform will use its own fallback
+}
+
 function runTransform(parsedXml) {
   // Create a fresh sandbox with Date.now returning 0 so transform always
   // picks the first (most recent) item — matching validation expectations.
@@ -19,9 +29,12 @@ function runTransform(parsedXml) {
   };
   vm.createContext(sandbox);
 
+  // Mirror the multi-URL polling structure: IDX_0 = config, IDX_1 = feed
+  const input = { IDX_0: parserConfig, IDX_1: parsedXml };
+
   // Define the transform function inside the sandbox, then call it.
   vm.runInContext(transformCode, sandbox);
-  return vm.runInContext('transform(__input__)', Object.assign(sandbox, { __input__: parsedXml }));
+  return vm.runInContext('transform(__input__)', Object.assign(sandbox, { __input__: input }));
 }
 
 // ---------------------------------------------------------------------------
