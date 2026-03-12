@@ -336,9 +336,12 @@ async function main() {
     try {
       const result = await validateFeed(name, url, timeout);
       done++;
-      const symbol = result.is_valid ? '\u2713' : '\u2717';
-      process.stderr.write(`[${done}/${feeds.length}] ${symbol} ${name}\n`);
-      return result;
+    if (result.is_valid) {
+      process.stderr.write(`[${done}/${feeds.length}] ✓ ${name}\n`);
+    } else {
+      process.stderr.write(`[${done}/${feeds.length}] ✗ ${name} — ${result.error_message}\n`);
+    }
+       return result;
     } finally {
       sem.release();
     }
