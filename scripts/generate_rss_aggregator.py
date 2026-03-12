@@ -21,7 +21,7 @@ from xml.dom import minidom
 def generate_atom_feed(
         comics: list[dict],
         output_path: Path,
-        comics_per_entry: int = 4,
+        comics_per_entry: int = 2,
         entries: int = 12,
         mode: str = "recent"
 ):
