@@ -4,8 +4,7 @@
 //   filter: 'numbered'       — keep only sequentially-numbered filenames (1.jpg, 2.jpg, …)
 //   trim:   'first'|'last'   — remove one image from the start or end after filtering
 //   pick:   'first'|'last'   — select a single image from the result
-const FALLBACK_FEED_IMAGE_STRATEGIES = {
-};
+const FALLBACK_FEED_IMAGE_STRATEGIES = {};
 
 // Captions that are too generic to be useful regardless of feed
 const GENERIC_CAPTIONS = new Set([
@@ -229,6 +228,10 @@ function transform(input) {
     };
   }
 
+  function normalizeForComparison(str) {
+    return str ? str.toLowerCase().replace(/[^a-z0-9]/g, '') : '';
+  }
+
   const itemsWithImages = items.filter(item => {
     const description = getDescription(item);
     const enclosureUrl = item.enclosure?.url;
@@ -264,26 +267,49 @@ function transform(input) {
   }
 
   const rawTitle = decodeEntities(selectedItem?.title + "");
-  // "FeedTitle - YYYY-MM-DD" is just a date stamp, not a real episode title
-  const titleIsDateStamped = /\s[-–]\s*\d{4}[-/]\d{2}[-/]\d{2}$/.test(rawTitle);
+
+  // Expanded date‑stamped detection: covers " - 2026-03-12", " for Mar 12, 2026", " - Mar 12, 2026", and " Mar 12, 2026"
+  const titleIsDateStamped =
+    /\s[-–]\s*\d{4}[-/]\d{2}[-/]\d{2}$/.test(rawTitle) ||          // " - 2026-03-12"
+    /\sfor\s+[A-Z][a-z]{2}\s+\d{1,2},\s+\d{4}$/i.test(rawTitle) || // " for Mar 12, 2026"
+    /\s+-\s+[A-Z][a-z]{2}\s+\d{1,2},\s+\d{4}$/i.test(rawTitle) ||  // " - Mar 12, 2026"
+    /\s+[A-Z][a-z]{2}\s+\d{1,2},\s+\d{4}$/i.test(rawTitle);        // " Mar 12, 2026"
+
   const hasRealTitle = rawTitle && rawTitle !== feedTitle && !titleIsDateStamped;
   const linkTitle = titleFromLink(getLink(selectedItem));
-  const itemTitle = hasRealTitle
+  let itemTitle = hasRealTitle
     ? rawTitle
     : (linkTitle !== feedTitle ? linkTitle : null) || feedTitle || rawTitle || "No comics found";
 
-    return {
-      comic: {
-        title: itemTitle,
-        source: feedTitle,
-        imageUrls,
-        caption: extractCaption(
-          description,
-          selectedItem?.title,
-          feedTitle
-        ),
-        link: getLink(selectedItem),
-        pubDate: getPubDate(selectedItem)
-      }
-    };
+  // If the final title is effectively the same as the feed source (ignoring punctuation/case),
+  // replace it with a nicely formatted publication date.
+  const pubDate = getPubDate(selectedItem);
+  const normalizedItem = normalizeForComparison(itemTitle);
+  const normalizedFeed = normalizeForComparison(feedTitle);
+  if (normalizedItem && normalizedFeed && normalizedItem === normalizedFeed && pubDate) {
+    const date = new Date(pubDate);
+    if (!isNaN(date.getTime())) {
+      // Format as "MMM DD, YYYY" (e.g. "Mar 12, 2026")
+      itemTitle = date.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric'
+      });
+    }
+  }
+
+  return {
+    comic: {
+      title: itemTitle,
+      source: feedTitle,
+      imageUrls,
+      caption: extractCaption(
+        description,
+        selectedItem?.title,
+        feedTitle
+      ),
+      link: getLink(selectedItem),
+      pubDate
+    }
+  };
 }
