@@ -1,4 +1,11 @@
-{% assign container_id = 'image-container' | append_random %}
+{% liquid
+if comics != null and comics.size > 0
+  assign timestamp = 'now' | date: '%N'
+  assign comic_index = timestamp | modulo: comics.size
+  assign comic = comics[comic_index]
+endif
+assign container_id = 'image-container' | append_random
+%}
 
 <style>
   .comic-image {
