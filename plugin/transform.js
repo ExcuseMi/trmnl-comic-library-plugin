@@ -138,71 +138,47 @@ function transform(input) {
   function extractCaption(html, itemTitle, feedTitle) {
     if (!html) return null;
 
+    const contextBadCaptions = [itemTitle?.toLowerCase(), feedTitle?.toLowerCase()].filter(Boolean);
+
+    function isBadCaption(text) {
+      if (!text || text.length === 0 || text.length > 200) return true;
+      const n = text.toLowerCase();
+      return (
+        GENERIC_CAPTIONS.has(n) ||
+        contextBadCaptions.includes(n) ||
+        /comic strip for \d/i.test(text) ||   // GoComics date e.g. "Comic strip for 2026/03/12"
+        /^[A-Z][a-z]+$/.test(text)            // single-word brand like "Bizarro"
+      );
+    }
+
     // 1. Plain text (no HTML tags) — e.g. TinyView direct feed descriptions
     if (!/<[a-z]/i.test(html)) {
       const text = decodeEntities(html.trim());
-      const normalized = text.toLowerCase();
-      const badCaptions = [itemTitle?.toLowerCase(), feedTitle?.toLowerCase()].filter(Boolean);
-      if (
-        text.length > 0 &&
-        text.length <= 200 &&
-        !badCaptions.includes(normalized) &&
-        !GENERIC_CAPTIONS.has(normalized)
-      ) {
-        return text;
-      }
-      return null;
+      return isBadCaption(text) ? null : text;
     }
 
     // 2. Italic paragraph tagline (e.g. TinyView/ADHDinos ComicCaster style)
     const italicParaMatch = html.match(/<p[^>]*font-style:\s*italic[^>]*>([^<]+)<\/p>/i);
-    if (italicParaMatch && italicParaMatch[1]) {
+    if (italicParaMatch?.[1]) {
       const text = decodeEntities(italicParaMatch[1]).trim();
-      if (text.length > 0 && text.length <= 200) {
-        return text;
-      }
+      if (!isBadCaption(text)) return text;
     }
 
-    // 4. Prefer <img title=""> (xkcd-style)
+    // 3. <img title=""> (xkcd-style)
     const titleMatch = html.match(/<img[^>]*title="([^"]*)"[^>]*>/i);
-    if (titleMatch && titleMatch[1]) {
+    if (titleMatch?.[1]) {
       const text = decodeEntities(titleMatch[1]).trim();
-      if (text.length > 0 && text.length <= 200) {
-        return text;
-      }
+      if (!isBadCaption(text)) return text;
     }
 
-    // 5. Very short alt text ONLY (reject transcripts + generic names)
+    // 4. <img alt=""> — reject transcripts too
     const altMatch = html.match(/<img[^>]*alt="([^"]*)"[^>]*>/i);
-    if (altMatch && altMatch[1]) {
+    if (altMatch?.[1]) {
       const text = decodeEntities(altMatch[1]).trim();
-
-      const looksLikeTranscript =
-        /panel\s*\d+|^panel|narration|sfx|—|:|\bpanel\b/i.test(text);
-
-      const normalized = text.toLowerCase();
-      const badCaptions = [
-        itemTitle?.toLowerCase(),
-        feedTitle?.toLowerCase()
-      ].filter(Boolean);
-
-      const isGeneric =
-        badCaptions.includes(normalized) ||
-        GENERIC_CAPTIONS.has(normalized) ||
-        /^[A-Z][a-z]+$/.test(text) || // single-word brand like "Bizarro"
-        /comic strip for \d/i.test(text); // GoComics date caption e.g. "Comic strip for 2026/03/12"
-
-      if (
-        !looksLikeTranscript &&
-        !isGeneric &&
-        text.length > 0 &&
-        text.length <= 140
-      ) {
-        return text;
-      }
+      const looksLikeTranscript = /panel\s*\d+|^panel|narration|sfx|—|:|\bpanel\b/i.test(text);
+      if (!looksLikeTranscript && !isBadCaption(text) && text.length <= 140) return text;
     }
 
-    // 5. No caption (preferred over bad caption)
     return null;
   }
 
