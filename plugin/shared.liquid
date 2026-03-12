@@ -9,6 +9,12 @@
     filter: {{trmnl.plugin_settings.custom_fields_values.image_filter}};
     {% endif %}
   }
+
+  .preserve-instance {
+    flex: 1 0 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
   /* Force image container to shrink to content and remove bottom margin */
   #{{container_id}} {
     flex-grow: 0 !important;      /* overrides flex--grow class */
@@ -36,7 +42,7 @@
 </div>
 
 <div class="title_bar">
-  <span class="title">{{ comic.source | default: comic.title | default: trmnl.plugin_settings.instance_name | escape }}</span>
+  <span class="title preserve-instance">{{ comic.source | default: comic.title | default: trmnl.plugin_settings.instance_name | escape }}</span>
   {%- assign _prefix = comic.source | append: ' - ' -%}
   {%- assign _instance_title = comic.title | remove_first: _prefix -%}
   {%- if _instance_title != comic.source and _instance_title != '' -%}
