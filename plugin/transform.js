@@ -254,16 +254,23 @@ function transform(input) {
 
   function titleFromLink(link) {
     if (!link) return null;
-    const slug = link.split('/').filter(Boolean).pop();
-    // Skip pure date/id segments (only digits and hyphens)
-    if (!slug || /^[\d-]+$/.test(slug)) return null;
+    const segments = link.split('/').filter(Boolean);
+    // Walk backwards past pure date/number segments (e.g. /2026/03/12)
+    let i = segments.length - 1;
+    while (i >= 0 && /^[\d-]+$/.test(segments[i])) i--;
+    const slug = segments[i];
+    if (!slug) return null;
     return slug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
   }
 
   const rawTitle = decodeEntities(selectedItem?.title + "");
-  const itemTitle = (rawTitle && rawTitle !== feedTitle)
+  // "FeedTitle - YYYY-MM-DD" is just a date stamp, not a real episode title
+  const titleIsDateStamped = /\s[-–]\s*\d{4}[-/]\d{2}[-/]\d{2}$/.test(rawTitle);
+  const hasRealTitle = rawTitle && rawTitle !== feedTitle && !titleIsDateStamped;
+  const linkTitle = titleFromLink(getLink(selectedItem));
+  const itemTitle = hasRealTitle
     ? rawTitle
-    : (titleFromLink(getLink(selectedItem)) || rawTitle || "No comics found");
+    : (linkTitle !== feedTitle ? linkTitle : null) || feedTitle || rawTitle || "No comics found";
 
     return {
       comic: {

@@ -45,7 +45,31 @@ def load_environment():
         print(f"plugins.env not found at {env_path}, using system environment variables")
 
 
-def is_other_language(name: str, slug: str, author: str):
+def get_plugin_config():
+    """Load plugin config from data/comic_parser_data.json"""
+    data_dir = get_data_dir()
+    config_path = data_dir / "comic_config.json"
+
+    if config_path.exists():
+        with open(config_path, 'r') as f:
+            config = json.load(f)
+        excluded = config.get('excluded_feeds', [])
+        categories = config.get('feed_categories', {})
+        print(f"Loaded plugin config from {config_path} "
+              f"({len(excluded)} exclusions, {len(categories)} category overrides)")
+        return excluded, categories
+    else:
+        print(f"No plugin config found at {config_path}")
+        return [], {}
+
+
+def is_other_language(slug: str, name: str, author: str, feed_categories: dict):
+    # Explicit category override takes precedence
+    if feed_categories.get(slug) == "other_languages":
+        return True
+    if feed_categories.get(slug) is not None:
+        return False  # explicitly categorised as something else
+
     if name:
         lower_name = name.lower()
         slug_lower = slug.lower()
@@ -55,22 +79,6 @@ def is_other_language(name: str, slug: str, author: str):
             if keyword in lower_name or keyword in slug_lower or keyword in author_lower:
                 return True
     return False
-
-
-def get_excluded_feeds():
-    """Get list of feeds to exclude from data/excluded_feeds.yml"""
-    data_dir = get_data_dir()
-    excluded_feeds_path = data_dir / "excluded_feeds.yml"
-
-    if excluded_feeds_path.exists():
-        with open(excluded_feeds_path, 'r') as f:
-            excluded_data = yaml.safe_load(f) or {}
-            excluded_feeds = excluded_data.get('excluded_feeds', [])
-        print(f"Loaded {len(excluded_feeds)} excluded feeds from {excluded_feeds_path}")
-        return excluded_feeds
-    else:
-        print(f"No exclusions file found at {excluded_feeds_path}")
-        return []
 
 
 def get_comics_data(url: str):
@@ -227,8 +235,8 @@ def create_updated_settings():
     # Load environment variables first
     load_environment()
 
-    # Get excluded feeds from environment
-    excluded_feeds = get_excluded_feeds()
+    # Get plugin config (excluded feeds + category overrides)
+    excluded_feeds, feed_categories = get_plugin_config()
 
     # Get the current comics data
     comics_data = get_comics_data(URL)
@@ -255,8 +263,8 @@ def create_updated_settings():
         feed_url = f"https://comiccaster.xyz/rss/{slug}" if slug else None
 
         # Exclude comics that are political, in other languages, or in the exclusion list
-        if slug and slug not in INVALID_SLUGS and not is_other_language(name, slug,
-                                                                        author) and slug not in political_slugs:
+        if slug and slug not in INVALID_SLUGS and not is_other_language(slug, name,
+                                                                       author, feed_categories) and slug not in political_slugs:
             if feed_url and not should_exclude_feed(feed_url, excluded_feeds):
                 regular_feeds[name] = feed_url
             else:
@@ -275,7 +283,7 @@ def create_updated_settings():
         feed_url = f"https://comiccaster.xyz/rss/{slug}" if slug else None
 
         # Exclude comics that are political or in the exclusion list
-        if slug and slug not in INVALID_SLUGS and is_other_language(name, slug, author) and slug not in political_slugs:
+        if slug and slug not in INVALID_SLUGS and is_other_language(slug, name, author, feed_categories) and slug not in political_slugs:
             if feed_url and not should_exclude_feed(feed_url, excluded_feeds):
                 other_lang_feeds[name] = feed_url
             else:
