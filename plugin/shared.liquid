@@ -7,6 +7,10 @@
     filter: {{trmnl.plugin_settings.custom_fields_values.image_filter}};
     {% endif %}
   }
+  /* Remove bottom margin from image container */
+  #image-container {
+    margin-bottom: 0 !important;
+  }
 </style>
 
 <div class="layout layout--stretch">
@@ -39,23 +43,11 @@
   {%- endif -%}
 </div>
 
-
 <script>
 (function(global) {
   'use strict';
 
   const TRMNLImageLayout = {
-    /**
-     * Initialize the image layout system
-     * @param {Object} options - Configuration options
-     * @param {string} options.containerId - ID of the container element
-     * @param {string} options.imageSelector - CSS selector for images
-     * @param {number} options.gap - Gap between images in pixels (default: 2)
-     * @param {boolean} options.splitTallImages - Whether to split very tall images (default: true)
-     * @param {number} options.tallImageThreshold - Aspect ratio threshold for tall images (default: 0.4)
-     * @param {number} options.loadTimeout - Timeout for image loading in ms (default: 5000)
-     * @param {number} options.startDelay - Delay before starting layout in ms (default: 100)
-     */
     init: function(options) {
       const config = {
         containerId: options.containerId || 'image-container',
@@ -71,39 +63,35 @@
         const container = document.getElementById(config.containerId);
         if (!container) return;
 
-        // Set container styles for centering
-        container.style.display = 'flex';
-        container.style.alignItems = 'center';
-        container.style.justifyContent = 'center';
-        container.style.width = '100%';
-        container.style.height = '100%';
+        // Get parent (the flex column) which has full screen height
+        const parent = container.closest('.flex--col') || container.parentElement;
+        if (!parent) return;
 
-        const images = Array.from(container.querySelectorAll(config.imageSelector));
-        if (images.length === 0) return;
+        const parentWidth = parent.offsetWidth;
+        const parentHeight = parent.offsetHeight;
 
-        const containerWidth = container.offsetWidth;
-        const containerHeight = container.offsetHeight;
-
-        if (containerWidth === 0 || containerHeight === 0) {
+        if (parentWidth === 0 || parentHeight === 0) {
           setTimeout(layoutImages, 100);
           return;
         }
 
+        // Prepare container – DO NOT set height:100%
+        container.style.display = 'flex';
+        container.style.alignItems = 'center';
+        container.style.justifyContent = 'center';
+        container.style.width = '100%';
+        // container.style.height = '100%';  // REMOVED
+
+        const images = Array.from(container.querySelectorAll(config.imageSelector));
+        if (images.length === 0) return;
+
         // Wait for all images to load
         const imageLoadPromises = images.map(img => {
-          if (img.complete && img.naturalWidth > 0) {
-            return Promise.resolve();
-          }
+          if (img.complete && img.naturalWidth > 0) return Promise.resolve();
           return new Promise(resolve => {
             const timeout = setTimeout(() => resolve(), config.loadTimeout);
-            img.onload = () => {
-              clearTimeout(timeout);
-              resolve();
-            };
-            img.onerror = () => {
-              clearTimeout(timeout);
-              resolve();
-            };
+            img.onload = () => { clearTimeout(timeout); resolve(); };
+            img.onerror = () => { clearTimeout(timeout); resolve(); };
           });
         });
 
@@ -111,15 +99,16 @@
           const loadedImages = images.filter(img => img.naturalWidth > 0 && img.naturalHeight > 0);
           if (loadedImages.length === 0) return;
 
-          // Check if single image should be split
+          // Handle tall single image
           if (config.splitTallImages && loadedImages.length === 1) {
             const img = loadedImages[0];
             const aspectRatio = img.naturalWidth / img.naturalHeight;
-
             if (aspectRatio < config.tallImageThreshold) {
               TRMNLImageLayout._displayTallImageInSections(
-                img, container, containerWidth, containerHeight, config.gap
+                img, container, parentWidth, parentHeight, config.gap
               );
+              // After splitting, measure and set container height
+              TRMNLImageLayout._fitContainerToImages(container, loadedImages, config.gap);
               return;
             }
           }
@@ -132,9 +121,9 @@
           let bestLayout = null;
           let bestCoverage = 0;
 
-          // Try column layout
+          // Try column layout (using parent dimensions)
           const columnLayout = TRMNLImageLayout._calculateColumnLayout(
-            imageData, containerWidth, containerHeight, config.gap
+            imageData, parentWidth, parentHeight, config.gap
           );
           if (columnLayout && columnLayout.coverage > bestCoverage) {
             bestLayout = columnLayout;
@@ -143,7 +132,7 @@
 
           // Try row layout
           const rowLayout = TRMNLImageLayout._calculateRowLayout(
-            imageData, containerWidth, containerHeight, config.gap
+            imageData, parentWidth, parentHeight, config.gap
           );
           if (rowLayout && rowLayout.coverage > bestCoverage) {
             bestLayout = rowLayout;
@@ -155,7 +144,7 @@
             for (let cols = 1; cols <= loadedImages.length; cols++) {
               const rows = Math.ceil(loadedImages.length / cols);
               const gridLayout = TRMNLImageLayout._calculateGridLayout(
-                imageData, containerWidth, containerHeight, config.gap, rows, cols
+                imageData, parentWidth, parentHeight, config.gap, rows, cols
               );
               if (gridLayout && gridLayout.coverage > bestCoverage) {
                 bestLayout = gridLayout;
@@ -169,8 +158,7 @@
             container.style.gap = config.gap + 'px';
 
             if (bestLayout.wrap === 'wrap') {
-              // Grid layout: use CSS Grid so images pack tightly at their natural
-              // content size. flex-wrap + flex-basis left dead space around images.
+              // Grid layout
               container.style.display = 'grid';
               container.style.gridTemplateColumns = `repeat(${bestLayout.cols}, auto)`;
               container.style.justifyContent = 'center';
@@ -182,8 +170,8 @@
               bestLayout.sizes.forEach((size, i) => {
                 const img = loadedImages[i];
                 if (img) {
-                  img.style.width = Math.min(Math.floor(size.width), containerWidth) + 'px';
-                  img.style.height = Math.min(Math.floor(size.height), containerHeight) + 'px';
+                  img.style.width = Math.min(Math.floor(size.width), parentWidth) + 'px';
+                  img.style.height = Math.min(Math.floor(size.height), parentHeight) + 'px';
                   img.style.objectFit = 'contain';
                   img.style.flexShrink = '';
                   img.style.flexBasis = '';
@@ -201,8 +189,8 @@
               bestLayout.sizes.forEach((size, i) => {
                 const img = loadedImages[i];
                 if (img) {
-                  const maxWidth = Math.min(Math.floor(size.width), containerWidth);
-                  const maxHeight = Math.min(Math.floor(size.height), containerHeight);
+                  const maxWidth = Math.min(Math.floor(size.width), parentWidth);
+                  const maxHeight = Math.min(Math.floor(size.height), parentHeight);
                   img.style.width = maxWidth + 'px';
                   img.style.height = maxHeight + 'px';
                   img.style.objectFit = 'contain';
@@ -212,17 +200,16 @@
                   img.style.margin = '0 auto';
                 }
               });
-
             }
+
+            // After applying layout, shrink container to fit the images
+            TRMNLImageLayout._fitContainerToImages(container, loadedImages, config.gap);
           }
         });
       };
 
-      // Start layout
       const startLayout = () => {
         setTimeout(layoutImages, config.startDelay);
-
-        // Re-run layout whenever the container is resized
         if (typeof ResizeObserver !== 'undefined') {
           const container = document.getElementById(config.containerId);
           if (container) {
@@ -242,7 +229,33 @@
       }
     },
 
-    // Private methods
+    // New helper: set container height to exactly wrap the images
+    _fitContainerToImages: function(container, loadedImages, gap) {
+      // Force a reflow to ensure all styles are applied
+      container.offsetHeight;
+
+      // Use a short timeout to let the browser paint
+      setTimeout(() => {
+        const imageRects = loadedImages.map(img => img.getBoundingClientRect());
+        const containerRect = container.getBoundingClientRect();
+
+        // Find the bottom of the lowest image (relative to container top)
+        let maxBottom = -Infinity;
+        imageRects.forEach(rect => {
+          const bottom = rect.bottom - containerRect.top;
+          if (bottom > maxBottom) maxBottom = bottom;
+        });
+
+        // Add a tiny extra for safety (in case of rounding)
+        const newHeight = Math.ceil(maxBottom);
+        container.style.height = newHeight + 'px';
+        container.style.flexGrow = '0'; // override flex--grow class
+      }, 10);
+    },
+
+    // ------------------------------------------------------------------------
+    //  ALL EXISTING HELPER METHODS (unchanged)
+    // ------------------------------------------------------------------------
     _displayTallImageInSections: function(img, container, containerWidth, containerHeight, gap) {
       const aspectRatio = img.naturalWidth / img.naturalHeight;
       const scaledWidth = containerWidth;
@@ -296,7 +309,6 @@
     _calculateColumnLayout: function(imageData, containerWidth, containerHeight, gap) {
       const totalGap = gap * (imageData.length - 1);
       const availableHeight = containerHeight - totalGap;
-
       if (availableHeight <= 0) return null;
 
       let totalHeight = 0;
@@ -313,9 +325,7 @@
       const actualHeight = sizes.reduce((sum, s) => sum + s.height, 0) + totalGap;
       const actualWidth = Math.max(...sizes.map(s => s.width));
 
-      if (actualHeight > containerHeight + 2 || actualWidth > containerWidth + 2) {
-        return null;
-      }
+      if (actualHeight > containerHeight + 2 || actualWidth > containerWidth + 2) return null;
 
       const coverage = (actualWidth * actualHeight) / (containerWidth * containerHeight);
       return { direction: 'column', sizes, coverage };
@@ -324,7 +334,6 @@
     _calculateRowLayout: function(imageData, containerWidth, containerHeight, gap) {
       const totalGap = gap * (imageData.length - 1);
       const availableWidth = containerWidth - totalGap;
-
       if (availableWidth <= 0) return null;
 
       let totalWidth = 0;
@@ -341,9 +350,7 @@
       const actualWidth = sizes.reduce((sum, s) => sum + s.width, 0) + totalGap;
       const actualHeight = Math.max(...sizes.map(s => s.height));
 
-      if (actualWidth > containerWidth + 2 || actualHeight > containerHeight + 2) {
-        return null;
-      }
+      if (actualWidth > containerWidth + 2 || actualHeight > containerHeight + 2) return null;
 
       const coverage = (actualWidth * actualHeight) / (containerWidth * containerHeight);
       return { direction: 'row', sizes, coverage };
@@ -361,7 +368,6 @@
         const widthScale = cellWidth / (cellHeight * img.aspectRatio);
         const heightScale = 1;
         const scale = Math.min(widthScale, heightScale, 1);
-
         return {
           width: cellHeight * img.aspectRatio * scale,
           height: cellHeight * scale
@@ -370,23 +376,17 @@
 
       const avgWidth = sizes.reduce((sum, s) => sum + s.width, 0) / sizes.length;
       const avgHeight = sizes.reduce((sum, s) => sum + s.height, 0) / sizes.length;
-      // Penalise grids with partially-filled last rows so e.g. 4 images
-      // prefer 2×2 over 3+1 (empty cells don't count toward coverage).
       const fillRatio = imageData.length / (rows * cols);
       const coverage = (avgWidth * cols * avgHeight * rows) / (containerWidth * containerHeight) * fillRatio;
 
-      return { direction: 'row', wrap: 'wrap', sizes, coverage, cols, cellWidth };
-    },
-
+      return { direction: 'row', wrap: 'wrap', sizes, coverage, cols };
+    }
   };
 
-  // Export to global scope
   global.TRMNLImageLayout = TRMNLImageLayout;
-
 })(typeof window !== 'undefined' ? window : this);
 </script>
 <script>
-  // Initialize the image layout system
   if (typeof TRMNLImageLayout !== 'undefined') {
     TRMNLImageLayout.init({
       containerId: 'image-container',
