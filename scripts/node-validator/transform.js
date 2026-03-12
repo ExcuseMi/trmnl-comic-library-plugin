@@ -1,8 +1,12 @@
-// Per-feed image selection strategies
+// Fallback per-feed image selection strategies (used when remote config is unavailable)
 // Key: substring of normalized feed title (lowercase, alphanumeric only)
-// Value: 'first' | 'last' | 'all'
-const FEED_IMAGE_STRATEGIES = {
-  'adhdinos': 'last',
+// Value: strategy object with optional fields:
+//   filter: 'numbered'       — keep only sequentially-numbered filenames (1.jpg, 2.jpg, …)
+//   trim:   'first'|'last'   — remove one image from the start or end after filtering
+//   pick:   'first'|'last'   — select a single image from the result
+const FALLBACK_FEED_IMAGE_STRATEGIES = {
+  // Keep numbered panels (skip Banner), drop the last one (overview)
+  'adhdinos': { filter: 'numbered', trim: 'last' },
 };
 
 // Captions that are too generic to be useful regardless of feed
@@ -14,6 +18,12 @@ const GENERIC_CAPTIONS = new Set([
 ]);
 
 function transform(input) {
+  // Support multi-URL polling: IDX_0 = config JSON, IDX_1 = RSS/Atom feed
+  // Fall back to input directly for single-URL mode (backwards compatibility)
+  const parserConfig = input.IDX_0 || {};
+  const feedInput = input.IDX_1 || input;
+  const feedImageStrategies = parserConfig.feed_image_strategies || FALLBACK_FEED_IMAGE_STRATEGIES;
+
   let items = [];
   let isAtom = false;
   let feedTitle = null;
@@ -44,17 +54,17 @@ function transform(input) {
     return cleaned.trim();
   }
 
-  if (input.rss && input.rss.channel) {
-    items = Array.isArray(input.rss.channel.item)
-      ? input.rss.channel.item
-      : [input.rss.channel.item];
-    feedTitle = cleanFeedTitle(input.rss.channel.title);
-  } else if (input.feed) {
+  if (feedInput.rss && feedInput.rss.channel) {
+    items = Array.isArray(feedInput.rss.channel.item)
+      ? feedInput.rss.channel.item
+      : [feedInput.rss.channel.item];
+    feedTitle = cleanFeedTitle(feedInput.rss.channel.title);
+  } else if (feedInput.feed) {
     isAtom = true;
-    items = Array.isArray(input.feed.entry)
-      ? input.feed.entry
-      : [input.feed.entry];
-    feedTitle = cleanFeedTitle(input.feed.title);
+    items = Array.isArray(feedInput.feed.entry)
+      ? feedInput.feed.entry
+      : [feedInput.feed.entry];
+    feedTitle = cleanFeedTitle(feedInput.feed.title);
   } else {
     return emptyResult();
   }
@@ -99,17 +109,32 @@ function transform(input) {
 
   function getFeedImageStrategy(title) {
     const normalized = normalizeFeedKey(title);
-    for (const [key, strategy] of Object.entries(FEED_IMAGE_STRATEGIES)) {
+    for (const [key, strategy] of Object.entries(feedImageStrategies)) {
       if (normalized.includes(key)) return strategy;
     }
-    return 'all';
+    return null;
   }
 
   function applyImageStrategy(urls, strategy) {
-    if (urls.length === 0) return urls;
-    if (strategy === 'last') return [urls[urls.length - 1]];
-    if (strategy === 'first') return [urls[0]];
-    return urls;
+    if (!strategy || urls.length === 0) return urls;
+
+    let result = urls;
+
+    // filter: keep only sequentially-numbered filenames (1.jpg, 2.jpg, …)
+    if (strategy.filter === 'numbered') {
+      const numbered = result.filter(url => /\/\d+\.\w+$/.test(url));
+      if (numbered.length > 0) result = numbered;
+    }
+
+    // trim: remove one image from start or end
+    if (strategy.trim === 'last' && result.length > 1) result = result.slice(0, -1);
+    else if (strategy.trim === 'first' && result.length > 1) result = result.slice(1);
+
+    // pick: select a single image
+    if (strategy.pick === 'last') return [result[result.length - 1]];
+    if (strategy.pick === 'first') return [result[0]];
+
+    return result;
   }
 
   function extractCaption(html, itemTitle, feedTitle) {

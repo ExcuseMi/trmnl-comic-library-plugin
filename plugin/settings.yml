@@ -1,3 +1,4 @@
+---
 strategy: polling
 no_screen_padding: 'no'
 dark_mode: 'no'
@@ -26,7 +27,7 @@ custom_fields:
   - 1 and Done by Eric Scott: https://comiccaster.xyz/rss/1-and-done
   - 9 Chickweed Lane by Brooke McEldowney: https://comiccaster.xyz/rss/9-chickweed-lane
   - 9 to 5 by Harley Schwadron: https://comiccaster.xyz/rss/9to5
-  - '@Tavicat by Rikki Simons': https://comiccaster.xyz/rss/tavicat
+  - "@Tavicat by Rikki Simons": https://comiccaster.xyz/rss/tavicat
   - Aaggghhh by Ham: https://comiccaster.xyz/rss/aaggghhh
   - Adam@Home by Rob Harrell: https://comiccaster.xyz/rss/adamathome
   - ADHDinos by Pina Vazquez: https://comiccaster.xyz/rss/adhdinos
