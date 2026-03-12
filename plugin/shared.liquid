@@ -176,52 +176,83 @@
 
           // Apply best layout
           if (bestLayout) {
-            container.style.flexDirection = bestLayout.direction;
-            container.style.flexWrap = bestLayout.wrap || 'nowrap';
             container.style.gap = config.gap + 'px';
-            
-            // For column layout, center horizontally
-            if (bestLayout.direction === 'column') {
-              container.style.alignItems = 'center';
-            } 
-            // For row layout, center vertically
-            else if (bestLayout.direction === 'row' && !bestLayout.wrap) {
-              container.style.alignItems = 'center';
-            }
-            // For grid layout, center both ways
-            else if (bestLayout.wrap === 'wrap') {
-              container.style.alignItems = 'center';
+
+            if (bestLayout.wrap === 'wrap') {
+              // Grid layout: use CSS Grid so images pack tightly at their natural
+              // content size. flex-wrap + flex-basis left dead space around images.
+              container.style.display = 'grid';
+              container.style.gridTemplateColumns = `repeat(${bestLayout.cols}, auto)`;
               container.style.justifyContent = 'center';
+              container.style.alignContent = 'center';
+              container.style.flexDirection = '';
+              container.style.flexWrap = '';
+              container.style.alignItems = '';
+
+              bestLayout.sizes.forEach((size, i) => {
+                const img = loadedImages[i];
+                if (img) {
+                  img.style.width = Math.min(Math.floor(size.width), containerWidth) + 'px';
+                  img.style.height = Math.min(Math.floor(size.height), containerHeight) + 'px';
+                  img.style.objectFit = 'contain';
+                  img.style.flexShrink = '';
+                  img.style.flexBasis = '';
+                  img.style.display = 'block';
+                  img.style.margin = '0';
+                }
+              });
+            } else {
+              // Column / row flex layout
+              container.style.display = 'flex';
+              container.style.flexDirection = bestLayout.direction;
+              container.style.flexWrap = 'nowrap';
+              container.style.alignItems = 'center';
+
+              bestLayout.sizes.forEach((size, i) => {
+                const img = loadedImages[i];
+                if (img) {
+                  const maxWidth = Math.min(Math.floor(size.width), containerWidth);
+                  const maxHeight = Math.min(Math.floor(size.height), containerHeight);
+                  img.style.width = maxWidth + 'px';
+                  img.style.height = maxHeight + 'px';
+                  img.style.objectFit = 'contain';
+                  img.style.flexShrink = '0';
+                  img.style.flexBasis = '';
+                  img.style.display = 'block';
+                  img.style.margin = '0 auto';
+                }
+              });
+
+              // Calculate total size and center within container
+              setTimeout(() => {
+                TRMNLImageLayout._centerLayoutInContainer(container, loadedImages, bestLayout.direction, config.gap);
+              }, 50);
             }
-
-            bestLayout.sizes.forEach((size, i) => {
-              const img = loadedImages[i];
-              if (img) {
-                const maxWidth = Math.min(Math.floor(size.width), containerWidth);
-                const maxHeight = Math.min(Math.floor(size.height), containerHeight);
-
-                img.style.width = maxWidth + 'px';
-                img.style.height = maxHeight + 'px';
-                img.style.objectFit = 'contain';
-                img.style.flexShrink = '0';
-                img.style.display = 'block';
-                img.style.margin = '0 auto'; // Center individual images if needed
-              }
-            });
-
-            // Calculate total size and center within container
-            setTimeout(() => {
-              TRMNLImageLayout._centerLayoutInContainer(container, loadedImages, bestLayout.direction, config.gap);
-            }, 50);
           }
         });
       };
 
       // Start layout
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', () => setTimeout(layoutImages, config.startDelay));
-      } else {
+      const startLayout = () => {
         setTimeout(layoutImages, config.startDelay);
+
+        // Re-run layout whenever the container is resized
+        if (typeof ResizeObserver !== 'undefined') {
+          const container = document.getElementById(config.containerId);
+          if (container) {
+            let resizeTimer;
+            new ResizeObserver(() => {
+              clearTimeout(resizeTimer);
+              resizeTimer = setTimeout(layoutImages, 100);
+            }).observe(container);
+          }
+        }
+      };
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', startLayout);
+      } else {
+        startLayout();
       }
     },
 
@@ -353,9 +384,12 @@
 
       const avgWidth = sizes.reduce((sum, s) => sum + s.width, 0) / sizes.length;
       const avgHeight = sizes.reduce((sum, s) => sum + s.height, 0) / sizes.length;
-      const coverage = (avgWidth * cols * avgHeight * rows) / (containerWidth * containerHeight);
+      // Penalise grids with partially-filled last rows so e.g. 4 images
+      // prefer 2×2 over 3+1 (empty cells don't count toward coverage).
+      const fillRatio = imageData.length / (rows * cols);
+      const coverage = (avgWidth * cols * avgHeight * rows) / (containerWidth * containerHeight) * fillRatio;
 
-      return { direction: 'row', wrap: 'wrap', sizes, coverage };
+      return { direction: 'row', wrap: 'wrap', sizes, coverage, cols, cellWidth };
     },
 
     _centerLayoutInContainer: function(container, images, direction, gap) {
