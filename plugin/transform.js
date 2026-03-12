@@ -268,22 +268,37 @@ function transform(input) {
   const titleIsDateStamped = /\s[-–]\s*\d{4}[-/]\d{2}[-/]\d{2}$/.test(rawTitle);
   const hasRealTitle = rawTitle && rawTitle !== feedTitle && !titleIsDateStamped;
   const linkTitle = titleFromLink(getLink(selectedItem));
-  const itemTitle = hasRealTitle
+  let itemTitle = hasRealTitle
     ? rawTitle
     : (linkTitle !== feedTitle ? linkTitle : null) || feedTitle || rawTitle || "No comics found";
 
-    return {
-      comic: {
-        title: itemTitle,
-        source: feedTitle,
-        imageUrls,
-        caption: extractCaption(
-          description,
-          selectedItem?.title,
-          feedTitle
-        ),
-        link: getLink(selectedItem),
-        pubDate: getPubDate(selectedItem)
-      }
-    };
+  // NEW RULE: If the computed title equals the source (case‑insensitive), use a nicely formatted date instead.
+  const pubDate = getPubDate(selectedItem);
+  if (feedTitle && itemTitle && itemTitle.toLowerCase() === feedTitle.toLowerCase() && pubDate) {
+    const date = new Date(pubDate);
+    if (!isNaN(date.getTime())) {
+      // Format as "MMM DD, YYYY" (e.g. "Mar 12, 2026")
+      const formattedDate = date.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric'
+      });
+      itemTitle = formattedDate;
+    }
+  }
+
+  return {
+    comic: {
+      title: itemTitle,
+      source: feedTitle,
+      imageUrls,
+      caption: extractCaption(
+        description,
+        selectedItem?.title,
+        feedTitle
+      ),
+      link: getLink(selectedItem),
+      pubDate
+    }
+  };
 }
