@@ -1,3 +1,4 @@
+{% template main %}
 {% liquid
 if comics != null and comics.size > 0
   assign timestamp = 'now' | date: '%N'
@@ -389,3 +390,5 @@ assign container_id = 'image-container' | append_random
     });
   }
 </script>
+
+{% endtemplate %}
