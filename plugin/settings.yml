@@ -654,5 +654,6 @@ custom_fields:
   - Crisp: brightness(1.0) contrast(1.4) saturate(0)
   - Dramatic: brightness(0.8) contrast(1.6) saturate(0)
   optional: true
+  default: none
 name: Comic Library
 refresh_interval: 15
