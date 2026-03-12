@@ -1,3 +1,5 @@
+{% assign container_id = 'image-container' | append_random %}
+
 <style>
   .comic-image {
     display: block;
@@ -8,7 +10,7 @@
     {% endif %}
   }
   /* Force image container to shrink to content and remove bottom margin */
-  #image-container {
+  #{{container_id}} {
     flex-grow: 0 !important;      /* overrides flex--grow class */
     margin-bottom: 0 !important;  /* removes mb--1 margin */
   }
@@ -17,7 +19,7 @@
 <div class="layout layout--stretch">
   {%- if comic.imageUrls.size > 0 -%}
   <div class="flex flex--col flex--center">
-    <div class="flex flex--center flex--grow mb--1" id="image-container" style="overflow: hidden;">
+    <div class="flex flex--center flex--grow mb--1" id="{{container_id}}" style="overflow: hidden;">
       {%- for imageUrl in comic.imageUrls -%}
         <img src="{{ imageUrl }}" class="image comic-image image-dither" alt="Image {{ forloop.index }}" />
       {%- endfor -%}
@@ -364,7 +366,7 @@
 <script>
   if (typeof TRMNLImageLayout !== 'undefined') {
     TRMNLImageLayout.init({
-      containerId: 'image-container',
+      containerId: '{{container_id}}',
       imageSelector: '.comic-image',
       gap: 2,
       splitTallImages: true,
