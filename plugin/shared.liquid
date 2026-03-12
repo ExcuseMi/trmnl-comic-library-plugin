@@ -34,7 +34,9 @@
       {%- assign title_parts = comic.title | split: ' - ' -%}
       {%- assign source_parts = comic.source | split: ' - ' -%}
       
-      {%- if title_parts[0] == source_parts[0] -%}
+      {%- if comic.source == comic.title -%}
+        {{ comic.source }}
+      {%- elsif title_parts[0] == source_parts[0] -%}
         {{ comic.source }} - {{ title_parts[1] | default: title_parts[0] }}
       {%- else -%}
         {{ comic.source }} - {{ comic.title }}
