@@ -20,12 +20,32 @@ try {
 }
 
 function runTransform(parsedXml) {
-  // Create a fresh sandbox with Date.now returning 0 so transform always
-  // picks the first (most recent) item — matching validation expectations.
+  // Real Date constructor from the outer scope
+  const RealDate = Date;
+
+  // Sandbox with a Date subclass that:
+  // - acts as a real Date constructor
+  // - overrides Date.now() to always return 0
   const sandbox = {
-    Date: { now: () => 0 },
-    Array, Object, String, Number, Boolean, RegExp, Math, JSON,
-    parseInt, parseFloat, isNaN, isFinite, undefined,
+    Date: class extends RealDate {
+      constructor(...args) {
+        super(...args);
+      }
+      static now() { return 0; }
+    },
+    Array,
+    Object,
+    String,
+    Number,
+    Boolean,
+    RegExp,
+    Math,
+    JSON,
+    parseInt,
+    parseFloat,
+    isNaN,
+    isFinite,
+    undefined,
   };
   vm.createContext(sandbox);
 
