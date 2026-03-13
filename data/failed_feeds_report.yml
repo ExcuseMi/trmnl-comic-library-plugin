@@ -1,4 +1,4 @@
-report_date: '2026-03-12 14:47:05'
+report_date: '2026-03-13 01:14:08'
 total_failed: 62
 failed_feeds:
 - name: Art by Moga
@@ -203,7 +203,7 @@ failed_feeds:
   status: needs_investigation
 - name: Pros & Cons
   url: https://comiccaster.xyz/rss/pros-cons
-  error: No valid image found
+  error: No comic array returned
   feed_type: rss
   status: needs_investigation
 - name: The Far Side - New Stuff
@@ -218,7 +218,7 @@ failed_feeds:
   status: needs_investigation
 - name: Matt Bors
   url: https://comiccaster.xyz/rss/matt-bors
-  error: No valid image found
+  error: No comic array returned
   feed_type: rss
   status: needs_investigation
 - name: Pat Oliphant
@@ -298,7 +298,7 @@ failed_feeds:
   status: needs_investigation
 - name: Gunnerkrigg Court
   url: https://www.gunnerkrigg.com/rss.xml
-  error: No valid image found
+  error: No comic array returned
   feed_type: rss
   status: needs_investigation
 - name: The Pigeon Gazette
