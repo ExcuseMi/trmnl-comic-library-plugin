@@ -302,7 +302,7 @@ function processFeed(feedInput, parserConfig, trmnl) {
 
   if (imageUrls.length === 0) return null;
 
-  const rawTitle = decodeEntities(selectedItem?.title + "");
+  const rawTitle = selectedItem?.title ? decodeEntities(String(selectedItem.title)) : "";
 
   const titleIsDateStamped =
     /\s[-–]\s*\d{4}[-/]\d{2}[-/]\d{2}$/.test(rawTitle) ||

@@ -281,6 +281,7 @@ async function validateFeed(name, url, timeout) {
       result.error_message = 'No comic array returned';
       return result;
     }
+    const comic = comics[0];
     if (!comic || !comic.imageUrls || comic.imageUrls.length === 0) {
       result.error_message = 'No valid image found';
       return result;
