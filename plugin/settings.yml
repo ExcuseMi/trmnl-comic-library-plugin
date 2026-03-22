@@ -13,7 +13,7 @@ custom_fields:
 - keyname: about
   name: About This Plugin
   field_type: author_bio
-  description: 'Access an daily updated collection of 587 comic RSS / Atom feeds and enjoy fresh content every day.<br /><a href=''https://excusemi.github.io/trmnl-comic-library-plugin/''>Click here to see all supported comics!</a><br />Features: <br />● Displays the most recent comic or a random comic <br />● Supports multiple RSS / Atom sources <br />● Add your own RSS / Atom feeds <br />● Frequently updated to keep all RSS / Atom sources valid and up to date'
+  description: 'Access an daily updated collection of 588 comic RSS / Atom feeds and enjoy fresh content every day.<br /><a href=''https://excusemi.github.io/trmnl-comic-library-plugin/''>Click here to see all supported comics!</a><br />Features: <br />● Displays the most recent comic or a random comic <br />● Supports multiple RSS / Atom sources <br />● Add your own RSS / Atom feeds <br />● Frequently updated to keep all RSS / Atom sources valid and up to date'
   github_url: https://github.com/ExcuseMi/trmnl-comic-library-plugin
   learn_more_url: https://excusemi.github.io/trmnl-comic-library-plugin
   category: comics
@@ -564,7 +564,7 @@ custom_fields:
   - Ziggy en Español by Tom Wilson & Tom II: https://comiccaster.xyz/rss/ziggyespanol
 - keyname: comics_political
   field_type: select
-  name: 'Political Comics: 57'
+  name: 'Political Comics: 58'
   multiple: true
   help_text: Use ⌘+click (Mac) or ctrl+click (Windows) to select multiple items. Use Shift+click to select a whole range at once.
   optional: true
@@ -597,6 +597,7 @@ custom_fields:
   - Lalo Alcaraz: https://comiccaster.xyz/rss/laloalcaraz
   - Lisa Benson: https://comiccaster.xyz/rss/lisabenson
   - M2Bulls: https://comiccaster.xyz/rss/m2bulls
+  - Mallard Fillmore: https://comiccaster.xyz/rss/mallard-fillmore
   - Marshall Ramsey: https://comiccaster.xyz/rss/marshallramsey
   - Matt Davies: https://comiccaster.xyz/rss/mattdavies
   - Matt Wuerker: https://comiccaster.xyz/rss/mattwuerker

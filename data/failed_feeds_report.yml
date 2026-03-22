@@ -1,5 +1,5 @@
-report_date: '2026-03-21 01:04:13'
-total_failed: 62
+report_date: '2026-03-22 01:12:27'
+total_failed: 61
 failed_feeds:
 - name: Art by Moga
   url: https://comiccaster.xyz/rss/artbymoga
@@ -263,11 +263,6 @@ failed_feeds:
   status: needs_investigation
 - name: Lee Judge
   url: https://comiccaster.xyz/rss/lee-judge
-  error: HTTP 404
-  feed_type: null
-  status: needs_investigation
-- name: Mallard Fillmore
-  url: https://comiccaster.xyz/rss/mallard-fillmore
   error: HTTP 404
   feed_type: null
   status: needs_investigation
