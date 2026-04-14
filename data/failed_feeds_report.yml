@@ -1,5 +1,5 @@
-report_date: '2026-04-13 01:26:24'
-total_failed: 61
+report_date: '2026-04-14 01:24:40'
+total_failed: 62
 failed_feeds:
 - name: Art by Moga
   url: https://comiccaster.xyz/rss/artbymoga
@@ -294,6 +294,11 @@ failed_feeds:
 - name: Gunnerkrigg Court
   url: https://www.gunnerkrigg.com/rss.xml
   error: No comic array returned
+  feed_type: rss
+  status: needs_investigation
+- name: False Knees
+  url: https://www.webtoons.com/en/challenge/false-knees/rss?title_no=79544
+  error: 'transform() error: itemTitle?.toLowerCase is not a function'
   feed_type: rss
   status: needs_investigation
 - name: The Pigeon Gazette
