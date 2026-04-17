@@ -1,6 +1,41 @@
-report_date: '2026-04-16 01:26:49'
-total_failed: 62
+report_date: '2026-04-17 01:24:21'
+total_failed: 224
 failed_feeds:
+- name: 1 and Done
+  url: https://comiccaster.xyz/rss/1-and-done
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: 9 Chickweed Lane
+  url: https://comiccaster.xyz/rss/9-chickweed-lane
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Adult Children
+  url: https://comiccaster.xyz/rss/adult-children
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Agnes
+  url: https://comiccaster.xyz/rss/agnes
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Alley Oop
+  url: https://comiccaster.xyz/rss/alley-oop
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Amanda the Great
+  url: https://comiccaster.xyz/rss/amanda-the-great
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Andertoons
+  url: https://comiccaster.xyz/rss/andertoons
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
 - name: Art by Moga
   url: https://comiccaster.xyz/rss/artbymoga
   error: Feed contains only generic promotional content
@@ -11,40 +46,145 @@ failed_feeds:
   error: Feed contains only generic promotional content
   feed_type: rss
   status: needs_investigation
+- name: Baldo
+  url: https://comiccaster.xyz/rss/baldo
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Ben
+  url: https://comiccaster.xyz/rss/ben
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
 - name: Berger & Wyse
   url: https://comiccaster.xyz/rss/berger-and-wyse
   error: Feed contains only generic promotional content
   feed_type: rss
+  status: needs_investigation
+- name: Betty
+  url: https://comiccaster.xyz/rss/betty
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
   status: needs_investigation
 - name: Bird and Moon
   url: https://comiccaster.xyz/rss/bird-and-moon
   error: Feed contains only generic promotional content
   feed_type: rss
   status: needs_investigation
+- name: Birdbrains
+  url: https://comiccaster.xyz/rss/birdbrains
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Bliss
+  url: https://comiccaster.xyz/rss/bliss
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Boomerangs
+  url: https://comiccaster.xyz/rss/boomerangs
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: The Boondocks
+  url: https://comiccaster.xyz/rss/boondocks
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: The Born Loser
+  url: https://comiccaster.xyz/rss/the-born-loser
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Breaking Cat News
+  url: https://comiccaster.xyz/rss/breaking-cat-news
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Brevity
+  url: https://comiccaster.xyz/rss/brevity
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Broom Hilda
+  url: https://comiccaster.xyz/rss/broomhilda
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Buckles
+  url: https://comiccaster.xyz/rss/buckles
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
 - name: Catana Comics
   url: https://comiccaster.xyz/rss/little-moments-of-love
   error: Feed contains only generic promotional content
   feed_type: rss
   status: needs_investigation
-- name: Cat's Cafe
-  url: https://comiccaster.xyz/rss/cats-cafe
-  error: Feed contains only generic promotional content
-  feed_type: rss
+- name: Cleats
+  url: https://comiccaster.xyz/rss/cleats
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
   status: needs_investigation
-- name: Claw
-  url: https://comiccaster.xyz/rss/claw
-  error: Feed contains only generic promotional content
-  feed_type: rss
+- name: Compu-toon
+  url: https://comiccaster.xyz/rss/compu-toon
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Cornered
+  url: https://comiccaster.xyz/rss/cornered
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Crabgrass
+  url: https://comiccaster.xyz/rss/crabgrass
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Crankshaft
+  url: https://comiccaster.xyz/rss/crankshaft
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Crumb
+  url: https://comiccaster.xyz/rss/crumb
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
   status: needs_investigation
 - name: The Daily Drawing
   url: https://comiccaster.xyz/rss/the-daily-drawing
   error: Feed contains only generic promotional content
   feed_type: rss
   status: needs_investigation
+- name: Day by Dave
+  url: https://comiccaster.xyz/rss/day-by-dave
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Dick Tracy
+  url: https://comiccaster.xyz/rss/dick-tracy
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Dinosaur Comics
+  url: https://comiccaster.xyz/rss/dinosaur-comics
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
 - name: Doodle for Food
   url: https://comiccaster.xyz/rss/doodle-for-food
   error: Feed contains only generic promotional content
   feed_type: rss
+  status: needs_investigation
+- name: Drabble
+  url: https://comiccaster.xyz/rss/drabble
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Edge City
+  url: https://comiccaster.xyz/rss/edge-city
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
   status: needs_investigation
 - name: Emmy Lou
   url: https://comiccaster.xyz/rss/emmy-lou
@@ -56,25 +196,110 @@ failed_feeds:
   error: Feed contains only generic promotional content
   feed_type: rss
   status: needs_investigation
+- name: Farcus
+  url: https://comiccaster.xyz/rss/farcus
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Fat Cats
+  url: https://comiccaster.xyz/rss/fat-cats
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
 - name: Four Eyes
   url: https://comiccaster.xyz/rss/four-eyes
   error: Feed contains only generic promotional content
   feed_type: rss
+  status: needs_investigation
+- name: Frank and Ernest
+  url: https://comiccaster.xyz/rss/frank-and-ernest
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Frazz
+  url: https://comiccaster.xyz/rss/frazz
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Funky Winkerbean
+  url: https://comiccaster.xyz/rss/funky-winkerbean
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Garfield
+  url: https://comiccaster.xyz/rss/garfield
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Geech
+  url: https://comiccaster.xyz/rss/geech
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
   status: needs_investigation
 - name: Get a Life
   url: https://comiccaster.xyz/rss/getalife
   error: Feed contains only generic promotional content
   feed_type: rss
   status: needs_investigation
+- name: Glasbergen Cartoons
+  url: https://comiccaster.xyz/rss/glasbergen-cartoons
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Gray Matters
+  url: https://comiccaster.xyz/rss/gray-matters
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Harley
+  url: https://comiccaster.xyz/rss/harley
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Herman
+  url: https://comiccaster.xyz/rss/herman
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
 - name: Hot Comics for Cool People
   url: https://comiccaster.xyz/rss/hot-comics-for-cool-people
   error: Feed contains only generic promotional content
   feed_type: rss
   status: needs_investigation
-- name: Invisible Bread
-  url: https://comiccaster.xyz/rss/invisible-bread
-  error: Feed contains only generic promotional content
-  feed_type: rss
+- name: In Security
+  url: https://comiccaster.xyz/rss/in-security
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Jerry King Comics
+  url: https://comiccaster.xyz/rss/jerry-king-comics
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: JumpStart
+  url: https://comiccaster.xyz/rss/jumpstart
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Lard's World Peace Tips
+  url: https://comiccaster.xyz/rss/lards-world-peace-tips
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Life on Earth
+  url: https://comiccaster.xyz/rss/life-on-earth
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Li'l Abner
+  url: https://comiccaster.xyz/rss/lil-abner
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Lio
+  url: https://comiccaster.xyz/rss/lio
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
   status: needs_investigation
 - name: Little Nemo
   url: https://comiccaster.xyz/rss/little-nemo
@@ -86,10 +311,45 @@ failed_feeds:
   error: Feed contains only generic promotional content
   feed_type: rss
   status: needs_investigation
+- name: Lola
+  url: https://comiccaster.xyz/rss/lola
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Looks Good on Paper
+  url: https://comiccaster.xyz/rss/looks-good-on-paper
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Luann
+  url: https://comiccaster.xyz/rss/luann
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Luann Againn
+  url: https://comiccaster.xyz/rss/luann-againn
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Lug Nuts
+  url: https://comiccaster.xyz/rss/lug-nuts
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Maintaining
+  url: https://comiccaster.xyz/rss/maintaining
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
 - name: Mannequin on the Moon
   url: https://comiccaster.xyz/rss/mannequin-on-the-moon
   error: Feed contains only generic promotional content
   feed_type: rss
+  status: needs_investigation
+- name: Marmaduke
+  url: https://comiccaster.xyz/rss/marmaduke
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
   status: needs_investigation
 - name: The Martian Confederacy
   url: https://comiccaster.xyz/rss/the-martian-confederacy
@@ -106,6 +366,66 @@ failed_feeds:
   error: Feed contains only generic promotional content
   feed_type: rss
   status: needs_investigation
+- name: Mike du Jour
+  url: https://comiccaster.xyz/rss/mike-du-jour
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Miss Peach
+  url: https://comiccaster.xyz/rss/miss-peach
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Moderately Confused
+  url: https://comiccaster.xyz/rss/moderately-confused
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Molly and the Bear
+  url: https://comiccaster.xyz/rss/molly-and-the-bear
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Momma
+  url: https://comiccaster.xyz/rss/momma
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Monty
+  url: https://comiccaster.xyz/rss/monty
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Mother Goose and Grimm
+  url: https://comiccaster.xyz/rss/mother-goose-and-grimm
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: My Dad is Dracula
+  url: https://comiccaster.xyz/rss/my-dad-is-dracula
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Nancy
+  url: https://comiccaster.xyz/rss/nancy
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Nancy Classics
+  url: https://comiccaster.xyz/rss/nancy-classics
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: NEUROTICA
+  url: https://comiccaster.xyz/rss/neurotica
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Next Door Neighbors
+  url: https://comiccaster.xyz/rss/next-door-neighbors
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
 - name: Now Recharging
   url: https://comiccaster.xyz/rss/now-recharging
   error: Feed contains only generic promotional content
@@ -116,15 +436,30 @@ failed_feeds:
   error: Feed contains only generic promotional content
   feed_type: rss
   status: needs_investigation
-- name: Origins of the Sunday Comics
-  url: https://comiccaster.xyz/rss/origins-of-the-sunday-comics
-  error: Feed contains only generic promotional content
-  feed_type: rss
+- name: Ollie and Quentin
+  url: https://comiccaster.xyz/rss/ollie-and-quentin
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
   status: needs_investigation
-- name: Outland
-  url: https://comiccaster.xyz/rss/outland
-  error: Feed contains only generic promotional content
-  feed_type: rss
+- name: Overboard
+  url: https://comiccaster.xyz/rss/overboard
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Peanuts
+  url: https://comiccaster.xyz/rss/peanuts
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Peanuts Begins
+  url: https://comiccaster.xyz/rss/peanuts-begins
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Phoebe and Her Unicorn
+  url: https://comiccaster.xyz/rss/phoebe-and-her-unicorn
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
   status: needs_investigation
 - name: Pibgorn
   url: https://comiccaster.xyz/rss/pibgorn
@@ -136,15 +471,45 @@ failed_feeds:
   error: Feed contains only generic promotional content
   feed_type: rss
   status: needs_investigation
+- name: Pickles
+  url: https://comiccaster.xyz/rss/pickles
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Pluggers
+  url: https://comiccaster.xyz/rss/pluggers
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
 - name: Poorcraft
   url: https://comiccaster.xyz/rss/poorcraft
   error: Feed contains only generic promotional content
   feed_type: rss
   status: needs_investigation
+- name: Raising Duncan
+  url: https://comiccaster.xyz/rss/raising-duncan
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
 - name: Red Meat
   url: https://comiccaster.xyz/rss/redmeat
   error: Feed contains only generic promotional content
   feed_type: rss
+  status: needs_investigation
+- name: Robbie and Bobby
+  url: https://comiccaster.xyz/rss/robbie-and-bobby
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Rubes
+  url: https://comiccaster.xyz/rss/rubes
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Savage Chickens
+  url: https://comiccaster.xyz/rss/savage-chickens
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
   status: needs_investigation
 - name: Scenes from a Multiverse
   url: https://comiccaster.xyz/rss/scenes-from-a-multiverse
@@ -156,10 +521,20 @@ failed_feeds:
   error: Feed contains only generic promotional content
   feed_type: rss
   status: needs_investigation
+- name: Shoe
+  url: https://comiccaster.xyz/rss/shoe
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1004 > 1000'
+  feed_type: null
+  status: needs_investigation
 - name: Sketchshark Comics
   url: https://comiccaster.xyz/rss/sketchshark-comics
   error: Feed contains only generic promotional content
   feed_type: rss
+  status: needs_investigation
+- name: Skippy
+  url: https://comiccaster.xyz/rss/skippy
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
   status: needs_investigation
 - name: Small Potatoes
   url: https://comiccaster.xyz/rss/small-potatoes
@@ -171,6 +546,31 @@ failed_feeds:
   error: Feed contains only generic promotional content
   feed_type: rss
   status: needs_investigation
+- name: Super-Fun-Pak Comix
+  url: https://comiccaster.xyz/rss/super-fun-pak-comix
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Sylvia
+  url: https://comiccaster.xyz/rss/sylvia
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Tarzan
+  url: https://comiccaster.xyz/rss/tarzan
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Texts From Mittens
+  url: https://comiccaster.xyz/rss/texts-from-mittens
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: That is Priceless
+  url: https://comiccaster.xyz/rss/that-is-priceless
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
 - name: Today's Szep
   url: https://comiccaster.xyz/rss/todays-szep
   error: Feed contains only generic promotional content
@@ -180,6 +580,21 @@ failed_feeds:
   url: https://comiccaster.xyz/rss/upside-down-world-of-gustave-verbeek
   error: Feed contains only generic promotional content
   feed_type: rss
+  status: needs_investigation
+- name: Viivi & Wagner
+  url: https://comiccaster.xyz/rss/viivi-and-wagner
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Wallace the Brave
+  url: https://comiccaster.xyz/rss/wallace-the-brave
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Wannabe
+  url: https://comiccaster.xyz/rss/wannabe
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
   status: needs_investigation
 - name: Wawawiwa
   url: https://comiccaster.xyz/rss/wawawiwa
@@ -191,29 +606,419 @@ failed_feeds:
   error: Feed contains only generic promotional content
   feed_type: rss
   status: needs_investigation
-- name: Yeah It’s Chill
-  url: https://comiccaster.xyz/rss/yeah-its-chill
-  error: Feed contains only generic promotional content
-  feed_type: rss
+- name: Wizard of Id Classics
+  url: https://comiccaster.xyz/rss/wizard-of-id-classics
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Working Daze
+  url: https://comiccaster.xyz/rss/working-daze
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
   status: needs_investigation
 - name: Yes, I'm Hot in This
   url: https://comiccaster.xyz/rss/yesimhotinthis
   error: Feed contains only generic promotional content
   feed_type: rss
   status: needs_investigation
+- name: Ziggy
+  url: https://comiccaster.xyz/rss/ziggy
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Barney Google And Snuffy Smith
+  url: https://comiccaster.xyz/rss/barney-google-and-snuffy-smith
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1004 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Crock
+  url: https://comiccaster.xyz/rss/crock
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1005 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Todd The Dinosaur
+  url: https://comiccaster.xyz/rss/todd-the-dinosaur
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1010 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Daddy Daze
+  url: https://comiccaster.xyz/rss/daddy-daze
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1004 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Rex Morgan M D
+  url: https://comiccaster.xyz/rss/rex-morgan-m-d
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1006 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Mandrake The Magician
+  url: https://comiccaster.xyz/rss/mandrake-the-magician
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1005 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Moose And Molly
+  url: https://comiccaster.xyz/rss/moose-and-molly
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1004 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Six Chix
+  url: https://comiccaster.xyz/rss/six-chix
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1003 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Tiger
+  url: https://comiccaster.xyz/rss/tiger
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1010 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Jeremias
+  url: https://comiccaster.xyz/rss/jeremias
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Palurdeando
+  url: https://comiccaster.xyz/rss/palurdeando
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Arctic Circle
+  url: https://comiccaster.xyz/rss/arctic-circle
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1012 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Beetle Bailey
+  url: https://comiccaster.xyz/rss/beetle-bailey-1
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1002 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Between Friends
+  url: https://comiccaster.xyz/rss/between-friends
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Bizarro
+  url: https://comiccaster.xyz/rss/bizarro
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Blondie
+  url: https://comiccaster.xyz/rss/blondie
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1012 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Break of Day
+  url: https://comiccaster.xyz/rss/break-of-day
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Carpe Diem
+  url: https://comiccaster.xyz/rss/carpe-diem
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Curtis
+  url: https://comiccaster.xyz/rss/curtis
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1006 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Dennis The Menace
+  url: https://comiccaster.xyz/rss/dennis-the-menace
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Dumplings
+  url: https://comiccaster.xyz/rss/dumplings
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Dustin
+  url: https://comiccaster.xyz/rss/dustin
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1005 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: The Family Circus
+  url: https://comiccaster.xyz/rss/family-circus
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Flash Gordon
+  url: https://comiccaster.xyz/rss/flash-gordon
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Hagar The Horrible
+  url: https://comiccaster.xyz/rss/hagar-the-horrible
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1010 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Hi and Lois
+  url: https://comiccaster.xyz/rss/hi-and-lois
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Insanity Streak
+  url: https://comiccaster.xyz/rss/insanity-streak
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Judge Parker
+  url: https://comiccaster.xyz/rss/judge-parker
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1002 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Kevin and Kell
+  url: https://comiccaster.xyz/rss/kevin-and-kell
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Macanudo
+  url: https://comiccaster.xyz/rss/macanudo
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1005 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Mark Trail
+  url: https://comiccaster.xyz/rss/mark-trail
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1004 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Marvin
+  url: https://comiccaster.xyz/rss/marvin
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1003 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Mary Worth
+  url: https://comiccaster.xyz/rss/mary-worth
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1004 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Mazetoons
+  url: https://comiccaster.xyz/rss/mazetoons
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Mutts
+  url: https://comiccaster.xyz/rss/mutts
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1009 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Never Been Deader
+  url: https://comiccaster.xyz/rss/never-been-deader
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: On The Fastrack
+  url: https://comiccaster.xyz/rss/on-the-fastrack
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: The Pajama Diaries
+  url: https://comiccaster.xyz/rss/pajama-diaries
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Pardon My Planet
+  url: https://comiccaster.xyz/rss/pardon-my-planet
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: The Phantom
+  url: https://comiccaster.xyz/rss/phantom
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1007 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: 'Phantom 2040: A New Shadow'
+  url: https://comiccaster.xyz/rss/phantom-2040-a-new-shadow
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1051 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Popeye
+  url: https://comiccaster.xyz/rss/popeye
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1006 > 1000'
+  feed_type: null
+  status: needs_investigation
 - name: Pros & Cons
   url: https://comiccaster.xyz/rss/pros-cons
   error: No comic array returned
   feed_type: rss
+  status: needs_investigation
+- name: Rae The Doe
+  url: https://comiccaster.xyz/rss/rae-the-doe
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Rhymes with Orange
+  url: https://comiccaster.xyz/rss/rhymes-with-orange
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Rosebuds
+  url: https://comiccaster.xyz/rss/rosebuds
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Safe Havens
+  url: https://comiccaster.xyz/rss/safe-havens
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1002 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Sally Forth
+  url: https://comiccaster.xyz/rss/sally-forth
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1010 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Sam And Silo
+  url: https://comiccaster.xyz/rss/sam-and-silo
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Slylock Fox
+  url: https://comiccaster.xyz/rss/slylock-fox-and-comics-for-kids
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Take it from the Tinkersons
+  url: https://comiccaster.xyz/rss/take-it-from-the-tinkersons
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Tina’s Groove
+  url: https://comiccaster.xyz/rss/tina-s-groove
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Zippy The Pinhead
+  url: https://comiccaster.xyz/rss/zippy-the-pinhead
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1002 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Zits
+  url: https://comiccaster.xyz/rss/zits
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1007 > 1000'
+  feed_type: null
   status: needs_investigation
 - name: The Far Side - New Stuff
   url: https://comiccaster.xyz/rss/farside-new
   error: No items/entries found in feed
   feed_type: rss
   status: needs_investigation
+- name: Barney Google And Snuffy Smith (Spanish)
+  url: https://comiccaster.xyz/rss/tapon
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Beetle Bailey (Spanish)
+  url: https://comiccaster.xyz/rss/beto-el-recluta
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Blondie (Spanish)
+  url: https://comiccaster.xyz/rss/pepita
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Crock (Spanish)
+  url: https://comiccaster.xyz/rss/crock-spanish
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Dennis The Menace (Spanish)
+  url: https://comiccaster.xyz/rss/daniel-el-travieso
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: The Family Circus (Spanish)
+  url: https://comiccaster.xyz/rss/circulo-familiar
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Hagar The Horrible (Spanish)
+  url: https://comiccaster.xyz/rss/olafo
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Lalo Y Lola (Spanish)
+  url: https://comiccaster.xyz/rss/lalo-y-lola
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Macanudo (Spanish)
+  url: https://comiccaster.xyz/rss/macanudo-spanish
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1005 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Mandrake The Magician (Spanish)
+  url: https://comiccaster.xyz/rss/mandrake-the-magician-spanish
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Marvin (Spanish)
+  url: https://comiccaster.xyz/rss/marvin-spanish
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Mary Worth (Spanish)
+  url: https://comiccaster.xyz/rss/maria-de-oro
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Mr. Abernathy (Spanish)
+  url: https://comiccaster.xyz/rss/don-abundio
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Mutts (Spanish)
+  url: https://comiccaster.xyz/rss/motas
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Palurdeando (Spanish)
+  url: https://comiccaster.xyz/rss/palurdeando-spanish
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: The Phantom (Spanish)
+  url: https://comiccaster.xyz/rss/el-fantasma
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Popeye (Spanish)
+  url: https://comiccaster.xyz/rss/popeye-spanish
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Rex Morgan M.D. (Spanish)
+  url: https://comiccaster.xyz/rss/rex-morgan-md-spanish
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Sam And Silo (Spanish)
+  url: https://comiccaster.xyz/rss/soso-y-siso
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Slylock Fox (Spanish)
+  url: https://comiccaster.xyz/rss/solo-para-ninos
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: Tiger (Spanish)
+  url: https://comiccaster.xyz/rss/tigrillo
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
+- name: A Toda Velocidad (Spanish)
+  url: https://comiccaster.xyz/rss/a-toda-velocidad
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
+  feed_type: null
+  status: needs_investigation
 - name: Bob Gorrell
   url: https://comiccaster.xyz/rss/bobgorrell
   error: HTTP 404
+  feed_type: null
+  status: needs_investigation
+- name: Doonesbury
+  url: https://comiccaster.xyz/rss/doonesbury
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1008 > 1000'
   feed_type: null
   status: needs_investigation
 - name: Matt Bors
@@ -244,6 +1049,11 @@ failed_feeds:
 - name: ViewsAfrica
   url: https://comiccaster.xyz/rss/viewsafrica
   error: HTTP 404
+  feed_type: null
+  status: needs_investigation
+- name: The Brilliant Mind Of Edison Lee
+  url: https://comiccaster.xyz/rss/brilliant-mind-of-edison-lee
+  error: 'XML parsing failed: Entity expansion limit exceeded: 1001 > 1000'
   feed_type: null
   status: needs_investigation
 - name: David M. Hitch
