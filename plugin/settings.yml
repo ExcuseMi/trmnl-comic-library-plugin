@@ -13,14 +13,14 @@ custom_fields:
 - keyname: about
   name: About This Plugin
   field_type: author_bio
-  description: 'Access an daily updated collection of 424 comic RSS / Atom feeds and enjoy fresh content every day.<br /><a href=''https://excusemi.github.io/trmnl-comic-library-plugin/''>Click here to see all supported comics!</a><br />Features: <br />● Displays the most recent comic or a random comic <br />● Supports multiple RSS / Atom sources <br />● Add your own RSS / Atom feeds <br />● Frequently updated to keep all RSS / Atom sources valid and up to date'
+  description: 'Access an daily updated collection of 425 comic RSS / Atom feeds and enjoy fresh content every day.<br /><a href=''https://excusemi.github.io/trmnl-comic-library-plugin/''>Click here to see all supported comics!</a><br />Features: <br />● Displays the most recent comic or a random comic <br />● Supports multiple RSS / Atom sources <br />● Add your own RSS / Atom feeds <br />● Frequently updated to keep all RSS / Atom sources valid and up to date'
   github_url: https://github.com/ExcuseMi/trmnl-comic-library-plugin
   learn_more_url: https://excusemi.github.io/trmnl-comic-library-plugin
   category: comics
   help_text: TRMNL X Ready
 - keyname: comics
   field_type: select
-  name: 'Comics: 336'
+  name: 'Comics: 337'
   multiple: true
   help_text: Use ⌘+click (Mac) or ctrl+click (Windows) to select multiple items. Use Shift+click to select a whole range at once.
   optional: true
@@ -118,6 +118,7 @@ custom_fields:
   - Eye Lie Popeye: https://comiccaster.xyz/rss/eye-lie-popeye
   - Eyebeam by Sam Hurt: https://comiccaster.xyz/rss/eyebeam
   - F Minus by Tony Carrillo: https://comiccaster.xyz/rss/fminus
+  - False Knees: https://www.webtoons.com/en/challenge/false-knees/rss?title_no=79544
   - Family Tree by Signe Wilkinson: https://comiccaster.xyz/rss/familytree
   - Flash Forward: https://comiccaster.xyz/rss/flash-forward
   - Flash Gordon Vintage: https://comiccaster.xyz/rss/flash-gordon-vintage
