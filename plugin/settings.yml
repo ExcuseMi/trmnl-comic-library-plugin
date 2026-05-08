@@ -13,19 +13,18 @@ custom_fields:
 - keyname: about
   name: About This Plugin
   field_type: author_bio
-  description: 'Access an daily updated collection of 423 comic RSS / Atom feeds and enjoy fresh content every day.<br /><a href=''https://excusemi.github.io/trmnl-comic-library-plugin/''>Click here to see all supported comics!</a><br />Features: <br />● Displays the most recent comic or a random comic <br />● Supports multiple RSS / Atom sources <br />● Add your own RSS / Atom feeds <br />● Frequently updated to keep all RSS / Atom sources valid and up to date'
+  description: 'Access an daily updated collection of 417 comic RSS / Atom feeds and enjoy fresh content every day.<br /><a href=''https://excusemi.github.io/trmnl-comic-library-plugin/''>Click here to see all supported comics!</a><br />Features: <br />● Displays the most recent comic or a random comic <br />● Supports multiple RSS / Atom sources <br />● Add your own RSS / Atom feeds <br />● Frequently updated to keep all RSS / Atom sources valid and up to date'
   github_url: https://github.com/ExcuseMi/trmnl-comic-library-plugin
   learn_more_url: https://excusemi.github.io/trmnl-comic-library-plugin
   category: comics
   help_text: TRMNL X Ready
 - keyname: comics
   field_type: select
-  name: 'Comics: 335'
+  name: 'Comics: 331'
   multiple: true
   help_text: Use ⌘+click (Mac) or ctrl+click (Windows) to select multiple items. Use Shift+click to select a whole range at once.
   optional: true
   options:
-  - 9 to 5 by Harley Schwadron: https://comiccaster.xyz/rss/9to5
   - '@Tavicat by Rikki Simons': https://comiccaster.xyz/rss/tavicat
   - Aaggghhh by Ham: https://comiccaster.xyz/rss/aaggghhh
   - Adam@Home by Rob Harrell: https://comiccaster.xyz/rss/adamathome
@@ -40,7 +39,6 @@ custom_fields:
   - Annie by Jay Maeder and Alan Kupperberg: https://comiccaster.xyz/rss/annie
   - Apartment 3-G: https://comiccaster.xyz/rss/apartment-3-g_1
   - Archie by Archie Comics: https://comiccaster.xyz/rss/creators-archie
-  - Arlo and Janis by Jimmy Johnson: https://comiccaster.xyz/rss/arloandjanis
   - Ask Shagg by Peter Guren: https://comiccaster.xyz/rss/askshagg
   - Aunty Acid by Ged Backland: https://comiccaster.xyz/rss/aunty-acid
   - B.C. by Johnny Hart: https://comiccaster.xyz/rss/bc
@@ -128,7 +126,6 @@ custom_fields:
   - For Better or For Worse by Lynn Johnston: https://comiccaster.xyz/rss/forbetterorforworse
   - For Heaven's Sake by Mike Morgan: https://comiccaster.xyz/rss/forheavenssake
   - Fowl Language by Brian Gordon: https://comiccaster.xyz/rss/fowl-language
-  - Foxes in Love: https://foxes-in-love.tumblr.com/rss
   - FoxTrot by Bill Amend: https://comiccaster.xyz/rss/foxtrot
   - FoxTrot Classics by Bill Amend: https://comiccaster.xyz/rss/foxtrotclassics
   - Francis by Patrick J. Marrin: https://comiccaster.xyz/rss/francis
@@ -267,7 +264,6 @@ custom_fields:
   - Rose Is Rose by Don Wimmer: https://comiccaster.xyz/rss/roseisrose
   - Rugrats: https://comiccaster.xyz/rss/rugrats
   - Sales: https://comiccaster.xyz/rss/sales
-  - Sarah's Scribbles by Sarah Andersen: https://sarahcandersen.com/rss
   - Saturday Morning Breakfast Cereal by Zach Weinersmith: https://www.smbc-comics.com/comic/rss
   - Scary Gary by Mark Buford: https://comiccaster.xyz/rss/scarygary
   - Secret Agent X-9: https://comiccaster.xyz/rss/secret-agent-x-9
@@ -362,7 +358,7 @@ custom_fields:
   - Zen Pencils by Gavin Aung Than: https://comiccaster.xyz/rss/zen-pencils
 - keyname: comics_other_languages
   field_type: select
-  name: 'Comics in other languages: 32'
+  name: 'Comics in other languages: 31'
   multiple: true
   help_text: Use ⌘+click (Mac) or ctrl+click (Windows) to select multiple items. Use Shift+click to select a whole range at once.
   optional: true
@@ -375,7 +371,6 @@ custom_fields:
   - Don Brutus by Chip Sansom: https://comiccaster.xyz/rss/don-brutus
   - FoxTrot en Español by Bill Amend: https://comiccaster.xyz/rss/foxtrotespanol
   - Fred Basset en Español by Alex Graham: https://comiccaster.xyz/rss/fredbassetespanol
-  - Garfield en Español by Jim Davis: https://comiccaster.xyz/rss/garfieldespanol
   - Ginger Meggs en Español by Jason Chatfield: https://comiccaster.xyz/rss/gingermeggs-espanol
   - Goomer (Spanish): https://comiccaster.xyz/rss/goomer-spanish
   - Heathcliff en Español by George Gately: https://comiccaster.xyz/rss/heathcliffespanol
@@ -401,7 +396,7 @@ custom_fields:
   - Ziggy en Español by Tom Wilson & Tom II: https://comiccaster.xyz/rss/ziggyespanol
 - keyname: comics_political
   field_type: select
-  name: 'Political Comics: 56'
+  name: 'Political Comics: 55'
   multiple: true
   help_text: Use ⌘+click (Mac) or ctrl+click (Windows) to select multiple items. Use Shift+click to select a whole range at once.
   optional: true
@@ -410,7 +405,6 @@ custom_fields:
   - Bill Bramhall: https://comiccaster.xyz/rss/bill-bramhall
   - Brian McFadden: https://comiccaster.xyz/rss/brian-mcfadden
   - Chip Bok: https://comiccaster.xyz/rss/chipbok
-  - Chris Britt: https://comiccaster.xyz/rss/chrisbritt
   - Clay Bennett: https://comiccaster.xyz/rss/claybennett
   - Clay Jones: https://comiccaster.xyz/rss/clayjones
   - Dana Summers: https://comiccaster.xyz/rss/danasummers
