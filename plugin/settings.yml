@@ -13,14 +13,14 @@ custom_fields:
 - keyname: about
   name: About This Plugin
   field_type: author_bio
-  description: 'Access an daily updated collection of 423 comic RSS / Atom feeds and enjoy fresh content every day.<br /><a href=''https://excusemi.github.io/trmnl-comic-library-plugin/''>Click here to see all supported comics!</a><br />Features: <br />● Displays the most recent comic or a random comic <br />● Supports multiple RSS / Atom sources <br />● Add your own RSS / Atom feeds <br />● Frequently updated to keep all RSS / Atom sources valid and up to date'
+  description: 'Access an daily updated collection of 422 comic RSS / Atom feeds and enjoy fresh content every day.<br /><a href=''https://excusemi.github.io/trmnl-comic-library-plugin/''>Click here to see all supported comics!</a><br />Features: <br />● Displays the most recent comic or a random comic <br />● Supports multiple RSS / Atom sources <br />● Add your own RSS / Atom feeds <br />● Frequently updated to keep all RSS / Atom sources valid and up to date'
   github_url: https://github.com/ExcuseMi/trmnl-comic-library-plugin
   learn_more_url: https://excusemi.github.io/trmnl-comic-library-plugin
   category: comics
   help_text: TRMNL X Ready
 - keyname: comics
   field_type: select
-  name: 'Comics: 335'
+  name: 'Comics: 334'
   multiple: true
   help_text: Use ⌘+click (Mac) or ctrl+click (Windows) to select multiple items. Use Shift+click to select a whole range at once.
   optional: true
@@ -323,7 +323,6 @@ custom_fields:
   - The Phantom Vintage: https://comiccaster.xyz/rss/the-phantom-vintage
   - The Phantom Vintage Sundays: https://comiccaster.xyz/rss/the-phantom-vintage-sunday
   - The Planet Syndicate: https://comiccaster.xyz/rss/the-planet-syndicate
-  - The Saga of Brann Bjornson: https://comiccaster.xyz/rss/the-saga-of-brann-bjornson
   - The Wandering Melon by Mike Shiell: https://comiccaster.xyz/rss/the-wandering-melon
   - The Weekly Roll: https://www.webtoons.com/en/challenge/the-weekly-roll/rss?title_no=358889
   - The Worried Well by Dana Maier: https://comiccaster.xyz/rss/the-worried-well
