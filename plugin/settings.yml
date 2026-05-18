@@ -13,14 +13,14 @@ custom_fields:
 - keyname: about
   name: About This Plugin
   field_type: author_bio
-  description: 'Access an daily updated collection of 418 comic RSS / Atom feeds and enjoy fresh content every day.<br /><a href=''https://excusemi.github.io/trmnl-comic-library-plugin/''>Click here to see all supported comics!</a><br />Features: <br />● Displays the most recent comic or a random comic <br />● Supports multiple RSS / Atom sources <br />● Add your own RSS / Atom feeds <br />● Frequently updated to keep all RSS / Atom sources valid and up to date'
+  description: 'Access an daily updated collection of 424 comic RSS / Atom feeds and enjoy fresh content every day.<br /><a href=''https://excusemi.github.io/trmnl-comic-library-plugin/''>Click here to see all supported comics!</a><br />Features: <br />● Displays the most recent comic or a random comic <br />● Supports multiple RSS / Atom sources <br />● Add your own RSS / Atom feeds <br />● Frequently updated to keep all RSS / Atom sources valid and up to date'
   github_url: https://github.com/ExcuseMi/trmnl-comic-library-plugin
   learn_more_url: https://excusemi.github.io/trmnl-comic-library-plugin
   category: comics
   help_text: TRMNL X Ready
 - keyname: comics
   field_type: select
-  name: 'Comics: 331'
+  name: 'Comics: 337'
   multiple: true
   help_text: Use ⌘+click (Mac) or ctrl+click (Windows) to select multiple items. Use Shift+click to select a whole range at once.
   optional: true
@@ -76,6 +76,7 @@ custom_fields:
   - Bozo by Foxo Reardon: https://comiccaster.xyz/rss/bozo
   - Brewster Rockit by Tim Rickard: https://comiccaster.xyz/rss/brewsterrockit
   - Brick Bradford: https://comiccaster.xyz/rss/brick-bradford
+  - Broom Hilda by Russell Myers: https://comiccaster.xyz/rss/broomhilda
   - Bully by Andrew Paavola: https://comiccaster.xyz/rss/bully
   - Buni by Ryan Pagelow: https://comiccaster.xyz/rss/buni
   - Buz Sawyer: https://comiccaster.xyz/rss/buz-sawyer
@@ -105,6 +106,8 @@ custom_fields:
   - Deep Dark Fears by Fran Krause: https://comiccaster.xyz/rss/deep-dark-fears
   - DeFlocked by Jeff Corriveau: https://comiccaster.xyz/rss/deflocked
   - Diamond Lil by Brett Koth: https://comiccaster.xyz/rss/diamondlil
+  - Dick Tracy: https://comiccaster.xyz/rss/dick-tracy
+  - Dick Tracy by Mike Curtis: https://comiccaster.xyz/rss/dicktracy
   - Dog Eat Doug by Brian Anderson: https://comiccaster.xyz/rss/dogeatdoug
   - Dogs of C-Kennel by Mick and Mason Mastroianni: https://comiccaster.xyz/rss/dogsofckennel
   - Domestic Abuse by Jeremy Lambros: https://comiccaster.xyz/rss/domesticabuse
@@ -143,6 +146,7 @@ custom_fields:
   - Gil by Norm Feuti: https://comiccaster.xyz/rss/gil
   - Gil Thorp by Henry Barajas and Rachel Merrill: https://comiccaster.xyz/rss/gilthorp
   - Ginger Meggs by Jason Chatfield: https://comiccaster.xyz/rss/gingermeggs
+  - Glasbergen Cartoons by Randy Glasbergen: https://comiccaster.xyz/rss/glasbergen-cartoons
   - Globetrotter by Ainsley Ashby: https://comiccaster.xyz/rss/globetrotter
   - Goats by Jon Rosenberg: https://comiccaster.xyz/rss/goats
   - Goomer: https://comiccaster.xyz/rss/goomer
@@ -280,6 +284,7 @@ custom_fields:
   - Sticky Comics by Christiann MacAuley: https://comiccaster.xyz/rss/sticky-comics
   - Stone Soup by Jan Eliot: https://comiccaster.xyz/rss/stonesoup
   - Strange Brew by John Deering: https://comiccaster.xyz/rss/strangebrew
+  - Street Scene: https://comiccaster.xyz/rss/street-scene
   - Studio Jantze by Michael Jantze: https://comiccaster.xyz/rss/studio-jantze
   - Suburban Fairy Tales: https://comiccaster.xyz/rss/suburban-fairy-tales
   - Swan Eaters by Georgia Dunn: https://comiccaster.xyz/rss/swan-eaters
@@ -293,6 +298,7 @@ custom_fields:
   - Thatababy by Paul Trap: https://comiccaster.xyz/rss/thatababy
   - The Academia Waltz by Berkeley Breathed: https://comiccaster.xyz/rss/the-academia-waltz
   - The Adventures of Business Cat by Tom Fonder: https://comiccaster.xyz/rss/the-adventures-of-business-cat
+  - The Ancients: https://comiccaster.xyz/rss/the-ancients
   - The Argyle Sweater by Scott Hilburn: https://comiccaster.xyz/rss/theargylesweater
   - The Barn by Ralph Hagen: https://comiccaster.xyz/rss/thebarn
   - The Big Picture by Lennie Peterson: https://comiccaster.xyz/rss/thebigpicture
