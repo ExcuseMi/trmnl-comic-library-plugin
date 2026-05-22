@@ -44,6 +44,7 @@ assign container_id = 'image-container' | append_random
   {%- endif -%}
 </div>
 
+{%- unless trmnl.plugin_settings.custom_fields_values.hide_title_bar == "true" -%}
 <div class="title_bar">
   <span class="title preserve-instance">{{ comic.source | default: comic.title | default: trmnl.plugin_settings.instance_name | escape }}</span>
   {%- assign _prefix = comic.source | append: ' - ' -%}
@@ -54,6 +55,7 @@ assign container_id = 'image-container' | append_random
     <span class="instance">{{ trmnl.plugin_settings.instance_name | escape }}</span>
   {%- endif -%}
 </div>
+{%- endunless -%}
 
 <script>
 (function(global) {

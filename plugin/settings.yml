@@ -474,6 +474,12 @@ custom_fields:
   description: Show the caption
   default: true
   optional: true
+- keyname: hide_title_bar
+  field_type: boolean
+  name: Hide Title Bar
+  description: Hide the title bar at the bottom of the display.
+  default: false
+  optional: true
 - keyname: extra_rss_feeds
   field_type: multi_string
   name: Extra RSS / Atom Feeds
