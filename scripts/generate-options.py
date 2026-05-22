@@ -479,6 +479,16 @@ def create_updated_settings():
     }
     custom_fields.append(show_caption)
 
+    hide_title_bar = {
+        'keyname': 'hide_title_bar',
+        'field_type': 'boolean',
+        'name': 'Hide Title Bar',
+        'description': 'Hide the title bar at the bottom of the display.',
+        'default': False,
+        'optional': True
+    }
+    custom_fields.append(hide_title_bar)
+
     extra_rss_feeds = {
         'keyname': 'extra_rss_feeds',
         'field_type': 'multi_string',
