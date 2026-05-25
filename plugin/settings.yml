@@ -13,14 +13,14 @@ custom_fields:
 - keyname: about
   name: About This Plugin
   field_type: author_bio
-  description: 'Access an daily updated collection of 421 comic RSS / Atom feeds and enjoy fresh content every day.<br /><a href=''https://excusemi.github.io/trmnl-comic-library-plugin/''>Click here to see all supported comics!</a><br />Features: <br />● Displays the most recent comic or a random comic <br />● Supports multiple RSS / Atom sources <br />● Add your own RSS / Atom feeds <br />● Frequently updated to keep all RSS / Atom sources valid and up to date'
+  description: 'Access an daily updated collection of 423 comic RSS / Atom feeds and enjoy fresh content every day.<br /><a href=''https://excusemi.github.io/trmnl-comic-library-plugin/''>Click here to see all supported comics!</a><br />Features: <br />● Displays the most recent comic or a random comic <br />● Supports multiple RSS / Atom sources <br />● Add your own RSS / Atom feeds <br />● Frequently updated to keep all RSS / Atom sources valid and up to date'
   github_url: https://github.com/ExcuseMi/trmnl-comic-library-plugin
   learn_more_url: https://excusemi.github.io/trmnl-comic-library-plugin
   category: comics
   help_text: TRMNL X Ready
 - keyname: comics
   field_type: select
-  name: 'Comics: 334'
+  name: 'Comics: 336'
   multiple: true
   help_text: Use ⌘+click (Mac) or ctrl+click (Windows) to select multiple items. Use Shift+click to select a whole range at once.
   optional: true
@@ -128,6 +128,7 @@ custom_fields:
   - For Better or For Worse by Lynn Johnston: https://comiccaster.xyz/rss/forbetterorforworse
   - For Heaven's Sake by Mike Morgan: https://comiccaster.xyz/rss/forheavenssake
   - Fowl Language by Brian Gordon: https://comiccaster.xyz/rss/fowl-language
+  - Foxes in Love: https://foxes-in-love.tumblr.com/rss
   - FoxTrot by Bill Amend: https://comiccaster.xyz/rss/foxtrot
   - FoxTrot Classics by Bill Amend: https://comiccaster.xyz/rss/foxtrotclassics
   - Francis by Patrick J. Marrin: https://comiccaster.xyz/rss/francis
@@ -266,6 +267,7 @@ custom_fields:
   - Rose Is Rose by Don Wimmer: https://comiccaster.xyz/rss/roseisrose
   - Rugrats: https://comiccaster.xyz/rss/rugrats
   - Sales: https://comiccaster.xyz/rss/sales
+  - Sarah's Scribbles by Sarah Andersen: https://sarahcandersen.com/rss
   - Saturday Morning Breakfast Cereal by Zach Weinersmith: https://www.smbc-comics.com/comic/rss
   - Scary Gary by Mark Buford: https://comiccaster.xyz/rss/scarygary
   - Secret Agent X-9: https://comiccaster.xyz/rss/secret-agent-x-9
