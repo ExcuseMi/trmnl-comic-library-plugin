@@ -13,14 +13,14 @@ custom_fields:
 - keyname: about
   name: About This Plugin
   field_type: author_bio
-  description: 'Access an daily updated collection of 324 comic RSS / Atom feeds and enjoy fresh content every day.<br /><a href=''https://excusemi.github.io/trmnl-comic-library-plugin/''>Click here to see all supported comics!</a><br />Features: <br />● Displays the most recent comic or a random comic <br />● Supports multiple RSS / Atom sources <br />● Add your own RSS / Atom feeds <br />● Frequently updated to keep all RSS / Atom sources valid and up to date'
+  description: 'Access an daily updated collection of 322 comic RSS / Atom feeds and enjoy fresh content every day.<br /><a href=''https://excusemi.github.io/trmnl-comic-library-plugin/''>Click here to see all supported comics!</a><br />Features: <br />● Displays the most recent comic or a random comic <br />● Supports multiple RSS / Atom sources <br />● Add your own RSS / Atom feeds <br />● Frequently updated to keep all RSS / Atom sources valid and up to date'
   github_url: https://github.com/ExcuseMi/trmnl-comic-library-plugin
   learn_more_url: https://excusemi.github.io/trmnl-comic-library-plugin
   category: comics
   help_text: TRMNL X Ready
 - keyname: comics
   field_type: select
-  name: 'Comics: 248'
+  name: 'Comics: 246'
   multiple: true
   help_text: Use ⌘+click (Mac) or ctrl+click (Windows) to select multiple items. Use Shift+click to select a whole range at once.
   optional: true
@@ -88,6 +88,7 @@ custom_fields:
   - Eek! by Scott Nickel: https://comiccaster.xyz/rss/eek
   - Eldritch Darling: https://www.webtoons.com/en/challenge/eldritch-darling/rss?title_no=821877
   - Endtown by Aaron Neathery: https://comiccaster.xyz/rss/endtown
+  - Eye Lie Popeye: https://comiccaster.xyz/rss/eye-lie-popeye
   - Eyebeam by Sam Hurt: https://comiccaster.xyz/rss/eyebeam
   - False Knees: https://www.webtoons.com/en/challenge/false-knees/rss?title_no=79544
   - Flash Forward: https://comiccaster.xyz/rss/flash-forward
@@ -205,7 +206,6 @@ custom_fields:
   - Sales: https://comiccaster.xyz/rss/sales
   - Sarah's Scribbles by Sarah Andersen: https://sarahcandersen.com/rss
   - Saturday Morning Breakfast Cereal by Zach Weinersmith: https://www.smbc-comics.com/comic/rss
-  - Scary Gary by Mark Buford: https://comiccaster.xyz/rss/scarygary
   - Secret Agent X-9: https://comiccaster.xyz/rss/secret-agent-x-9
   - Shirley and Son Classics by Jerry Bittle: https://comiccaster.xyz/rss/shirley-and-son-classics
   - Shrimp and Grits: https://comiccaster.xyz/rss/shrimp-and-grits
@@ -215,7 +215,6 @@ custom_fields:
   - Spirit of the Staircase by Matthew Foltz-Gray: https://comiccaster.xyz/rss/spirit-of-the-staircase
   - Spot the Frog by Mark Heath: https://comiccaster.xyz/rss/spot-the-frog
   - Sticky Comics by Christiann MacAuley: https://comiccaster.xyz/rss/sticky-comics
-  - Strange Brew by John Deering: https://comiccaster.xyz/rss/strangebrew
   - Street Scene: https://comiccaster.xyz/rss/street-scene
   - Studio Jantze by Michael Jantze: https://comiccaster.xyz/rss/studio-jantze
   - Suburban Fairy Tales: https://comiccaster.xyz/rss/suburban-fairy-tales
@@ -260,7 +259,6 @@ custom_fields:
   - Warped by Michael Cavna: https://comiccaster.xyz/rss/warped
   - Watch Your Head by Cory Thomas: https://comiccaster.xyz/rss/watchyourhead
   - WaynoVision by Wayno: https://comiccaster.xyz/rss/waynovision
-  - Wee Pals by Morrie Turner: https://comiccaster.xyz/rss/weepals
   - What's Up Beanie: https://www.webtoons.com/en/challenge/whats-up-beanie/rss?title_no=295880
   - Wide Open! by Rich Powell: https://comiccaster.xyz/rss/wide-open
   - Willy Black: https://comiccaster.xyz/rss/willy-black
