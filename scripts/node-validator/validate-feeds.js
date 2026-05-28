@@ -66,6 +66,7 @@ const xmlParser = new XMLParser({
   textNodeName: '__content__',
   removeNSPrefix: true,
   trimValues: true,
+  processEntities: false,
 });
 
 // ---------------------------------------------------------------------------
