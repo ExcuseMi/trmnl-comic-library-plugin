@@ -1,5 +1,5 @@
-report_date: '2026-05-30 01:58:24'
-total_failed: 53
+report_date: '2026-05-31 02:13:55'
+total_failed: 52
 failed_feeds:
 - name: Art by Moga
   url: https://comiccaster.xyz/rss/artbymoga
@@ -145,11 +145,6 @@ failed_feeds:
   url: https://comiccaster.xyz/rss/todays-szep
   error: Feed contains only generic promotional content
   feed_type: rss
-  status: needs_investigation
-- name: Too Much Coffee Man
-  url: https://comiccaster.xyz/rss/toomuchcoffeeman
-  error: 'Request failed: This operation was aborted'
-  feed_type: null
   status: needs_investigation
 - name: The Upside Down World of Gustave Verbeek
   url: https://comiccaster.xyz/rss/upside-down-world-of-gustave-verbeek
