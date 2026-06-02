@@ -1,5 +1,5 @@
-report_date: '2026-06-01 02:35:21'
-total_failed: 54
+report_date: '2026-06-02 02:34:01'
+total_failed: 52
 failed_feeds:
 - name: Art by Moga
   url: https://comiccaster.xyz/rss/artbymoga
@@ -250,16 +250,6 @@ failed_feeds:
   url: https://www.gunnerkrigg.com/rss.xml
   error: No comic array returned
   feed_type: rss
-  status: needs_investigation
-- name: Foxes in Love
-  url: https://foxes-in-love.tumblr.com/rss
-  error: HTTP 403
-  feed_type: null
-  status: needs_investigation
-- name: Sarah's Scribbles
-  url: https://sarahcandersen.com/rss
-  error: HTTP 403
-  feed_type: null
   status: needs_investigation
 - name: The Pigeon Gazette
   url: https://www.webtoons.com/en/challenge/the-pigeon-gazette/rss?title_no=38949
