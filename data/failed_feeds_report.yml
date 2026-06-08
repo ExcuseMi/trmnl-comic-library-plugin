@@ -1,5 +1,5 @@
-report_date: '2026-06-07 02:30:02'
-total_failed: 52
+report_date: '2026-06-08 02:34:36'
+total_failed: 51
 failed_feeds:
 - name: Art by Moga
   url: https://comiccaster.xyz/rss/artbymoga
@@ -90,11 +90,6 @@ failed_feeds:
   url: https://comiccaster.xyz/rss/now-recharging
   error: Feed contains only generic promotional content
   feed_type: rss
-  status: needs_investigation
-- name: Off the Mark
-  url: https://comiccaster.xyz/rss/offthemark
-  error: 'Request failed: This operation was aborted'
-  feed_type: null
   status: needs_investigation
 - name: Oh, Brother!
   url: https://comiccaster.xyz/rss/oh-brother
