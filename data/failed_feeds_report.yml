@@ -1,5 +1,5 @@
-report_date: '2026-06-09 01:58:26'
-total_failed: 51
+report_date: '2026-06-10 02:11:30'
+total_failed: 52
 failed_feeds:
 - name: Art by Moga
   url: https://comiccaster.xyz/rss/artbymoga
@@ -95,6 +95,11 @@ failed_feeds:
   url: https://comiccaster.xyz/rss/oh-brother
   error: Feed contains only generic promotional content
   feed_type: rss
+  status: needs_investigation
+- name: Outland
+  url: https://comiccaster.xyz/rss/outland
+  error: 'Request failed: This operation was aborted'
+  feed_type: null
   status: needs_investigation
 - name: Pibgorn
   url: https://comiccaster.xyz/rss/pibgorn
