@@ -13,14 +13,14 @@ custom_fields:
 - keyname: about
   name: About This Plugin
   field_type: author_bio
-  description: 'Access an daily updated collection of 592 comic RSS / Atom feeds and enjoy fresh content every day.<br /><a href=''https://excusemi.github.io/trmnl-comic-library-plugin/''>Click here to see all supported comics!</a><br />Features: <br />● Displays the most recent comic or a random comic <br />● Supports multiple RSS / Atom sources <br />● Add your own RSS / Atom feeds <br />● Frequently updated to keep all RSS / Atom sources valid and up to date'
+  description: 'Access an daily updated collection of 593 comic RSS / Atom feeds and enjoy fresh content every day.<br /><a href=''https://excusemi.github.io/trmnl-comic-library-plugin/''>Click here to see all supported comics!</a><br />Features: <br />● Displays the most recent comic or a random comic <br />● Supports multiple RSS / Atom sources <br />● Add your own RSS / Atom feeds <br />● Frequently updated to keep all RSS / Atom sources valid and up to date'
   github_url: https://github.com/ExcuseMi/trmnl-comic-library-plugin
   learn_more_url: https://excusemi.github.io/trmnl-comic-library-plugin
   category: comics
   help_text: TRMNL X Ready
 - keyname: comics
   field_type: select
-  name: 'Comics: 480'
+  name: 'Comics: 481'
   multiple: true
   help_text: Use ⌘+click (Mac) or ctrl+click (Windows) to select multiple items. Use Shift+click to select a whole range at once.
   optional: true
@@ -331,6 +331,7 @@ custom_fields:
   - Origins of the Sunday Comics by Peter Maresca: https://comiccaster.xyz/rss/origins-of-the-sunday-comics
   - Our Super Adventure by Sarah Graley and Stef Purenins: https://comiccaster.xyz/rss/our-super-adventure
   - Out of the Gene Pool by Matt Janz: https://comiccaster.xyz/rss/outofthegenepool
+  - Outland by Berkeley Breathed: https://comiccaster.xyz/rss/outland
   - Over the Hedge by T Lewis: https://comiccaster.xyz/rss/overthehedge
   - Overboard by Chip Dunham: https://comiccaster.xyz/rss/overboard
   - Ozy and Millie by Dana Simpson: https://comiccaster.xyz/rss/ozy-and-millie
