@@ -13,14 +13,14 @@ custom_fields:
 - keyname: about
   name: About This Plugin
   field_type: author_bio
-  description: 'Access an daily updated collection of 593 comic RSS / Atom feeds and enjoy fresh content every day.<br /><a href=''https://excusemi.github.io/trmnl-comic-library-plugin/''>Click here to see all supported comics!</a><br />Features: <br />● Displays the most recent comic or a random comic <br />● Supports multiple RSS / Atom sources <br />● Add your own RSS / Atom feeds <br />● Frequently updated to keep all RSS / Atom sources valid and up to date'
+  description: 'Access an daily updated collection of 594 comic RSS / Atom feeds and enjoy fresh content every day.<br /><a href=''https://excusemi.github.io/trmnl-comic-library-plugin/''>Click here to see all supported comics!</a><br />Features: <br />● Displays the most recent comic or a random comic <br />● Supports multiple RSS / Atom sources <br />● Add your own RSS / Atom feeds <br />● Frequently updated to keep all RSS / Atom sources valid and up to date'
   github_url: https://github.com/ExcuseMi/trmnl-comic-library-plugin
   learn_more_url: https://excusemi.github.io/trmnl-comic-library-plugin
   category: comics
   help_text: TRMNL X Ready
 - keyname: comics
   field_type: select
-  name: 'Comics: 481'
+  name: 'Comics: 482'
   multiple: true
   help_text: Use ⌘+click (Mac) or ctrl+click (Windows) to select multiple items. Use Shift+click to select a whole range at once.
   optional: true
@@ -300,6 +300,7 @@ custom_fields:
   - Mostly Gravy: https://comiccaster.xyz/rss/mostly-gravy
   - Mother Goose and Grimm by Mike Peters: https://comiccaster.xyz/rss/mother-goose-and-grimm
   - Motley Classics by Larry Wright: https://comiccaster.xyz/rss/motley-classics
+  - Mr. Boffo by Joe Martin: https://comiccaster.xyz/rss/mr-boffo
   - Mr. Lowe by Mark Pett: https://comiccaster.xyz/rss/mr-lowe
   - Mutt & Jeff by Bud Fisher: https://comiccaster.xyz/rss/muttandjeff
   - Mutts: https://comiccaster.xyz/rss/mutts
