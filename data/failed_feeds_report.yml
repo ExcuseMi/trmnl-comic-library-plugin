@@ -1,5 +1,5 @@
-report_date: '2026-06-29 02:15:03'
-total_failed: 50
+report_date: '2026-06-30 02:10:23'
+total_failed: 52
 failed_feeds:
 - name: Art by Moga
   url: https://comiccaster.xyz/rss/artbymoga
@@ -171,6 +171,11 @@ failed_feeds:
   error: No items/entries found in feed
   feed_type: rss
   status: needs_investigation
+- name: Mr. Boffo
+  url: https://comiccaster.xyz/rss/mr-boffo
+  error: Image has hotlink protection (403 Forbidden)
+  feed_type: rss
+  status: needs_investigation
 - name: Bob Gorrell
   url: https://comiccaster.xyz/rss/bobgorrell
   error: HTTP 404
@@ -234,6 +239,11 @@ failed_feeds:
 - name: Mike Smith
   url: https://comiccaster.xyz/rss/mike-smith
   error: HTTP 404
+  feed_type: null
+  status: needs_investigation
+- name: Questionable Content
+  url: https://questionablecontent.net/QCRSS.xml
+  error: HTTP 415
   feed_type: null
   status: needs_investigation
 - name: Gunnerkrigg Court
