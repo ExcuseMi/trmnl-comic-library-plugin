@@ -1,4 +1,4 @@
-report_date: '2026-07-01 02:14:40'
+report_date: '2026-07-02 02:06:50'
 total_failed: 52
 failed_feeds:
 - name: Art by Moga
@@ -243,7 +243,7 @@ failed_feeds:
   status: needs_investigation
 - name: Questionable Content
   url: https://questionablecontent.net/QCRSS.xml
-  error: HTTP 500
+  error: HTTP 415
   feed_type: null
   status: needs_investigation
 - name: Gunnerkrigg Court
