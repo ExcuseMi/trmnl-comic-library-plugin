@@ -128,8 +128,15 @@ function getImageUrls(html) {
  * Filters out unlikely image URLs (e.g., containing decimal version numbers).
  */
 function filterImages(urls) {
-  if (urls.length <= 1) return urls;
-  return urls.filter(url => {
+  // gocomicscmsassets serves generic icons/placeholders (e.g. a YouTube play-button
+  // graphic on strips that are actually video embeds), never the actual comic art —
+  // real strip images come from featureassets.gocomics.com. Drop these unconditionally,
+  // even when it's the only candidate, since a bad lone image is worse than none
+  // (processFeed treats zero images as "no comic" and the caller tries another feed).
+  const withoutPlaceholders = urls.filter(url => !/gocomicscmsassets\.gocomics\.com/i.test(url));
+
+  if (withoutPlaceholders.length <= 1) return withoutPlaceholders;
+  return withoutPlaceholders.filter(url => {
     const filename = url.split('/').pop();
     return !/\d+\.\d+\./.test(filename);
   });
