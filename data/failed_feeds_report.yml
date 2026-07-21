@@ -1,5 +1,5 @@
-report_date: '2026-07-21 12:27:15'
-total_failed: 49
+report_date: '2026-07-21 12:56:43'
+total_failed: 65
 failed_feeds:
 - name: Art by Moga
   url: https://comiccaster.xyz/rss/artbymoga
@@ -26,6 +26,21 @@ failed_feeds:
   error: Feed contains only generic promotional content
   feed_type: rss
   status: needs_investigation
+- name: Cat's Cafe
+  url: https://comiccaster.xyz/rss/cats-cafe
+  error: No valid image found
+  feed_type: rss
+  status: needs_investigation
+- name: Cheer Up, Emo Kid
+  url: https://comiccaster.xyz/rss/cheer-up-emo-kid
+  error: No valid image found
+  feed_type: rss
+  status: needs_investigation
+- name: Claw
+  url: https://comiccaster.xyz/rss/claw
+  error: No valid image found
+  feed_type: rss
+  status: needs_investigation
 - name: The Daily Drawing
   url: https://comiccaster.xyz/rss/the-daily-drawing
   error: Feed contains only generic promotional content
@@ -41,6 +56,11 @@ failed_feeds:
   error: Feed contains only generic promotional content
   feed_type: rss
   status: needs_investigation
+- name: Foolish Mortals
+  url: https://comiccaster.xyz/rss/foolish-mortals
+  error: No valid image found
+  feed_type: rss
+  status: needs_investigation
 - name: Four Eyes
   url: https://comiccaster.xyz/rss/four-eyes
   error: Feed contains only generic promotional content
@@ -51,9 +71,34 @@ failed_feeds:
   error: Feed contains only generic promotional content
   feed_type: rss
   status: needs_investigation
+- name: Half Full
+  url: https://comiccaster.xyz/rss/half-full
+  error: No valid image found
+  feed_type: rss
+  status: needs_investigation
 - name: Hot Comics for Cool People
   url: https://comiccaster.xyz/rss/hot-comics-for-cool-people
   error: Feed contains only generic promotional content
+  feed_type: rss
+  status: needs_investigation
+- name: Hutch Owen
+  url: https://comiccaster.xyz/rss/hutch-owen
+  error: No valid image found
+  feed_type: rss
+  status: needs_investigation
+- name: Imogen Quest
+  url: https://comiccaster.xyz/rss/imogen-quest
+  error: No valid image found
+  feed_type: rss
+  status: needs_investigation
+- name: Invisible Bread
+  url: https://comiccaster.xyz/rss/invisible-bread
+  error: No valid image found
+  feed_type: rss
+  status: needs_investigation
+- name: Jake Likes Onions
+  url: https://comiccaster.xyz/rss/jake-likes-onions
+  error: No valid image found
   feed_type: rss
   status: needs_investigation
 - name: Little Nemo
@@ -94,6 +139,26 @@ failed_feeds:
 - name: Oh, Brother!
   url: https://comiccaster.xyz/rss/oh-brother
   error: Feed contains only generic promotional content
+  feed_type: rss
+  status: needs_investigation
+- name: Origins of the Sunday Comics
+  url: https://comiccaster.xyz/rss/origins-of-the-sunday-comics
+  error: No valid image found
+  feed_type: rss
+  status: needs_investigation
+- name: Our Super Adventure
+  url: https://comiccaster.xyz/rss/our-super-adventure
+  error: No valid image found
+  feed_type: rss
+  status: needs_investigation
+- name: Outland
+  url: https://comiccaster.xyz/rss/outland
+  error: No valid image found
+  feed_type: rss
+  status: needs_investigation
+- name: Ozy and Millie
+  url: https://comiccaster.xyz/rss/ozy-and-millie
+  error: No valid image found
   feed_type: rss
   status: needs_investigation
 - name: Pibgorn
@@ -161,6 +226,11 @@ failed_feeds:
   error: Feed contains only generic promotional content
   feed_type: rss
   status: needs_investigation
+- name: Yeah It’s Chill
+  url: https://comiccaster.xyz/rss/yeah-its-chill
+  error: No valid image found
+  feed_type: rss
+  status: needs_investigation
 - name: Yes, I'm Hot in This
   url: https://comiccaster.xyz/rss/yesimhotinthis
   error: Feed contains only generic promotional content
@@ -169,6 +239,11 @@ failed_feeds:
 - name: The Far Side - New Stuff
   url: https://comiccaster.xyz/rss/farside-new
   error: No items/entries found in feed
+  feed_type: rss
+  status: needs_investigation
+- name: Mr. Boffo
+  url: https://comiccaster.xyz/rss/mr-boffo
+  error: Image has hotlink protection (403 Forbidden)
   feed_type: rss
   status: needs_investigation
 - name: Bob Gorrell
@@ -234,6 +309,11 @@ failed_feeds:
 - name: Mike Smith
   url: https://comiccaster.xyz/rss/mike-smith
   error: HTTP 404
+  feed_type: null
+  status: needs_investigation
+- name: Questionable Content
+  url: https://questionablecontent.net/QCRSS.xml
+  error: HTTP 415
   feed_type: null
   status: needs_investigation
 - name: Gunnerkrigg Court

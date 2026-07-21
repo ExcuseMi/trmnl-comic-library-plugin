@@ -33,14 +33,14 @@ custom_fields:
 - keyname: about
   name: About This Plugin
   field_type: author_bio
-  description: 'Access an daily updated collection of 596 comic RSS / Atom feeds and enjoy fresh content every day.<br /><a href=''https://excusemi.github.io/trmnl-comic-library-plugin/''>Click here to see all supported comics!</a><br />Features: <br />● Displays the most recent comic or a random comic <br />● Supports multiple RSS / Atom sources <br />● Add your own RSS / Atom feeds <br />● Frequently updated to keep all RSS / Atom sources valid and up to date'
+  description: 'Access an daily updated collection of 580 comic RSS / Atom feeds and enjoy fresh content every day.<br /><a href=''https://excusemi.github.io/trmnl-comic-library-plugin/''>Click here to see all supported comics!</a><br />Features: <br />● Displays the most recent comic or a random comic <br />● Supports multiple RSS / Atom sources <br />● Add your own RSS / Atom feeds <br />● Frequently updated to keep all RSS / Atom sources valid and up to date'
   github_url: https://github.com/ExcuseMi/trmnl-comic-library-plugin
   learn_more_url: https://excusemi.github.io/trmnl-comic-library-plugin
   category: comics
   help_text: TRMNL X Ready
 - keyname: comics
   field_type: select
-  name: 'Comics: 484'
+  name: 'Comics: 468'
   multiple: true
   help_text: Use ⌘+click (Mac) or ctrl+click (Windows) to select multiple items. Use Shift+click to select a whole range at once.
   optional: true
@@ -130,15 +130,12 @@ custom_fields:
   - Carpe Diem: https://comiccaster.xyz/rss/carpe-diem
   - Cassandra Comic: https://tapas.io/rss/series/35182/
   - Cat and Girl: https://catandgirl.com/feed/
-  - Cat's Cafe by Gwen Tarpley: https://comiccaster.xyz/rss/cats-cafe
   - Cathy by Cathy Guisewite: https://comiccaster.xyz/rss/cathy
   - Cathy Commiserations by Cathy Guisewite: https://comiccaster.xyz/rss/cathy-commiserations
   - Cattitude — Doggonit by Anthony Smith: https://comiccaster.xyz/rss/cattitude-doggonit
-  - Cheer Up, Emo Kid by Enzo Comics: https://comiccaster.xyz/rss/cheer-up-emo-kid
   - Chuck Draws Things by Chuck Mullin: https://comiccaster.xyz/rss/chuckdrawsthings
   - Chuckle Bros by Brian and Ron Boychuk: https://comiccaster.xyz/rss/chucklebros
   - Citizen Dog by Mark O'Hare: https://comiccaster.xyz/rss/citizendog
-  - Claw by Cathy Law: https://comiccaster.xyz/rss/claw
   - Cleats by Bill Hinds: https://comiccaster.xyz/rss/cleats
   - Close to Home by John McPherson: https://comiccaster.xyz/rss/closetohome
   - Comiclicious: https://comiccaster.xyz/rss/comiclicious
@@ -189,7 +186,6 @@ custom_fields:
   - Flash Gordon Vintage Sundays: https://comiccaster.xyz/rss/flash-gordon-vintage-sunday
   - Flo & Friends: https://comiccaster.xyz/rss/flo-and-friends
   - Flo and Friends by Jenny Campbell: https://comiccaster.xyz/rss/floandfriends
-  - Foolish Mortals by Tom Horacek: https://comiccaster.xyz/rss/foolish-mortals
   - For Better or For Worse by Lynn Johnston: https://comiccaster.xyz/rss/forbetterorforworse
   - For Heaven's Sake by Mike Morgan: https://comiccaster.xyz/rss/forheavenssake
   - Fowl Language by Brian Gordon: https://comiccaster.xyz/rss/fowl-language
@@ -224,7 +220,6 @@ custom_fields:
   - Green Humour by Rohan Chakravarty: https://comiccaster.xyz/rss/green-humour
   - Hagar The Horrible: https://comiccaster.xyz/rss/hagar-the-horrible
   - Haircut Practice by Adam Koford: https://comiccaster.xyz/rss/haircut-practice
-  - Half Full by Maria Scrivan: https://comiccaster.xyz/rss/half-full
   - Harley by Dan Thompson: https://comiccaster.xyz/rss/harley
   - Heart Of Juliet Jones: https://comiccaster.xyz/rss/heart-of-juliet-jones
   - Heart of the City by Steenz: https://comiccaster.xyz/rss/heartofthecity
@@ -236,18 +231,14 @@ custom_fields:
   - Home and Away by Steve Sicula: https://comiccaster.xyz/rss/homeandaway
   - Home Free by Tom Toro: https://comiccaster.xyz/rss/homefree
   - Humor Me: https://comiccaster.xyz/rss/humor-me
-  - Hutch Owen by Tom Hart: https://comiccaster.xyz/rss/hutch-owen
   - Imagine This by Lucas Turnbloom: https://comiccaster.xyz/rss/imaginethis
-  - Imogen Quest by Olivia Walch: https://comiccaster.xyz/rss/imogen-quest
   - In Security by Bea R.: https://comiccaster.xyz/rss/in-security
   - In the Bleachers by Ben Zaehringer: https://comiccaster.xyz/rss/inthebleachers
   - In the Sticks by Nathan Cooper: https://comiccaster.xyz/rss/inthesticks
   - Ink Pen by Phil Dunlap: https://comiccaster.xyz/rss/inkpen
   - Insanity Streak: https://comiccaster.xyz/rss/insanity-streak
   - Intelligent Life: https://comiccaster.xyz/rss/intelligent
-  - Invisible Bread by Justin Boyd: https://comiccaster.xyz/rss/invisible-bread
   - It's All About You by Tony Murphy: https://comiccaster.xyz/rss/itsallaboutyou
-  - Jake Likes Onions by Jake Thompson: https://comiccaster.xyz/rss/jake-likes-onions
   - Jane's World by Paige Braddock: https://comiccaster.xyz/rss/janesworld
   - Jeremias: https://comiccaster.xyz/rss/jeremias
   - Jerry King Comics by Jerry King: https://comiccaster.xyz/rss/jerry-king-comics
@@ -320,7 +311,6 @@ custom_fields:
   - Mostly Gravy: https://comiccaster.xyz/rss/mostly-gravy
   - Mother Goose and Grimm by Mike Peters: https://comiccaster.xyz/rss/mother-goose-and-grimm
   - Motley Classics by Larry Wright: https://comiccaster.xyz/rss/motley-classics
-  - Mr. Boffo by Joe Martin: https://comiccaster.xyz/rss/mr-boffo
   - Mr. Lowe by Mark Pett: https://comiccaster.xyz/rss/mr-lowe
   - Mutt & Jeff by Bud Fisher: https://comiccaster.xyz/rss/muttandjeff
   - Mutts: https://comiccaster.xyz/rss/mutts
@@ -349,13 +339,9 @@ custom_fields:
   - On The Fastrack: https://comiccaster.xyz/rss/on-the-fastrack
   - One Big Happy by Rick Detorie: https://comiccaster.xyz/rss/onebighappy
   - Ordinary Bill by William Wilson: https://comiccaster.xyz/rss/ordinary-bill
-  - Origins of the Sunday Comics by Peter Maresca: https://comiccaster.xyz/rss/origins-of-the-sunday-comics
-  - Our Super Adventure by Sarah Graley and Stef Purenins: https://comiccaster.xyz/rss/our-super-adventure
   - Out of the Gene Pool by Matt Janz: https://comiccaster.xyz/rss/outofthegenepool
-  - Outland by Berkeley Breathed: https://comiccaster.xyz/rss/outland
   - Over the Hedge by T Lewis: https://comiccaster.xyz/rss/overthehedge
   - Overboard by Chip Dunham: https://comiccaster.xyz/rss/overboard
-  - Ozy and Millie by Dana Simpson: https://comiccaster.xyz/rss/ozy-and-millie
   - Palurdeando: https://comiccaster.xyz/rss/palurdeando
   - Pardon My Planet: https://comiccaster.xyz/rss/pardon-my-planet
   - Peanuts Begins by Charles Schulz: https://comiccaster.xyz/rss/peanuts-begins
@@ -379,7 +365,6 @@ custom_fields:
   - Prince Valiant: https://comiccaster.xyz/rss/prince-valiant
   - Prince Valiant Vintage Sundays: https://comiccaster.xyz/rss/prince-valiant-vintage-sunday
   - Pros & Cons: https://comiccaster.xyz/rss/pros-cons
-  - Questionable Content by Jeph Jacques: https://questionablecontent.net/QCRSS.xml
   - Questionable Quotebook by Sam Hepburn: https://comiccaster.xyz/rss/questionable-quotebook
   - Quincy: https://comiccaster.xyz/rss/quincy
   - Rabbits Against Magic by Jonathan Lemon: https://comiccaster.xyz/rss/rabbitsagainstmagic
@@ -523,7 +508,6 @@ custom_fields:
   - WuMo by Wulff & Morgenthaler: https://comiccaster.xyz/rss/wumo
   - XKCD by Randall Munroe: https://xkcd.com/atom.xml
   - Yaffle by Jeffrey Caulfield and Brian Ponshock: https://comiccaster.xyz/rss/yaffle
-  - Yeah It’s Chill by Christine Rai: https://comiccaster.xyz/rss/yeah-its-chill
   - Zack Hill by John Newcombe: https://comiccaster.xyz/rss/zackhill
   - Zen Pencils by Gavin Aung Than: https://comiccaster.xyz/rss/zen-pencils
   - Ziggy by Tom Wilson & Tom II: https://comiccaster.xyz/rss/ziggy
