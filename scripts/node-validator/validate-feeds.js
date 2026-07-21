@@ -2,30 +2,23 @@
 
 const fs = require('fs');
 const vm = require('vm');
-const { XMLParser } = require('fast-xml-parser');
 
 // ---------------------------------------------------------------------------
-// Load transform.js from the same directory (copied in at Docker build time)
+// Load transform.js from the same directory (copied in at Docker build time).
+// This is the serverless run()-based rewrite — no fast-xml-parser dependency.
+// PARSER_CONFIG is inlined in the file itself now (see src/transform.js), so
+// there's no separate comic_parser_data.json to load here anymore.
 // ---------------------------------------------------------------------------
 const transformCode = fs.readFileSync(__dirname + '/transform.js', 'utf-8');
 
-// Load comic_parser_data.json so the validator exercises the live config
-// (same data the plugin fetches from GitHub at runtime)
-let parserConfig = {};
-try {
-  const configPath = __dirname + '/../../data/comic_parser_data.json';
-  parserConfig = JSON.parse(fs.readFileSync(configPath, 'utf-8'));
-} catch {
-  // File missing or unreadable — transform will use its own fallback
-}
-
-function runTransform(parsedXml) {
+function makeSandbox() {
   // Real Date constructor from the outer scope
   const RealDate = Date;
 
   // Sandbox with a Date subclass that:
   // - acts as a real Date constructor
-  // - overrides Date.now() to always return 0
+  // - overrides Date.now() to always return 0 (deterministic item selection
+  //   in processFeed's "pick a random item" branch)
   const sandbox = {
     Date: class extends RealDate {
       constructor(...args) {
@@ -48,26 +41,32 @@ function runTransform(parsedXml) {
     undefined,
   };
   vm.createContext(sandbox);
-
-  // Mirror the multi-URL polling structure: IDX_0 = config, IDX_1 = feed
-  const input = { IDX_0: parserConfig, IDX_1: parsedXml };
-
-  // Define the transform function inside the sandbox, then call it.
+  // Defines parseFeedXml, processFeed, isFeed, PARSER_CONFIG, run, etc. as
+  // sandbox globals. Doesn't execute any fetch — those only run if run()
+  // itself is invoked, which this validator deliberately doesn't do (it wants
+  // per-feed diagnostics, not the batch/retry behavior run() is designed for).
   vm.runInContext(transformCode, sandbox);
-  return vm.runInContext('transform(__input__)', Object.assign(sandbox, { __input__: input }));
+  return sandbox;
 }
 
-// ---------------------------------------------------------------------------
-// XML parser — configured to match TRMNL's fast-xml-parser behaviour
-// ---------------------------------------------------------------------------
-const xmlParser = new XMLParser({
-  ignoreAttributes: false,
-  attributeNamePrefix: '',
-  textNodeName: '__content__',
-  removeNSPrefix: true,
-  trimValues: true,
-  processEntities: false,
-});
+/**
+ * Parses raw feed XML using the plugin's own hand-rolled parser (not
+ * fast-xml-parser) — this is the actual regression test: does our parser
+ * produce a shape processFeed() can still work with, across every real feed?
+ */
+function parseWithPluginParser(sandbox, xml) {
+  return vm.runInContext('parseFeedXml(' + JSON.stringify(xml) + ')', sandbox);
+}
+
+function runTransform(sandbox, parsedXml) {
+  const input = JSON.stringify(parsedXml);
+  return vm.runInContext(`processFeed(${input}, PARSER_CONFIG, {})`, sandbox);
+}
+
+// One shared sandbox for the whole run — transform.js has no per-call state,
+// and Date.now() is deterministically stubbed anyway, so this is safe to reuse
+// across concurrent validateFeed() calls instead of rebuilding a VM context per feed.
+const SANDBOX = makeSandbox();
 
 // ---------------------------------------------------------------------------
 // Promo / generic-content detection (ported from Python validator)
@@ -237,12 +236,17 @@ async function validateFeed(name, url, timeout) {
 
     const xml = await resp.text();
 
-    // 2. Parse XML → JSON
+    // 2. Parse XML → JSON, using the plugin's own hand-rolled parser
     let parsed;
     try {
-      parsed = xmlParser.parse(xml);
+      parsed = parseWithPluginParser(SANDBOX, xml);
     } catch (e) {
       result.error_message = `XML parsing failed: ${e.message}`;
+      return result;
+    }
+
+    if (!parsed) {
+      result.error_message = 'Unknown feed type';
       return result;
     }
 
@@ -268,21 +272,15 @@ async function validateFeed(name, url, timeout) {
       return result;
     }
 
-    // 4. Run transform()
-    let transformResult;
+    // 4. Run processFeed() (the same function run() calls per-URL at runtime)
+    let comic;
     try {
-      transformResult = runTransform(parsed);
+      comic = runTransform(SANDBOX, parsed);
     } catch (e) {
-      result.error_message = `transform() error: ${e.message}`;
+      result.error_message = `processFeed() error: ${e.message}`;
       return result;
     }
 
-    const comics = transformResult?.comics;
-    if (!comics || comics.length === 0) {
-      result.error_message = 'No comic array returned';
-      return result;
-    }
-    const comic = comics[0];
     if (!comic || !comic.imageUrls || comic.imageUrls.length === 0) {
       result.error_message = 'No valid image found';
       return result;
