@@ -1,5 +1,5 @@
-report_date: '2026-07-21 01:27:18'
-total_failed: 50
+report_date: '2026-07-21 12:27:15'
+total_failed: 49
 failed_feeds:
 - name: Art by Moga
   url: https://comiccaster.xyz/rss/artbymoga
@@ -178,7 +178,7 @@ failed_feeds:
   status: needs_investigation
 - name: Matt Bors
   url: https://comiccaster.xyz/rss/matt-bors
-  error: No comic array returned
+  error: No valid image found
   feed_type: rss
   status: needs_investigation
 - name: Pat Oliphant
@@ -238,12 +238,7 @@ failed_feeds:
   status: needs_investigation
 - name: Gunnerkrigg Court
   url: https://www.gunnerkrigg.com/rss.xml
-  error: No comic array returned
-  feed_type: rss
-  status: needs_investigation
-- name: The Pigeon Gazette
-  url: https://www.webtoons.com/en/challenge/the-pigeon-gazette/rss?title_no=38949
-  error: 'transform() error: itemTitle?.toLowerCase is not a function'
+  error: No valid image found
   feed_type: rss
   status: needs_investigation
 - name: Work Chronicles
