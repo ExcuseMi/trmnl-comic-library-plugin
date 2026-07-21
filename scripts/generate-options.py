@@ -511,6 +511,7 @@ def create_updated_settings():
             {"Crisp": "brightness(1.0) contrast(1.4) saturate(0)"},
             {"Dramatic": "brightness(0.8) contrast(1.6) saturate(0)"}
         ],
+        'default': 'none',
         'optional': True
     }
     custom_fields.append(image_filter)
@@ -589,6 +590,17 @@ def create_updated_settings():
     with open(json_path, "w", encoding="utf-8") as f:
         json.dump(overview_data, f, ensure_ascii=False, indent=2)
     print(f"✓ Cached overview data: {json_path}")
+
+    # Flat list of every currently-validated feed URL, hosted via GitHub raw content
+    # so the serverless plugin can fetch a live candidate pool instead of embedding
+    # a stale copy of the catalog in its own code.
+    valid_urls = sorted({
+        r.url for r in (regular_valid + other_lang_valid + political_valid + extra_valid)
+    })
+    urls_path = data_dir / "comic_urls.json"
+    with open(urls_path, "w", encoding="utf-8") as f:
+        json.dump(valid_urls, f, ensure_ascii=False, indent=2)
+    print(f"✓ Wrote {len(valid_urls)} validated feed URLs: {urls_path}")
 
     # render the HTML from it
     generate_overview(overview_data, settings_path.parent.parent / "index.html")
