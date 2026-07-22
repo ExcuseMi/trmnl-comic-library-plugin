@@ -3690,6 +3690,15 @@
     "category": "Comics"
   },
   {
+    "name": "Mr. Boffo",
+    "author": "Joe Martin",
+    "title": "Www.mrboffocomics.com",
+    "image_url": "https://www.mrboffocomics.com/images/secure_daily.jpg?d=2026-07-21",
+    "link": "https://www.mrboffocomics.com/",
+    "caption": null,
+    "category": "Comics"
+  },
+  {
     "name": "Apartment 3-G",
     "author": "",
     "title": "Apartment 3 G_1",
@@ -4181,15 +4190,6 @@
     "title": "Lola En Espanol",
     "image_url": "https://featureassets.gocomics.com/assets/08923d4066a70131b28a005056a9545d?optimizer=image&amp;width=2800&amp;quality=85",
     "link": "https://www.gocomics.com/lola-en-espanol/2026/07/21",
-    "caption": null,
-    "category": "Other Languages"
-  },
-  {
-    "name": "Luann en Español",
-    "author": "Greg Evans",
-    "title": "Luannspanish",
-    "image_url": "https://featureassets.gocomics.com/assets/473bca000faf0138dc1b005056a9545d?optimizer=image&amp;width=2800&amp;quality=85",
-    "link": "https://www.gocomics.com/luannspanish/2026/07/21",
     "caption": null,
     "category": "Other Languages"
   },
@@ -5085,6 +5085,15 @@
     "category": "Comics"
   },
   {
+    "name": "Questionable Content",
+    "author": "Jeph Jacques",
+    "title": "Some Regrets",
+    "image_url": "https://www.questionablecontent.net/comics/5878.png",
+    "link": "https://questionablecontent.net/view.php?comic=5878",
+    "caption": "<p><img src=\"https://www.questionablecontent.net/comics/5878.png\"></p> <p>at least they didn't die</p>",
+    "category": "Comics"
+  },
+  {
     "name": "BirdChonk",
     "author": "",
     "title": "Let me sleep",
@@ -5096,18 +5105,18 @@
   {
     "name": "Cassandra Comic",
     "author": "",
-    "title": "TCAF 2026",
-    "image_url": "https://us-a.tapas.io/sa/11/eadd8cb5-a6d7-42ef-9f57-87607cc18f5c.jpg",
-    "link": "https://tapas.io/episode/3900608",
+    "title": "Hair Expectations vs Reality (12 year anniversary)",
+    "image_url": "https://us-a.tapas.io/sa/5c/a91aef54-ca47-4a8e-9a37-39e05b14c653.jpg",
+    "link": "https://tapas.io/episode/3942000",
     "caption": null,
     "category": "Comics"
   },
   {
     "name": "Cat and Girl",
     "author": "",
-    "title": "Cat and Girl vs the Audience",
-    "image_url": "https://catandgirl.com/wp-content/uploads/2026/06/2026-07-15-cgobsolete.png",
-    "link": "https://catandgirl.com/cat-and-girl-vs-the-audience/",
+    "title": "How to Make Money in the Media Industry",
+    "image_url": "https://catandgirl.com/wp-content/uploads/2026/06/2026-07-21-cgtoilethumor.png",
+    "link": "https://catandgirl.com/how-to-make-money-in-the-media-industry/",
     "caption": null,
     "category": "Comics"
   },
@@ -5177,9 +5186,9 @@
   {
     "name": "Saturday Morning Breakfast Cereal",
     "author": "Zach Weinersmith",
-    "title": "Saturday Morning Breakfast Cereal - Sword",
-    "image_url": "https://www.smbc-comics.com/comics/1784518178-20260720.png",
-    "link": "https://www.smbc-comics.com/comic/sword-3",
+    "title": "Saturday Morning Breakfast Cereal - Crawl",
+    "image_url": "https://www.smbc-comics.com/comics/1784595902-20260721.png",
+    "link": "https://www.smbc-comics.com/comic/crawl",
     "caption": null,
     "category": "Comics"
   },
