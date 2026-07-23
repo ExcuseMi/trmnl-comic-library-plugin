@@ -33,7 +33,7 @@ custom_fields:
 - keyname: about
   name: About This Plugin
   field_type: author_bio
-  description: 'Access an daily updated collection of 581 comic RSS / Atom feeds and enjoy fresh content every day.<br /><a href=''https://excusemi.github.io/trmnl-comic-library-plugin/''>Click here to see all supported comics!</a><br />Features: <br />● Displays the most recent comic or a random comic <br />● Supports multiple RSS / Atom sources <br />● Add your own RSS / Atom feeds <br />● Frequently updated to keep all RSS / Atom sources valid and up to date'
+  description: 'Access an daily updated collection of 582 comic RSS / Atom feeds and enjoy fresh content every day.<br /><a href=''https://excusemi.github.io/trmnl-comic-library-plugin/''>Click here to see all supported comics!</a><br />Features: <br />● Displays the most recent comic or a random comic <br />● Supports multiple RSS / Atom sources <br />● Add your own RSS / Atom feeds <br />● Frequently updated to keep all RSS / Atom sources valid and up to date'
   github_url: https://github.com/ExcuseMi/trmnl-comic-library-plugin
   learn_more_url: https://excusemi.github.io/trmnl-comic-library-plugin
   category: comics
@@ -517,7 +517,7 @@ custom_fields:
   - Zits: https://comiccaster.xyz/rss/zits
 - keyname: comics_other_languages
   field_type: select
-  name: 'Comics in other languages: 53'
+  name: 'Comics in other languages: 54'
   multiple: true
   help_text: Use ⌘+click (Mac) or ctrl+click (Windows) to select multiple items. Use Shift+click to select a whole range at once.
   optional: true
@@ -548,6 +548,7 @@ custom_fields:
   - Las Hermanas Stone by Jan Eliot: https://comiccaster.xyz/rss/stonesoup_espanol
   - Lio en Español by Mark Tatulli: https://comiccaster.xyz/rss/lioespanol
   - Lola en Español by Todd Clark: https://comiccaster.xyz/rss/lola-en-espanol
+  - Luann en Español by Greg Evans: https://comiccaster.xyz/rss/luannspanish
   - Macanudo (Spanish): https://comiccaster.xyz/rss/macanudo-spanish
   - Mandrake The Magician (Spanish): https://comiccaster.xyz/rss/mandrake-the-magician-spanish
   - Mark Trail (Spanish): https://comiccaster.xyz/rss/mark-trail-spanish

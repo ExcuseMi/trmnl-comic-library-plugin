@@ -1,5 +1,5 @@
-report_date: '2026-07-22 01:26:22'
-total_failed: 64
+report_date: '2026-07-23 01:45:33'
+total_failed: 63
 failed_feeds:
 - name: Art by Moga
   url: https://comiccaster.xyz/rss/artbymoga
@@ -240,11 +240,6 @@ failed_feeds:
   url: https://comiccaster.xyz/rss/farside-new
   error: No items/entries found in feed
   feed_type: rss
-  status: needs_investigation
-- name: Luann en Español
-  url: https://comiccaster.xyz/rss/luannspanish
-  error: 'Request failed: terminated'
-  feed_type: null
   status: needs_investigation
 - name: Bob Gorrell
   url: https://comiccaster.xyz/rss/bobgorrell
