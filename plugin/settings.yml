@@ -33,14 +33,14 @@ custom_fields:
 - keyname: about
   name: About This Plugin
   field_type: author_bio
-  description: 'Access an daily updated collection of 573 comic RSS / Atom feeds and enjoy fresh content every day.<br /><a href=''https://excusemi.github.io/trmnl-comic-library-plugin/''>Click here to see all supported comics!</a><br />Features: <br />● Displays the most recent comic or a random comic <br />● Supports multiple RSS / Atom sources <br />● Add your own RSS / Atom feeds <br />● Frequently updated to keep all RSS / Atom sources valid and up to date'
+  description: 'Access an daily updated collection of 582 comic RSS / Atom feeds and enjoy fresh content every day.<br /><a href=''https://excusemi.github.io/trmnl-comic-library-plugin/''>Click here to see all supported comics!</a><br />Features: <br />● Displays the most recent comic or a random comic <br />● Supports multiple RSS / Atom sources <br />● Add your own RSS / Atom feeds <br />● Frequently updated to keep all RSS / Atom sources valid and up to date'
   github_url: https://github.com/ExcuseMi/trmnl-comic-library-plugin
   learn_more_url: https://excusemi.github.io/trmnl-comic-library-plugin
   category: comics
   help_text: TRMNL X Ready
 - keyname: comics
   field_type: select
-  name: 'Comics: 461'
+  name: 'Comics: 470'
   multiple: true
   help_text: Use ⌘+click (Mac) or ctrl+click (Windows) to select multiple items. Use Shift+click to select a whole range at once.
   optional: true
@@ -146,6 +146,7 @@ custom_fields:
   - Crabgrass by Tauhid Bondia: https://comiccaster.xyz/rss/crabgrass
   - Crankshaft by Tom Batiuk and Dan Davis: https://comiccaster.xyz/rss/crankshaft
   - Crock: https://comiccaster.xyz/rss/crock
+  - Crow Time: https://www.webtoons.com/en/challenge/crow-time/rss?title_no=693372
   - Crumb by David Fletcher: https://comiccaster.xyz/rss/crumb
   - Cul de Sac by Richard Thompson: https://comiccaster.xyz/rss/culdesac
   - Curses! by Chelsea Carr: https://comiccaster.xyz/rss/curses
@@ -170,10 +171,12 @@ custom_fields:
   - Edge City by Terry and Patty LaBan: https://comiccaster.xyz/rss/edge-city
   - Eek! by Scott Nickel: https://comiccaster.xyz/rss/eek
   - El Café de Poncho by Paul Gilligan: https://comiccaster.xyz/rss/el-cafe-de-poncho
+  - Eldritch Darling: https://www.webtoons.com/en/challenge/eldritch-darling/rss?title_no=821877
   - Endtown by Aaron Neathery: https://comiccaster.xyz/rss/endtown
   - Eye Lie Popeye: https://comiccaster.xyz/rss/eye-lie-popeye
   - Eyebeam by Sam Hurt: https://comiccaster.xyz/rss/eyebeam
   - F Minus by Tony Carrillo: https://comiccaster.xyz/rss/fminus
+  - False Knees: https://www.webtoons.com/en/challenge/false-knees/rss?title_no=79544
   - Family Tree by Signe Wilkinson: https://comiccaster.xyz/rss/familytree
   - Farcus by David Waisglass and Gordon Coulthart: https://comiccaster.xyz/rss/farcus
   - Fat Cats by Charlie Podrebarac: https://comiccaster.xyz/rss/fat-cats
@@ -363,15 +366,18 @@ custom_fields:
   - Prince Valiant: https://comiccaster.xyz/rss/prince-valiant
   - Prince Valiant Vintage Sundays: https://comiccaster.xyz/rss/prince-valiant-vintage-sunday
   - Pros & Cons: https://comiccaster.xyz/rss/pros-cons
+  - Questionable Content by Jeph Jacques: https://questionablecontent.net/QCRSS.xml
   - Questionable Quotebook by Sam Hepburn: https://comiccaster.xyz/rss/questionable-quotebook
   - Quincy: https://comiccaster.xyz/rss/quincy
   - Rabbits Against Magic by Jonathan Lemon: https://comiccaster.xyz/rss/rabbitsagainstmagic
+  - Raccoon Comic: https://www.webtoons.com/en/challenge/raccoon-comic/rss?title_no=250929
   - Radio Patrol: https://comiccaster.xyz/rss/radio-patrol
   - Rae The Doe: https://comiccaster.xyz/rss/rae-the-doe
   - Raising Duncan by Chris Browne: https://comiccaster.xyz/rss/raising-duncan
   - Real Life Adventures by Gary Wise and Lance Aldrich: https://comiccaster.xyz/rss/reallifeadventures
   - Reality Check by Dave Whamond: https://comiccaster.xyz/rss/realitycheck
   - Red and Rover by Brian Basset: https://comiccaster.xyz/rss/redandrover
+  - Red Green Blue: https://www.webtoons.com/en/challenge/redgreenblue/rss?title_no=587922
   - Rex Morgan M D: https://comiccaster.xyz/rss/rex-morgan-m-d
   - Rhymes with Orange: https://comiccaster.xyz/rss/rhymes-with-orange
   - Richard's Poor Almanac by Richard Thompson: https://comiccaster.xyz/rss/richards-poor-almanac
@@ -460,9 +466,11 @@ custom_fields:
   - The Phantom: https://comiccaster.xyz/rss/phantom
   - The Phantom Vintage: https://comiccaster.xyz/rss/the-phantom-vintage
   - The Phantom Vintage Sundays: https://comiccaster.xyz/rss/the-phantom-vintage-sunday
+  - The Pigeon Gazette by JaneyJane: https://www.webtoons.com/en/challenge/the-pigeon-gazette/rss?title_no=38949
   - The Planet Syndicate: https://comiccaster.xyz/rss/the-planet-syndicate
   - The Saga of Brann Bjornson: https://comiccaster.xyz/rss/the-saga-of-brann-bjornson
   - The Wandering Melon by Mike Shiell: https://comiccaster.xyz/rss/the-wandering-melon
+  - The Weekly Roll: https://www.webtoons.com/en/challenge/the-weekly-roll/rss?title_no=358889
   - The Worried Well by Dana Maier: https://comiccaster.xyz/rss/the-worried-well
   - Thimble Theater: https://comiccaster.xyz/rss/thimble-theater
   - Thin Lines by Randy Glasbergen: https://comiccaster.xyz/rss/thinlines
@@ -487,6 +495,7 @@ custom_fields:
   - Watch Your Head by Cory Thomas: https://comiccaster.xyz/rss/watchyourhead
   - WaynoVision by Wayno: https://comiccaster.xyz/rss/waynovision
   - Wee Pals by Morrie Turner: https://comiccaster.xyz/rss/weepals
+  - What's Up Beanie: https://www.webtoons.com/en/challenge/whats-up-beanie/rss?title_no=295880
   - Wide Open! by Rich Powell: https://comiccaster.xyz/rss/wide-open
   - Willy Black: https://comiccaster.xyz/rss/willy-black
   - Win, Lose, Drew by Drew Litton: https://comiccaster.xyz/rss/drewlitton

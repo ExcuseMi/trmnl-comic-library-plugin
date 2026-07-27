@@ -1,5 +1,5 @@
-report_date: '2026-07-26 01:44:26'
-total_failed: 72
+report_date: '2026-07-27 01:51:01'
+total_failed: 63
 failed_feeds:
 - name: Art by Moga
   url: https://comiccaster.xyz/rss/artbymoga
@@ -306,55 +306,10 @@ failed_feeds:
   error: HTTP 404
   feed_type: null
   status: needs_investigation
-- name: Questionable Content
-  url: https://questionablecontent.net/QCRSS.xml
-  error: HTTP 415
-  feed_type: null
-  status: needs_investigation
 - name: Gunnerkrigg Court
   url: https://www.gunnerkrigg.com/rss.xml
   error: No valid image found
   feed_type: rss
-  status: needs_investigation
-- name: Crow Time
-  url: https://www.webtoons.com/en/challenge/crow-time/rss?title_no=693372
-  error: 'Request failed: fetch failed'
-  feed_type: null
-  status: needs_investigation
-- name: Eldritch Darling
-  url: https://www.webtoons.com/en/challenge/eldritch-darling/rss?title_no=821877
-  error: 'Request failed: fetch failed'
-  feed_type: null
-  status: needs_investigation
-- name: False Knees
-  url: https://www.webtoons.com/en/challenge/false-knees/rss?title_no=79544
-  error: 'Request failed: fetch failed'
-  feed_type: null
-  status: needs_investigation
-- name: Raccoon Comic
-  url: https://www.webtoons.com/en/challenge/raccoon-comic/rss?title_no=250929
-  error: 'Request failed: fetch failed'
-  feed_type: null
-  status: needs_investigation
-- name: Red Green Blue
-  url: https://www.webtoons.com/en/challenge/redgreenblue/rss?title_no=587922
-  error: 'Request failed: fetch failed'
-  feed_type: null
-  status: needs_investigation
-- name: The Pigeon Gazette
-  url: https://www.webtoons.com/en/challenge/the-pigeon-gazette/rss?title_no=38949
-  error: 'Request failed: fetch failed'
-  feed_type: null
-  status: needs_investigation
-- name: The Weekly Roll
-  url: https://www.webtoons.com/en/challenge/the-weekly-roll/rss?title_no=358889
-  error: 'Request failed: fetch failed'
-  feed_type: null
-  status: needs_investigation
-- name: What's Up Beanie
-  url: https://www.webtoons.com/en/challenge/whats-up-beanie/rss?title_no=295880
-  error: 'Request failed: fetch failed'
-  feed_type: null
   status: needs_investigation
 - name: Work Chronicles
   url: https://workchronicles.substack.com/feed
