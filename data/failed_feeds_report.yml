@@ -1,4 +1,4 @@
-report_date: '2026-08-07 02:03:29'
+report_date: '2026-08-08 00:46:45'
 total_failed: 63
 failed_feeds:
 - name: Art by Moga
@@ -33,8 +33,8 @@ failed_feeds:
   status: needs_investigation
 - name: Cheer Up, Emo Kid
   url: https://comiccaster.xyz/rss/cheer-up-emo-kid
-  error: No valid image found
-  feed_type: rss
+  error: HTTP 502
+  feed_type: null
   status: needs_investigation
 - name: Claw
   url: https://comiccaster.xyz/rss/claw
