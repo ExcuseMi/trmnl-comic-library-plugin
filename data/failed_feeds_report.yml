@@ -1,5 +1,5 @@
-report_date: '2026-08-10 00:52:50'
-total_failed: 63
+report_date: '2026-08-11 00:52:34'
+total_failed: 64
 failed_feeds:
 - name: Art by Moga
   url: https://comiccaster.xyz/rss/artbymoga
@@ -310,6 +310,11 @@ failed_feeds:
   url: https://www.gunnerkrigg.com/rss.xml
   error: No valid image found
   feed_type: rss
+  status: needs_investigation
+- name: Cat and Girl
+  url: https://catandgirl.com/feed/
+  error: 'Request failed: fetch failed'
+  feed_type: null
   status: needs_investigation
 - name: Work Chronicles
   url: https://workchronicles.substack.com/feed
