@@ -33,14 +33,14 @@ custom_fields:
 - keyname: about
   name: About This Plugin
   field_type: author_bio
-  description: 'Access an daily updated collection of 581 comic RSS / Atom feeds and enjoy fresh content every day.<br /><a href=''https://excusemi.github.io/trmnl-comic-library-plugin/''>Click here to see all supported comics!</a><br />Features: <br />● Displays the most recent comic or a random comic <br />● Supports multiple RSS / Atom sources <br />● Add your own RSS / Atom feeds <br />● Frequently updated to keep all RSS / Atom sources valid and up to date'
+  description: 'Access an daily updated collection of 582 comic RSS / Atom feeds and enjoy fresh content every day.<br /><a href=''https://excusemi.github.io/trmnl-comic-library-plugin/''>Click here to see all supported comics!</a><br />Features: <br />● Displays the most recent comic or a random comic <br />● Supports multiple RSS / Atom sources <br />● Add your own RSS / Atom feeds <br />● Frequently updated to keep all RSS / Atom sources valid and up to date'
   github_url: https://github.com/ExcuseMi/trmnl-comic-library-plugin
   learn_more_url: https://excusemi.github.io/trmnl-comic-library-plugin
   category: comics
   help_text: TRMNL X Ready
 - keyname: comics
   field_type: select
-  name: 'Comics: 469'
+  name: 'Comics: 470'
   multiple: true
   help_text: Use ⌘+click (Mac) or ctrl+click (Windows) to select multiple items. Use Shift+click to select a whole range at once.
   optional: true
@@ -129,6 +129,7 @@ custom_fields:
   - Caption It!: https://comiccaster.xyz/rss/caption-it
   - Carpe Diem: https://comiccaster.xyz/rss/carpe-diem
   - Cassandra Comic: https://tapas.io/rss/series/35182/
+  - Cat and Girl: https://catandgirl.com/feed/
   - Cathy by Cathy Guisewite: https://comiccaster.xyz/rss/cathy
   - Cathy Commiserations by Cathy Guisewite: https://comiccaster.xyz/rss/cathy-commiserations
   - Cattitude — Doggonit by Anthony Smith: https://comiccaster.xyz/rss/cattitude-doggonit
