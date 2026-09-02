@@ -1,5 +1,5 @@
-report_date: '2026-09-01 02:28:28'
-total_failed: 63
+report_date: '2026-09-02 01:49:37'
+total_failed: 64
 failed_feeds:
 - name: Art by Moga
   url: https://comiccaster.xyz/rss/artbymoga
@@ -234,6 +234,11 @@ failed_feeds:
 - name: Yes, I'm Hot in This
   url: https://comiccaster.xyz/rss/yesimhotinthis
   error: Feed contains only generic promotional content
+  feed_type: rss
+  status: needs_investigation
+- name: Pros & Cons
+  url: https://comiccaster.xyz/rss/pros-cons
+  error: No valid image found
   feed_type: rss
   status: needs_investigation
 - name: The Far Side - New Stuff
