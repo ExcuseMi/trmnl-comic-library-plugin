@@ -1,6 +1,11 @@
-report_date: '2026-09-04 01:49:58'
-total_failed: 63
+report_date: '2026-09-05 01:51:18'
+total_failed: 66
 failed_feeds:
+- name: The Academia Waltz
+  url: https://comiccaster.xyz/rss/the-academia-waltz
+  error: 'Request failed: fetch failed'
+  feed_type: null
+  status: needs_investigation
 - name: Art by Moga
   url: https://comiccaster.xyz/rss/artbymoga
   error: Feed contains only generic promotional content
@@ -236,6 +241,11 @@ failed_feeds:
   error: Feed contains only generic promotional content
   feed_type: rss
   status: needs_investigation
+- name: Pros & Cons
+  url: https://comiccaster.xyz/rss/pros-cons
+  error: No valid image found
+  feed_type: rss
+  status: needs_investigation
 - name: The Far Side - New Stuff
   url: https://comiccaster.xyz/rss/farside-new
   error: No items/entries found in feed
@@ -244,6 +254,11 @@ failed_feeds:
 - name: Bob Gorrell
   url: https://comiccaster.xyz/rss/bobgorrell
   error: HTTP 404
+  feed_type: null
+  status: needs_investigation
+- name: Gary Markstein
+  url: https://comiccaster.xyz/rss/garymarkstein
+  error: 'Request failed: fetch failed'
   feed_type: null
   status: needs_investigation
 - name: Matt Bors

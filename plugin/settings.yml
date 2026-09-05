@@ -33,14 +33,14 @@ custom_fields:
 - keyname: about
   name: About This Plugin
   field_type: author_bio
-  description: 'Access an daily updated collection of 582 comic RSS / Atom feeds and enjoy fresh content every day.<br /><a href=''https://excusemi.github.io/trmnl-comic-library-plugin/''>Click here to see all supported comics!</a><br />Features: <br />● Displays the most recent comic or a random comic <br />● Supports multiple RSS / Atom sources <br />● Add your own RSS / Atom feeds <br />● Frequently updated to keep all RSS / Atom sources valid and up to date'
+  description: 'Access an daily updated collection of 579 comic RSS / Atom feeds and enjoy fresh content every day.<br /><a href=''https://excusemi.github.io/trmnl-comic-library-plugin/''>Click here to see all supported comics!</a><br />Features: <br />● Displays the most recent comic or a random comic <br />● Supports multiple RSS / Atom sources <br />● Add your own RSS / Atom feeds <br />● Frequently updated to keep all RSS / Atom sources valid and up to date'
   github_url: https://github.com/ExcuseMi/trmnl-comic-library-plugin
   learn_more_url: https://excusemi.github.io/trmnl-comic-library-plugin
   category: comics
   help_text: TRMNL X Ready
 - keyname: comics
   field_type: select
-  name: 'Comics: 470'
+  name: 'Comics: 468'
   multiple: true
   help_text: Use ⌘+click (Mac) or ctrl+click (Windows) to select multiple items. Use Shift+click to select a whole range at once.
   optional: true
@@ -365,7 +365,6 @@ custom_fields:
   - Prickly City by Scott Stantis: https://comiccaster.xyz/rss/pricklycity
   - Prince Valiant: https://comiccaster.xyz/rss/prince-valiant
   - Prince Valiant Vintage Sundays: https://comiccaster.xyz/rss/prince-valiant-vintage-sunday
-  - Pros & Cons: https://comiccaster.xyz/rss/pros-cons
   - Questionable Content by Jeph Jacques: https://questionablecontent.net/QCRSS.xml
   - Questionable Quotebook by Sam Hepburn: https://comiccaster.xyz/rss/questionable-quotebook
   - Quincy: https://comiccaster.xyz/rss/quincy
@@ -432,7 +431,6 @@ custom_fields:
   - That is Priceless by Steve Melcher: https://comiccaster.xyz/rss/that-is-priceless
   - That New Carl Smell by Carl Skanberg: https://comiccaster.xyz/rss/that-new-carl-smell
   - Thatababy by Paul Trap: https://comiccaster.xyz/rss/thatababy
-  - The Academia Waltz by Berkeley Breathed: https://comiccaster.xyz/rss/the-academia-waltz
   - The Adventures of Business Cat by Tom Fonder: https://comiccaster.xyz/rss/the-adventures-of-business-cat
   - The Ancients: https://comiccaster.xyz/rss/the-ancients
   - The Argyle Sweater by Scott Hilburn: https://comiccaster.xyz/rss/theargylesweater
@@ -578,7 +576,7 @@ custom_fields:
   - Ziggy en Español by Tom Wilson & Tom II: https://comiccaster.xyz/rss/ziggyespanol
 - keyname: comics_political
   field_type: select
-  name: 'Political Comics: 58'
+  name: 'Political Comics: 57'
   multiple: true
   help_text: Use ⌘+click (Mac) or ctrl+click (Windows) to select multiple items. Use Shift+click to select a whole range at once.
   optional: true
@@ -594,7 +592,6 @@ custom_fields:
   - Doonesbury: https://comiccaster.xyz/rss/doonesbury
   - Drew Sheneman: https://comiccaster.xyz/rss/drewsheneman
   - Eric Allie: https://comiccaster.xyz/rss/eric-allie
-  - Gary Markstein: https://comiccaster.xyz/rss/garymarkstein
   - Gary Varvel: https://comiccaster.xyz/rss/garyvarvel
   - Henry Payne: https://comiccaster.xyz/rss/henrypayne
   - Jack Ohman: https://comiccaster.xyz/rss/jackohman
