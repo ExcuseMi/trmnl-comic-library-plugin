@@ -576,11 +576,13 @@ function shuffle(arr) {
 
 function parseMultiSelect(value) {
   if (!value) return [];
+  // TRMNL passes multi-selects as a real array; older payloads used a JSON string
+  if (Array.isArray(value)) return value.filter(Boolean);
   try {
     const arr = JSON.parse(value);
     return Array.isArray(arr) ? arr.filter(Boolean) : [];
   } catch (e) {
-    return [];
+    return String(value).split(',').map(s => s.trim()).filter(Boolean);
   }
 }
 
