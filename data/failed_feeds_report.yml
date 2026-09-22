@@ -1,20 +1,10 @@
-report_date: '2026-09-21 02:12:00'
-total_failed: 74
+report_date: '2026-09-22 02:16:02'
+total_failed: 64
 failed_feeds:
-- name: 9 to 5
-  url: https://comiccaster.xyz/rss/9to5
-  error: 'Request failed: fetch failed'
-  feed_type: null
-  status: needs_investigation
-- name: Ali's House
-  url: https://comiccaster.xyz/rss/alis-house
-  error: 'Request failed: fetch failed'
-  feed_type: null
-  status: needs_investigation
 - name: Art by Moga
   url: https://comiccaster.xyz/rss/artbymoga
-  error: 'Request failed: fetch failed'
-  feed_type: null
+  error: Feed contains only generic promotional content
+  feed_type: rss
   status: needs_investigation
 - name: The Awkward Yeti
   url: https://comiccaster.xyz/rss/the-awkward-yeti
@@ -256,50 +246,15 @@ failed_feeds:
   error: No items/entries found in feed
   feed_type: rss
   status: needs_investigation
-- name: Baldo en Español
-  url: https://comiccaster.xyz/rss/baldoespanol
-  error: 'Request failed: fetch failed'
-  feed_type: null
-  status: needs_investigation
-- name: Garfield en Español
-  url: https://comiccaster.xyz/rss/garfieldespanol
-  error: 'Request failed: fetch failed'
-  feed_type: null
-  status: needs_investigation
-- name: Luann en Español
-  url: https://comiccaster.xyz/rss/luannspanish
-  error: 'Request failed: fetch failed'
-  feed_type: null
-  status: needs_investigation
-- name: Bill Bramhall
-  url: https://comiccaster.xyz/rss/bill-bramhall
-  error: 'Request failed: fetch failed'
-  feed_type: null
-  status: needs_investigation
 - name: Bob Gorrell
   url: https://comiccaster.xyz/rss/bobgorrell
-  error: 'Request failed: fetch failed'
-  feed_type: null
-  status: needs_investigation
-- name: Doonesbury
-  url: https://comiccaster.xyz/rss/doonesbury
-  error: 'Request failed: fetch failed'
-  feed_type: null
-  status: needs_investigation
-- name: Drew Sheneman
-  url: https://comiccaster.xyz/rss/drewsheneman
-  error: 'Request failed: fetch failed'
+  error: HTTP 404
   feed_type: null
   status: needs_investigation
 - name: Matt Bors
   url: https://comiccaster.xyz/rss/matt-bors
   error: No valid image found
   feed_type: rss
-  status: needs_investigation
-- name: Nick Anderson
-  url: https://comiccaster.xyz/rss/nickanderson
-  error: 'Request failed: fetch failed'
-  feed_type: null
   status: needs_investigation
 - name: Pat Oliphant
   url: https://comiccaster.xyz/rss/patoliphant
@@ -360,11 +315,6 @@ failed_feeds:
   url: https://www.gunnerkrigg.com/rss.xml
   error: No valid image found
   feed_type: rss
-  status: needs_investigation
-- name: Saturday Morning Breakfast Cereal
-  url: https://www.smbc-comics.com/comic/rss
-  error: 'Request failed: fetch failed'
-  feed_type: null
   status: needs_investigation
 - name: Work Chronicles
   url: https://workchronicles.substack.com/feed
