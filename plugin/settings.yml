@@ -33,7 +33,7 @@ custom_fields:
 - keyname: about
   name: About This Plugin
   field_type: author_bio
-  description: 'Access an daily updated collection of 581 comic RSS / Atom feeds and enjoy fresh content every day.<br /><a href=''https://excusemi.github.io/trmnl-comic-library-plugin/''>Click here to see all supported comics!</a><br />Features: <br />● Displays the most recent comic or a random comic <br />● Supports multiple RSS / Atom sources <br />● Add your own RSS / Atom feeds <br />● Frequently updated to keep all RSS / Atom sources valid and up to date'
+  description: 'Access an daily updated collection of 582 comic RSS / Atom feeds and enjoy fresh content every day.<br /><a href=''https://excusemi.github.io/trmnl-comic-library-plugin/''>Click here to see all supported comics!</a><br />Features: <br />● Displays the most recent comic or a random comic <br />● Supports multiple RSS / Atom sources <br />● Add your own RSS / Atom feeds <br />● Frequently updated to keep all RSS / Atom sources valid and up to date'
   github_url: https://github.com/ExcuseMi/trmnl-comic-library-plugin
   learn_more_url: https://excusemi.github.io/trmnl-comic-library-plugin
   category: comics
@@ -118,6 +118,7 @@ custom_fields:
   - Brevity by Dan Thompson: https://comiccaster.xyz/rss/brevity
   - Brewster Rockit by Tim Rickard: https://comiccaster.xyz/rss/brewsterrockit
   - Brick Bradford: https://comiccaster.xyz/rss/brick-bradford
+  - Brilliant Mind Of Edison Lee: https://comiccaster.xyz/rss/brilliant-mind-of-edison-lee
   - Bringing Up Father: https://comiccaster.xyz/rss/bringing-up-father
   - Broom Hilda by Russell Myers: https://comiccaster.xyz/rss/broomhilda
   - Buckles by David Gilbert: https://comiccaster.xyz/rss/buckles
@@ -244,7 +245,6 @@ custom_fields:
   - Jeremias: https://comiccaster.xyz/rss/jeremias
   - Jerry King Comics by Jerry King: https://comiccaster.xyz/rss/jerry-king-comics
   - Jim Benton Cartoons by Jim Benton: https://comiccaster.xyz/rss/jim-benton-cartoons
-  - John Branch: https://comiccaster.xyz/rss/john-branch
   - Johnny Hazard: https://comiccaster.xyz/rss/johnny-hazard
   - Judge Parker: https://comiccaster.xyz/rss/judge-parker
   - Judge Parker Vintage: https://comiccaster.xyz/rss/judge-parker-vintage
@@ -406,6 +406,7 @@ custom_fields:
   - Skippy by Percy Crosby: https://comiccaster.xyz/rss/skippy
   - Slylock Fox: https://comiccaster.xyz/rss/slylock-fox-and-comics-for-kids
   - Snow Sez by T. Shepherd: https://comiccaster.xyz/rss/snow-sez
+  - Sour Grapes by Tim Jones: https://comiccaster.xyz/rss/sour-grapes
   - Spectickles: https://comiccaster.xyz/rss/spectickles
   - Speed Bump by Dave Coverly: https://comiccaster.xyz/rss/speedbump
   - Spirit of the Staircase by Matthew Foltz-Gray: https://comiccaster.xyz/rss/spirit-of-the-staircase
@@ -496,7 +497,6 @@ custom_fields:
   - Wee Pals by Morrie Turner: https://comiccaster.xyz/rss/weepals
   - What's Up Beanie: https://www.webtoons.com/en/challenge/whats-up-beanie/rss?title_no=295880
   - Wide Open! by Rich Powell: https://comiccaster.xyz/rss/wide-open
-  - Willy Black: https://comiccaster.xyz/rss/willy-black
   - Win, Lose, Drew by Drew Litton: https://comiccaster.xyz/rss/drewlitton
   - Wizard of Id by Parker and Hart: https://comiccaster.xyz/rss/wizardofid
   - Wizard of Id Classics by Parker and Hart: https://comiccaster.xyz/rss/wizard-of-id-classics
@@ -577,7 +577,7 @@ custom_fields:
   - Ziggy en Español by Tom Wilson & Tom II: https://comiccaster.xyz/rss/ziggyespanol
 - keyname: comics_political
   field_type: select
-  name: 'Political Comics: 58'
+  name: 'Political Comics: 59'
   multiple: true
   help_text: Use ⌘+click (Mac) or ctrl+click (Windows) to select multiple items. Use Shift+click to select a whole range at once.
   optional: true
@@ -604,13 +604,14 @@ custom_fields:
   - Joe Heller: https://comiccaster.xyz/rss/joe-heller
   - Joel Pett: https://comiccaster.xyz/rss/joelpett
   - Joey Weatherford: https://comiccaster.xyz/rss/joey-weatherford
+  - John Branch: https://comiccaster.xyz/rss/john-branch
   - John Deering: https://comiccaster.xyz/rss/johndeering
   - Kevin Kallaugher: https://comiccaster.xyz/rss/kal
   - Kevin Necessary Editorial Cartoons: https://comiccaster.xyz/rss/kevin-necessary-editorial-cartoons
   - Lalo Alcaraz: https://comiccaster.xyz/rss/laloalcaraz
   - Lisa Benson: https://comiccaster.xyz/rss/lisabenson
   - M2Bulls: https://comiccaster.xyz/rss/m2bulls
-  - Mallard Fillmore: https://comiccaster.xyz/rss/mallard-fillmore
+  - Mallard Fillmore by Bruce Tinsley: https://comiccaster.xyz/rss/mallard-fillmore
   - Marshall Ramsey: https://comiccaster.xyz/rss/marshallramsey
   - Matt Davies: https://comiccaster.xyz/rss/mattdavies
   - Matt Wuerker: https://comiccaster.xyz/rss/mattwuerker
@@ -627,7 +628,6 @@ custom_fields:
   - Steve Breen: https://comiccaster.xyz/rss/stevebreen
   - Steve Kelley: https://comiccaster.xyz/rss/stevekelley
   - Ted Rall: https://comiccaster.xyz/rss/ted-rall
-  - The Brilliant Mind Of Edison Lee: https://comiccaster.xyz/rss/brilliant-mind-of-edison-lee
   - Tim Campbell: https://comiccaster.xyz/rss/tim-campbell
   - Tom the Dancing Bug: https://comiccaster.xyz/rss/tomthedancingbug
   - Tom Toles: https://comiccaster.xyz/rss/tomtoles
@@ -640,6 +640,7 @@ custom_fields:
   - ViewsLatinAmerica: https://comiccaster.xyz/rss/viewslatinamerica
   - ViewsMidEast: https://comiccaster.xyz/rss/viewsmideast
   - Walt Handelsman: https://comiccaster.xyz/rss/walthandelsman
+  - Willy Black: https://comiccaster.xyz/rss/willy-black
 - keyname: only_show_latest
   field_type: boolean
   name: Latest Comic Only
