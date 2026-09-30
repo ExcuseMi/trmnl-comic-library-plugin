@@ -1,5 +1,5 @@
-report_date: '2026-09-29 03:08:14'
-total_failed: 64
+report_date: '2026-09-30 02:50:10'
+total_failed: 58
 failed_feeds:
 - name: Art by Moga
   url: https://comiccaster.xyz/rss/artbymoga
@@ -278,36 +278,6 @@ failed_feeds:
   status: needs_investigation
 - name: ViewsAfrica
   url: https://comiccaster.xyz/rss/viewsafrica
-  error: HTTP 404
-  feed_type: null
-  status: needs_investigation
-- name: David M. Hitch
-  url: https://comiccaster.xyz/rss/david-m-hitch
-  error: HTTP 404
-  feed_type: null
-  status: needs_investigation
-- name: Ed Gamble
-  url: https://comiccaster.xyz/rss/ed-gamble
-  error: HTTP 404
-  feed_type: null
-  status: needs_investigation
-- name: Jimmy Margulies
-  url: https://comiccaster.xyz/rss/jimmy-margulies
-  error: HTTP 404
-  feed_type: null
-  status: needs_investigation
-- name: Lee Judge
-  url: https://comiccaster.xyz/rss/lee-judge
-  error: HTTP 404
-  feed_type: null
-  status: needs_investigation
-- name: Mike Shelton
-  url: https://comiccaster.xyz/rss/mike-shelton
-  error: HTTP 404
-  feed_type: null
-  status: needs_investigation
-- name: Mike Smith
-  url: https://comiccaster.xyz/rss/mike-smith
   error: HTTP 404
   feed_type: null
   status: needs_investigation

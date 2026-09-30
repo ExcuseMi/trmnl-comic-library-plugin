@@ -33,7 +33,7 @@ custom_fields:
 - keyname: about
   name: About This Plugin
   field_type: author_bio
-  description: 'Access an daily updated collection of 582 comic RSS / Atom feeds and enjoy fresh content every day.<br /><a href=''https://excusemi.github.io/trmnl-comic-library-plugin/''>Click here to see all supported comics!</a><br />Features: <br />● Displays the most recent comic or a random comic <br />● Supports multiple RSS / Atom sources <br />● Add your own RSS / Atom feeds <br />● Frequently updated to keep all RSS / Atom sources valid and up to date'
+  description: 'Access an daily updated collection of 588 comic RSS / Atom feeds and enjoy fresh content every day.<br /><a href=''https://excusemi.github.io/trmnl-comic-library-plugin/''>Click here to see all supported comics!</a><br />Features: <br />● Displays the most recent comic or a random comic <br />● Supports multiple RSS / Atom sources <br />● Add your own RSS / Atom feeds <br />● Frequently updated to keep all RSS / Atom sources valid and up to date'
   github_url: https://github.com/ExcuseMi/trmnl-comic-library-plugin
   learn_more_url: https://excusemi.github.io/trmnl-comic-library-plugin
   category: comics
@@ -577,7 +577,7 @@ custom_fields:
   - Ziggy en Español by Tom Wilson & Tom II: https://comiccaster.xyz/rss/ziggyespanol
 - keyname: comics_political
   field_type: select
-  name: 'Political Comics: 59'
+  name: 'Political Comics: 65'
   multiple: true
   help_text: Use ⌘+click (Mac) or ctrl+click (Windows) to select multiple items. Use Shift+click to select a whole range at once.
   optional: true
@@ -590,8 +590,10 @@ custom_fields:
   - Clay Bennett: https://comiccaster.xyz/rss/claybennett
   - Clay Jones: https://comiccaster.xyz/rss/clayjones
   - Dana Summers: https://comiccaster.xyz/rss/danasummers
+  - David M. Hitch: https://comiccaster.xyz/rss/david-m-hitch
   - Doonesbury: https://comiccaster.xyz/rss/doonesbury
   - Drew Sheneman: https://comiccaster.xyz/rss/drewsheneman
+  - Ed Gamble: https://comiccaster.xyz/rss/ed-gamble
   - Eric Allie: https://comiccaster.xyz/rss/eric-allie
   - Gary Markstein: https://comiccaster.xyz/rss/garymarkstein
   - Gary Varvel: https://comiccaster.xyz/rss/garyvarvel
@@ -601,6 +603,7 @@ custom_fields:
   - Jeff Stahler: https://comiccaster.xyz/rss/jeffstahler
   - Jen Sorensen: https://comiccaster.xyz/rss/jen-sorensen
   - Jim Morin: https://comiccaster.xyz/rss/jimmorin
+  - Jimmy Margulies: https://comiccaster.xyz/rss/jimmy-margulies
   - Joe Heller: https://comiccaster.xyz/rss/joe-heller
   - Joel Pett: https://comiccaster.xyz/rss/joelpett
   - Joey Weatherford: https://comiccaster.xyz/rss/joey-weatherford
@@ -609,6 +612,7 @@ custom_fields:
   - Kevin Kallaugher: https://comiccaster.xyz/rss/kal
   - Kevin Necessary Editorial Cartoons: https://comiccaster.xyz/rss/kevin-necessary-editorial-cartoons
   - Lalo Alcaraz: https://comiccaster.xyz/rss/laloalcaraz
+  - Lee Judge: https://comiccaster.xyz/rss/lee-judge
   - Lisa Benson: https://comiccaster.xyz/rss/lisabenson
   - M2Bulls: https://comiccaster.xyz/rss/m2bulls
   - Mallard Fillmore by Bruce Tinsley: https://comiccaster.xyz/rss/mallard-fillmore
@@ -619,6 +623,8 @@ custom_fields:
   - Mike Beckom: https://comiccaster.xyz/rss/mike-beckom
   - Mike Lester: https://comiccaster.xyz/rss/mike-lester
   - Mike Luckovich: https://comiccaster.xyz/rss/mikeluckovich
+  - Mike Shelton: https://comiccaster.xyz/rss/mike-shelton
+  - Mike Smith: https://comiccaster.xyz/rss/mike-smith
   - Nick Anderson: https://comiccaster.xyz/rss/nickanderson
   - Pedro X. Molina: https://comiccaster.xyz/rss/pedroxmolina
   - Phil Hands: https://comiccaster.xyz/rss/phil-hands
