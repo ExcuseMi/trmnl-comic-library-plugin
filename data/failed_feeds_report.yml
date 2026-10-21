@@ -1,5 +1,5 @@
-report_date: '2026-10-20 02:29:25'
-total_failed: 59
+report_date: '2026-10-21 02:23:21'
+total_failed: 58
 failed_feeds:
 - name: Art by Moga
   url: https://comiccaster.xyz/rss/artbymoga
@@ -279,11 +279,6 @@ failed_feeds:
 - name: ViewsAfrica
   url: https://comiccaster.xyz/rss/viewsafrica
   error: HTTP 404
-  feed_type: null
-  status: needs_investigation
-- name: Questionable Content
-  url: https://questionablecontent.net/QCRSS.xml
-  error: Unknown feed type
   feed_type: null
   status: needs_investigation
 - name: Gunnerkrigg Court
