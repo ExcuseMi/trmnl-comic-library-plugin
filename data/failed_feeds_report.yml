@@ -1,5 +1,5 @@
-report_date: '2026-10-29 03:20:18'
-total_failed: 59
+report_date: '2026-10-30 03:21:53'
+total_failed: 58
 failed_feeds:
 - name: Art by Moga
   url: https://comiccaster.xyz/rss/artbymoga
@@ -245,11 +245,6 @@ failed_feeds:
   url: https://comiccaster.xyz/rss/farside-new
   error: No items/entries found in feed
   feed_type: rss
-  status: needs_investigation
-- name: The Phantom Vintage
-  url: https://comiccaster.xyz/rss/the-phantom-vintage
-  error: 'Request failed: fetch failed'
-  feed_type: null
   status: needs_investigation
 - name: Bob Gorrell
   url: https://comiccaster.xyz/rss/bobgorrell
