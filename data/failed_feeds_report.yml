@@ -1,5 +1,5 @@
-report_date: '2026-11-03 04:27:01'
-total_failed: 58
+report_date: '2026-11-04 03:45:48'
+total_failed: 57
 failed_feeds:
 - name: Art by Moga
   url: https://comiccaster.xyz/rss/artbymoga
@@ -143,11 +143,6 @@ failed_feeds:
   status: needs_investigation
 - name: Origins of the Sunday Comics
   url: https://comiccaster.xyz/rss/origins-of-the-sunday-comics
-  error: No valid image found
-  feed_type: rss
-  status: needs_investigation
-- name: Our Super Adventure
-  url: https://comiccaster.xyz/rss/our-super-adventure
   error: No valid image found
   feed_type: rss
   status: needs_investigation
