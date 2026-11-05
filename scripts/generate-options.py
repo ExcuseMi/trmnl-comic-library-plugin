@@ -408,6 +408,7 @@ def create_updated_settings():
         'field_type': 'select',
         'name': f'Comics: {len(comics_options)}',
         'multiple': True,
+        'searchable': True,  # TRMNL recipe search indexes this field (one per plugin)
         'help_text': 'Use ⌘+click (Mac) or ctrl+click (Windows) to select multiple items. Use Shift+click to select a whole range at once.',
         'optional': True,
         'options': comics_options
