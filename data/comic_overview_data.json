@@ -5157,11 +5157,20 @@
     "category": "Comics"
   },
   {
+    "name": "Questionable Content",
+    "author": "Jeph Jacques",
+    "title": "Keg's Run Dry",
+    "image_url": "https://www.questionablecontent.net/comics/5955.png",
+    "link": "https://questionablecontent.net/view.php?comic=5955",
+    "caption": "<p><img src=\"https://www.questionablecontent.net/comics/5955.png\"></p> <p>Emotional Invulnerability Night is even wilder</p>",
+    "category": "Comics"
+  },
+  {
     "name": "BirdChonk",
     "author": "",
-    "title": "Monster",
-    "image_url": "https://us-a.tapas.io/sa/67/56d2d94e-683a-4b80-8a64-3124ef27ddb1.jpg",
-    "link": "https://tapas.io/episode/4014851",
+    "title": "Please vote!",
+    "image_url": "https://us-a.tapas.io/sa/bb/a919b370-e219-4914-a9e7-a605a7dec80a.jpg",
+    "link": "https://tapas.io/episode/4017011",
     "caption": null,
     "category": "Comics"
   },
