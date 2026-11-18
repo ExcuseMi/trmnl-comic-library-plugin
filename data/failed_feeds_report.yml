@@ -1,5 +1,5 @@
-report_date: '2026-11-17 05:35:59'
-total_failed: 58
+report_date: '2026-11-18 04:59:45'
+total_failed: 57
 failed_feeds:
 - name: Art by Moga
   url: https://comiccaster.xyz/rss/artbymoga
@@ -276,18 +276,13 @@ failed_feeds:
   error: HTTP 404
   feed_type: null
   status: needs_investigation
-- name: Questionable Content
-  url: https://questionablecontent.net/QCRSS.xml
-  error: Unknown feed type
-  feed_type: null
-  status: needs_investigation
 - name: Gunnerkrigg Court
   url: https://www.gunnerkrigg.com/rss.xml
   error: No valid image found
   feed_type: rss
   status: needs_investigation
-- name: Foxes in Love
-  url: https://foxes-in-love.tumblr.com/rss
-  error: HTTP 429
+- name: Work Chronicles
+  url: https://workchronicles.substack.com/feed
+  error: HTTP 403
   feed_type: null
   status: needs_investigation
