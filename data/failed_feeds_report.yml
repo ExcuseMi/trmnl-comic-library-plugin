@@ -1,4 +1,4 @@
-report_date: '2026-11-21 04:40:26'
+report_date: '2026-11-22 03:54:22'
 total_failed: 57
 failed_feeds:
 - name: Art by Moga
@@ -278,11 +278,11 @@ failed_feeds:
   status: needs_investigation
 - name: Gunnerkrigg Court
   url: https://www.gunnerkrigg.com/rss.xml
-  error: HTTP 429
-  feed_type: null
+  error: No valid image found
+  feed_type: rss
   status: needs_investigation
-- name: Cat and Girl
-  url: https://catandgirl.com/feed/
-  error: 'Request failed: fetch failed'
+- name: Work Chronicles
+  url: https://workchronicles.substack.com/feed
+  error: HTTP 403
   feed_type: null
   status: needs_investigation
